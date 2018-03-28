@@ -1,6 +1,6 @@
 # Baltic Robot Battles
 
-Event website
+Event website using Symfony 4.0.
 
 ## Development environment
 
@@ -12,4 +12,5 @@ To run container you have to enter command from the project root.
 
 ```bash
 docker-compose up -d
+docker-compose exec php composer install
 ```
