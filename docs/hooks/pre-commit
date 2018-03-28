@@ -8,11 +8,11 @@ function run { # run [NAME] [FUNCTION]
   quit_when_fail
 }
 
-function run_files { # run_files [NAME] [EXTENSION] [FUNCTION with $file parameter]
+function run_files { # run_files [NAME] [EXTENSION] [FUNCTION]
   echo "### $1"
   git status --porcelain | grep -e "^[AM]\(.*\).${2}$" | cut -c 3- | while read file; do
     echo "  > "$file
-    eval ${DOCKER_RUN} \"$3\"
+    eval ${DOCKER_RUN} \"$3 ${file}\"
     git add $file
   done
 }
@@ -24,7 +24,7 @@ function quit_when_fail { # quit_when_fail
   fi
 }
 
-run_files PHP-CS-Fixer php "vendor/bin/php-cs-fixer fix $file"
+run_files PHP-CS-Fixer php "vendor/bin/php-cs-fixer fix"
 run PHP_CodeSniffer "vendor/bin/phpcs -p"
 run VarDump_Check "vendor/bin/var-dump-check --symfony src"
 run Lint_YAML_config "bin/console lint:yaml config"
