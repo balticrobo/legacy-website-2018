@@ -26,3 +26,6 @@ function quit_when_fail { # quit_when_fail
 
 run_files PHP-CS-Fixer php "vendor/bin/php-cs-fixer fix $file"
 run PHP_CodeSniffer "vendor/bin/phpcs -p"
+run VarDump_Check "vendor/bin/var-dump-check --symfony src"
+run Lint_YAML_config "bin/console lint:yaml config"
+run Lint_TWIG_templates "bin/console lint:twig templates"

@@ -1,17 +1,17 @@
 # Secrets and cache
 /.env
 /var
+/public/build
 /public/bundles
 
-# Composer
+# Composer & Yarn
 /vendor
+/node_modules/
+/npm-debug.log
+/yarn-error.log
+
 
 # Static analyze
 /.php_cs
 /.php_cs.cache
 /phpcs.xml
-
-###> friendsofphp/php-cs-fixer ###
-/.php_cs
-/.php_cs.cache
-###< friendsofphp/php-cs-fixer ###
