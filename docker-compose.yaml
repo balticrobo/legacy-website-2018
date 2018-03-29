@@ -6,8 +6,12 @@ services:
     volumes:
       - .:/var/www/app
       - ./docs/docker/php/php.ini:/usr/local/etc/php/php.ini
+      - composer_cache:/root/.composer/cache
     environment:
       COMPOSER_ALLOW_SUPERUSER: 1
+      APP_ENV: dev
+      APP_SECRET: 7cbd4f1718b779f367516a8d917b6a29
+      DATABASE_URL: mysql://root:mysql@mysql:3306/balticrobo
     working_dir: /var/www/app
     command: ./docs/docker/php/start.sh
   node:
@@ -27,3 +31,17 @@ services:
     ports:
       - 8000:80
     working_dir: /var/www/app/public
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: balticrobo
+    ports:
+      - 3306:3306
+    restart: always
+
+volumes:
+  composer_cache:
+  mysql_data:
