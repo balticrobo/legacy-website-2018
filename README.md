@@ -11,6 +11,8 @@ You will need Docker engine in version **>= 17.06.0**.
 To run container you have to enter command from the project root.
 
 ```bash
-docker-compose up -d
-docker-compose exec php composer install
+docker-compose up # with -d to daemonize
 ```
+
+Containers will be ready to active development with installed composer packages,
+ node packages and running nginx with php-fpm and yarn watch to compile assets.

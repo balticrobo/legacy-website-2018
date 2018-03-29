@@ -1,19 +1,34 @@
-var Encore = require('@symfony/webpack-encore');
-Encore
-// the project directory where compiled assets will be stored
-  .setOutputPath('public/build/')
-  // the public path used by the web server to access the previous directory
+const Encore = require('@symfony/webpack-encore');
+
+Encore.setOutputPath('public/build/')
   .setPublicPath('/build')
   .cleanupOutputBeforeBuild()
+  .enableSassLoader()
+  .enablePostCssLoader()
   .enableSourceMaps(!Encore.isProduction())
-// uncomment to create hashed filenames (e.g. app.abc123.css)
-// .enableVersioning(Encore.isProduction())
-// uncomment to define the assets of the project
-// .addEntry('js/app', './assets/js/app.js')
-// .addStyleEntry('css/app', './assets/css/app.scss')
-// uncomment if you use Sass/SCSS files
-// .enableSassLoader()
-// uncomment for legacy applications that require $/jQuery as a global variable
-// .autoProvidejQuery()
-;
+  .enableVersioning()
+  .autoProvideVariables({
+    $: 'jquery',
+    jQuery: 'jquery',
+    'window.jQuery': 'jquery'
+  })
+  .createSharedEntry('js/common', [
+    'jquery',
+    'popper.js/dist/popper.js',
+    'tether',
+    'bootstrap/js/dist/util',
+    'bootstrap/js/dist/alert',
+    'bootstrap/js/dist/button',
+    'bootstrap/js/dist/carousel',
+    'bootstrap/js/dist/collapse',
+    'bootstrap/js/dist/dropdown',
+    'bootstrap/js/dist/modal',
+    'bootstrap/js/dist/scrollspy',
+    'bootstrap/js/dist/tab',
+    'bootstrap/js/dist/tooltip',
+    'bootstrap/js/dist/popover'
+  ])
+  .addEntry('js/app', './assets/js/app.js')
+  .addStyleEntry('css/app', './assets/scss/main.scss');
+
 module.exports = Encore.getWebpackConfig();

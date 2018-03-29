@@ -10,6 +10,13 @@ services:
       COMPOSER_ALLOW_SUPERUSER: 1
     working_dir: /var/www/app
     command: ./docs/docker/php/start.sh
+  node:
+    image: node:9.9
+    user: node
+    volumes:
+      - .:/var/www/app
+    working_dir: /var/www/app
+    command: ./docs/docker/node/start.sh
   nginx:
     image: nginx:1.13
     depends_on:
