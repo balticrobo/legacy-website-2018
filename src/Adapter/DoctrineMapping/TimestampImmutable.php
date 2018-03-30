@@ -10,11 +10,10 @@ use Doctrine\DBAL\Types\Type;
 class TimestampImmutable extends Type
 {
     private const DOCTRINE_REPRESENTATION = 'timestamp_immutable';
-    private const MYSQL_REPRESENTATION = 'INT';
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
-        return self::MYSQL_REPRESENTATION;
+        return $platform->getIntegerTypeDeclarationSQL($fieldDeclaration);
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
