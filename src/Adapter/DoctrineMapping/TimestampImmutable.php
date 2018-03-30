@@ -13,6 +13,7 @@ class TimestampImmutable extends Type
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
+        // TODO: MYSQL & PostgreSQL allows to set TIMESTAMP, SQLite have only INTEGER
         return $platform->getIntegerTypeDeclarationSQL($fieldDeclaration);
     }
 
