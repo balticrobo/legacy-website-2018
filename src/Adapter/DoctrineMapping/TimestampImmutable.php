@@ -16,13 +16,21 @@ class TimestampImmutable extends Type
         return $platform->getIntegerTypeDeclarationSQL($fieldDeclaration);
     }
 
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue($value, AbstractPlatform $platform): ?\DateTimeImmutable
     {
+        if ($value === null || $value instanceof \DateTimeImmutable) {
+            return $value;
+        }
+
         return new \DateTimeImmutable("@{$value}");
     }
 
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform): ?int
     {
+        if ($value === null) {
+            return $value;
+        }
+
         return $value->getTimestamp();
     }
 
