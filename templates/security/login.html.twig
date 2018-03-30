@@ -4,7 +4,7 @@
     <h1>Login</h1>
     {% if error %}
         <div class="alert alert-danger">
-            {{ ('security.' ~ error.messageKey ~ 'login')|trans({}, '') }}
+            {{ ('security.' ~ error.messageKey ~ 'login')|trans({}, 'validators') }}
         </div>
     {% endif %}
     {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}

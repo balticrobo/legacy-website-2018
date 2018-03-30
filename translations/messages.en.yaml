@@ -1,0 +1,7 @@
+buttons:
+  login: Login
+user:
+  form:
+    user_login:
+      password: Password
+      username: Email
