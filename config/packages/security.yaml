@@ -1,0 +1,39 @@
+security:
+  encoders:
+    BalticRobo\Website\Entity\User\User: bcrypt
+
+  providers:
+    user_login:
+      entity:
+        class: BalticRobo\Website\Entity\User\User
+        property: email
+
+  role_hierarchy:
+    ROLE_SUPERADMIN:
+      - ROLE_ADMIN
+      - ROLE_USER
+
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    user:
+      pattern: ^/user
+      anonymous: ~
+      provider: user_login
+      guard:
+        authenticators:
+          - BalticRobo\Website\Security\UserAuthenticator
+      form_login:
+        login_path: balticrobo_website_security_userlogin
+        check_path: balticrobo_website_security_userlogin
+        remember_me: true
+      logout:
+        path: balticrobo_website_security_userlogout
+        target: balticrobo_website_security_userlogin
+    default:
+      pattern: ^/
+      anonymous: ~
+
+  access_control:
+    - { path: ^/user/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -1,0 +1,14 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+    <h1>Login</h1>
+    {% if error %}
+        <div class="alert alert-danger">
+            {{ ('security.' ~ error.messageKey ~ 'login')|trans({}, '') }}
+        </div>
+    {% endif %}
+    {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-block btn-primary">{{ 'buttons.login'|trans }}</button>
+    {{ form_end(form) }}
+{% endblock %}
