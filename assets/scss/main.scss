@@ -2,7 +2,7 @@
 @import 'abstract/variables';
 @import '~bootstrap/scss/mixins';
 @import 'abstract/mixins';
-@import '~bootstrap/scss/print';
+//@import '~bootstrap/scss/print';
 @import '~bootstrap/scss/reboot';
 @import '../font/audiowide/audiowide';
 @import '../font/lato/lato';
@@ -20,20 +20,20 @@
 @import '~bootstrap/scss/custom-forms';
 @import '~bootstrap/scss/nav';
 @import '~bootstrap/scss/navbar';
-@import '~bootstrap/scss/card';
-@import '~bootstrap/scss/breadcrumb';
+//@import '~bootstrap/scss/card';
+//@import '~bootstrap/scss/breadcrumb';
 @import '~bootstrap/scss/pagination';
-@import '~bootstrap/scss/badge';
-@import '~bootstrap/scss/jumbotron';
+//@import '~bootstrap/scss/badge';
+//@import '~bootstrap/scss/jumbotron';
 @import '~bootstrap/scss/alert';
-@import '~bootstrap/scss/progress';
-@import '~bootstrap/scss/media';
-@import '~bootstrap/scss/list-group';
+//@import '~bootstrap/scss/progress';
+//@import '~bootstrap/scss/media';
+//@import '~bootstrap/scss/list-group';
 @import '~bootstrap/scss/close';
 @import '~bootstrap/scss/modal';
 @import '~bootstrap/scss/tooltip';
 @import '~bootstrap/scss/popover';
-@import '~bootstrap/scss/carousel';
+//@import '~bootstrap/scss/carousel';
 @import '~bootstrap/scss/utilities';
 
 $fa-font-size-base: $font-size-base !default;
@@ -54,3 +54,12 @@ $fa-li-width: (30em / 14) !default;
 @import "~font-awesome/scss/stacked";
 @import "~font-awesome/scss/icons";
 @import "~font-awesome/scss/screen-reader";
+
+html,
+body {
+  background: theme-color('secondary');
+  min-width: 240px;
+}
+
+@import 'component/navbar';
+@import 'layout/header';

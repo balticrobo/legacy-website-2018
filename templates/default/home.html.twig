@@ -1,5 +1,60 @@
 {% extends '_base.html.twig' %}
+{% import _self as macro %}
 
 {% block body %}
-    <h1>Hello world!</h1>
+  <header class='header header-{{ app.request.locale }} parallax'></header>
+
+  <nav class='navbar navbar-light navbar-expand-sm'>
+    <div class='container-fluid'>
+      <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false'>
+        <span class='navbar-toggler-icon'></span>
+      </button>
+      <div class='collapse navbar-collapse' id='navbarNav'>
+        <ul class='navbar-nav'>
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
+              {{ 'default.home.menu.home'|trans }}
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
+              {{ 'default.home.menu.login'|trans }}
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
+              {{ 'default.home.menu.register'|trans }}
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
+              {{ 'default.home.menu.ruleset'|trans }}
+            </a>
+          </li>
+        </ul>
+      </div>
+      <ul class='navbar-nav navbar-nav--locale'>
+        {# TODO: Lista języków z parametrów #}
+        {% for locale in ['pl', 'en'] %}
+          {{ macro.navbar_locale(locale) }}
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+
+  <div style='height: 1000px; background: chartreuse'></div>
 {% endblock %}
+
+{% macro navbar_locale(locale) %}
+  <li class='nav-item{% if app.request.locale == locale %} active{% endif %}'>
+    {% if app.request.locale == locale %}
+      <span class="nav-link">
+        {{ locale|upper }}
+      </span>
+    {% else %}
+      <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
+        {{ locale|upper }}
+      </a>
+    {% endif %}
+  </li>
+{% endmacro %}

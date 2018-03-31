@@ -1,0 +1,40 @@
+.navbar {
+  border-top: 3px solid theme-color('primary');
+  border-bottom: 20px solid theme-color('primary');
+  background: color('white');
+
+  @include media-breakpoint-up(sm) {
+    border-bottom-width: 26px;
+  }
+
+  @include media-breakpoint-up(md) {
+    border-bottom-width: 33px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    border-bottom-width: 39px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    border-bottom-width: 51px;
+  }
+
+  &-nav--locale {
+    flex-direction: row;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+
+    .nav-item {
+      padding: $nav-link-padding-y ($nav-link-padding-x / 2);
+
+      &.active {
+        background: theme-color('primary');
+      }
+
+      .nav-link {
+        padding: 0;
+      }
+    }
+  }
+}

@@ -1,5 +1,12 @@
 buttons:
   login: Login
+default:
+  home:
+    menu:
+      home: Homepage
+      login: Login
+      register: Register
+      ruleset: Ruleset
 user:
   form:
     user_login:
