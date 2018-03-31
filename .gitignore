@@ -3,13 +3,13 @@
 /var
 /public/build
 /public/bundles
+/assets/js/assets.js
 
 # Composer & Yarn
 /vendor
 /node_modules/
 /npm-debug.log
 /yarn-error.log
-
 
 # Static analyze
 /.php_cs
