@@ -1,0 +1,32 @@
+$lato-font-path: '.' !default;
+
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Hairline', 100, normal, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-HairlineItalic', 100, italic, eot woff2 woff ttf);
+
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Thin', 200, normal, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-ThinItalic', 200, italic, eot woff2 woff ttf);
+
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Light', 300, normal, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-LightItalic', 300, italic, eot woff2 woff ttf);
+
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Regular', 400, normal, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Italic', 400, italic, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Regular', normal, normal, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Italic', normal, italic, eot woff2 woff ttf);
+
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Medium', 500, normal, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-MediumItalic', 500, italic, eot woff2 woff ttf);
+
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Semibold', 600, normal, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-SemiboldItalic', 600, italic, eot woff2 woff ttf);
+
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Bold', 700, normal, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-BoldItalic', 700, italic, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Bold', bold, normal, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-BoldItalic', bold, italic, eot woff2 woff ttf);
+
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Heavy', 800, normal, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-HeavyItalic', 800, italic, eot woff2 woff ttf);
+
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-Black', 900, normal, eot woff2 woff ttf);
+@include font-face('Lato', '#{$lato-font-path}/LatoLatin-BlackItalic', 900, italic, eot woff2 woff ttf);
