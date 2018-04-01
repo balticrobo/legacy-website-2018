@@ -105,6 +105,7 @@ Build prod:
     - composer install --no-dev --optimize-autoloader
     - bin/console assets:install
     - yarn install
+    - node assets.config.js
     - yarn build
     - mkdir -p dist
     - cp -r bin config public src templates translations vendor composer.json dist
