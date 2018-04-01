@@ -3,16 +3,18 @@
   position: relative;
   background-size: cover;
   width: 100%;
-  height: calc(100vh - #{$navbar-brand-height});
+  height: calc(100vh - 63px);
   min-height: 138px;
   max-height: 230px;
 
   @include media-breakpoint-up(sm) {
+    height: calc(100vh - 69px);
     min-height: 184px;
     max-height: 307px;
   }
 
   @include media-breakpoint-up(md) {
+    height: calc(100vh - 73px);
     min-height: 238px;
     max-height: 397px;
   }

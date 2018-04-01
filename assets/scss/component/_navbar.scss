@@ -8,15 +8,7 @@
   }
 
   @include media-breakpoint-up(md) {
-    border-bottom-width: 33px;
-  }
-
-  @include media-breakpoint-up(lg) {
-    border-bottom-width: 39px;
-  }
-
-  @include media-breakpoint-up(xl) {
-    border-bottom-width: 51px;
+    border-bottom-width: 30px;
   }
 
   &-nav--locale {
