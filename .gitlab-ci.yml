@@ -96,7 +96,7 @@ Tests:
     APP_SECRET: 7cbd4f1718b779f367516a8d917b6a29
   before_script:
     - export CI_DATABASE_NAME=balticrobo_test_$(date +%s)
-    - export DATABASE_URL mysql://${CI_DATABASE_USER}:${CI_DATABASE_PASSWORD}@127.0.0.1:3306/${CI_DATABASE_NAME}
+    - export DATABASE_URL=mysql://${CI_DATABASE_USER}:${CI_DATABASE_PASSWORD}@127.0.0.1:3306/${CI_DATABASE_NAME}
   script:
     - mysql -u${CI_DATABASE_USER} -p${CI_DATABASE_PASSWORD}
       -e 'CREATE DATABASE ${CI_DATABASE_NAME} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
