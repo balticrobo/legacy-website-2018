@@ -17,6 +17,16 @@ docker-compose up # with -d to daemonize
 Containers will be ready to active development with installed composer packages,
  node packages and running nginx with php-fpm and yarn watch to compile assets.
 
+For more information check `docker-compose.yaml` and `docs/docker/`.
+
+### Validate commits
+
+`composer.json` have script which sets default **pre-commit hook** to GIT. If
+ you know what are you doing, you can change or remove it in file
+ `docs/hooks/pre-commit`.
+
+Same rules of validating commits are included in [Gitlab CI](#gitlab-ci).
+
 ## CI/CD
 
 ### Gitlab CI
