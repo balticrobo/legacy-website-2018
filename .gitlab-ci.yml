@@ -1,9 +1,5 @@
 variables:
-  TIMESTAMP: $(date +%s)
-  CI_DATABASE_NAME: balticrobo_test_$(date +%s)
-  APP_ENV: test
-  APP_SECRET: 7cbd4f1718b779f367516a8d917b6a29
-  DATABASE_URL: mysql://${CI_DATABASE_USER}:${CI_DATABASE_PASSWORD}@127.0.0.1:3306/${CI_DATABASE_NAME}
+  APP_ENV: dev
 
 stages:
   - Build (test)
@@ -18,6 +14,7 @@ stages:
     - php
     - node
   cache: &cache_definition
+    key: test
     paths:
       - vendor
       - node_modules
@@ -30,6 +27,7 @@ Build for test:
     - composer install
     - yarn install
   cache:
+    key: test
     paths:
       - vendor
       - node_modules
@@ -85,6 +83,13 @@ NPM Packages:
 Tests:
   stage: Test
   tags: *tags_definition
+  variables:
+    APP_ENV: test
+    APP_SECRET: 7cbd4f1718b779f367516a8d917b6a29
+    DATABASE_URL: mysql://${CI_DATABASE_USER}:${CI_DATABASE_PASSWORD}@127.0.0.1:3306/${CI_DATABASE_NAME}
+  before_script:
+    - export TIMESTAMP=$(date +%s)
+    - export CI_DATABASE_NAME=balticrobo_test_${TIMESTAMP}
   script:
     - echo ${TIMESTAMP}
     - echo ${CI_DATABASE_NAME}
@@ -104,13 +109,19 @@ Build prod:
   variables:
     APP_ENV: prod
   script:
-    - composer install --no-dev --optimize-autoloader
+    - composer install --no-dev --optimize-autoloader --no-scripts --no-suggest
     - bin/console assets:install
     - yarn install
     - node assets.config.js
     - yarn build
     - mkdir -p dist
     - cp -r bin config public src templates translations vendor composer.json dist
+  cache:
+    key: deploy
+    paths:
+      - vendor
+      - node_modules
+    policy: pull
 
 Deploy develop:
   stage: Deploy
@@ -126,8 +137,9 @@ Deploy develop:
   script:
     - 'echo User-agent: \* > public/robots.txt'
     - 'echo Disallow: / >> public/robots.txt'
-    - rsync -razup --delete --exclude "var" --exclude ".env" --rsh="ssh -o BatchMode=yes -o StrictHostKeyChecking=no"
-      . ${DEVELOP_HOST}:${DEVELOP_DIRECTORY}
-    - ssh -o StrictHostKeyChecking=no ${DEVELOP_HOST} "
-      php ${DEVELOP_DIRECTORY}/bin/console cache:clear &&
-      php ${DEVELOP_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction"
+    - rsync -av --delete --exclude "var" --rsh="ssh -o BatchMode=yes -o StrictHostKeyChecking=no"
+      dist/ ${DEPLOY_HOST}:${DEPLOY_DIRECTORY}
+    - ssh -o StrictHostKeyChecking=no ${DEPLOY_HOST} "
+      export APP_ENV=prod &&
+      php ${DEPLOY_DIRECTORY}/bin/console cache:clear &&
+      php ${DEPLOY_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction"
