@@ -13,6 +13,14 @@ stages:
   tags: &tags_definition
     - php
     - node
+  script: &deploy_definition
+    - rsync -av --delete --exclude ".env" --exclude "var" --rsh="ssh -o BatchMode=yes -o StrictHostKeyChecking=no"
+      dist/ ${DEPLOY_HOST}:${DEPLOY_DIRECTORY}
+    - ssh -o StrictHostKeyChecking=no ${DEPLOY_HOST} "
+      php ${DEPLOY_DIRECTORY}/bin/console cache:clear &&
+      sudo chown www-data:www-data -R ${DEPLOY_DIRECTORY}/var &&
+      sudo chmod 775 -R ${DEPLOY_DIRECTORY}/var &&
+      php ${DEPLOY_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction"
   cache: &cache_definition
     key: test
     paths:
@@ -86,14 +94,15 @@ Tests:
   variables:
     APP_ENV: test
     APP_SECRET: 7cbd4f1718b779f367516a8d917b6a29
-    DATABASE_URL: mysql://${CI_DATABASE_USER}:${CI_DATABASE_PASSWORD}@127.0.0.1:3306/${CI_DATABASE_NAME}
   before_script:
-    - export TIMESTAMP=$(date +%s)
-    - export CI_DATABASE_NAME=balticrobo_test_${TIMESTAMP}
+    - export CI_DATABASE_NAME=balticrobo_test_$(date +%s)
+    - export DATABASE_URL mysql://${CI_DATABASE_USER}:${CI_DATABASE_PASSWORD}@127.0.0.1:3306/${CI_DATABASE_NAME}
   script:
-    - echo ${TIMESTAMP}
-    - echo ${CI_DATABASE_NAME}
-    - echo ${DATABASE_URL}
+    - mysql -u${CI_DATABASE_USER} -p${CI_DATABASE_PASSWORD}
+      -e 'CREATE DATABASE ${CI_DATABASE_NAME} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
+    - echo 'Do stuff which interacts with MySQL database!'
+    - mysql -u${CI_DATABASE_USER} -p${CI_DATABASE_PASSWORD}
+      -e 'DROP DATABASE ${CI_DATABASE_NAME};'
 
 Build prod:
   stage: Build (deploy)
@@ -121,7 +130,7 @@ Build prod:
     paths:
       - vendor
       - node_modules
-    policy: pull
+    policy: pull-push
 
 Deploy develop:
   stage: Deploy
@@ -134,12 +143,7 @@ Deploy develop:
   variables:
     DEPLOY_HOST: $DEVELOP_HOST
     DEPLOY_DIRECTORY: $DEVELOP_DIRECTORY
-  script:
+  before_script:
     - 'echo User-agent: \* > dist/public/robots.txt'
     - 'echo Disallow: / >> dist/public/robots.txt'
-    - rsync -av --delete --exclude "var" --rsh="ssh -o BatchMode=yes -o StrictHostKeyChecking=no"
-      dist/ ${DEPLOY_HOST}:${DEPLOY_DIRECTORY}
-    - ssh -o StrictHostKeyChecking=no ${DEPLOY_HOST} "
-      export APP_ENV=prod &&
-      php ${DEPLOY_DIRECTORY}/bin/console cache:clear &&
-      php ${DEPLOY_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction"
+  script: *deploy_definition
