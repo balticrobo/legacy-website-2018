@@ -147,3 +147,16 @@ Deploy develop:
     - 'echo User-agent: \* > dist/public/robots.txt'
     - 'echo Disallow: / >> dist/public/robots.txt'
   script: *deploy_definition
+
+.Deploy master:
+  stage: Deploy
+  tags: *tags_definition
+  only:
+    - master
+  environment:
+    name: production
+  when: manual
+  variables:
+    DEPLOY_HOST: $PROD_HOST
+    DEPLOY_DIRECTORY: $PROD_DIRECTORY
+  script: *deploy_definition

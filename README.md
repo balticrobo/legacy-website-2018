@@ -31,3 +31,5 @@ You have to set next parameters:
 | CI_DATABASE_PASSWORD | password for MySQL database on CI runner | false |
 | DEVELOP_HOST | `username@host` where should be uploaded files from **develop** | true |
 | DEVELOP_DIRECTORY | `/path/to/folder` where should be stored files from **develop** | true |
+| PROD_HOST | `username@host` where should be uploaded files from **master** | true |
+| PROD_DIRECTORY | `/path/to/folder` where should be stored files from **master** | true |
