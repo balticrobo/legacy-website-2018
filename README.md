@@ -16,3 +16,18 @@ docker-compose up # with -d to daemonize
 
 Containers will be ready to active development with installed composer packages,
  node packages and running nginx with php-fpm and yarn watch to compile assets.
+
+## CI/CD
+
+### Gitlab CI
+
+You can use Gitlab CI with config from `gitlab-ci.yml`.
+
+You have to set next parameters:
+
+| Parameter | Description | Private |
+| --- | --- | --- |
+| CI_DATABASE_USER | username for MySQL database on CI runner | false |
+| CI_DATABASE_PASSWORD | password for MySQL database on CI runner | false |
+| DEVELOP_HOST | `username@host` where should be uploaded files from **develop** | true |
+| DEVELOP_DIRECTORY | `/path/to/folder` where should be stored files from **develop** | true |
