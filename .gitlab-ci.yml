@@ -135,8 +135,8 @@ Deploy develop:
     DEPLOY_HOST: $DEVELOP_HOST
     DEPLOY_DIRECTORY: $DEVELOP_DIRECTORY
   script:
-    - 'echo User-agent: \* > public/robots.txt'
-    - 'echo Disallow: / >> public/robots.txt'
+    - 'echo User-agent: \* > dist/public/robots.txt'
+    - 'echo Disallow: / >> dist/public/robots.txt'
     - rsync -av --delete --exclude "var" --rsh="ssh -o BatchMode=yes -o StrictHostKeyChecking=no"
       dist/ ${DEPLOY_HOST}:${DEPLOY_DIRECTORY}
     - ssh -o StrictHostKeyChecking=no ${DEPLOY_HOST} "
