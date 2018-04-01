@@ -13,7 +13,10 @@ stages:
   - Build (deploy)
   - Deploy
 
-.cache:
+.common:
+  tags: &tags_definition
+    - php
+    - node
   cache: &cache_definition
     paths:
       - vendor
@@ -22,6 +25,7 @@ stages:
 
 Build for test:
   stage: Build (test)
+  tags: *tags_definition
   script:
     - composer install
     - yarn install
@@ -33,6 +37,7 @@ Build for test:
 
 Lint Yaml:
   stage: Validate
+  tags: *tags_definition
   script:
     - bin/console lint:yaml config
     - bin/console lint:yaml translations
@@ -40,12 +45,14 @@ Lint Yaml:
 
 Lint Twig:
   stage: Validate
+  tags: *tags_definition
   script:
     - bin/console lint:twig templates
   cache: *cache_definition
 
 PHP_CodeSniffer:
   stage: Validate
+  tags: *tags_definition
   script:
     - vendor/bin/phpcs -p src
   allow_failure: true
@@ -53,6 +60,7 @@ PHP_CodeSniffer:
 
 PHP-CS-Fixer:
   stage: Validate
+  tags: *tags_definition
   script:
     - vendor/bin/php-cs-fixer fix src --dry-run --diff -vvv
   allow_failure: true
@@ -60,6 +68,7 @@ PHP-CS-Fixer:
 
 Composer Packages:
   stage: Validate
+  tags: *tags_definition
   script:
     - composer outdated
   allow_failure: true
@@ -67,6 +76,7 @@ Composer Packages:
 
 NPM Packages:
   stage: Validate
+  tags: *tags_definition
   script:
     - yarn outdated
   allow_failure: true
@@ -74,11 +84,13 @@ NPM Packages:
 
 Tests:
   stage: Test
+  tags: *tags_definition
   script:
     - echo ${DATABASE_URL}
 
 Build prod:
   stage: Build (deploy)
+  tags: *tags_definition
   only:
     - master
     - develop
@@ -99,6 +111,7 @@ Build prod:
 
 Deploy develop:
   stage: Deploy
+  tags: *tags_definition
   only:
     - master
     - develop
