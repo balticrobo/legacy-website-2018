@@ -1,6 +1,6 @@
 variables:
   TIMESTAMP: $(date +%s)
-  CI_DATABASE_NAME: balticrobo_${TIMESTAMP}
+  CI_DATABASE_NAME: balticrobo_test_$(date +%s)
   APP_ENV: test
   APP_SECRET: 7cbd4f1718b779f367516a8d917b6a29
   DATABASE_URL: mysql://${CI_DATABASE_USER}:${CI_DATABASE_PASSWORD}@127.0.0.1:3306/${CI_DATABASE_NAME}
@@ -86,6 +86,8 @@ Tests:
   stage: Test
   tags: *tags_definition
   script:
+    - echo ${TIMESTAMP}
+    - echo ${CI_DATABASE_NAME}
     - echo ${DATABASE_URL}
 
 Build prod:
