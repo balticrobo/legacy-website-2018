@@ -61,7 +61,7 @@ $colors: map-merge((
         "gray-dark": $gray-800
 ), $colors);
 
-$primary: $blue !default;
+$primary: #42606F !default;
 $secondary: $gray-600 !default;
 $success: $green !default;
 $info: $cyan !default;
@@ -138,8 +138,8 @@ $sizes: map-merge((
 //
 // Settings for the `<body>` element.
 
-$body-bg: $white !default;
-$body-color: $gray-900 !default;
+$body-bg: theme-color('primary') !default;
+$body-color: #1e4151 !default;
 
 // Links
 //

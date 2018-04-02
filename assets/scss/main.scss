@@ -55,11 +55,6 @@ $fa-li-width: (30em / 14) !default;
 @import "~font-awesome/scss/icons";
 @import "~font-awesome/scss/screen-reader";
 
-html,
-body {
-  background: theme-color('secondary');
-  min-width: 240px;
-}
-
 @import 'component/navbar';
+@import 'layout/base';
 @import 'layout/header';
