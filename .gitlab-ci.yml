@@ -18,8 +18,7 @@ stages:
       dist/ ${DEPLOY_HOST}:${DEPLOY_DIRECTORY}
     - ssh -o StrictHostKeyChecking=no ${DEPLOY_HOST} "
       php ${DEPLOY_DIRECTORY}/bin/console cache:clear &&
-      sudo chown www-data:www-data -R ${DEPLOY_DIRECTORY}/var &&
-      sudo chmod 775 -R ${DEPLOY_DIRECTORY}/var &&
+      sudo chmod 777 -R ${DEPLOY_DIRECTORY}/var/cache &&
       php ${DEPLOY_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction"
   cache: &cache_definition
     key: test
