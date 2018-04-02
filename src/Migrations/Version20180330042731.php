@@ -22,7 +22,7 @@ class Version20180330042731 extends AbstractMigration
             active TINYINT(1) NOT NULL,
             roles JSON NOT NULL,
             created_at TIMESTAMP NOT NULL COMMENT '(DC2Type:timestamp_immutable)',
-            last_login_at TIMESTAMP DEFAULT NULL COMMENT '(DC2Type:timestamp_immutable)',
+            last_login_at TIMESTAMP NULL DEFAULT NULL COMMENT '(DC2Type:timestamp_immutable)',
             UNIQUE INDEX UNIQ_1483A5E9E7927C74 (email),
             PRIMARY KEY(id)
         ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB");

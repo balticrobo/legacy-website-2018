@@ -16,10 +16,15 @@ class TimestampImmutable extends Type
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
         if ($platform instanceof MySQL57Platform) {
+            if (!$fieldDeclaration['notnull']) {
+                return 'TIMESTAMP NULL';
+            }
+
             return 'TIMESTAMP';
         } elseif ($platform instanceof SqlitePlatform) {
             return 'INTEGER';
         }
+
         throw new UnsupportedDatabaseTypeException(self::class);
     }
 

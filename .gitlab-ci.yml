@@ -16,10 +16,11 @@ stages:
   script: &deploy_definition
     - mkdir -p dist/var/cache
     - chmod -R 777 dist/var
-    - rsync -av --delete --exclude ".env" --exclude "var" --rsh="ssh -o BatchMode=yes -o StrictHostKeyChecking=no"
+    - rsync -av --delete --exclude ".env" --exclude "var/log" --rsh="ssh -o BatchMode=yes -o StrictHostKeyChecking=no"
       dist/ ${DEPLOY_HOST}:${DEPLOY_DIRECTORY}
     - ssh -o StrictHostKeyChecking=no ${DEPLOY_HOST} "
       php ${DEPLOY_DIRECTORY}/bin/console cache:clear &&
+      chmod 777 -R var/cache &&
       php ${DEPLOY_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction"
   cache: &cache_definition
     key: test
