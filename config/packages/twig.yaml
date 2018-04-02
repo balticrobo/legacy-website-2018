@@ -3,5 +3,7 @@ twig:
     - '%kernel.project_dir%/templates'
   debug: '%kernel.debug%'
   strict_variables: '%kernel.debug%'
+  form_themes:
+    - '_common/form/bootstrap_4_layout.html.twig'
   globals:
     available_locales: '%available_locales%'
