@@ -6,7 +6,7 @@ default:
       home: Homepage
       login: Login
       register: Register
-      ruleset: Ruleset
+      rules: Rules
 user:
   form:
     user_login:

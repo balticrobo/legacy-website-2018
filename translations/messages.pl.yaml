@@ -1,0 +1,14 @@
+buttons:
+  login: Zaloguj się
+default:
+  home:
+    menu:
+      home: Główna
+      login: Logowanie
+      register: Rejestracja
+      rules: Regulaminy
+user:
+  form:
+    user_login:
+      password: Hasło
+      username: Email

@@ -2,7 +2,7 @@
 {% import _self as macro %}
 
 {% block body %}
-  <header class='header header-{{ app.request.locale }} parallax'></header>
+  <header class='header header-{{ app.request.locale }}'></header>
 
   <nav class='navbar navbar-light navbar-expand-sm sticky-top'>
     <div class='container-fluid'>
@@ -28,14 +28,13 @@
           </li>
           <li class='nav-item'>
             <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
-              {{ 'default.home.menu.ruleset'|trans }}
+              {{ 'default.home.menu.rules'|trans }}
             </a>
           </li>
         </ul>
       </div>
       <ul class='navbar-nav navbar-nav--locale'>
-        {# TODO: Lista języków z parametrów #}
-        {% for locale in ['pl', 'en'] %}
+        {% for locale in available_locales %}
           {{ macro.navbar_locale(locale) }}
         {% endfor %}
       </ul>
@@ -52,9 +51,11 @@
         {{ locale|upper }}
       </span>
     {% else %}
-      <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
-        {{ locale|upper }}
-      </a>
+      <form action='{{ path('balticrobo_website_locale_changelocale', {locale: locale}) }}', method='post'>
+        <button type='submit' class='btn btn-link nav-link'>
+          {{ locale|upper }}
+        </button>
+      </form>
     {% endif %}
   </li>
 {% endmacro %}

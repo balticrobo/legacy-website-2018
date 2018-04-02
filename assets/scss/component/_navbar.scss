@@ -2,6 +2,7 @@
   border-top: 3px solid theme-color('primary');
   border-bottom: 20px solid theme-color('primary');
   background: color('white');
+  font-family: $headings-font-family;
 
   @include media-breakpoint-up(sm) {
     border-bottom-width: 26px;

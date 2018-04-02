@@ -1,3 +1,9 @@
+parameters:
+  locale: en
+  available_locales:
+    - pl
+    - en
+
 framework:
   default_locale: '%locale%'
   translator:
