@@ -7,24 +7,24 @@
   min-height: 138px;
   max-height: 230px;
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-only(sm) {
     height: calc(100vh - 69px);
     min-height: 184px;
     max-height: 307px;
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-only(md) {
     height: calc(100vh - 73px);
     min-height: 238px;
     max-height: 397px;
   }
 
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-only(lg) {
     min-height: 288px;
     max-height: 480px;
   }
 
-  @include media-breakpoint-up(xl) {
+  @include media-breakpoint-only(xl) {
     min-height: 461px;
     max-height: 768px;
   }
@@ -32,19 +32,19 @@
   &-pl {
     background: url("../img/main_background/576-pl.png") no-repeat fixed center top;
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-only(sm) {
       background: url("../img/main_background/768-pl.png") no-repeat fixed center top;
     }
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-only(md) {
       background: url("../img/main_background/992-pl.png") no-repeat fixed center top;
     }
 
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-only(lg) {
       background: url("../img/main_background/1200-pl.png") no-repeat fixed center top;
     }
 
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-only(xl) {
       background: url("../img/main_background/1920-pl.png") no-repeat fixed center top;
     }
   }
@@ -52,19 +52,19 @@
   &-en {
     background: url("../img/main_background/576-en.png") no-repeat fixed center top;
 
-    @include media-breakpoint-up(sm) {
+    @include media-breakpoint-only(sm) {
       background: url("../img/main_background/768-en.png") no-repeat fixed center top;
     }
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-only(md) {
       background: url("../img/main_background/992-en.png") no-repeat fixed center top;
     }
 
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-only(lg) {
       background: url("../img/main_background/1200-en.png") no-repeat fixed center top;
     }
 
-    @include media-breakpoint-up(xl) {
+    @include media-breakpoint-only(xl) {
       background: url("../img/main_background/1920-en.png") no-repeat fixed center top;
     }
   }

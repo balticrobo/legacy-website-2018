@@ -7,6 +7,32 @@ default:
       login: Login
       register: Register
       rules: Rules
+    section:
+      about_tournament:
+        _header: About tournament
+        content: |
+          Baltic Robot Fights is an event that's one of a kind. It combines amateur robotics, a small student conference
+          and hackathon. The first edition will take place the 26-27 th of may 2018 in Tricity. It is organised by
+          Robotics Association SKALP and NKSA which, until now, independently organised the Tricity Robot Tournament and
+          Roboxy.<br/>
+          The main part of the event is amateur robotics. It consists of 12 different competitions grouped in
+          5 categories.<br/>
+          The second part of the event is a conferene, directed to european robot building teams.<br/>
+          The last part of the event is Robo Hackathon.
+      competitions:
+        _header: Competitions
+        freestyle:
+          name: Freestyle
+        lego:
+          name: LEGO
+        line_follower:
+          name: Line follower
+        micromouse:
+          name: Micromouse
+        robohackaton:
+          name: Robohackaton
+        sumo:
+          name: Sumo
 user:
   form:
     user_login:

@@ -2,3 +2,22 @@ html,
 body {
   min-width: 240px;
 }
+
+.wrapper {
+  background: $wrapper-bg;
+}
+
+.container-name {
+  background: theme-color('primary');
+  font-family: $headings-font-family;
+  font-size: $h2-font-size;
+  color: color('white');
+
+  &.secondary {
+    background: theme-color('secondary');
+  }
+}
+
+.row {
+  padding: $spacer 0;
+}

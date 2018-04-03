@@ -1,0 +1,58 @@
+.competition {
+  box-shadow: 0 -8px 20px 2px darken(theme-color('primary'), 10%);
+  margin: $spacer $spacer 0;
+  padding: $spacer / 2;
+  flex: 0 0 calc(100% - 27px);
+  align-items: center;
+  justify-content: center;
+  height: 8rem;
+  flex-direction: row;
+
+  span {
+    width: 50%;
+    text-align: center;
+    font-family: $headings-font-family;
+    font-size: $h4-font-size;
+  }
+
+  .icon {
+    width: 50%;
+    height: 100%;
+
+    &.sumo {
+      background: url('../../img/competitions/sumo.svg') no-repeat center right;
+      background-size: contain;
+    }
+
+    &.line-follower {
+      background: url('../../img/competitions/linefollower.svg') no-repeat center right;
+      background-size: contain;
+    }
+
+    &.micromouse {
+      background: url('../../img/competitions/micromouse.svg') no-repeat center right;
+      background-size: contain;
+    }
+
+    &.freestyle {
+      background: url('../../img/competitions/freestyle.svg') no-repeat center right;
+      background-size: contain;
+    }
+
+    &.lego {
+      background: url('../../img/competitions/lego.svg') no-repeat center right;
+      background-size: contain;
+    }
+
+    &.robohackaton {
+      background: url('../../img/competitions/robohackaton.svg') no-repeat center right;
+      background-size: contain;
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    &:nth-child(odd) {
+      flex-direction: row-reverse;
+    }
+  }
+}

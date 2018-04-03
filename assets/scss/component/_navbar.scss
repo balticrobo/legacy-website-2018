@@ -4,7 +4,7 @@
   background: color('white');
   font-family: $headings-font-family;
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-only(sm) {
     border-bottom-width: 26px;
   }
 
