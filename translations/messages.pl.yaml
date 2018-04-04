@@ -7,6 +7,46 @@ default:
       login: Logowanie
       register: Rejestracja
       rules: Regulaminy
+    section:
+      about_tournament:
+        _header: O turnieju
+        content: |
+          Bałtyckie Bitwy Robotów to&nbsp;wydarzenie jedyne w&nbsp;swoim rodzaju. Łączy ono w&nbsp;sobie turniej robotyki amatorskiej, mini konferencję studencką oraz hakaton. Pierwsza edycja odbędzie się w&nbsp;dniach 26&nbsp;-&nbsp;27 maja 2018 roku w&nbsp;Trójmieście. Organizatorami wydarzenia jest SKALP i NKSA, które do&nbsp;tej pory niezależnie tworzyły Trójmiejski Turniej Robotów i&nbsp;Roboxy.<br />Główną częścią wydarzenia jest turniej robotyki amatorskiej. Składa się on&nbsp;z&nbsp;12 konkurencji zgrupowanych w&nbsp;5 kategorii.<br />Drugą częścią wydarzenia jest konferencja, która jest skierowana do&nbsp;europejskich zespołów konstruujących roboty.<br />Ostatnią częścią wydarzenia jest RoboHackathon.
+      competitions:
+        _header: Konkurencje
+        freestyle:
+          description: Jest to konkurencja dowolna. Nie istnieją ograniczenia co do zastosowania robota. Mają one przede wszystkim zachwycić sobą oglądających. Oceniane są na podstawie liczby głosów oddanych przez widzów oraz werdyktu profesjonalnego jury.
+          name: Freestyle
+        lego:
+          description: Jest to konkurencja przeznaczona dla najmłodszych. Wykorzystując klocki Lego mogą oni budować swoje pierwsze konstrukcje i rywalizować ze swoimi rówieśnikami. Jest to świetna okazja do wejścia w fascynujący świat robotyki! Dostępne są dwie kategorie:<ul><li><strong>Line Follower</strong> w której należy jak najszybciej pokonać trasę wyznaczoną czarną linią,</li><li><strong>Sumo</strong> gdzie należy zepchnąć przeciwnika z ringu.</li></ul>
+          name: LEGO
+        line_follower:
+          description: Konkurencja ta wymaga od robotów szybkości i zwinności. Muszą one w jak najkrótszym czasie pokonać wyznaczoną czarną linią trasę. Poza standardową wersją roboty mogą startować również w kategoriach:<ul><li><strong>Turbo</strong> w której dozwolone jest wykorzystywanie turbiny, dzięki której można uzyskać lepszą przyczepność,</li><li><strong>Enhanced</strong>, gdzie muszą również ominąć znajdujące się na trasie przeszkody,</li><li><strong>Drag</strong> czyli wyścigi po prostej lini,</li><li><strong>3D</strong>, gdzie muszą zmierzyć się z wymagającymi przeszkodami rodem ze zręcznościowych gier komputerowych.</li></ul>
+          name: Line follower
+        micromouse:
+          description: Roboty w tej konkurencji mają za zadanie odnaleźć najszybszą drogę do środka labiryntu. W pierwszym etapie mapują całą powierzchnię by znaleźć najbardziej optymalną trasę. W kolejnym muszą ją pokonać w jak najkrótszym czasie. Robot który to zrobi najszybciej wygrywa!
+          name: Micromouse
+        robohackaton:
+          description: Zadaniem uczestników RoboHackatonu będzie zbudowanie zdalnie sterowanych robotów walczących. Cel ten zrealizują wykorzystując elektrośmieci, elektronikę oraz liczny sprzęt warsztatowy, w tym m.in. drukarki 3D i ploter laserowy. Na skonstruowanie robotów będą mieli tylko 30 godzin. Na koniec zostanie przeprowadzona między nimi wielka bitwa w której zostanie wyłoniony zwycięzca!
+          name: Robohackaton
+        sumo:
+          description: W tej konkurencji roboty muszą wykazać się siłą i sprytem, by przechytrzyć przeciwnika i zepchnąć go z ringu. Walki podzielone są na 4 kategorie, które różnią się maksymalnym rozmiarem i masą robota oraz wielkością ringu:<ul><li><strong>Sumo</strong> do 3kg, do 200x200mm, ringu 154cm,</li><li><strong>miniSumo</strong> do 500g, do 100x100mm, ringu 77cm,</li><li><strong>microSumo</strong> do 100g kg, do 50x50x50mm, ringu 38,5cm,</li><li><strong>nanoSumo</strong> do 25g, do 25x25x25mm, ringu 19,25cm.</li></ul>
+          name: Sumo
+      conference:
+        _header: Konferencja
+        content: Podczas konferencji, zespoły będą mogły zaprezentować swoje konstrukcje i zastosowane w nich rozwiązania szerszej publiczności. Dzięki wymianie doświadczeń pomiędzy zespołami, które uczestniczą w różnorodnych zawodach, możliwe będzie dla każdego z nich wyciągnięcie wniosków i odnalezienie nowych pomysłów na rozwój własnych konstrukcji.
+      history:
+        _header: Historia
+        content: Historia majowych spotkań z robotyką w Trójmieście sięga już 2005 roku. Wtedy to po raz pierwszy koła naukowe SKALP i NKSA zorganizowały na Politechnice Gdańskiej Dzień Robota. Po czterech jego edycjach postanowiono rozwinąć ideę wydarzenia o zawody robotyczne. W 2009 roku odbyła się pierwsza edycja Trójmiejskiego Turnieju Robotów organizowana przez SKALP. Były to drugie zawody tego typu w Polsce. W następnym roku NKSA również powołało do życia swoje zawody o nazwie Roboxy. Od tego momentu rokrocznie w Trójmieście odbywały się dwa niezależne turnieje, aż do 2018 roku, kiedy to SKALP i NKSA postanowiły znów połączyć siły i stworzyć nowe wydarzenie na jeszcze wyższym poziomie.
+      location:
+        _header: Miejsce
+        content: Wydarzenie zlokalizowane jest na południowym wybrzeżu Morza Bałtyckiego, a konkretnie w Trójmieście, które jest ośrodkiem metropolitalnym składającym się z trzech miast:<ul><li><strong>Gdańska</strong>, czyli miejsca o długiej i bogatej historii. W jego granicach odnajdziemy wiele ciekawych zabytków i muzeów. Nie bez powodu często plasuje się wysoko w rankingach najlepszych celów podróży.</li><li><strong>Gdyni</strong>, która rozrosła się bardzo szybko na początku XX wieku, w wyniku czego jest bardzo nowoczesnym miastem.</li><li><strong>Sopotu</strong>, który jest najmniejszy spośród trzech, jednak posiada swój niepowtarzalny urok. Znajduje się tu m.in. największe molo nad Morzem Bałtyckim.</li></ul>
+      organisers:
+        _header: Organizatorzy
+        content: |
+          Organizatorami wydarzenia są:<br/>
+          <strong>Stowarzyszenie Robotyków Skalp</strong>, czyli organizacja założona w 2015 roku przez członków Studenckiego Koła Automatyków SKALP, działającego od 2000 roku na Politechnice Gdańskiej. Działalność Stowarzyszenia wykracza poza działalność koła i obejmuje m.in. działalność edukacyjną, prowadzenie projektów naukowych i popularyzację automatyki i robotyki.<br/>
+          <strong>Naukowe Koło Studentów Automatyki</strong> - Działalność w NKSA podzielona jest na specjalności, co pozwala odnaleźć się każdemu aktywnemu studentowi. Do wyboru jest m.in. automatyka przemysłowa, elektronika, robotyka czy informatyka. Każda specjalność posiada opiekuna (starszego studenta, często już z tytułem), który dba o odpowiednie przygotowanie mniej doświadczonych członków do pracy w zawodzie poprzez organizację kursów i szkoleń oraz prowadzenie wykładów, a także zajęć warsztatowych. Formalnie istniejemy od 2000 roku!<br/>Czym się zajmujemy? Głównie projektami, czyli wymyślamy coś co jesteśmy w stanie zrobić i zabieramy się za to. Uruchomiono szereg warsztatów przeznaczonych dla studentów i nie tylko.
 user:
   form:
     user_login:
