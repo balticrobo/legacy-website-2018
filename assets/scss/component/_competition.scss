@@ -1,22 +1,27 @@
+$logo-size-sm: $spacer * 5;
+$logo-size: $spacer * 8;
+
 .competition {
   box-shadow: 0 -8px 20px 2px darken(theme-color('primary'), 10%);
-  margin: $spacer $spacer 0;
+  margin: ($spacer * 1.5) $spacer 0;
   padding: $spacer / 2;
   flex: 0 0 calc(100% - 27px);
   align-items: center;
   justify-content: center;
-  height: 8rem;
+  height: $logo-size-sm;
   flex-direction: row;
+  cursor: pointer;
 
   span {
     width: 50%;
     text-align: center;
     font-family: $headings-font-family;
-    font-size: $h4-font-size;
+    font-size: $h5-font-size;
   }
 
   .icon {
     width: 50%;
+    max-width: $logo-size-sm;
     height: 100%;
 
     &.sumo {
@@ -24,7 +29,7 @@
       background-size: contain;
     }
 
-    &.line-follower {
+    &.line_follower {
       background: url('../../img/competitions/linefollower.svg') no-repeat center right;
       background-size: contain;
     }
@@ -50,9 +55,22 @@
     }
   }
 
+  @include media-breakpoint-only(sm) {
+    span {
+      font-size: $h6-font-size;
+    }
+  }
+
   @include media-breakpoint-up(sm) {
+    height: $logo-size;
+
     &:nth-child(odd) {
       flex-direction: row-reverse;
+    }
+
+    .icon {
+      max-width: $logo-size;
+      font-size: $h4-font-size;
     }
   }
 }

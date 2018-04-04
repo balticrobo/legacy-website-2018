@@ -22,17 +22,37 @@ default:
       competitions:
         _header: Competitions
         freestyle:
+          description: It's a free competition. There are no regulations about robot's features. Their main goal is to delight the audience. They are rated according to audience's votes and proffesional jury's verdict.
           name: Freestyle
         lego:
+          description: It's a competitions for the youngest competitors. Using lego blocks they can build their first robots and compete with their peers. It's a geat opportunity to enter the world of robotics.<br/>There are two categories available:<ul><li><strong>Line Follower</strong> where one needs to beat a route markes with a black line.</li><li><strong>Sumo</strong>, where the opponent need to be pushed out of the ring.</li></ul>
           name: LEGO
         line_follower:
+          description: In this competition, the robot's speed and agility are crucial. They need to cover the route marked with a black line as fast as they can.<br/>Besides this, the robots can also compete in:<ul><li><strong>Turbo</strong>, where it's allowed to use a turbine to achieve higher adhesion.</li><li><strong>Enhanced</strong>, where they need to avoid obstacles on the route.</li><li><strong>Drag</strong>, a race in a straight line,</li><li><strong>3D</strong> where they need to beat obstacles straight out of a video game.</li></ul>
           name: Line follower
         micromouse:
+          description: In this competition the robots need to find the fastest way to the middle of the labirynth. In the first part the have to map the whole space to find the best way. In the next one they have to reach the finnish line as fast as possible. The first one to reach the the middle wins!
           name: Micromouse
         robohackaton:
+          description: The last part of the event is Robo Hackatho. The participants will have to build fighting robots that are remote controlled. They have to achieve it by using e-waste, electronics and workshops equipment, such as 3D printers and laser ploter. They will onlyu have 30 hours to do that. At the end, a great battle will take place, and only one robot can win!
           name: Robohackaton
         sumo:
+          description: In this one, robots need to show their strenght and cunning to overcome their opponent and push them out of the ring. The fights are dealt into 4 categories, which differ in robots maximal size and weight and the size of the ring <ul><li><strong>Sumo</strong> up to 3kg, up to 200x200mm, ring up to 154cm,</li><li><strong>miniSumo</strong> up to 500g, up to 100x100mm, ring up to 77cm,</li><li><strong>microSumo</strong> up to 100g, up to 50x50x50mm, ring up to 38,5cm,</li><li><strong>nanoSumo</strong> up to 25g, up to 25x25x25mm, ring up to 19,25cm.</li></ul>
           name: Sumo
+      conference:
+        _header: Conference
+        content: The second part of the event is a conferene, directed to european robot building teams. They will be able to show their creations and the applied solutions to a wider audience. Thanks to the exchange of experiences between the teams taking part in various competitions, each one they will be able to get new ideas about development of their own creations.
+      history:
+        _header: History
+        content: The history of may robotic meeting in Tricity goes as far as 2005. It was then when SKALP and NKSA organised Robots Day at Gdańsk University of Technology. After four editions it was decied to develop the idea into robotics competitions. The fist edition of Tricity Robots Tournament took place in 2009 and was organised by SKALP. It was only the second competition of the kind in Poland. The next year, NKSA also organised their own competition, Roboxy. Since then, two independent competitions took place in Tricity every year. It lasted up until 2018, there the two organisations decided to combine their efforts and create a new, even grander, event.
+      location:
+        _header: Location
+        content: The event will take place on the southern part of the Baltic Sea, i Tricity. Tricity is a metropolitan construct consisting of three cities:<ul><li><strong>Gdańsk</strong>, a place with a long and rich history, with various monuments and museums. It is no wonder that Gdańsk is often placed really high on the lists of the best travel destinations.</li><li><strong>Gdynia</strong>, which developed at a very high rate in the beginning of the 20th century, which makes Gdynia a pretty modern city.</li><li><strong>Sopot</strong>, which is the smallest of the three, but not lacking in charm. Here can you fing the biggest pier of the Baltic Sea.</li></ul>
+      organisers:
+        _header: Organisers
+        content: |
+          <strong>Robotics Association SKALP</strong>, an organisation created in 2015 by the members of Student Automatics Club SKALP, active since 2000 at Gdańsk University of Technology. Their activity goes beyond the club and consists og educational activity, leading various projects ind popularization of automatics and robotics.<br/><br/>
+          <strong>NKSA</strong> <small>TBC</small>
 user:
   form:
     user_login:

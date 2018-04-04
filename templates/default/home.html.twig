@@ -48,62 +48,38 @@
           <img src='//via.placeholder.com/350x150' alt=''/>
         </div>
         <div class='col-12 col-sm-2 text-right'>
-          <img src='//via.placeholder.com/50x50'/>
-          <img src='//via.placeholder.com/50x50'/>
-          <img src='//via.placeholder.com/50x50'/>
-          <img src='//via.placeholder.com/50x50'/>
+          <img src='//via.placeholder.com/50x50'/> <img src='//via.placeholder.com/50x50'/>
+          <img src='//via.placeholder.com/50x50'/> <img src='//via.placeholder.com/50x50'/>
         </div>
       </div>
     </div>
-
-    <div class='container-name text-center'>
-      {{ 'default.home.section.about_tournament._header'|trans }}
-    </div>
-    <div class='container'>
-      <div class='row'>
-        <div class='col-12'>
-          <p class='text-justify'>
-            {{ 'default.home.section.about_tournament.content'|trans|raw }}
-          </p>
-        </div>
-      </div>
-    </div>
-
+    {{ macro.simple_section('about_tournament') }}
     <div class='container-name secondary text-center'>
       {{ 'default.home.section.competitions._header'|trans }}
     </div>
     <div class='container'>
       <div class='row'>
-        <div class='d-flex col-12 col-sm-5 competition'>
-          <span>{{ 'default.home.section.competitions.sumo.name'|trans }}</span>
-          <div class='icon sumo'></div>
-        </div>
-        <div class='d-flex col-12 col-sm-5 competition'>
-          <span>{{ 'default.home.section.competitions.line_follower.name'|trans }}</span>
-          <div class='icon line-follower'></div>
-        </div>
-
-        <div class='d-flex col-12 col-sm-5 competition'>
-          <span>{{ 'default.home.section.competitions.freestyle.name'|trans }}</span>
-          <div class='icon freestyle'></div>
-        </div>
-        <div class='d-flex col-12 col-sm-5 competition'>
-          <span>{{ 'default.home.section.competitions.micromouse.name'|trans }}</span>
-          <div class='icon micromouse'></div>
-        </div>
-        <div class='d-flex col-12 col-sm-5 competition'>
-          <span>{{ 'default.home.section.competitions.lego.name'|trans }}</span>
-          <div class='icon lego'></div>
-        </div>
-        <div class='d-flex col-12 col-sm-5 competition'>
-          <span>{{ 'default.home.section.competitions.robohackaton.name'|trans }}</span>
-          <div class='icon robohackaton'></div>
-        </div>
+        {{ macro.competition_tile('sumo') }}
+        {{ macro.competition_tile('line_follower') }}
+        {{ macro.competition_tile('freestyle') }}
+        {{ macro.competition_tile('micromouse') }}
+        {{ macro.competition_tile('lego') }}
+        {{ macro.competition_tile('robohackaton') }}
+        {{ macro.competition_modal('sumo') }}
+        {{ macro.competition_modal('line_follower') }}
+        {{ macro.competition_modal('freestyle') }}
+        {{ macro.competition_modal('micromouse') }}
+        {{ macro.competition_modal('lego') }}
+        {{ macro.competition_modal('robohackaton') }}
       </div>
     </div>
-  </div>
 
-  <div style='height: 1000px; background: chartreuse'></div>
+    {{ macro.simple_section('conference') }}
+    {{ macro.simple_section('location') }}
+    {{ macro.simple_section('history') }}
+    {{ macro.simple_section('organisers') }}
+
+  </div>
 {% endblock %}
 
 {% macro navbar_locale(locale) %}
@@ -113,11 +89,53 @@
         {{ locale|upper }}
       </span>
     {% else %}
-      <form action='{{ path('balticrobo_website_locale_changelocale', {locale: locale}) }}', method='post'>
+      <form action='{{ path('balticrobo_website_locale_changelocale', {locale: locale}) }}' , method='post'>
         <button type='submit' class='btn btn-link nav-link'>
           {{ locale|upper }}
         </button>
       </form>
     {% endif %}
   </li>
+{% endmacro %}
+
+{% macro simple_section(section_name) %}
+  <div class='container-name text-center'>
+    {{ ('default.home.section.' ~ section_name ~ '._header')|trans }}
+  </div>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-12'>
+        <p class='text-justify'>
+          {{ ('default.home.section.' ~ section_name ~ '.content')|trans|raw }}
+        </p>
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro competition_tile(title) %}
+  <div class='d-flex col-12 col-sm-5 competition' data-toggle="modal" data-target="#{{ title }}">
+    <span>{{ ('default.home.section.competitions.' ~ title ~ '.name')|trans }}</span>
+    <div class='icon {{ title }}'></div>
+  </div>
+{% endmacro %}
+
+{% macro competition_modal(title) %}
+  <div class="modal fade" id="{{ title }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            {{ ('default.home.section.competitions.' ~ title ~ '.name')|trans }}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{ ('default.home.section.competitions.' ~ title ~ '.description')|trans|raw }}
+        </div>
+      </div>
+    </div>
+  </div>
 {% endmacro %}
