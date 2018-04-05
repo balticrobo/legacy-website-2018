@@ -25,32 +25,32 @@ $logo-size: $spacer * 8;
     height: 100%;
 
     &.sumo {
-      background: url('../../img/competitions/sumo.svg') no-repeat center right;
+      background: url('../../img/competitions/sumo.svg') no-repeat center center;
       background-size: contain;
     }
 
     &.line_follower {
-      background: url('../../img/competitions/linefollower.svg') no-repeat center right;
+      background: url('../../img/competitions/linefollower.svg') no-repeat center center;
       background-size: contain;
     }
 
     &.micromouse {
-      background: url('../../img/competitions/micromouse.svg') no-repeat center right;
+      background: url('../../img/competitions/micromouse.svg') no-repeat center center;
       background-size: contain;
     }
 
     &.freestyle {
-      background: url('../../img/competitions/freestyle.svg') no-repeat center right;
+      background: url('../../img/competitions/freestyle.svg') no-repeat center center;
       background-size: contain;
     }
 
     &.lego {
-      background: url('../../img/competitions/lego.svg') no-repeat center right;
+      background: url('../../img/competitions/lego.svg') no-repeat center center;
       background-size: contain;
     }
 
     &.robohackaton {
-      background: url('../../img/competitions/robohackaton.svg') no-repeat center right;
+      background: url('../../img/competitions/robohackaton.svg') no-repeat center center;
       background-size: contain;
     }
   }
@@ -71,6 +71,12 @@ $logo-size: $spacer * 8;
     .icon {
       max-width: $logo-size;
       font-size: $h4-font-size;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    span {
+      font-size: $h3-font-size;
     }
   }
 }

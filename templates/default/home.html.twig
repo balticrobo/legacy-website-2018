@@ -6,7 +6,8 @@
 
   <nav class='navbar navbar-light navbar-expand-sm sticky-top'>
     <div class='container-fluid'>
-      <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false'>
+      <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav'
+          aria-controls='navbarNav' aria-expanded='false'>
         <span class='navbar-toggler-icon'></span>
       </button>
       <div class='collapse navbar-collapse' id='navbarNav'>
@@ -44,17 +45,19 @@
   <div class='wrapper'>
     <div class='container'>
       <div class='row'>
-        <div class='col-12 col-sm-10'>
-          <img src='//via.placeholder.com/350x150' alt=''/>
+        <div class='col-10 col-md-11'>
+          <img class='img-fluid' src='//via.placeholder.com/350x150' alt=''/>
         </div>
-        <div class='col-12 col-sm-2 text-right'>
-          <img src='//via.placeholder.com/50x50'/> <img src='//via.placeholder.com/50x50'/>
-          <img src='//via.placeholder.com/50x50'/> <img src='//via.placeholder.com/50x50'/>
+        <div class='m-3 m-sm-0 d-flex flex-row flex-sm-column flex-wrap'>
+          <img src='//via.placeholder.com/50x50'/>
+          <img src='//via.placeholder.com/50x50'/>
+          <img src='//via.placeholder.com/50x50'/>
+          <img src='//via.placeholder.com/50x50'/>
         </div>
       </div>
     </div>
     {{ macro.simple_section('about_tournament') }}
-    <div class='container-name secondary text-center'>
+    <div class='container container-name secondary text-center'>
       {{ 'default.home.section.competitions._header'|trans }}
     </div>
     <div class='container'>
@@ -99,7 +102,7 @@
 {% endmacro %}
 
 {% macro simple_section(section_name) %}
-  <div class='container-name text-center'>
+  <div class='container container-name text-center'>
     {{ ('default.home.section.' ~ section_name ~ '._header')|trans }}
   </div>
   <div class='container'>
