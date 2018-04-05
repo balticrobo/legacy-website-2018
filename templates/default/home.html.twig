@@ -44,12 +44,12 @@
 
   <div class='wrapper'>
     <div class='container'>
-      <div class='row'>
-        <div class='col-10 col-md-11'>
+      <div class='row justify-content-center justify-content-sm-around'>
+        <div class='col-10 col-md-11 text-center text-sm-left'>
           <img class='img-fluid' src='//via.placeholder.com/350x150' alt=''/>
         </div>
         <div class='m-3 m-sm-0 d-flex flex-row flex-sm-column flex-wrap'>
-          <img src='//via.placeholder.com/50x50'/>
+          <img src='//via.placeholder.com/50x50/000000/ffffff'/>
           <img src='//via.placeholder.com/50x50'/>
           <img src='//via.placeholder.com/50x50'/>
           <img src='//via.placeholder.com/50x50'/>
@@ -61,7 +61,7 @@
       {{ 'default.home.section.competitions._header'|trans }}
     </div>
     <div class='container'>
-      <div class='row'>
+      <div class='row justify-content-center'>
         {{ macro.competition_tile('sumo') }}
         {{ macro.competition_tile('line_follower') }}
         {{ macro.competition_tile('freestyle') }}
@@ -81,7 +81,6 @@
     {{ macro.simple_section('location') }}
     {{ macro.simple_section('history') }}
     {{ macro.simple_section('organisers') }}
-
   </div>
 {% endblock %}
 
