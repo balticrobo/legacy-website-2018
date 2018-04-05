@@ -18,7 +18,7 @@ default:
           The main part of the event is amateur robotics. It consists of 12 different competitions grouped in
           5 categories.<br/>
           The second part of the event is a conferene, directed to european robot building teams.<br/>
-          The last part of the event is Robo Hackathon.
+          The last part of the event is Robo Hackaton.
       competitions:
         _header: Competitions
         freestyle:

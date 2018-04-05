@@ -11,7 +11,7 @@ default:
       about_tournament:
         _header: O turnieju
         content: |
-          Bałtyckie Bitwy Robotów to&nbsp;wydarzenie jedyne w&nbsp;swoim rodzaju. Łączy ono w&nbsp;sobie turniej robotyki amatorskiej, mini konferencję studencką oraz hakaton. Pierwsza edycja odbędzie się w&nbsp;dniach 26&nbsp;-&nbsp;27 maja 2018 roku w&nbsp;Trójmieście. Organizatorami wydarzenia jest SKALP i NKSA, które do&nbsp;tej pory niezależnie tworzyły Trójmiejski Turniej Robotów i&nbsp;Roboxy.<br />Główną częścią wydarzenia jest turniej robotyki amatorskiej. Składa się on&nbsp;z&nbsp;12 konkurencji zgrupowanych w&nbsp;5 kategorii.<br />Drugą częścią wydarzenia jest konferencja, która jest skierowana do&nbsp;europejskich zespołów konstruujących roboty.<br />Ostatnią częścią wydarzenia jest RoboHackathon.
+          Bałtyckie Bitwy Robotów to&nbsp;wydarzenie jedyne w&nbsp;swoim rodzaju. Łączy ono w&nbsp;sobie turniej robotyki amatorskiej, mini konferencję studencką oraz hakaton. Pierwsza edycja odbędzie się w&nbsp;dniach 26&nbsp;-&nbsp;27 maja 2018 roku w&nbsp;Trójmieście. Organizatorami wydarzenia jest SKALP i NKSA, które do&nbsp;tej pory niezależnie tworzyły Trójmiejski Turniej Robotów i&nbsp;Roboxy.<br />Główną częścią wydarzenia jest turniej robotyki amatorskiej. Składa się on&nbsp;z&nbsp;12 konkurencji zgrupowanych w&nbsp;5 kategorii.<br />Drugą częścią wydarzenia jest konferencja, która jest skierowana do&nbsp;europejskich zespołów konstruujących roboty.<br />Ostatnią częścią wydarzenia jest RoboHackaton.
       competitions:
         _header: Konkurencje
         freestyle:
@@ -30,7 +30,7 @@ default:
           description: Zadaniem uczestników RoboHackatonu będzie zbudowanie zdalnie sterowanych robotów walczących. Cel ten zrealizują wykorzystując elektrośmieci, elektronikę oraz liczny sprzęt warsztatowy, w tym m.in. drukarki 3D i ploter laserowy. Na skonstruowanie robotów będą mieli tylko 30 godzin. Na koniec zostanie przeprowadzona między nimi wielka bitwa w której zostanie wyłoniony zwycięzca!
           name: Robohackaton
         sumo:
-          description: W tej konkurencji roboty muszą wykazać się siłą i sprytem, by przechytrzyć przeciwnika i zepchnąć go z ringu. Walki podzielone są na 4 kategorie, które różnią się maksymalnym rozmiarem i masą robota oraz wielkością ringu:<ul><li><strong>Sumo</strong> do 3kg, do 200x200mm, ringu 154cm,</li><li><strong>miniSumo</strong> do 500g, do 100x100mm, ringu 77cm,</li><li><strong>microSumo</strong> do 100g kg, do 50x50x50mm, ringu 38,5cm,</li><li><strong>nanoSumo</strong> do 25g, do 25x25x25mm, ringu 19,25cm.</li></ul>
+          description: W tej konkurencji roboty muszą wykazać się siłą i sprytem, by przechytrzyć przeciwnika i zepchnąć go z ringu. Walki podzielone są na 4 kategorie, które różnią się maksymalnym rozmiarem i masą robota oraz wielkością ringu:<ul><li><strong>Sumo</strong> do 3kg, do 200x200mm, średnica ringu 154cm,</li><li><strong>miniSumo</strong> do 500g, do 100x100mm, średnica ringu 77cm,</li><li><strong>microSumo</strong> do 100g, do 50x50x50mm, średnica ringu 38,5cm,</li><li><strong>nanoSumo</strong> do 25g, do 25x25x25mm, średnica ringu 19,25cm.</li></ul>
           name: Sumo
       conference:
         _header: Konferencja
