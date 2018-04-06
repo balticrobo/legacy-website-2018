@@ -46,7 +46,7 @@
     <div class='container'>
       <div class='row justify-content-center justify-content-sm-around'>
         <div class='col-10 col-md-11 text-center text-sm-left'>
-          <img class='img-fluid' src='//via.placeholder.com/350x150' alt=''/>
+          <img class='img-logo-short' src='{{ asset('build/images/logo-short-' ~ app.request.locale ~ '.svg') }}' alt=''/>
         </div>
         <div class='m-3 m-sm-0 d-flex flex-row flex-sm-column flex-wrap'>
           {{ macro.social('Facebook', 'https://fb.me/balticrobo') }}
@@ -116,7 +116,7 @@
 {% endmacro %}
 
 {% macro social(name, link, is_big) %}
-  <a href='{{ link }}'>
+  <a href='{{ link }}' target='_blank'>
     <img src='{{ asset('build/images/' ~ name|lower ~ '.svg') }}' alt='{{ name }}'
         class='img-social {% if is_big|default(false) %}img-social-big{% endif %}'/>
   </a>
