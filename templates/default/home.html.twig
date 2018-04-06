@@ -56,9 +56,7 @@
       </div>
     </div>
     {{ macro.simple_section('about_tournament') }}
-    <div class='container container-name secondary text-center'>
-      {{ 'default.home.section.competitions._header'|trans }}
-    </div>
+    {{ macro.simple_section_header('competitions', true) }}
     <div class='container'>
       <div class='row justify-content-center'>
         {{ macro.competition_tile('sumo') }}
@@ -75,11 +73,29 @@
         {{ macro.competition_modal('robohackaton') }}
       </div>
     </div>
-
     {{ macro.simple_section('conference') }}
     {{ macro.simple_section('location') }}
     {{ macro.simple_section('history') }}
     {{ macro.simple_section('organisers') }}
+    <div class='container'>
+      <div class='d-flex flex-column flex-md-row-reverse'>
+        <div class='contact text-center'>
+          {{ macro.simple_section_header('contact') }}
+          <div class='contact-question'>{{ 'default.home.section.contact.any_questions'|trans }}</div>
+          <div class='d-flex flex-row justify-content-center'>
+            {{ macro.social('Mail', 'mailto:weronika.narloch@skalppg.pl', true) }}
+            {{ macro.social('Facebook', 'https://fb.me/balticrobo', true) }}
+            {{ macro.social('Twitter', 'https://twitter.com/balticrobo', true) }}
+            {{ macro.social('Instagram', 'https://instagram.com/balticrobo', true) }}
+          </div>
+          <div class='contact-question'>{{ 'default.home.section.contact.want_update'|trans }}</div>
+          <div class='contact-answer'>{{ 'default.home.section.contact.more_soon'|trans }}</div>
+        </div>
+        <div class='contact text-center'>
+          <img src='//via.placeholder.com/500x500' alt='' class='img-fluid'/>
+        </div>
+      </div>
+    </div>
   </div>
 {% endblock %}
 
@@ -99,16 +115,22 @@
   </li>
 {% endmacro %}
 
-{% macro social(name, link) %}
+{% macro social(name, link, is_big) %}
   <a href='{{ link }}'>
-    <img src='{{ asset('build/images/' ~ name|lower ~ '.svg') }}' alt='{{ name }}' class='img-social'/>
+    <img src='{{ asset('build/images/' ~ name|lower ~ '.svg') }}' alt='{{ name }}'
+        class='img-social {% if is_big|default(false) %}img-social-big{% endif %}'/>
   </a>
 {% endmacro %}
 
-{% macro simple_section(section_name) %}
-  <div class='container container-name text-center'>
+{% macro simple_section_header(section_name, is_secondary) %}
+  <div class='container container-name {% if is_secondary|default(false) %}secondary{% endif %} text-center'>
     {{ ('default.home.section.' ~ section_name ~ '._header')|trans }}
   </div>
+{% endmacro %}
+
+{% macro simple_section(section_name) %}
+  {% import _self as macro %}
+  {{ macro.simple_section_header(section_name) }}
   <div class='container'>
     <div class='row'>
       <div class='col-12'>

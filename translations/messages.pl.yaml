@@ -35,6 +35,11 @@ default:
       conference:
         _header: Konferencja
         content: Podczas konferencji, zespoły będą mogły zaprezentować swoje konstrukcje i zastosowane w nich rozwiązania szerszej publiczności. Dzięki wymianie doświadczeń pomiędzy zespołami, które uczestniczą w różnorodnych zawodach, możliwe będzie dla każdego z nich wyciągnięcie wniosków i odnalezienie nowych pomysłów na rozwój własnych konstrukcji.
+      contact:
+        _header: Kontakt
+        any_questions: 'Masz pytania? Znajdziesz nas na:'
+        more_soon: Więcej szczegółów wkrótce!
+        want_update: Chcesz być na bieżąco z informacjami?
       history:
         _header: Historia
         content: Historia majowych spotkań z robotyką w Trójmieście sięga już 2005 roku. Wtedy to po raz pierwszy koła naukowe SKALP i NKSA zorganizowały na Politechnice Gdańskiej Dzień Robota. Po czterech jego edycjach postanowiono rozwinąć ideę wydarzenia o zawody robotyczne. W 2009 roku odbyła się pierwsza edycja Trójmiejskiego Turnieju Robotów organizowana przez SKALP. Były to drugie zawody tego typu w Polsce. W następnym roku NKSA również powołało do życia swoje zawody o nazwie Roboxy. Od tego momentu rokrocznie w Trójmieście odbywały się dwa niezależne turnieje, aż do 2018 roku, kiedy to SKALP i NKSA postanowiły znów połączyć siły i stworzyć nowe wydarzenie na jeszcze wyższym poziomie.

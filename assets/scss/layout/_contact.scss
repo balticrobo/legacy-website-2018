@@ -1,0 +1,17 @@
+.contact {
+  width: 100%;
+
+  @include media-breakpoint-up(md) {
+    width: 50%
+  }
+
+  &-question {
+    font-size: $h4-font-size;
+    font-weight: bold;
+  }
+
+  &-answer {
+    font-size: $h5-font-size;
+    font-weight: 300;
+  }
+}

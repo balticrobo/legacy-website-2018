@@ -42,6 +42,11 @@ default:
       conference:
         _header: Conference
         content: The second part of the event is a conferene, directed to european robot building teams. They will be able to show their creations and the applied solutions to a wider audience. Thanks to the exchange of experiences between the teams taking part in various competitions, each one they will be able to get new ideas about development of their own creations.
+      contact:
+        _header: Contact
+        any_questions: 'Any questions? You can find us at:'
+        more_soon: More details soon!
+        want_update: Want to be up to date?
       history:
         _header: History
         content: The history of may robotic meeting in Tricity goes as far as 2005. It was then when SKALP and NKSA organised Robots Day at Gdańsk University of Technology. After four editions it was decied to develop the idea into robotics competitions. The fist edition of Tricity Robots Tournament took place in 2009 and was organised by SKALP. It was only the second competition of the kind in Poland. The next year, NKSA also organised their own competition, Roboxy. Since then, two independent competitions took place in Tricity every year. It lasted up until 2018, there the two organisations decided to combine their efforts and create a new, even grander, event.
