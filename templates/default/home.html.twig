@@ -17,21 +17,21 @@
               {{ 'default.home.menu.home'|trans }}
             </a>
           </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='{{ path('balticrobo_website_security_userlogin') }}'>
-              {{ 'default.home.menu.login'|trans }}
-            </a>
-          </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
-              {{ 'default.home.menu.register'|trans }}
-            </a>
-          </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
-              {{ 'default.home.menu.rules'|trans }}
-            </a>
-          </li>
+          {#<li class='nav-item'>#}
+            {#<a class='nav-link' href='{{ path('balticrobo_website_security_userlogin') }}'>#}
+              {#{{ 'default.home.menu.login'|trans }}#}
+            {#</a>#}
+          {#</li>#}
+          {#<li class='nav-item'>#}
+            {#<a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>#}
+              {#{{ 'default.home.menu.register'|trans }}#}
+            {#</a>#}
+          {#</li>#}
+          {#<li class='nav-item'>#}
+            {#<a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>#}
+              {#{{ 'default.home.menu.rules'|trans }}#}
+            {#</a>#}
+          {#</li>#}
         </ul>
       </div>
       <ul class='navbar-nav navbar-nav--locale'>
@@ -49,10 +49,9 @@
           <img class='img-fluid' src='//via.placeholder.com/350x150' alt=''/>
         </div>
         <div class='m-3 m-sm-0 d-flex flex-row flex-sm-column flex-wrap'>
-          <img src='//via.placeholder.com/50x50/000000/ffffff'/>
-          <img src='//via.placeholder.com/50x50'/>
-          <img src='//via.placeholder.com/50x50'/>
-          <img src='//via.placeholder.com/50x50'/>
+          {{ macro.social('Facebook', 'https://fb.me/balticrobo') }}
+          {{ macro.social('Twitter', 'https://twitter.com/balticrobo') }}
+          {{ macro.social('Instagram', 'https://instagram.com/balticrobo') }}
         </div>
       </div>
     </div>
@@ -91,13 +90,19 @@
         {{ locale|upper }}
       </span>
     {% else %}
-      <form action='{{ path('balticrobo_website_locale_changelocale', {locale: locale}) }}' , method='post'>
+      <form action='{{ path('balticrobo_website_locale_changelocale', {locale: locale}) }}' method='post'>
         <button type='submit' class='btn btn-link nav-link'>
           {{ locale|upper }}
         </button>
       </form>
     {% endif %}
   </li>
+{% endmacro %}
+
+{% macro social(name, link) %}
+  <a href='{{ link }}'>
+    <img src='{{ asset('build/images/' ~ name|lower ~ '.svg') }}' alt='{{ name }}' class='img-social'/>
+  </a>
 {% endmacro %}
 
 {% macro simple_section(section_name) %}
