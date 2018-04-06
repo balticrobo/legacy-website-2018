@@ -92,7 +92,8 @@
           <div class='contact-answer'>{{ 'default.home.section.contact.more_soon'|trans }}</div>
         </div>
         <div class='contact text-center'>
-          <img src='//via.placeholder.com/500x500' alt='' class='img-fluid'/>
+          <img src='{{ asset('build/images/logo-circle-' ~ app.request.locale ~ '.svg') }}'
+              alt='' class='img-logo-circle'/>
         </div>
       </div>
     </div>
