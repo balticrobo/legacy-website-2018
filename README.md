@@ -1,4 +1,4 @@
-# Baltic Robot Battles
+# Baltic Robo Battles
 
 Event website using Symfony 4.0.
 

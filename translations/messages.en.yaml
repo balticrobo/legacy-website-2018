@@ -1,3 +1,5 @@
+_common:
+  event_name: Baltic Robo Battles
 buttons:
   login: Login
 default:
