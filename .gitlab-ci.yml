@@ -98,10 +98,11 @@ Tests:
   before_script:
     - export CI_DATABASE_NAME=gitlab_balticrobo_$(date +%s)
     - export DATABASE_URL=mysql://${CI_DATABASE_USER}:${CI_DATABASE_PASSWORD}@127.0.0.1:3306/${CI_DATABASE_NAME}
-  script:
     - mysql -u${CI_DATABASE_USER} -p${CI_DATABASE_PASSWORD}
       -e "CREATE DATABASE ${CI_DATABASE_NAME} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+  script:
     - echo 'Run tests! NOW!'
+  after_script:
     - mysql -u${CI_DATABASE_USER} -p${CI_DATABASE_PASSWORD}
       -e "DROP DATABASE ${CI_DATABASE_NAME};"
 
@@ -137,7 +138,6 @@ Deploy develop:
   stage: Deploy
   tags: *tags_definition
   only:
-    - master
     - develop
   environment:
     name: staging
@@ -149,7 +149,7 @@ Deploy develop:
     - 'echo Disallow: / >> dist/public/robots.txt'
   script: *deploy_definition
 
-.Deploy master:
+Deploy master:
   stage: Deploy
   tags: *tags_definition
   only:
