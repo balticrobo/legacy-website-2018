@@ -14,6 +14,8 @@ class DefaultController extends Controller
     /**
      * @Route
      * @Method("GET")
+     *
+     * @return Response
      */
     public function homeAction(): Response
     {

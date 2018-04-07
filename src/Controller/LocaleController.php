@@ -26,6 +26,11 @@ class LocaleController extends Controller
     /**
      * @Route("/change/{locale}", requirements={"locale" = "[a-zA-Z]{1,8}"})
      * @Method("POST")
+     *
+     * @param string  $locale
+     * @param Request $request
+     *
+     * @return Response
      */
     public function changeLocaleAction(string $locale, Request $request): Response
     {

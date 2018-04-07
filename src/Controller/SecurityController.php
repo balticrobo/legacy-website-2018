@@ -24,6 +24,8 @@ class SecurityController extends Controller
     /**
      * @Route("/user/login")
      * @Method({"GET", "POST"})
+     *
+     * @return Response
      */
     public function userLoginAction(): Response
     {
@@ -43,6 +45,10 @@ class SecurityController extends Controller
      * @Method({"GET", "POST"})
      */
     public function userLogoutAction(): void
+    {
+    }
+
+    public function userRegisterAction(): Response
     {
     }
 }
