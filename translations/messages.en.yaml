@@ -58,6 +58,8 @@ default:
         content: |
           <strong>Robotics Association SKALP</strong>, an organisation created in 2015 by the members of Student Automatics Club SKALP, active since 2000 at Gdańsk University of Technology. Their activity goes beyond the club and consists og educational activity, leading various projects ind popularization of automatics and robotics.<br/><br/>
           <strong>NKSA</strong> <small>TBC</small>
+      registration:
+        _header: Registration soon!
 user:
   form:
     user_login:

@@ -52,6 +52,8 @@ default:
           Organizatorami wydarzenia są:<br/>
           <strong>Stowarzyszenie Robotyków Skalp</strong>, czyli organizacja założona w 2015 roku przez członków Studenckiego Koła Automatyków SKALP, działającego od 2000 roku na Politechnice Gdańskiej. Działalność Stowarzyszenia wykracza poza działalność koła i obejmuje m.in. działalność edukacyjną, prowadzenie projektów naukowych i popularyzację automatyki i robotyki.<br/>
           <strong>Naukowe Koło Studentów Automatyki</strong> - Działalność w NKSA podzielona jest na specjalności, co pozwala odnaleźć się każdemu aktywnemu studentowi. Do wyboru jest m.in. automatyka przemysłowa, elektronika, robotyka czy informatyka. Każda specjalność posiada opiekuna (starszego studenta, często już z tytułem), który dba o odpowiednie przygotowanie mniej doświadczonych członków do pracy w zawodzie poprzez organizację kursów i szkoleń oraz prowadzenie wykładów, a także zajęć warsztatowych. Formalnie istniejemy od 2000 roku!<br/>Czym się zajmujemy? Głównie projektami, czyli wymyślamy coś co jesteśmy w stanie zrobić i zabieramy się za to. Uruchomiono szereg warsztatów przeznaczonych dla studentów i nie tylko.
+      registration:
+        _header: Rejestracja wkrótce!
 user:
   form:
     user_login:
