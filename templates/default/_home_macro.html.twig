@@ -1,0 +1,71 @@
+
+{% macro navbar_locale(locale) %}
+  <li class='nav-item{% if app.request.locale == locale %} active{% endif %}'>
+    {% if app.request.locale == locale %}
+      <span class="nav-link">
+        {{ locale|upper }}
+      </span>
+    {% else %}
+      <form action='{{ path('balticrobo_website_locale_changelocale', {locale: locale}) }}' method='post'>
+        <button type='submit' class='btn btn-link nav-link'>
+          {{ locale|upper }}
+        </button>
+      </form>
+    {% endif %}
+  </li>
+{% endmacro %}
+
+{% macro social(name, link, is_big) %}
+  <a href='{{ link }}' target='_blank'>
+    <img src='{{ asset('build/images/' ~ name|lower ~ '.svg') }}' alt='{{ name }}'
+        class='img-social {% if is_big|default(false) %}img-social-big{% endif %}'/>
+  </a>
+{% endmacro %}
+
+{% macro simple_section_header(section_name, is_secondary) %}
+  <div class='container container-name {% if is_secondary|default(false) %}secondary{% endif %} text-center'>
+    {{ ('default.home.section.' ~ section_name ~ '._header')|trans }}
+  </div>
+{% endmacro %}
+
+{% macro simple_section(section_name) %}
+  {% import _self as macro %}
+  {{ macro.simple_section_header(section_name) }}
+  <div class='container'>
+    <div class='row'>
+      <div class='col-12'>
+        <p class='text-justify'>
+          {{ ('default.home.section.' ~ section_name ~ '.content')|trans|raw }}
+        </p>
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro competition_tile(title) %}
+  <div class='d-flex col-12 col-sm-5 competition' data-toggle="modal" data-target="#{{ title }}">
+    <span>{{ ('default.home.section.competitions.' ~ title ~ '.name')|trans }}</span>
+    <div class='icon {{ title }}'></div>
+  </div>
+{% endmacro %}
+
+{% macro competition_modal(title) %}
+  <div class="modal fade" id="{{ title }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            {{ ('default.home.section.competitions.' ~ title ~ '.name')|trans }}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{ ('default.home.section.competitions.' ~ title ~ '.description')|trans|raw }}
+          <img class='img-fluid' src='{{ asset('build/images/' ~ title ~ '.jpg') }}' alt=''/>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endmacro %}

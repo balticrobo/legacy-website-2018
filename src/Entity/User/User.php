@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Entity\User;
 
+use BalticRobo\Website\Model\User\UserRegisterDTO;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
@@ -35,6 +36,8 @@ class User implements AdvancedUserInterface
      */
     private $email;
 
+    private $plainPassword;
+
     /**
      * @ORM\Column(type="string", length=60)
      */
@@ -59,6 +62,22 @@ class User implements AdvancedUserInterface
      * @ORM\Column(type="timestamp_immutable", nullable=true)
      */
     private $lastLoginAt;
+
+    public static function createFromRegisterDTO(
+        UserRegisterDTO $dto,
+        \DateTimeImmutable $now
+    ): self {
+        $entity = new self();
+        $entity->forename = $dto->getForename();
+        $entity->surname = $dto->getSurname();
+        $entity->email = $dto->getEmail();
+        $entity->plainPassword = $dto->getPassword();
+        $entity->active = false;
+        $entity->roles = ['ROLE_USER'];
+        $entity->createdAt = $now;
+
+        return $entity;
+    }
 
     public function getId(): int
     {
@@ -93,6 +112,16 @@ class User implements AdvancedUserInterface
     public function getRoles(): array
     {
         return array_unique(array_merge(['ROLE_USER'], $this->roles));
+    }
+
+    public function getPlainPassword(): string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPassword(string $encodedPassword): void
+    {
+        $this->password = $encodedPassword;
     }
 
     public function getPassword(): string
