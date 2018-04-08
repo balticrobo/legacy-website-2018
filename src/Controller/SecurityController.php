@@ -22,17 +22,14 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/user/login")
+     * @Route("/login")
      * @Method({"GET", "POST"})
      *
      * @return Response
      */
-    public function userLoginAction(): Response
+    public function loginAction(): Response
     {
-        $dto = new UserLoginDTO();
-        $dto->setUsername($this->authUtils->getLastUsername());
-
-        $form = $this->createForm(UserLoginType::class, $dto);
+        $form = $this->createForm(UserLoginType::class, UserLoginDTO::createFromAuthenticationUtils($this->authUtils));
 
         return $this->render('security/login.html.twig', [
             'form' => $form->createView(),
@@ -41,14 +38,18 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/user/logout")
+     * @Route("/logout")
      * @Method({"GET", "POST"})
      */
-    public function userLogoutAction(): void
+    public function logoutAction(): void
     {
     }
 
-    public function userRegisterAction(): Response
+    /**
+     * @Route("/register")
+     * @Method({"GET", "POST"})
+     */
+    public function registerAction(): Response
     {
     }
 }

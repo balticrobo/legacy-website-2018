@@ -17,21 +17,21 @@
               {{ 'default.home.menu.home'|trans }}
             </a>
           </li>
-          {#<li class='nav-item'>#}
-            {#<a class='nav-link' href='{{ path('balticrobo_website_security_userlogin') }}'>#}
-              {#{{ 'default.home.menu.login'|trans }}#}
-            {#</a>#}
-          {#</li>#}
-          {#<li class='nav-item'>#}
-            {#<a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>#}
-              {#{{ 'default.home.menu.register'|trans }}#}
-            {#</a>#}
-          {#</li>#}
-          {#<li class='nav-item'>#}
-            {#<a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>#}
-              {#{{ 'default.home.menu.rules'|trans }}#}
-            {#</a>#}
-          {#</li>#}
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ path('balticrobo_website_security_login') }}'>
+              {{ 'default.home.menu.login'|trans }}
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
+              {{ 'default.home.menu.register'|trans }}
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
+              {{ 'default.home.menu.rules'|trans }}
+            </a>
+          </li>
         </ul>
       </div>
       <ul class='navbar-nav navbar-nav--locale'>

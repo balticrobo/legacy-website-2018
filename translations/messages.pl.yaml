@@ -58,6 +58,5 @@ default:
         _header: Rejestracja wkrótce!
 user:
   form:
-    user_login:
-      password: Hasło
-      username: Email
+    email: Email
+    password: Hasło

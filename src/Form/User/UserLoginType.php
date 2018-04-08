@@ -6,8 +6,8 @@ namespace BalticRobo\Website\Form\User;
 
 use BalticRobo\Website\Model\User\UserLoginDTO;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,13 +16,11 @@ class UserLoginType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class, [
-                'label' => 'user.form.user_login.username',
-                'required' => true,
+            ->add('email', EmailType::class, [
+                'label' => 'user.form.email',
             ])
             ->add('password', PasswordType::class, [
-                'label' => 'user.form.user_login.password',
-                'required' => true,
+                'label' => 'user.form.password',
             ]);
     }
 

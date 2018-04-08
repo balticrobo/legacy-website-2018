@@ -4,19 +4,29 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Model\User;
 
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
 class UserLoginDTO
 {
-    private $username;
+    private $email;
     private $plainPassword;
 
-    public function getUsername(): ?string
+    public static function createFromAuthenticationUtils(AuthenticationUtils $authenticationUtils): self
     {
-        return $this->username;
+        $dto = new self();
+        $dto->setEmail($authenticationUtils->getLastUsername());
+
+        return $dto;
     }
 
-    public function setUsername(?string $username): void
+    public function getEmail(): ?string
     {
-        $this->username = $username;
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): void
+    {
+        $this->email = $email;
     }
 
     public function getPassword(): ?string

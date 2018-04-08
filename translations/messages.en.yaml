@@ -65,5 +65,5 @@ default:
 user:
   form:
     user_login:
+      email: Email
       password: Password
-      username: Email
