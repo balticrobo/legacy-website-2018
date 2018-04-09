@@ -7,6 +7,10 @@ namespace BalticRobo\Website\Entity\Competition;
 use BalticRobo\Website\Adapter\DoctrineEnum\RegistrationTypeEnum;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Table(name="competitions")
+ * @ORM\Entity
+ */
 class Competition
 {
     /**

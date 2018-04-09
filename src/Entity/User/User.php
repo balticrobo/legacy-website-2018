@@ -36,12 +36,11 @@ class User implements AdvancedUserInterface
      */
     private $email;
 
-    private $plainPassword;
-
     /**
      * @ORM\Column(type="string", length=60)
      */
     private $password;
+    private $plainPassword;
 
     /**
      * @ORM\Column(type="boolean")
@@ -114,9 +113,9 @@ class User implements AdvancedUserInterface
         return array_unique(array_merge(['ROLE_USER'], $this->roles));
     }
 
-    public function getPlainPassword(): string
+    public function getPassword(): string
     {
-        return $this->plainPassword;
+        return $this->password;
     }
 
     public function setPassword(string $encodedPassword): void
@@ -124,9 +123,9 @@ class User implements AdvancedUserInterface
         $this->password = $encodedPassword;
     }
 
-    public function getPassword(): string
+    public function getPlainPassword(): string
     {
-        return $this->password;
+        return $this->plainPassword;
     }
 
     public function isAccountNonExpired(): bool

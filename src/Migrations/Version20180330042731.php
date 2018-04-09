@@ -10,7 +10,7 @@ use Doctrine\DBAL\Schema\Schema;
 
 class Version20180330042731 extends AbstractMigration
 {
-    public function up(Schema $schema)
+    public function up(Schema $schema): void
     {
         $this->checkDatabaseType();
         $this->addSql("CREATE TABLE users (
@@ -28,7 +28,7 @@ class Version20180330042731 extends AbstractMigration
         ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB");
     }
 
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
         $this->checkDatabaseType();
         $this->addSql('DROP TABLE users');

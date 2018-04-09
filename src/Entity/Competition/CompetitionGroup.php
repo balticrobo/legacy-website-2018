@@ -34,6 +34,11 @@ class CompetitionGroup
      */
     private $visibleAsTile = true;
 
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $tileOrder = null;
+
     public function getId(): int
     {
         return $this->id;
@@ -52,5 +57,10 @@ class CompetitionGroup
     public function isVisibleAsTile(): bool
     {
         return $this->visibleAsTile;
+    }
+
+    public function getTileOrder(): ?int
+    {
+        return $this->tileOrder;
     }
 }
