@@ -57,14 +57,14 @@ default:
           description: Roboty w tej konkurencji mają za zadanie odnaleźć najszybszą drogę do środka labiryntu. W pierwszym etapie mapują całą powierzchnię by znaleźć najbardziej optymalną trasę. W kolejnym muszą ją pokonać w jak najkrótszym czasie. Robot który to zrobi najszybciej wygrywa!
           name: Micromouse
         robohackaton:
-          description: Zadaniem uczestników RoboHackatonu będzie zbudowanie zdalnie sterowanych robotów walczących. Cel ten zrealizują wykorzystując elektrośmieci, elektronikę oraz liczny sprzęt warsztatowy, w tym m.in. drukarki 3D i ploter laserowy. Na skonstruowanie robotów będą mieli tylko 30 godzin. Na koniec zostanie przeprowadzona między nimi wielka bitwa w której zostanie wyłoniony zwycięzca!
+          description: Laser, drukarka 3d, trochę sprzętu elektronicznego i 40 godzin ciągłej pracy. Tylko tyle będą mieli uczestni RoboHackathonu czyli konkursu konstruktorów, na zbudowanie robota który pokona przeciwników. O zwycięstwie zadecyduje finałowa bitwa realizowana w stylu free-for-all. Zwycięzcą zostanie ostatni poruszający się robot.
           name: Robohackaton
         sumo:
           description: W tej konkurencji roboty muszą wykazać się siłą i sprytem, by przechytrzyć przeciwnika i zepchnąć go z ringu. Walki podzielone są na 4 kategorie, które różnią się maksymalnym rozmiarem i masą robota oraz wielkością ringu:<ul><li><strong>Sumo</strong> do 3kg, do 200x200mm, średnica ringu 154cm,</li><li><strong>miniSumo</strong> do 500g, do 100x100mm, średnica ringu 77cm,</li><li><strong>microSumo</strong> do 100g, do 50x50x50mm, średnica ringu 38,5cm,</li><li><strong>nanoSumo</strong> do 25g, do 25x25x25mm, średnica ringu 19,25cm.</li></ul>
           name: Sumo
       conference:
         _header: Konferencja
-        content: Podczas konferencji, zespoły będą mogły zaprezentować swoje konstrukcje i zastosowane w nich rozwiązania szerszej publiczności. Dzięki wymianie doświadczeń pomiędzy zespołami, które uczestniczą w różnorodnych zawodach, możliwe będzie dla każdego z nich wyciągnięcie wniosków i odnalezienie nowych pomysłów na rozwój własnych konstrukcji.
+        content: Zamknięte wydarzenie podczas którego zespoły studenckie z całej polski przedstawią swoje dokonania. Silniki rakietowe, łaziki marsjańskie, bolidy wyścigowe, satelity i samochody solarne to tylko część z planowanych referatów. Osoby zainteresowane udziałem w konferencji proszone są o kontakt z organizatorami.
       contact:
         _header: Kontakt
         any_questions: 'Masz pytania? Znajdziesz nas na:'
