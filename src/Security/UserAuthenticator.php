@@ -49,16 +49,28 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator
     {
         $this->validateCsrfToken($request->request->get('user_login')['_token']);
         $credentials = $this->formFactory->create(UserLoginType::class)->handleRequest($request)->getData();
-        $request->getSession()->set(Security::LAST_USERNAME, $credentials->getUsername());
+        $request->getSession()->set(Security::LAST_USERNAME, $credentials->getEmail());
 
         return $credentials;
     }
 
+    /**
+     * @param UserLoginDTO          $credentials
+     * @param UserProviderInterface $userProvider
+     *
+     * @return UserInterface
+     */
     public function getUser($credentials, UserProviderInterface $userProvider): UserInterface
     {
-        return $userProvider->loadUserByUsername($credentials->getUsername());
+        return $userProvider->loadUserByUsername($credentials->getEmail());
     }
 
+    /**
+     * @param UserLoginDTO  $credentials
+     * @param UserInterface $user
+     *
+     * @return bool
+     */
     public function checkCredentials($credentials, UserInterface $user): bool
     {
         return $this->passwordEncoder->isPasswordValid($user, $credentials->getPassword());
@@ -76,7 +88,7 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator
 
     protected function getLoginUrl(): string
     {
-        return $this->router->generate('balticrobo_website_security_userlogin');
+        return $this->router->generate('balticrobo_website_security_login');
     }
 
     protected function getTargetRedirectUrl(Request $request): ?string

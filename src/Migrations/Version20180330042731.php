@@ -10,7 +10,7 @@ use Doctrine\DBAL\Schema\Schema;
 
 class Version20180330042731 extends AbstractMigration
 {
-    public function up(Schema $schema)
+    public function up(Schema $schema): void
     {
         $this->checkDatabaseType();
         $this->addSql("CREATE TABLE users (
@@ -21,14 +21,14 @@ class Version20180330042731 extends AbstractMigration
             password VARCHAR(60) NOT NULL,
             active TINYINT(1) NOT NULL,
             roles JSON NOT NULL,
-            created_at TIMESTAMP NOT NULL COMMENT '(DC2Type:timestamp_immutable)',
-            last_login_at TIMESTAMP NULL DEFAULT NULL COMMENT '(DC2Type:timestamp_immutable)',
+            created_at INT NOT NULL COMMENT '(DC2Type:timestamp_immutable)',
+            last_login_at INT DEFAULT NULL COMMENT '(DC2Type:timestamp_immutable)',
             UNIQUE INDEX UNIQ_1483A5E9E7927C74 (email),
             PRIMARY KEY(id)
         ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB");
     }
 
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
         $this->checkDatabaseType();
         $this->addSql('DROP TABLE users');

@@ -17,20 +17,17 @@ security:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
       security: false
-    user:
-      pattern: ^/user
+    default:
+      pattern: ^/
       anonymous: ~
       provider: user_login
       guard:
         authenticators:
           - BalticRobo\Website\Security\UserAuthenticator
       form_login:
-        login_path: balticrobo_website_security_userlogin
-        check_path: balticrobo_website_security_userlogin
+        login_path: balticrobo_website_security_login
+        check_path: balticrobo_website_security_login
         remember_me: true
       logout:
-        path: balticrobo_website_security_userlogout
-        target: balticrobo_website_security_userlogin
-    default:
-      pattern: ^/
-      anonymous: ~
+        path: balticrobo_website_security_logout
+        target: balticrobo_website_security_login

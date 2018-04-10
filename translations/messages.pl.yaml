@@ -1,14 +1,42 @@
 _common:
   event_name: Bałtyckie Bitwy Robotów
+  competition_group:
+    conference: Konferencja
+    freestyle: Freestyle
+    lego: LEGO
+    line_follower: Line Follower
+    micromouse: Micromouse
+    robohackaton: Hackaton
+    sumo: Sumo
+  competition:
+    conference: Konferencja
+    freestyle: Freestyle
+    lego-line-follower: LEGO LF
+    lego-sumo: LEGO Sumo
+    line-follower-3d: LF 3D
+    line-follower-drag: LF Drag
+    line-follower-enhanced: LF Enhanced
+    line-follower-standard: LF Standard
+    line-follower-turbo: LF Turbo
+    micromouse-8x8: Mouse 8x8
+    micromouse-16x16: Mouse 16x16
+    robohackaton: Robohackaton
+    sumo: Sumo
+    minisumo: Minisumo
+    microsumo: MicroSumo
+    nanosumo: NanoSumo
+_menu:
+  home: Główna
+  login: Logowanie
+  register: Rejestracja
+  rules: Regulaminy
 buttons:
   login: Zaloguj się
+event:
+  rule:
+    last_modified_at: Ostatnia modyfikacja
 default:
   home:
-    menu:
-      home: Główna
-      login: Logowanie
-      register: Rejestracja
-      rules: Regulaminy
     section:
       about_tournament:
         _header: O turnieju
@@ -58,6 +86,5 @@ default:
         _header: Rejestracja wkrótce!
 user:
   form:
-    user_login:
-      password: Hasło
-      username: Email
+    email: Email
+    password: Hasło

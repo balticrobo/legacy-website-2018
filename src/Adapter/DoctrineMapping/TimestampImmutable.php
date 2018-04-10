@@ -5,8 +5,6 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Adapter\DoctrineMapping;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Platforms\MySQL57Platform;
-use Doctrine\DBAL\Platforms\SqlitePlatform;
 use Doctrine\DBAL\Types\Type;
 
 class TimestampImmutable extends Type
@@ -15,17 +13,7 @@ class TimestampImmutable extends Type
 
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
-        if ($platform instanceof MySQL57Platform) {
-            if (!$fieldDeclaration['notnull']) {
-                return 'TIMESTAMP NULL';
-            }
-
-            return 'TIMESTAMP';
-        } elseif ($platform instanceof SqlitePlatform) {
-            return 'INTEGER';
-        }
-
-        throw new UnsupportedDatabaseTypeException(self::class);
+        return $platform->getIntegerTypeDeclarationSQL($fieldDeclaration);
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform): ?\DateTimeImmutable
