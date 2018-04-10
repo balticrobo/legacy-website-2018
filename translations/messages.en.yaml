@@ -64,14 +64,14 @@ default:
           description: In this competition the robots need to find the fastest way to the middle of the labirynth. In the first part the have to map the whole space to find the best way. In the next one they have to reach the finnish line as fast as possible. The first one to reach the the middle wins!
           name: Micromouse
         robohackaton:
-          description: The last part of the event is Robo Hackatho. The participants will have to build fighting robots that are remote controlled. They have to achieve it by using e-waste, electronics and workshops equipment, such as 3D printers and laser ploter. They will onlyu have 30 hours to do that. At the end, a great battle will take place, and only one robot can win!
+          description: Laser, 3D printer, some electronic equipment and 40 hours of continuous hacking. Teams participating in RoboHackathon will have only so little to construct a robot that destroy opponents. Final battle will be carried in free-for-all style. The winner will be the last robot moving.
           name: Robohackaton
         sumo:
           description: In this one, robots need to show their strenght and cunning to overcome their opponent and push them out of the ring. The fights are dealt into 4 categories, which differ in robots maximal size and weight and the size of the ring <ul><li><strong>Sumo</strong> up to 3kg, up to 200x200mm, ring up to 154cm,</li><li><strong>miniSumo</strong> up to 500g, up to 100x100mm, ring up to 77cm,</li><li><strong>microSumo</strong> up to 100g, up to 50x50x50mm, ring up to 38,5cm,</li><li><strong>nanoSumo</strong> up to 25g, up to 25x25x25mm, ring up to 19,25cm.</li></ul>
           name: Sumo
       conference:
         _header: Conference
-        content: The second part of the event is a conferene, directed to european robot building teams. They will be able to show their creations and the applied solutions to a wider audience. Thanks to the exchange of experiences between the teams taking part in various competitions, each one they will be able to get new ideas about development of their own creations.
+        content: Closed event during which student teams from across the Polish will present their achievements. Rocket motors, Martian rovers, racing cars, satellites and solar cars are only part of the planned talks. If You are interested in participating in conference, please contact with organizers.
       contact:
         _header: Contact
         any_questions: 'Any questions? You can find us at:'
