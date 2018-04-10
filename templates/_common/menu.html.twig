@@ -1,0 +1,55 @@
+{% import _self as macro %}
+
+<nav class='navbar navbar-light navbar-expand-sm sticky-top'>
+  <div class='container-fluid container-navbar'>
+    <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav'
+        aria-controls='navbarNav' aria-expanded='false'>
+      <span class='navbar-toggler-icon'></span>
+    </button>
+    <div class='collapse navbar-collapse' id='navbarNav'>
+      <ul class='navbar-nav'>
+        <li class='nav-item'>
+          <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
+            {{ '_menu.home'|trans }}
+          </a>
+        </li>
+        {#<li class='nav-item'>#}
+          {#<a class='nav-link' href='{{ path('balticrobo_website_security_login') }}'>#}
+            {#{{ '_menu.login'|trans }}#}
+          {#</a>#}
+        {#</li>#}
+        {#<li class='nav-item'>#}
+          {#<a class='nav-link' href='{{ path('balticrobo_website_security_register') }}'>#}
+            {#{{ '_menu.register'|trans }}#}
+          {#</a>#}
+        {#</li>#}
+        <li class='nav-item'>
+          <a class='nav-link' href='{{ path('balticrobo_website_event_rule') }}'>
+            {{ '_menu.rules'|trans }}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <ul class='navbar-nav navbar-nav--locale'>
+      {% for locale in available_locales %}
+        {{ macro.navbar_locale(locale) }}
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+{% macro navbar_locale(locale) %}
+  <li class='nav-item{% if app.request.locale == locale %} active{% endif %}'>
+    {% if app.request.locale == locale %}
+      <span class="nav-link">
+        {{ locale|upper }}
+      </span>
+    {% else %}
+      <form action='{{ path('balticrobo_website_locale_changelocale', {locale: locale}) }}' method='post'>
+        <button type='submit' class='btn btn-link nav-link'>
+          {{ locale|upper }}
+        </button>
+      </form>
+    {% endif %}
+  </li>
+{% endmacro %}

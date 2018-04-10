@@ -1,20 +1,3 @@
-
-{% macro navbar_locale(locale) %}
-  <li class='nav-item{% if app.request.locale == locale %} active{% endif %}'>
-    {% if app.request.locale == locale %}
-      <span class="nav-link">
-        {{ locale|upper }}
-      </span>
-    {% else %}
-      <form action='{{ path('balticrobo_website_locale_changelocale', {locale: locale}) }}' method='post'>
-        <button type='submit' class='btn btn-link nav-link'>
-          {{ locale|upper }}
-        </button>
-      </form>
-    {% endif %}
-  </li>
-{% endmacro %}
-
 {% macro social(name, link, is_big) %}
   <a href='{{ link }}' target='_blank'>
     <img src='{{ asset('build/images/' ~ name|lower ~ '.svg') }}' alt='{{ name }}'
