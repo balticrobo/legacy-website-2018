@@ -34,7 +34,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  {{ rule.content }}
+                  {{ rule.content|raw }}
                 </div>
                 <div class="modal-footer">
                   {{ 'event.rule.last_modified_at'|trans }}: <strong>{{ rule.lastUpdateAt|date('Y-m-d H:i') }}</strong>
