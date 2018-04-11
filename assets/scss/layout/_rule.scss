@@ -3,3 +3,21 @@
     margin: ($spacer / 4) 0;
   }
 }
+
+.modal.rule {
+  ol {
+    list-style-type: none;
+    counter-reset: list-counter;
+    padding: 0;
+
+    & > li:before {
+      counter-increment: list-counter;
+      content: counters(list-counter, ".") ".";
+    }
+
+    & > li > ol {
+      counter-reset: list-counter;
+      padding: 0 0 0 $spacer;
+    }
+  }
+}
