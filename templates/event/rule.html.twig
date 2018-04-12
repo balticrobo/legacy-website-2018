@@ -1,48 +1,29 @@
 {% extends '_base.html.twig' %}
 
 {% block body %}
-  {% include '_common/menu.html.twig' %}
-
+  <div class='wrapper d-print-none'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  <div class='d-print-none'>
+    {% include '_common/menu.html.twig' %}
+  </div>
   <div class='wrapper'>
     <div class='container'>
-      <div class='row rules'>
-        {% set group = -1 %}
-        {% for rule in rules %}
-          {% if rule.eventCompetition.competition.group.id != group %}
-            {% set group = rule.eventCompetition.competition.group.id %}
-            <div class='col-12'>
-              <h3>
-                {{ ('_common.competition_group.' ~ rule.eventCompetition.competition.group.slug)|trans }}
-              </h3>
-            </div>
-          {% endif %}
-          <div class='col-12 col-sm-6 col-md-4'>
-            <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
-                data-target=".{{ rule.id }}">
-              {{ ('_common.competition.' ~ rule.eventCompetition.competition.slug)|trans }}
-            </button>
+      <div class='d-none d-print-block'>
+        {% include '_common/header_print.html.twig' with {competition: rule.eventCompetition.competition.name} %}
+      </div>
+      <div class='row rule'>
+        <div class='d-block d-print-none'>
+          <h2>
+            {{ 'event.rule._screen_header'|trans({'%competition%': rule.eventCompetition.competition.name})|raw }}
+          </h2>
+        </div>
+        <div class='container-fluid'>
+          {{ rule.content|raw }}<br/>
+          <div class='text-right'>
+            {{ 'event.rule.last_modified_at'|trans }}: <strong>{{ rule.lastUpdateAt|date('Y-m-d H:i') }}</strong>
           </div>
-          <div class="modal fade rule {{ rule.id }}" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">
-                    {{ rule.eventCompetition.competition.name }}
-                  </h5>
-                  <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  {{ rule.content|raw }}
-                </div>
-                <div class="modal-footer">
-                  {{ 'event.rule.last_modified_at'|trans }}: <strong>{{ rule.lastUpdateAt|date('Y-m-d H:i') }}</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
+        </div>
       </div>
     </div>
   </div>

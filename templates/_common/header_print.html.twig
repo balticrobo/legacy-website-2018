@@ -1,0 +1,11 @@
+<div class='row'>
+  <div class='col-3'>
+    <img class='img-logo-short img-logo-short-print'
+        src='{{ asset('build/images/logo-short-' ~ app.request.locale ~ '.svg') }}' alt=''/>
+  </div>
+  <div class='col-9 align-self-center text-center'>
+    <h3>
+      {{ 'event.rule._print_header'|trans({'%competition%': competition|default('...')})|raw }}
+    </h3>
+  </div>
+</div>

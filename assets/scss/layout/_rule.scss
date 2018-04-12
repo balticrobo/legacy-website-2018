@@ -1,11 +1,16 @@
-.row.rules {
-  button.btn-block {
+.rules {
+  h3 {
+    margin: $spacer 0 ($spacer / 2) 0;
+  }
+
+  a.btn-block {
     margin: ($spacer / 4) 0;
   }
 }
 
-.modal.rule {
+.rule {
   ol {
+    text-align: justify;
     list-style-type: none;
     counter-reset: list-counter;
     padding: 0;
@@ -19,5 +24,9 @@
       counter-reset: list-counter;
       padding: 0 0 0 $spacer;
     }
+  }
+
+  @media print {
+    margin: 0 $spacer;
   }
 }

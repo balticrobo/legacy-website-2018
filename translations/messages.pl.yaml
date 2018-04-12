@@ -34,6 +34,8 @@ buttons:
   login: Zaloguj się
 event:
   rule:
+    _print_header: Regulamin konkurencji<br/><strong>%competition%</strong>
+    _screen_header: Regulamin konkurencji <strong>%competition%</strong>
     last_modified_at: Ostatnia modyfikacja
 default:
   home:

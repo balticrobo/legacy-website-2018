@@ -34,6 +34,8 @@ buttons:
   login: Login
 event:
   rule:
+    _print_header: Regulations for<br/><strong>%competition%</strong>
+    _screen_header: Regulations for <strong>%competition%</strong>
     last_modified_at: Last modified at
 default:
   home:
