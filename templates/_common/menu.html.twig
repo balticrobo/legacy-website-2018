@@ -13,16 +13,16 @@
             {{ '_menu.home'|trans }}
           </a>
         </li>
-        {#<li class='nav-item'>#}
-          {#<a class='nav-link' href='{{ path('balticrobo_website_security_login') }}'>#}
-            {#{{ '_menu.login'|trans }}#}
-          {#</a>#}
-        {#</li>#}
-        {#<li class='nav-item'>#}
-          {#<a class='nav-link' href='{{ path('balticrobo_website_security_register') }}'>#}
-            {#{{ '_menu.register'|trans }}#}
-          {#</a>#}
-        {#</li>#}
+        <li class='nav-item'>
+          <a class='nav-link' href='{{ path('balticrobo_website_security_login') }}'>
+            {{ '_menu.login'|trans }}
+          </a>
+        </li>
+        <li class='nav-item'>
+          <a class='nav-link' href='{{ path('balticrobo_website_security_register') }}'>
+            {{ '_menu.register'|trans }}
+          </a>
+        </li>
         <li class='nav-item'>
           <a class='nav-link' href='{{ path('balticrobo_website_event_rules') }}'>
             {{ '_menu.rules'|trans }}

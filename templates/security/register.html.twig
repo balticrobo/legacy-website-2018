@@ -1,9 +1,32 @@
 {% extends '_base.html.twig' %}
 
 {% block body %}
-    <h1>Register</h1>
-    {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-    {{ form_widget(form) }}
-    <button type="submit" class="btn btn-block btn-primary">{{ 'buttons.register'|trans }}</button>
-    {{ form_end(form) }}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+
+  <div class='wrapper'>
+    <div class='container'>
+      {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+      <div class='row'>
+        <div class='col-12 col-sm-6'>
+          {{ form_row(form.email) }}
+          {{ form_row(form.password.first) }}
+          {{ form_row(form.password.second) }}
+        </div>
+        <div class='col-12 col-sm-6'>
+          {{ form_row(form.forename) }}
+          {{ form_row(form.surname) }}
+        </div>
+        <div class='col-12 col-sm-6'>
+          {{ form_row(form.terms) }}
+        </div>
+        <div class='col-12 col-sm-6'>
+          <button type="submit" class="btn btn-block btn-primary">{{ 'buttons.register'|trans }}</button>
+        </div>
+      </div>
+      {{ form_end(form) }}
+    </div>
+  </div>
 {% endblock %}
