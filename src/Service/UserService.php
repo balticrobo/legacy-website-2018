@@ -6,6 +6,7 @@ namespace BalticRobo\Website\Service;
 
 use BalticRobo\Website\Entity\User\User;
 use BalticRobo\Website\Exception\User\UserNotFoundException;
+use BalticRobo\Website\Model\Mail\UserRegisteredMailTemplate;
 use BalticRobo\Website\Model\User\UserRegisterDTO;
 use BalticRobo\Website\Repository\UserRepository;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -13,11 +14,16 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserService
 {
     private $userRepository;
+    private $mailerService;
     private $passwordEncoder;
 
-    public function __construct(UserRepository $userRepository, UserPasswordEncoderInterface $passwordEncoder)
-    {
+    public function __construct(
+        UserRepository $userRepository,
+        MailerService $mailerService,
+        UserPasswordEncoderInterface $passwordEncoder
+    ) {
         $this->userRepository = $userRepository;
+        $this->mailerService = $mailerService;
         $this->passwordEncoder = $passwordEncoder;
     }
 
@@ -37,6 +43,6 @@ class UserService
         $user = User::createFromRegisterDTO($dto, $now);
         $user->setPassword($this->passwordEncoder->encodePassword($user, $user->getPlainPassword()));
         $this->userRepository->save($user);
-        // TODO: send confirmation email
+        $this->mailerService->sendMail($user, new UserRegisteredMailTemplate());
     }
 }
