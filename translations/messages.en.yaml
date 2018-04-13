@@ -32,6 +32,7 @@ _menu:
   rules: Rules
 buttons:
   login: Login
+  register: Register
 event:
   rule:
     _print_header: Regulations for<br/><strong>%competition%</strong>
@@ -94,6 +95,9 @@ default:
         _header: Registration soon!
 user:
   form:
-    user_login:
-      email: Email
-      password: Password
+    email: Email
+    forename: Forename
+    password: Password
+    password_repeat: Retype password
+    surname: Surename
+    terms: Accept terms

@@ -1,3 +1,29 @@
 security:
   Username could not be found:
     login: Email or password is incorrect.
+user_register:
+  email:
+    already_exists: Email already exists. Please log in.
+    email: It is not valid email address.
+    length:
+      max: Maximum email length is {{ limit }} chars.
+      min: Minimum email length is {{ limit }} chars.
+    not_blank: Enter your email.
+  forename:
+    not_blank: Enter your forename.
+    length:
+      max: Maximum forename length is {{ limit }} chars.
+      min: Minimum forename length is {{ limit }} chars.
+  password:
+    mismatch: Passwords mismatch.
+    not_blank: Enter your password.
+    length:
+      max: Maximum password length is {{ limit }} chars.
+      min: Minimum password length is {{ limit }} chars.
+  surname:
+    not_blank: Enter your surname.
+    length:
+      max: Maximum surname length is {{ limit }} chars.
+      min: Minimum surname length is {{ limit }} chars.
+  terms:
+    is_true: You have to accept terms.

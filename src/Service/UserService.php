@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace BalticRobo\Website\Service\User;
+namespace BalticRobo\Website\Service;
 
 use BalticRobo\Website\Entity\User\User;
 use BalticRobo\Website\Exception\User\UserNotFoundException;

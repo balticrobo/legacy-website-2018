@@ -7,7 +7,7 @@ namespace BalticRobo\Website\Controller;
 use BalticRobo\Website\Form\User\UserLoginType;
 use BalticRobo\Website\Form\User\UserRegisterType;
 use BalticRobo\Website\Model\User\UserLoginDTO;
-use BalticRobo\Website\Service\User\UserService;
+use BalticRobo\Website\Service\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
