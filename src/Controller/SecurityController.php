@@ -11,9 +11,12 @@ use BalticRobo\Website\Service\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class SecurityController extends Controller
 {
@@ -30,15 +33,22 @@ class SecurityController extends Controller
      * @Route("/login")
      * @Method({"GET", "POST"})
      *
+     * @param TranslatorInterface $translator
+     *
      * @return Response
      */
-    public function loginAction(): Response
+    public function loginAction(TranslatorInterface $translator): Response
     {
+        $error = $this->authUtils->getLastAuthenticationError();
         $form = $this->createForm(UserLoginType::class, UserLoginDTO::createFromAuthenticationUtils($this->authUtils));
+        if ($error) {
+            $message = $translator->trans("security.{$error->getMessageKey()}login", [], 'validators');
+            $form->get('email')->addError(new FormError($message));
+        }
 
         return $this->render('security/login.html.twig', [
             'form' => $form->createView(),
-            'error' => $this->authUtils->getLastAuthenticationError(),
+            'is_error' => (bool) $error,
         ]);
     }
 
@@ -54,16 +64,18 @@ class SecurityController extends Controller
      * @Route("/register")
      * @Method({"GET", "POST"})
      *
-     * @param Request $request
+     * @param Request          $request
+     * @param SessionInterface $session
      *
      * @return Response
      */
-    public function registerAction(Request $request): Response
+    public function registerAction(Request $request, SessionInterface $session): Response
     {
         $form = $this->createForm(UserRegisterType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->userService->add($form->getData(), new \DateTimeImmutable());
+            $session->set('registered_email', $form->getData()->getEmail());
 
             return $this->redirectToRoute('balticrobo_website_security_registersuccess');
         }
@@ -77,10 +89,20 @@ class SecurityController extends Controller
      * @Route("/register/success")
      * @Method("GET")
      *
+     * @param SessionInterface $session
+     *
      * @return Response
      */
-    public function registerSuccessAction(): Response
+    public function registerSuccessAction(SessionInterface $session): Response
     {
-        return $this->render('security/register_success.html.twig');
+        $email = $session->get('registered_email');
+        if (!$email) {
+            return $this->redirectToRoute('balticrobo_website_default_home');
+        }
+        $session->set('registered_email', null);
+
+        return $this->render('security/register_success.html.twig', [
+            'email' => $email,
+        ]);
     }
 }

@@ -93,6 +93,12 @@ default:
           <strong>NKSA</strong> <small>TBC</small>
       registration:
         _header: Registration soon!
+security:
+  register_success:
+    additional_info: If you do not see confirmation email, check your SPAM folder or contact us.
+    email_info: 'Registered email: <strong>%email%</strong>'
+    success_info: You have successfully registered account. Now you should confirm account and register your teams.
+    title: Well done!
 user:
   form:
     email: Email

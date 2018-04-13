@@ -1,6 +1,23 @@
 {% extends '_base.html.twig' %}
 
 {% block body %}
-    <h1>Register success</h1>
-  Sprawdź spam i te inne bzdury
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  <div class='wrapper'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-12 col-md-6 offset-md-3'>
+          <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">{{ 'security.register_success.title'|trans }}</h4>
+            <p>{{ 'security.register_success.success_info'|trans }}</p>
+            <hr>
+            <p>{{ 'security.register_success.email_info'|trans({'%email%': email})|raw }}</p>
+            <small>{{ 'security.register_success.additional_info'|trans }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

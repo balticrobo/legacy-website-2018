@@ -1,6 +1,10 @@
 security:
+  Account is locked:
+    login: Account is locked.
+  Invalid credentials:
+    login: Email or password are incorrect.
   Username could not be found:
-    login: Email or password is incorrect.
+    login: Email or password are incorrect.
 user_register:
   email:
     already_exists: Email already exists. Please log in.
