@@ -6,7 +6,7 @@ _common:
     lego: LEGO
     line_follower: Line Follower
     micromouse: Micromouse
-    robohackaton: Hackaton
+    robohackathon: Hackathon
     sumo: Sumo
   competition:
     conference: Konferencja
@@ -20,7 +20,7 @@ _common:
     line-follower-turbo: LF Turbo
     micromouse-8x8: Mouse 8x8
     micromouse-16x16: Mouse 16x16
-    robohackaton: Robohackaton
+    robohackathon: Robohackathon
     sumo: Sumo
     minisumo: Minisumo
     microsumo: MicroSumo
@@ -43,7 +43,7 @@ default:
       about_tournament:
         _header: O turnieju
         content: |
-          Bałtyckie Bitwy Robotów to&nbsp;wydarzenie jedyne w&nbsp;swoim rodzaju. Łączy ono w&nbsp;sobie turniej robotyki amatorskiej, mini konferencję studencką oraz hakaton. Pierwsza edycja odbędzie się w&nbsp;dniach 26&nbsp;-&nbsp;27 maja 2018 roku w&nbsp;Trójmieście. Organizatorami wydarzenia jest SKALP i NKSA, które do&nbsp;tej pory niezależnie tworzyły Trójmiejski Turniej Robotów i&nbsp;Roboxy.<br />Główną częścią wydarzenia jest turniej robotyki amatorskiej. Składa się on&nbsp;z&nbsp;12 konkurencji zgrupowanych w&nbsp;5 kategorii.<br />Drugą częścią wydarzenia jest konferencja, która jest skierowana do&nbsp;europejskich zespołów konstruujących roboty.<br />Ostatnią częścią wydarzenia jest RoboHackaton.
+          Bałtyckie Bitwy Robotów to&nbsp;wydarzenie jedyne w&nbsp;swoim rodzaju. Łączy ono w&nbsp;sobie turniej robotyki amatorskiej, mini konferencję studencką oraz hakaton. Pierwsza edycja odbędzie się w&nbsp;dniach 26&nbsp;-&nbsp;27 maja 2018 roku w&nbsp;Trójmieście. Organizatorami wydarzenia jest SKALP i NKSA, które do&nbsp;tej pory niezależnie tworzyły Trójmiejski Turniej Robotów i&nbsp;Roboxy.<br />Główną częścią wydarzenia jest turniej robotyki amatorskiej. Składa się on&nbsp;z&nbsp;12 konkurencji zgrupowanych w&nbsp;5 kategorii.<br />Drugą częścią wydarzenia jest konferencja, która jest skierowana do&nbsp;europejskich zespołów konstruujących roboty.<br />Ostatnią częścią wydarzenia jest RoboHackathon.
       competitions:
         _header: Konkurencje
         freestyle:
@@ -58,9 +58,9 @@ default:
         micromouse:
           description: Roboty w tej konkurencji mają za zadanie odnaleźć najszybszą drogę do środka labiryntu. W pierwszym etapie mapują całą powierzchnię by znaleźć najbardziej optymalną trasę. W kolejnym muszą ją pokonać w jak najkrótszym czasie. Robot który to zrobi najszybciej wygrywa!
           name: Micromouse
-        robohackaton:
+        robohackathon:
           description: Laser, drukarka 3d, trochę sprzętu elektronicznego i 40 godzin ciągłej pracy. Tylko tyle będą mieli uczestni RoboHackathonu czyli konkursu konstruktorów, na zbudowanie robota który pokona przeciwników. O zwycięstwie zadecyduje finałowa bitwa realizowana w stylu free-for-all. Zwycięzcą zostanie ostatni poruszający się robot.
-          name: Robohackaton
+          name: Robohackathon
         sumo:
           description: W tej konkurencji roboty muszą wykazać się siłą i sprytem, by przechytrzyć przeciwnika i zepchnąć go z ringu. Walki podzielone są na 4 kategorie, które różnią się maksymalnym rozmiarem i masą robota oraz wielkością ringu:<ul><li><strong>Sumo</strong> do 3kg, do 200x200mm, średnica ringu 154cm,</li><li><strong>miniSumo</strong> do 500g, do 100x100mm, średnica ringu 77cm,</li><li><strong>microSumo</strong> do 100g, do 50x50x50mm, średnica ringu 38,5cm,</li><li><strong>nanoSumo</strong> do 25g, do 25x25x25mm, średnica ringu 19,25cm.</li></ul>
           name: Sumo
