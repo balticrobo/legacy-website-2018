@@ -1,3 +1,33 @@
 security:
+  Account is locked:
+    login: Konto jest nieaktywne.
+  Invalid credentials:
+    login: Email lub hasło są niepoprawne.
   Username could not be found:
     login: Email lub hasło są niepoprawne.
+user_register:
+  email:
+    already_exists: Taki email już istnieje, zaloguj się.
+    email: To nie jest poprawny adres email.
+    length:
+      max: Email nie może być dłuższy niż {{ limit }} znaków.
+      min: Email nie może byc krótszy niż {{ limit }} znaków.
+    not_blank: Podaj email.
+  forename:
+    length:
+      max: Imię nie może być dłuższe niż {{ limit }} znaków.
+      min: Imię nie może być krótesze niż {{ limit }} znaków.
+    not_blank: Podaj imię.
+  password:
+    length:
+      max: Hasło nie może być dłuższe niż {{ limit }} znaków.
+      min: Hasło nie może być krótesze niż {{ limit }} znaków.
+    mismatch: Hasła różnią się.
+    not_blank: Podaj hasło.
+  surname:
+    length:
+      max: Nazwisko nie może być dłuższe niż {{ limit }} znaków.
+      min: Nazwisko nie może być krótesze niż {{ limit }} znaków.
+    not_blank: Podaj nazwisko.
+  terms:
+    is_true: Musisz zaakceptować regulamin.

@@ -32,6 +32,7 @@ _menu:
   rules: Regulaminy
 buttons:
   login: Zaloguj się
+  register: Zarejestruj się
 event:
   rule:
     _print_header: Regulamin konkurencji<br/><strong>%competition%</strong>
@@ -86,7 +87,17 @@ default:
           <strong>Naukowe Koło Studentów Automatyki</strong> - Działalność w NKSA podzielona jest na specjalności, co pozwala odnaleźć się każdemu aktywnemu studentowi. Do wyboru jest m.in. automatyka przemysłowa, elektronika, robotyka czy informatyka. Każda specjalność posiada opiekuna (starszego studenta, często już z tytułem), który dba o odpowiednie przygotowanie mniej doświadczonych członków do pracy w zawodzie poprzez organizację kursów i szkoleń oraz prowadzenie wykładów, a także zajęć warsztatowych. Formalnie istniejemy od 2000 roku!<br/>Czym się zajmujemy? Głównie projektami, czyli wymyślamy coś co jesteśmy w stanie zrobić i zabieramy się za to. Uruchomiono szereg warsztatów przeznaczonych dla studentów i nie tylko.
       registration:
         _header: Rejestracja wkrótce!
+security:
+  register_success:
+    additional_info: Jeżeli nie widizsz wiadomości email, sprawdź folder SPAM w swojej skrzynce pocztowej lub skontaktuj się z nami.
+    email_info: 'Email podany podczas rejestracji: <strong>%email%</strong>'
+    success_info: Zarejestrowałeś swoje konto. Teraz potwierdź je i dodaj swój zespół.
+    title: Świetna robota!
 user:
   form:
     email: Email
+    forename: Imię
     password: Hasło
+    password_repeat: Powtórz hasło
+    surname: Nazwisko
+    terms: Akceptuję regulamin
