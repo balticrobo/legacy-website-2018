@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Entity\Event;
 
+use BalticRobo\Website\Exception\Event\EventCompetitionNotFoundException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -87,12 +88,17 @@ class Event
 
     public function getCompetitionBySlug(string $slug): EventCompetition
     {
-        return $this->competitions->filter(function (EventCompetition $competition) use ($slug) {
+        $competition = $this->competitions->filter(function (EventCompetition $competition) use ($slug) {
             if ($competition->getCompetition()->getSlug() === $slug) {
                 return $competition;
             }
 
             return null;
         })->first();
+        if (!$competition) {
+            throw new EventCompetitionNotFoundException();
+        }
+
+        return $competition;
     }
 }

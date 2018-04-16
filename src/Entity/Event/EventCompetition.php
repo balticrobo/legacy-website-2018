@@ -6,6 +6,7 @@ namespace BalticRobo\Website\Entity\Event;
 
 use BalticRobo\Website\Entity\Competition\Competition;
 use BalticRobo\Website\Entity\Rule\Rule;
+use BalticRobo\Website\Exception\Rule\RuleNotFoundException;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -53,12 +54,17 @@ class EventCompetition
 
     public function getRuleByLocale(string $locale): Rule
     {
-        return $this->rules->filter(function (Rule $rule) use ($locale) {
+        $rule = $this->rules->filter(function (Rule $rule) use ($locale) {
             if ($rule->getLocale() === $locale) {
                 return $rule;
             }
 
             return null;
         })->first();
+        if (!$rule) {
+            throw new RuleNotFoundException();
+        }
+
+        return $rule;
     }
 }

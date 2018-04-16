@@ -3,22 +3,9 @@
 
 {% block body %}
   <header class='header header-{{ app.request.locale }}'></header>
-
   {% include '_common/menu.html.twig' %}
-
   <div class='wrapper'>
-    <div class='container'>
-      <div class='row justify-content-center justify-content-sm-around'>
-        <div class='col-10 col-md-11 text-center text-sm-left'>
-          <img class='img-logo-short' src='{{ asset('build/images/logo-short-' ~ app.request.locale ~ '.svg') }}' alt=''/>
-        </div>
-        <div class='m-3 m-sm-0 d-flex flex-row flex-sm-column flex-wrap'>
-          {{ macro.social('Facebook', 'https://fb.me/balticrobo') }}
-          {{ macro.social('Twitter', 'https://twitter.com/balticrobo') }}
-          {{ macro.social('Instagram', 'https://instagram.com/balticrobo') }}
-        </div>
-      </div>
-    </div>
+    {% include '_common/header.html.twig' with {is_social_visible: true} %}
     {{ macro.simple_section('about_tournament') }}
     {{ macro.simple_section_header('competitions', true) }}
     <div class='container'>
@@ -28,13 +15,13 @@
         {{ macro.competition_tile('freestyle') }}
         {{ macro.competition_tile('micromouse') }}
         {{ macro.competition_tile('lego') }}
-        {{ macro.competition_tile('robohackaton') }}
+        {{ macro.competition_tile('robohackathon') }}
         {{ macro.competition_modal('sumo') }}
         {{ macro.competition_modal('line_follower') }}
         {{ macro.competition_modal('freestyle') }}
         {{ macro.competition_modal('micromouse') }}
         {{ macro.competition_modal('lego') }}
-        {{ macro.competition_modal('robohackaton') }}
+        {{ macro.competition_modal('robohackathon') }}
       </div>
     </div>
     {{ macro.simple_section('conference') }}
@@ -47,22 +34,20 @@
           {{ macro.simple_section_header('contact') }}
           <div class='contact-question'>{{ 'default.home.section.contact.any_questions'|trans }}</div>
           <div class='d-flex flex-row justify-content-center'>
-            {{ macro.social('Mail', 'mailto:weronika.narloch@skalppg.pl', true) }}
-            {{ macro.social('Facebook', 'https://fb.me/balticrobo', true) }}
-            {{ macro.social('Twitter', 'https://twitter.com/balticrobo', true) }}
-            {{ macro.social('Instagram', 'https://instagram.com/balticrobo', true) }}
+            {{ macro.social('Mail', 'mailto:weronika.narloch@skalppg.pl') }}
+            {{ macro.social('Facebook', 'https://fb.me/balticrobo') }}
+            {{ macro.social('Twitter', 'https://twitter.com/balticrobo') }}
+            {{ macro.social('Instagram', 'https://instagram.com/balticrobo') }}
           </div>
           <div class='contact-question'>{{ 'default.home.section.contact.want_update'|trans }}</div>
           <div class='contact-answer'>{{ 'default.home.section.contact.more_soon'|trans }}</div>
         </div>
         <div class='contact text-center'>
-          <img src='{{ asset('build/images/logo-circle-' ~ app.request.locale ~ '.svg') }}'
-              alt='' class='img-logo-circle'/>
+          <img src='{{ asset('build/images/logo-circle-' ~ app.request.locale ~ '.svg') }}' alt='' class='img-logo-circle'/>
         </div>
       </div>
     </div>
   </div>
-
   <div class='container-name secondary text-center'>
     <img src='{{ asset('build/images/registration.svg') }}' alt='' class='img-registration'/>
     <span>{{ 'default.home.section.registration._header'|trans }}</span>

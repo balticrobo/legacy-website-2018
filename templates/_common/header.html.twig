@@ -1,0 +1,23 @@
+{% import _self as macro %}
+
+<div class='container'>
+  <div class='row justify-content-center justify-content-sm-around'>
+    <div class='col-10 col-md-11 text-center text-sm-left'>
+      <img class='img-logo-short' src='{{ asset('build/images/logo-short-' ~ app.request.locale ~ '.svg') }}' alt=''/>
+    </div>
+    {% if is_social_visible|default(false) %}
+      <div class='m-3 m-sm-0 d-flex flex-row flex-sm-column flex-wrap'>
+        {{ macro.social('Facebook', 'https://fb.me/balticrobo') }}
+        {{ macro.social('Twitter', 'https://twitter.com/balticrobo') }}
+        {{ macro.social('Instagram', 'https://instagram.com/balticrobo') }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% macro social(name, link, is_big) %}
+  <a href='{{ link }}' target='_blank'>
+    <img src='{{ asset('build/images/' ~ name|lower ~ '.svg') }}' alt='{{ name }}'
+        class='img-social {% if is_big|default(false) %}img-social-big{% endif %}'/>
+  </a>
+{% endmacro %}

@@ -14,6 +14,10 @@
 .img-logo-short {
   width: 100%;
   max-width: 350px;
+
+  &-print {
+    max-width: 200px;
+  }
 }
 
 .img-logo-circle {

@@ -1,7 +1,7 @@
-{% macro social(name, link, is_big) %}
+{% macro social(name, link) %}
   <a href='{{ link }}' target='_blank'>
     <img src='{{ asset('build/images/' ~ name|lower ~ '.svg') }}' alt='{{ name }}'
-        class='img-social {% if is_big|default(false) %}img-social-big{% endif %}'/>
+        class='img-social img-social-big'/>
   </a>
 {% endmacro %}
 

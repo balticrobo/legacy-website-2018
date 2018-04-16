@@ -14,10 +14,11 @@ services:
       APP_ENV: dev
       APP_SECRET: 7cbd4f1718b779f367516a8d917b6a29
       DATABASE_URL: mysql://root:mysql@mysql:3306/balticrobo
+      MAILER_URL: smtp://mailhog:1025
     working_dir: /var/www/app
     command: ./docs/docker/php/start.sh
   node:
-    image: node:9.9
+    image: node:9.11
     user: node
     volumes:
       - .:/var/www/app
@@ -43,6 +44,12 @@ services:
     ports:
       - 3306:3306
     restart: always
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    ports:
+      - 8025:8025
+    restart: always
+
 
 volumes:
   composer_cache:

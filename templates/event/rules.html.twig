@@ -1,0 +1,33 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+
+  <div class='wrapper'>
+    <div class='container'>
+      <div class='row rules'>
+        {% set group = -1 %}
+        {% for rule in rules %}
+          {% if rule.eventCompetition.competition.group.id != group %}
+            {% set group = rule.eventCompetition.competition.group.id %}
+            <div class='col-12 text-center'>
+              <h3>
+                {{ ('_common.competition_group.' ~ rule.eventCompetition.competition.group.slug)|trans }}
+              </h3>
+            </div>
+          {% endif %}
+          <div class='col-12 col-sm-6 col-md-4'>
+            <a class='btn btn-primary btn-block' href='{{ path('balticrobo_website_event_rule', {
+              competitionSlug: rule.eventCompetition.competition.slug
+            }) }}'>
+              {{ ('_common.competition.' ~ rule.eventCompetition.competition.slug)|trans }}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

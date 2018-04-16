@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Entity\User;
 
+use BalticRobo\Website\Model\Mail\MailRecipientInterface;
 use BalticRobo\Website\Model\User\UserRegisterDTO;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
@@ -12,7 +13,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  * @ORM\Table(name="users")
  * @ORM\Entity
  */
-class User implements AdvancedUserInterface
+class User implements AdvancedUserInterface, MailRecipientInterface
 {
     /**
      * @ORM\Id
@@ -62,10 +63,8 @@ class User implements AdvancedUserInterface
      */
     private $lastLoginAt;
 
-    public static function createFromRegisterDTO(
-        UserRegisterDTO $dto,
-        \DateTimeImmutable $now
-    ): self {
+    public static function createFromRegisterDTO(UserRegisterDTO $dto, \DateTimeImmutable $now): self
+    {
         $entity = new self();
         $entity->forename = $dto->getForename();
         $entity->surname = $dto->getSurname();

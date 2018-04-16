@@ -1,14 +1,29 @@
 {% extends '_base.html.twig' %}
 
 {% block body %}
-    <h1>Login</h1>
-    {% if error %}
-        <div class="alert alert-danger">
-            {{ ('security.' ~ error.messageKey ~ 'login')|trans({}, 'validators') }}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  <div class='wrapper'>
+    <div class='container col-12 col-md-6 offset-md-3'>
+      {{ form_start(form, {class: 'form', attr: {novalidate: 'novalidate'}}) }}
+      {% set attr = {} %}
+      {% if is_error %}
+        {% set attr = {attr: {class: 'is-invalid'}} %}
+      {% endif %}
+      <div class='row'>
+        <div class='col-12 col-sm-6'>
+          {{ form_row(form.email, attr) }}
         </div>
-    {% endif %}
-    {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-    {{ form_widget(form) }}
-    <button type="submit" class="btn btn-block btn-primary">{{ 'buttons.login'|trans }}</button>
-    {{ form_end(form) }}
+        <div class='col-12 col-sm-6'>
+          {{ form_row(form.password, attr) }}
+        </div>
+        <div class='col-12 col-sm-6 offset-sm-6'>
+          <button type="submit" class="btn btn-block btn-primary">{{ 'buttons.login'|trans }}</button>
+        </div>
+      </div>
+      {{ form_end(form) }}
+    </div>
+  </div>
 {% endblock %}

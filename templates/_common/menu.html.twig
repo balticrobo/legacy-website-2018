@@ -1,6 +1,6 @@
 {% import _self as macro %}
 
-<nav class='navbar navbar-light navbar-expand-sm sticky-top'>
+<nav class='navbar navbar-light navbar-expand-sm sticky-top d-print-none'>
   <div class='container-fluid container-navbar'>
     <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav'
         aria-controls='navbarNav' aria-expanded='false'>
@@ -24,7 +24,7 @@
           {#</a>#}
         {#</li>#}
         <li class='nav-item'>
-          <a class='nav-link' href='{{ path('balticrobo_website_event_rule') }}'>
+          <a class='nav-link' href='{{ path('balticrobo_website_event_rules') }}'>
             {{ '_menu.rules'|trans }}
           </a>
         </li>

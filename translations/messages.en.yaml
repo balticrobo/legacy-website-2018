@@ -6,7 +6,7 @@ _common:
     lego: LEGO
     line_follower: Line Follower
     micromouse: Micromouse
-    robohackaton: Hackaton
+    robohackathon: Hackathon
     sumo: Sumo
   competition:
     conference: Conference
@@ -20,7 +20,7 @@ _common:
     line-follower-turbo: LF Turbo
     micromouse-8x8: Mouse 8x8
     micromouse-16x16: Mouse 16x16
-    robohackaton: Robohackaton
+    robohackathon: Robohackathon
     sumo: Sumo
     minisumo: Minisumo
     microsumo: MicroSumo
@@ -32,8 +32,11 @@ _menu:
   rules: Rules
 buttons:
   login: Login
+  register: Register
 event:
   rule:
+    _print_header: Regulations for<br/><strong>%competition%</strong>
+    _screen_header: Regulations for <strong>%competition%</strong>
     last_modified_at: Last modified at
 default:
   home:
@@ -48,7 +51,7 @@ default:
           The main part of the event is amateur robotics. It consists of 12 different competitions grouped in
           5 categories.<br/>
           The second part of the event is a conferene, directed to european robot building teams.<br/>
-          The last part of the event is Robo Hackaton.
+          The last part of the event is Robo Hackathon.
       competitions:
         _header: Competitions
         freestyle:
@@ -63,9 +66,9 @@ default:
         micromouse:
           description: In this competition the robots need to find the fastest way to the middle of the labirynth. In the first part the have to map the whole space to find the best way. In the next one they have to reach the finnish line as fast as possible. The first one to reach the the middle wins!
           name: Micromouse
-        robohackaton:
+        robohackathon:
           description: Laser, 3D printer, some electronic equipment and 40 hours of continuous hacking. Teams participating in RoboHackathon will have only so little to construct a robot that destroy opponents. Final battle will be carried in free-for-all style. The winner will be the last robot moving.
-          name: Robohackaton
+          name: Robohackathon
         sumo:
           description: In this one, robots need to show their strenght and cunning to overcome their opponent and push them out of the ring. The fights are dealt into 4 categories, which differ in robots maximal size and weight and the size of the ring <ul><li><strong>Sumo</strong> up to 3kg, up to 200x200mm, ring up to 154cm,</li><li><strong>miniSumo</strong> up to 500g, up to 100x100mm, ring up to 77cm,</li><li><strong>microSumo</strong> up to 100g, up to 50x50x50mm, ring up to 38,5cm,</li><li><strong>nanoSumo</strong> up to 25g, up to 25x25x25mm, ring up to 19,25cm.</li></ul>
           name: Sumo
@@ -90,8 +93,17 @@ default:
           <strong>NKSA</strong> <small>TBC</small>
       registration:
         _header: Registration soon!
+security:
+  register_success:
+    additional_info: If you do not see confirmation email, check your SPAM folder or contact us.
+    email_info: 'Registered email: <strong>%email%</strong>'
+    success_info: You have successfully registered account. Now you should confirm account and register your teams.
+    title: Well done!
 user:
   form:
-    user_login:
-      email: Email
-      password: Password
+    email: Email
+    forename: Forename
+    password: Password
+    password_repeat: Retype password
+    surname: Surename
+    terms: Accept terms

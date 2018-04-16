@@ -1,0 +1,55 @@
+.form-check {
+  padding-left: 0;
+
+  &.is-invalid {
+    input[type=checkbox] {
+      & + label {
+        &::before {
+          border: $input-border-width solid $red;
+        }
+      }
+    }
+  }
+
+  input[type=checkbox] {
+    display: none;
+
+    &:checked + label::before {
+      background: url("../img/checkbox.svg") no-repeat;
+      background-size: $custom-control-gutter;
+    }
+
+    & + label {
+      display: inline-flex;
+      align-items: center;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        margin-right: $input-padding-x;
+        background-color: $input-bg;
+        width: 20px;
+        height: 20px;
+        padding: $font-size-base * 3 / 4;
+        border: $input-border-width solid $input-border-color;
+        @if $enable-rounded {
+          border-radius: $input-border-radius;
+
+          @include media-breakpoint-up('sm') {
+            border-radius: $input-border-radius-sm;
+          }
+
+          @include media-breakpoint-up('lg') {
+            border-radius: $input-border-radius-lg;
+          }
+        } @else {
+          border-radius: 0;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -5,7 +5,6 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Repository;
 
 use BalticRobo\Website\Entity\Event\Event;
-use BalticRobo\Website\Entity\Event\EventCompetition;
 use BalticRobo\Website\Entity\Rule\Rule;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -22,7 +21,6 @@ class RuleRepository extends ServiceEntityRepository
     public function getCurrentRulesByLocale(Event $event, string $locale): Collection
     {
         $rules = $this->createQueryBuilder('r')
-            ->join(EventCompetition::class, 'ec')
             ->join(Event::class, 'e')
             ->where('e.id = :eventId')
             ->andWhere('r.locale = :locale')

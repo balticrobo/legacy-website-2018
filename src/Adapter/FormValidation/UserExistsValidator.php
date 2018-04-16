@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Adapter\FormValidation;
 
-use BalticRobo\Website\Service\User\UserService;
+use BalticRobo\Website\Service\UserService;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
