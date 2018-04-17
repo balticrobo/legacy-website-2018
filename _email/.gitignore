@@ -1,0 +1,11 @@
+# Config
+config.json
+
+# Cache
+/dist
+/.sass-cache
+
+# Yarn
+/node_modules/
+/npm-debug.log
+/yarn-error.log
