@@ -1,13 +1,17 @@
 {
   "mail": {
     "to": [
-      "Sample Recipient <sample@example.com>"
+      "test@example.com"
     ],
     "from": "Baltic Robo <inky@balticrobo.dev>",
     "smtp": {
+      "auth": {
+        "user": "",
+        "pass": ""
+      },
       "host": "mailhog",
       "secureConnection": false,
-      "port": 8025
+      "port": 1025
     }
   }
 }

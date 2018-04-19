@@ -3,6 +3,7 @@
 /var
 /public/build
 /public/bundles
+/public/email
 /assets/js/assets.js
 
 # Composer & Yarn

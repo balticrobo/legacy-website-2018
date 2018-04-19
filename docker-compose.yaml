@@ -58,7 +58,10 @@ services:
     user: node
     volumes:
       - ./_email:/var/www/app/_email
+      - ./public:/var/www/app/public
       - ./docs/docker/node_inky:/opt/docker
+    environment:
+      DEPLOY_EMAIL_ASSETS_DOMAIN: http://localhost:8000/email/
     ports:
       - 3000:3000
     working_dir: /var/www/app/_email
