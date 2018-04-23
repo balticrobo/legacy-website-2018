@@ -9,22 +9,20 @@ import inky from 'inky';
 import fs from 'fs';
 import siphon from 'siphon-media-query';
 import beep from 'beepbeep';
+import ext_replace from 'gulp-ext-replace';
 
 const $ = plugins();
 const PRODUCTION = !!(yargs.argv.production);
 let CONFIG;
 
-let pagesSrc = ['src/pages/**/*.html'];
-$.if(PRODUCTION, pagesSrc.push('!src/pages/foundation/**/*.html'));
-$.if(PRODUCTION, pagesSrc.push('!src/pages/**/index.html'));
-let imagesSrc = ['src/assets/img/**/*'];
-
-gulp.task('build',
-  gulp.series(clean, pages, sass, images, inline));
 gulp.task('default',
-  gulp.series('build', server, watch));
+  gulp.series(clean, pages, sass, images, inline));
+gulp.task('watch',
+  gulp.series('default', server, watch));
 gulp.task('mail',
-  gulp.series('build', readconf, mail));
+  gulp.series('default', readconf, mail));
+gulp.task('build',
+  gulp.series('default', copyToProd));
 
 function clean(done) {
   rimraf('./dist', done);
@@ -32,6 +30,12 @@ function clean(done) {
 }
 
 function pages() {
+  let pagesSrc = ['src/pages/**/*.html'];
+  if(PRODUCTION) {
+    pagesSrc.push('!src/pages/foundation/**/*.html');
+    pagesSrc.push('!src/pages/**/index.html');
+  }
+
   return gulp.src(pagesSrc)
     .pipe(panini({
       root: 'src/pages',
@@ -64,6 +68,8 @@ function sass() {
 }
 
 function images() {
+  let imagesSrc = ['src/assets/img/**/*'];
+
   return gulp.src(imagesSrc)
     .pipe($.imagemin())
     .pipe(gulp.dest('../public/email'));
@@ -124,4 +130,10 @@ function mail() {
   return gulp.src('dist/**/*.html')
     .pipe($.mail(CONFIG.mail))
     .pipe(gulp.dest('dist'));
+}
+
+function copyToProd() {
+  return gulp.src('dist/**/*.html')
+    .pipe(ext_replace('.html.twig'))
+    .pipe(gulp.dest('../templates/_email'));
 }
