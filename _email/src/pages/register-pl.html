@@ -4,10 +4,40 @@ subject: Zarejestrowano nowe konto
 ---
 
 <container>
+  {{> spacer 10 }}
   <row>
-    <columns small='12' large='6'>One column</columns>
-    <columns small='12' large='6'>
-      {{ globals.assets }}
+    <columns small='12' large='12'>
+      <p class='text-justify'>
+        Cześć,<br/>
+        Cieszymy się, że zarejestrowałeś się na stronie Bałtyckich Bitw Robotów!<br/><br/>
+        Jednak zanim zaczniesz musisz aktywować swoje konto. Po prostu wciśnij poniższy przycisk. Po aktywacji będziesz
+        mógł zarejestrować swoje drużyny, konstrukcje lub zgłosić chęć wystąpienia podczas konferencji. A to dopiero
+        początek atrakcji.
+      </p>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <center>
+        <button href="%url%" class="expanded">Aktywuj konto</button>
+      </center>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <p class='text-justify'>
+        Jeżeli przycisk nie działa, wklej poniższy adres do przeglądarki:<br/>
+        <a href='%url%'>%url%</a>
+      </p>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <p>
+        <small>
+          Jeżeli nie rejestrowałeś się, zignoruj tego maila.
+        </small>
+      </p>
     </columns>
   </row>
 </container>
