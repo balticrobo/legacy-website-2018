@@ -1,0 +1,17 @@
+---
+layout: default-text
+---
+Cześć,
+Cieszymy się, że zarejestrowałeś się na stronie Bałtyckich Bitw Robotów!
+Jednak zanim zaczniesz musisz aktywować swoje konto. Po prostu wklej link
+do swojej przeglądarki. Po aktywacji będziesz mógł zarejestrować swoje drużyny,
+konstrukcje lub zgłosić chęć wystąpienia podczas konferencji. A to dopiero
+początek atrakcji.
+
+Aby aktywować konto wklej link do przeglądarki:
+%url%
+
+Nie rejestrowałeś się? Zignoruj tego maila.
+
+Pozdrawiamy
+Zespół BBR

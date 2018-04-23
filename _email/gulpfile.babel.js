@@ -22,7 +22,7 @@ gulp.task('watch',
 gulp.task('mail',
   gulp.series('default', readconf, mail));
 gulp.task('build',
-  gulp.series('default', copyToProd));
+  gulp.series('default', copyHTMLToProd, copyTXTToProd));
 
 function clean(done) {
   rimraf('./dist', done);
@@ -32,6 +32,7 @@ function clean(done) {
 function pages() {
   let pagesSrc = ['src/pages/**/*.html'];
   if(PRODUCTION) {
+    pagesSrc.push('src/pages/**/*.txt');
     pagesSrc.push('!src/pages/foundation/**/*.html');
     pagesSrc.push('!src/pages/**/index.html');
   }
@@ -132,8 +133,14 @@ function mail() {
     .pipe(gulp.dest('dist'));
 }
 
-function copyToProd() {
+function copyHTMLToProd() {
   return gulp.src('dist/**/*.html')
     .pipe(ext_replace('.html.twig'))
+    .pipe(gulp.dest('../templates/_email'));
+}
+
+function copyTXTToProd() {
+  return gulp.src('dist/**/*.txt')
+    .pipe(ext_replace('.txt.twig'))
     .pipe(gulp.dest('../templates/_email'));
 }
