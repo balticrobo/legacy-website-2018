@@ -20,7 +20,7 @@ class UserRegisteredMailTemplate implements MailTemplateInterface
 
     public function getSubjectKey(): string
     {
-        return 'Confirm your account!';
+        return 'register.subject';
     }
 
     public function getParameters(): array

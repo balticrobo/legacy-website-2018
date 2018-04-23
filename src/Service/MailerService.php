@@ -25,19 +25,13 @@ class MailerService
 
     public function sendMail(MailRecipientInterface $recipient, MailTemplateInterface $mail): void
     {
+        $template = "_email/{$mail->getTemplateName()}-{$this->translator->getLocale()}";
         $message = (new \Swift_Message())
             ->setFrom('no-reply@baltyckiebitwyrobotow.pl', $this->eventName)
             ->setTo($recipient->getEmail(), $recipient->getName())
-            ->setSubject($this->translator->trans($mail->getSubjectKey()))
-            ->setBody($this->twig->render(
-                "_email/{$mail->getTemplateName()}-{$this->translator->getLocale()}.html.twig",
-                $mail->getParameters()
-            ), 'text/html')
-            ->addPart($this->twig->render(
-                "_email/{$mail->getTemplateName()}-{$this->translator->getLocale()}.txt.twig",
-                $mail->getParameters()
-            ), 'text/plain');
-
+            ->setSubject($this->translator->trans($mail->getSubjectKey(), [], 'emails'))
+            ->setBody($this->twig->render("{$template}.html.twig", $mail->getParameters()), 'text/html')
+            ->addPart($this->twig->render("{$template}.txt.twig", $mail->getParameters()), 'text/plain');
         $this->mailer->send($message);
     }
 }
