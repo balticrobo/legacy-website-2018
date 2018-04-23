@@ -11,11 +11,15 @@ use Symfony\Component\Translation\TranslatorInterface;
 class MailerService
 {
     private $mailer;
+    private $twig;
+    private $translator;
     private $eventName;
 
-    public function __construct(\Swift_Mailer $mailer, TranslatorInterface $translator)
+    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $twig, TranslatorInterface $translator)
     {
         $this->mailer = $mailer;
+        $this->twig = $twig;
+        $this->translator = $translator;
         $this->eventName = $translator->trans('_common.event_name');
     }
 
@@ -24,9 +28,15 @@ class MailerService
         $message = (new \Swift_Message())
             ->setFrom('no-reply@baltyckiebitwyrobotow.pl', $this->eventName)
             ->setTo($recipient->getEmail(), $recipient->getName())
-            ->setSubject($mail->getSubject())
-            ->setBody($mail->getBodyHtml(), 'text/html')
-            ->addPart($mail->getBodyText(), 'text/plain');
+            ->setSubject($this->translator->trans($mail->getSubjectKey()))
+            ->setBody($this->twig->render(
+                "_email/{$mail->getTemplateName()}-{$this->translator->getLocale()}.html.twig",
+                $mail->getParameters()
+            ), 'text/html')
+            ->addPart($this->twig->render(
+                "_email/{$mail->getTemplateName()}-{$this->translator->getLocale()}.txt.twig",
+                $mail->getParameters()
+            ), 'text/plain');
 
         $this->mailer->send($message);
     }

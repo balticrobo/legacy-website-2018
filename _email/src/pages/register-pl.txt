@@ -9,7 +9,7 @@ konstrukcje lub zgłosić chęć wystąpienia podczas konferencji. A to dopiero
 początek atrakcji.
 
 Aby aktywować konto wklej link do przeglądarki:
-%url%
+{{ param 'activateUrl' }}
 
 Nie rejestrowałeś się? Zignoruj tego maila.
 

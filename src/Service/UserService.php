@@ -43,6 +43,6 @@ class UserService
         $user = User::createFromRegisterDTO($dto, $now);
         $user->setPassword($this->passwordEncoder->encodePassword($user, $user->getPlainPassword()));
         $this->userRepository->save($user);
-        $this->mailerService->sendMail($user, new UserRegisteredMailTemplate());
+        $this->mailerService->sendMail($user, new UserRegisteredMailTemplate('http://localhost:8000/test'));
     }
 }

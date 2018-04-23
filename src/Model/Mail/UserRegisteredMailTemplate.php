@@ -6,18 +6,27 @@ namespace BalticRobo\Website\Model\Mail;
 
 class UserRegisteredMailTemplate implements MailTemplateInterface
 {
-    public function getSubject(): string
+    private $activateUrl;
+
+    public function __construct(string $activateUrl)
+    {
+        $this->activateUrl = $activateUrl;
+    }
+
+    public function getTemplateName(): string
+    {
+        return 'register';
+    }
+
+    public function getSubjectKey(): string
     {
         return 'Confirm your account!';
     }
 
-    public function getBodyHtml(): string
+    public function getParameters(): array
     {
-        return '<strong>Your account!</strong>';
-    }
-
-    public function getBodyText(): string
-    {
-        return 'Your account!';
+        return [
+            'activateUrl' => $this->activateUrl,
+        ];
     }
 }

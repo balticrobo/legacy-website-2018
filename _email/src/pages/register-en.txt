@@ -8,7 +8,7 @@ After activation you can register you teams, robots or call for talk at
 conference. And it is just beginning.
 
 To activate your account paste link in your browser:
-%url%
+{{ param 'activateUrl' }}
 
 Did not you registered? Ignore this email.
 

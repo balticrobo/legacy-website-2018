@@ -6,9 +6,9 @@ namespace BalticRobo\Website\Model\Mail;
 
 interface MailTemplateInterface
 {
-    public function getSubject(): string;
+    public function getTemplateName(): string;
 
-    public function getBodyHtml(): string;
+    public function getSubjectKey(): string;
 
-    public function getBodyText(): string;
+    public function getParameters(): array;
 }

@@ -17,7 +17,7 @@ subject: Registered new account
   <row>
     <columns small='12' large='12'>
       <center>
-        <button href="%url%" class="expanded">Activate account</button>
+        <button href="{{ param 'activateUrl' }}" class="expanded">Activate account</button>
       </center>
     </columns>
   </row>
@@ -25,7 +25,7 @@ subject: Registered new account
     <columns small='12' large='12'>
       <p class='text-justify'>
         If button does not work properly, paste link below:<br/>
-        <a href='%url%'>%url%</a>
+        <a href='{{ param 'activateUrl' }}'>{{ param 'activateUrl' }}</a>
       </p>
     </columns>
   </row>
