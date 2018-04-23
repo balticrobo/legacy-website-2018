@@ -5,7 +5,11 @@
         <img src='{{ globals.assets }}logo-{{ locale }}.png'>
       </columns>
       <columns small='6'>
-        <p class='text-right'>BBR</p>
+        <p class='text-right'>
+          <small>
+            {{#eventDetails locale }}{{/eventDetails}}
+          </small>
+        </p>
       </columns>
     </row>
   </container>

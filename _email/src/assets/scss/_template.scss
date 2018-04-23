@@ -18,3 +18,14 @@
     padding: 20px;
   }
 }
+
+.footer {
+  .container {
+    background: transparent;
+
+    p {
+      font-size: $global-font-size * 0.75;
+      color: darken($light-gray, 30%);
+    }
+  }
+}
