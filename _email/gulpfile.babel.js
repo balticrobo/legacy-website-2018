@@ -8,13 +8,17 @@ import lazypipe from 'lazypipe';
 import inky from 'inky';
 import fs from 'fs';
 import siphon from 'siphon-media-query';
-import path from 'path';
-import merge from 'merge-stream';
 import beep from 'beepbeep';
 
 const $ = plugins();
 const PRODUCTION = !!(yargs.argv.production);
 let CONFIG;
+
+let pagesSrc = ['src/pages/**/*.html'];
+$.if(PRODUCTION, pagesSrc.push('!src/pages/foundation/**/*.html'));
+$.if(PRODUCTION, pagesSrc.push('!src/pages/**/index.html'));
+let imagesSrc = ['src/assets/img/**/*'];
+
 gulp.task('build',
   gulp.series(clean, pages, sass, images, inline));
 gulp.task('default',
@@ -28,7 +32,7 @@ function clean(done) {
 }
 
 function pages() {
-  return gulp.src(['src/pages/**/*.html'])
+  return gulp.src(pagesSrc)
     .pipe(panini({
       root: 'src/pages',
       layouts: 'src/layouts',
@@ -60,7 +64,7 @@ function sass() {
 }
 
 function images() {
-  return gulp.src(['src/assets/img/**/*'])
+  return gulp.src(imagesSrc)
     .pipe($.imagemin())
     .pipe(gulp.dest('../public/email'));
 }
