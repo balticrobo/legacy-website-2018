@@ -1,0 +1,41 @@
+---
+layout: default
+subject: Registered new account
+---
+<container>
+  {{> spacer 10 }}
+  <row>
+    <columns small='12' large='12'>
+      <p class='text-justify'>
+        Hi,<br/>
+        We are pleased that you already registered at Baltic Robo Battles website!<br/><br/>
+        Before you start, you have to activate your account. Just click button below. After activation you can register
+        you teams, robots or call for talk at conference. And it is just beginning.
+      </p>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <center>
+        <button href="{{ param 'activateUrl' }}" class="expanded">Activate account</button>
+      </center>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <p class='text-justify'>
+        If button does not work properly, paste link below:<br/>
+        <a href='{{ param 'activateUrl' }}'>{{ param 'activateUrl' }}</a>
+      </p>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <p>
+        <small>
+          Did not you registered? Ignore this email.
+        </small>
+      </p>
+    </columns>
+  </row>
+</container>

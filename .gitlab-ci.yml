@@ -1,5 +1,5 @@
 variables:
-  APP_ENV: dev
+  APP_ENV: test
 
 stages:
   - Build (test)
@@ -27,6 +27,7 @@ stages:
     paths:
       - vendor
       - node_modules
+      - _email/node_modules
     policy: pull
 
 Build for test:
@@ -35,11 +36,13 @@ Build for test:
   script:
     - composer install
     - yarn install
+    - cd _email && yarn install
   cache:
     key: test
     paths:
       - vendor
       - node_modules
+      - _email/node_modules
     policy: pull-push
 
 Lint Yaml:
@@ -86,6 +89,7 @@ NPM Packages:
   tags: *tags_definition
   script:
     - yarn outdated
+    - cd _email && yarn outdated
   allow_failure: true
   cache: *cache_definition
 
@@ -120,11 +124,19 @@ Build prod:
   variables:
     APP_ENV: prod
   script:
+    # symfony
     - composer install --no-dev --optimize-autoloader --no-scripts --no-suggest
     - bin/console assets:install
+    # encore
     - yarn install
     - node assets.config.js
     - yarn build
+    # inky
+    - cd _email
+    - yarn install
+    - yarn build
+    - cd ..
+    # artifacts
     - mkdir -p dist
     - cp -r bin config public src templates translations vendor composer.json dist
   cache:
@@ -132,6 +144,7 @@ Build prod:
     paths:
       - vendor
       - node_modules
+      - _email/node_modules
     policy: pull-push
 
 Deploy develop:
@@ -144,6 +157,7 @@ Deploy develop:
   variables:
     DEPLOY_HOST: $DEVELOP_HOST
     DEPLOY_DIRECTORY: $DEVELOP_DIRECTORY
+    DEPLOY_EMAIL_ASSETS_DOMAIN: $DEVELOP_EMAIL_ASSETS_DOMAIN
   before_script:
     - 'echo User-agent: \* > dist/public/robots.txt'
     - 'echo Disallow: / >> dist/public/robots.txt'
@@ -160,4 +174,5 @@ Deploy master:
   variables:
     DEPLOY_HOST: $PROD_HOST
     DEPLOY_DIRECTORY: $PROD_DIRECTORY
+    DEPLOY_EMAIL_ASSETS_DOMAIN: $PROD_EMAIL_ASSETS_DOMAIN
   script: *deploy_definition

@@ -3,7 +3,12 @@
 /var
 /public/build
 /public/bundles
+/public/email
 /assets/js/assets.js
+
+# Emails
+/templates/_email/*
+!/templates/_email/.gitkeep
 
 # Composer & Yarn
 /vendor

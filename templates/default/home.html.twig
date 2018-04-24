@@ -10,6 +10,7 @@
     {{ macro.simple_section_header('competitions', true) }}
     <div class='container'>
       <div class='row justify-content-center'>
+        {# TODO: get list of competitions from database #}
         {{ macro.competition_tile('sumo') }}
         {{ macro.competition_tile('line_follower') }}
         {{ macro.competition_tile('freestyle') }}
@@ -27,7 +28,34 @@
     {{ macro.simple_section('conference') }}
     {{ macro.simple_section('location') }}
     {{ macro.simple_section('history') }}
-    {{ macro.simple_section('organisers') }}
+    {{ macro.simple_section_header('organisers') }}
+    <div class='container'>
+      <div class='row'>
+        <div class='col-12'>
+          <div class="media">
+            <img class="img-organiser align-self-center mr-3 d-none d-sm-block" src="{{ asset('build/images/organiser-skalp.png') }}" alt=""/>
+            <div class="media-body">
+              <h5 class="mt-0">{{ ('default.home.section.organisers.content.skalp_header')|trans }}</h5>
+              <p class='text-justify'>{{ ('default.home.section.organisers.content.skalp')|trans|raw }}</p>
+            </div>
+          </div>
+          <div class="media">
+            <div class="media-body">
+              <h5 class="mt-0">{{ ('default.home.section.organisers.content.nksa_header')|trans }}</h5>
+              <p class='text-justify'>{{ ('default.home.section.organisers.content.nksa')|trans|raw }}</p>
+            </div>
+            <img class="img-organiser align-self-center ml-3 d-none d-sm-block" src="{{ asset('build/images/organiser-nksa.png') }}" alt=""/>
+          </div>
+          <div class="media">
+            <img class="img-organiser align-self-center mr-3 d-none d-sm-block" src="{{ asset('build/images/organiser-gpnt-' ~ app.request.locale ~ '.png') }}" alt=""/>
+            <div class="media-body">
+              <h5 class="mt-0">{{ ('default.home.section.organisers.content.gpnt_header')|trans }}</h5>
+              <p class='text-justify'>{{ ('default.home.section.organisers.content.gpnt')|trans|raw }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class='container'>
       <div class='d-flex flex-column flex-md-row-reverse'>
         <div class='contact text-center'>
@@ -43,7 +71,7 @@
           <div class='contact-answer'>{{ 'default.home.section.contact.more_soon'|trans }}</div>
         </div>
         <div class='contact text-center'>
-          <img src='{{ asset('build/images/logo-circle-' ~ app.request.locale ~ '.svg') }}' alt='' class='img-logo-circle'/>
+          <img src='{{ asset('build/images/logo-circle-' ~ app.request.locale ~ '.svg') }}' alt='' class='img-logo-circle p-3'/>
         </div>
       </div>
     </div>

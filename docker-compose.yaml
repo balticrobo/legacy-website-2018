@@ -8,6 +8,7 @@ services:
     volumes:
       - .:/var/www/app
       - ./docs/docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./docs/docker/php:/opt/docker
       - composer_cache:/root/.composer/cache
     environment:
       COMPOSER_ALLOW_SUPERUSER: 1
@@ -16,14 +17,15 @@ services:
       DATABASE_URL: mysql://root:mysql@mysql:3306/balticrobo
       MAILER_URL: smtp://mailhog:1025
     working_dir: /var/www/app
-    command: ./docs/docker/php/start.sh
+    command: /opt/docker/start.sh
   node:
-    image: node:9.11
+    image: node:9
     user: node
     volumes:
       - .:/var/www/app
+      - ./docs/docker/node:/opt/docker
     working_dir: /var/www/app
-    command: ./docs/docker/node/start.sh
+    command: /opt/docker/start.sh
   nginx:
     image: nginx:1.13
     depends_on:
@@ -49,7 +51,22 @@ services:
     ports:
       - 8025:8025
     restart: always
-
+  node_inky:
+    build:
+      dockerfile: Dockerfile
+      context: ./docs/docker/node_inky
+    user: node
+    volumes:
+      - ./_email:/var/www/app/_email
+      - ./public:/var/www/app/public
+      - ./templates/_email:/var/www/app/templates/_email
+      - ./docs/docker/node_inky:/opt/docker
+    environment:
+      DEPLOY_EMAIL_ASSETS_DOMAIN: http://localhost:8000/email/
+    ports:
+      - 3000:3000
+    working_dir: /var/www/app/_email
+    command: /opt/docker/start.sh
 
 volumes:
   composer_cache:

@@ -1,0 +1,31 @@
+.header {
+  background: $light-gray;
+
+  .container {
+    background: transparent;
+  }
+
+  .columns {
+    padding-bottom: 0;
+  }
+
+  p {
+    color: #fff;
+    padding-top: 15px;
+  }
+
+  .wrapper-inner {
+    padding: 20px;
+  }
+}
+
+.footer {
+  .container {
+    background: transparent;
+
+    p {
+      font-size: $global-font-size * 0.75;
+      color: darken($light-gray, 30%);
+    }
+  }
+}
