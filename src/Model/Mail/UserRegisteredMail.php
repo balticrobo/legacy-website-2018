@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Model\Mail;
 
-class UserRegisteredMailTemplate implements MailTemplateInterface
+class UserRegisteredMail implements MailTemplateInterface
 {
     private $activateUrl;
 

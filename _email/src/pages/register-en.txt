@@ -6,6 +6,7 @@ We are pleased that you already registered at Baltic Robo Battles website!
 Before you start, you have to activate your account. Enter link in your browser.
 After activation you can register you teams, robots or call for talk at
 conference. And it is just beginning.
+You have 24 hours to activate account.
 
 To activate your account paste link in your browser:
 {{ param 'activateUrl' }}

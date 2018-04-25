@@ -4,6 +4,10 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Controller;
 
+use BalticRobo\Website\Exception\User\InvalidTokenException;
+use BalticRobo\Website\Exception\User\TokenPeriodValidException;
+use BalticRobo\Website\Exception\User\UserAlreadyActivatedException;
+use BalticRobo\Website\Exception\User\UserNotFoundException;
 use BalticRobo\Website\Form\User\UserLoginType;
 use BalticRobo\Website\Form\User\UserRegisterType;
 use BalticRobo\Website\Model\User\UserLoginDTO;
@@ -89,20 +93,76 @@ class SecurityController extends Controller
      * @Route("/register/success")
      * @Method("GET")
      *
-     * @param SessionInterface $session
+     * @param Request $request
      *
      * @return Response
      */
-    public function registerSuccessAction(SessionInterface $session): Response
+    public function registerSuccessAction(Request $request): Response
     {
-        $email = $session->get('registered_email');
+        $email = $request->getSession()->get('registered_email');
         if (!$email) {
             return $this->redirectToRoute('balticrobo_website_default_home');
         }
-        $session->set('registered_email', null);
+        $request->getSession()->set('registered_email', null);
 
         return $this->render('security/register_success.html.twig', [
             'email' => $email,
+        ]);
+    }
+
+    /**
+     * @Route("/register/{token}/activate", requirements={"token" = "\w{32}"})
+     * @Method("GET")
+     *
+     * @param string $token
+     *
+     * @return Response
+     */
+    public function activateAction(string $token): Response
+    {
+        try {
+            $user = $this->userService->getByToken($token);
+            $this->userService->activate($user);
+        } catch (UserAlreadyActivatedException $e) {
+            $success = false;
+            $message = $e->getMessage();
+        } catch (InvalidTokenException $e) {
+            if (isset($user)) {
+                return $this->redirectToRoute('balticrobo_website_security_recreatetoken', [
+                    'email' => $user->getEmail(),
+                ]);
+            }
+            $success = false;
+            $message = $e->getMessage();
+        }
+
+        return $this->render('security/activate.html.twig', [
+            'success' => $success ?? true,
+            'message' => $message ?? '',
+        ]);
+    }
+
+    /**
+     * @Route("/register/{email}/recreate-token")
+     * @Method("GET")
+     *
+     * TODO: This action is dispatched when User tries to activate account after token validity period expires, refactor it!
+     *
+     * @param string $email
+     */
+    public function recreateTokenAction(string $email): Response
+    {
+        try {
+            $user = $this->userService->getByEmail($email);
+            $this->userService->recreateToken($user, new \DateTimeImmutable());
+        } catch (UserNotFoundException | UserAlreadyActivatedException | TokenPeriodValidException $e) {
+            $success = false;
+            $message = $e->getMessage();
+        }
+
+        return $this->render('security/resend_validation_token.html.twig', [
+            'success' => $success ?? true,
+            'message' => $message ?? '',
         ]);
     }
 }

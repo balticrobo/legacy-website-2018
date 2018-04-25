@@ -33,6 +33,7 @@ _menu:
 buttons:
   login: Login
   register: Register
+  resend_validation_token: Resend validation token
 event:
   rule:
     _print_header: Regulations for<br/><strong>%competition%</strong>

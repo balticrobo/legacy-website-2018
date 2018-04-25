@@ -33,6 +33,7 @@ _menu:
 buttons:
   login: Zaloguj się
   register: Zarejestruj się
+  resend_validation_token: Wyślij ponownie token aktywacyjny
 event:
   rule:
     _print_header: Regulamin konkurencji<br/><strong>%competition%</strong>

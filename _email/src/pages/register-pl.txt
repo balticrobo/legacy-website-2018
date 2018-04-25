@@ -7,6 +7,7 @@ Jednak zanim zaczniesz musisz aktywować swoje konto. Po prostu wklej link
 do swojej przeglądarki. Po aktywacji będziesz mógł zarejestrować swoje drużyny,
 konstrukcje lub zgłosić chęć wystąpienia podczas konferencji. A to dopiero
 początek atrakcji.
+Masz 24 godziny na aktywację.
 
 Aby aktywować konto wklej link do przeglądarki:
 {{ param 'activateUrl' }}
