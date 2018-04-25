@@ -24,13 +24,13 @@
               <h4 class="alert-heading">{{ 'security.activate.title.unsuccessful'|trans }}</h4>
               <p>{{ 'security.activate.unsuccess_info'|trans }}</p>
               <hr/>
-              <h6>{{ 'security.activate.exception_message' }}</h6>
-              <p>{{ message|trans }}</p>
+              <h6>{{ 'security.activate.exception_message'|trans }}</h6>
+              <p>{{ message|trans({}, 'exceptions') }}</p>
               <hr/>
               <p>
                 {{ 'security.activate.register'|trans }}:
                 <a href='{{ path('balticrobo_website_security_register') }}'>{{ 'buttons.register'|trans }}</a>
-              <br/>
+              </p>
             </div>
           {% endif %}
         </div>

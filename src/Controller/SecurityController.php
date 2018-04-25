@@ -149,6 +149,8 @@ class SecurityController extends Controller
      * TODO: This action is dispatched when User tries to activate account after token validity period expires, refactor it!
      *
      * @param string $email
+     *
+     * @return Response
      */
     public function recreateTokenAction(string $email): Response
     {

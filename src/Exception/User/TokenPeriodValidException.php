@@ -8,6 +8,6 @@ class TokenPeriodValidException extends \Exception
 {
     public function __construct()
     {
-        parent::__construct('exception.user.token_period_valid');
+        parent::__construct('user.token_period_valid');
     }
 }

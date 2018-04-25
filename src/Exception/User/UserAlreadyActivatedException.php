@@ -8,6 +8,6 @@ class UserAlreadyActivatedException extends \Exception
 {
     public function __construct()
     {
-        parent::__construct('exception.user.user_already_activated');
+        parent::__construct('user.user_already_activated');
     }
 }

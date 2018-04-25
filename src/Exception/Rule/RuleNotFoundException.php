@@ -8,6 +8,6 @@ class RuleNotFoundException extends \Exception
 {
     public function __construct()
     {
-        parent::__construct('exception.rule.rule_not_found');
+        parent::__construct('rule.rule_not_found');
     }
 }

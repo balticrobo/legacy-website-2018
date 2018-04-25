@@ -95,6 +95,15 @@ default:
       registration:
         _header: Rejestracja wkrótce!
 security:
+  activate:
+    exception_message: 'Komunikat o błędzie:'
+    login: Teraz możesz się zalogować
+    register: Zarejestruj się, jeżeli nie masz jeszcze konta
+    success_info: Konto jest teraz aktywne. Zarejestruj swoje drużyny i konstrukcje!
+    title:
+      successful: Aktywacja powiodła się
+      unsuccessful: Aktywacja nie powiodła się
+    unsuccess_info: Konto nie zostało aktywowane. Sprawdź komunikat o błędzie, aby dowiedzieć się więcej o przyczynie. Jeżeli uważasz, że to jest błąd, skontaktuj się z nami.
   register_success:
     additional_info: Jeżeli nie widizsz wiadomości email, sprawdź folder SPAM w swojej skrzynce pocztowej lub skontaktuj się z nami.
     email_info: 'Email podany podczas rejestracji: <strong>%email%</strong>'

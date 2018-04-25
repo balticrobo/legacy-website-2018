@@ -86,6 +86,7 @@ class UserService
 
         $user->setToken($this->generateToken(), $now);
         $this->userRepository->save($user);
+        // TODO: Create email content
         $this->mailerService->sendMail($user, new UserRecreatedRegistrationTokenMail($this->getActivationUrl($user)));
     }
 

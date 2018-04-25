@@ -8,6 +8,6 @@ class EventCompetitionNotFoundException extends \Exception
 {
     public function __construct()
     {
-        parent::__construct('exception.event.event_competition_not_found');
+        parent::__construct('event.event_competition_not_found');
     }
 }

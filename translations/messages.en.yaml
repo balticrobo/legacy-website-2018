@@ -99,6 +99,15 @@ default:
       registration:
         _header: Registration soon!
 security:
+  activate:
+    exception_message: 'Exception message:'
+    login: Now you can
+    register: Now you can
+    success_info: Account now is active. Enjoy!
+    title:
+      successful: Activation successed
+      unsuccessful: Activation failed
+    unsuccess_info: Account activation failed, read exception message for more info. If it should not happend, contact us.
   register_success:
     additional_info: If you do not see confirmation email, check your SPAM folder or contact us.
     email_info: 'Registered email: <strong>%email%</strong>'
