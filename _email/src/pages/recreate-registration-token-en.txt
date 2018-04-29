@@ -1,0 +1,14 @@
+---
+layout: default-text
+---
+Hi,
+You old token expired and we created new one for you. Now you can activate account.
+You have 24 hours to activate account.
+
+To activate your account paste link in your browser:
+{{ param 'activateUrl' }}
+
+Did not you registered? Contact with us.
+
+Kind regards
+BRB team

@@ -1,0 +1,40 @@
+---
+layout: default
+subject: New activation token
+---
+<container>
+  {{> spacer 10 }}
+  <row>
+    <columns small='12' large='12'>
+      <p class='text-justify'>
+        Hi,<br/>
+        You old token expired and we created new one for you. Now you can activate account.<br/>
+        You have 24 hours to activate account.
+      </p>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <center>
+        <button href="{{ param 'activateUrl' }}" class="expanded">Activate account</button>
+      </center>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <p class='text-justify'>
+        If button does not work properly, paste link below:<br/>
+        <a href='{{ param 'activateUrl' }}'>{{ param 'activateUrl' }}</a>
+      </p>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <p>
+        <small>
+          Did not you registered? Contact with us.
+        </small>
+      </p>
+    </columns>
+  </row>
+</container>

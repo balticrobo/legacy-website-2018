@@ -1,2 +1,4 @@
+recreate_registration_token:
+  subject: New confirmation token
 register:
   subject: Confirm your account
