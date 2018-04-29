@@ -30,6 +30,7 @@ _menu:
   home: Homepage
   rules: Rules
 buttons:
+  forgotten_password: Reset password
   login: Login
   register: Register
   resend_validation_token: Resend validation token
@@ -109,6 +110,9 @@ security:
     unsuccess_info: Account activation failed, read exception message for more info. If it should not happend, contact us.
   login:
     dont_have_account: Do not have an account?
+    forgot_password: Forgotten password?
+  register:
+    read_terms: Terms (will open in new window)
   register_success:
     additional_info: If you do not see confirmation email, check your SPAM folder or contact us.
     email_info: 'Registered email: <strong>%email%</strong>'
@@ -128,4 +132,4 @@ user:
     password: Password
     password_repeat: Retype password
     surname: Surename
-    terms: Accept terms
+    terms: Accept terms*

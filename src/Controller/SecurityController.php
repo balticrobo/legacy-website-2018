@@ -8,6 +8,7 @@ use BalticRobo\Website\Exception\User\InvalidTokenException;
 use BalticRobo\Website\Exception\User\TokenPeriodValidException;
 use BalticRobo\Website\Exception\User\UserAlreadyActivatedException;
 use BalticRobo\Website\Exception\User\UserNotFoundException;
+use BalticRobo\Website\Form\User\UserEmailType;
 use BalticRobo\Website\Form\User\UserLoginType;
 use BalticRobo\Website\Form\User\UserRegisterType;
 use BalticRobo\Website\Model\User\UserLoginDTO;
@@ -18,10 +19,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Translation\TranslatorInterface;
 
+/**
+ * @Route("/security")
+ */
 class SecurityController extends Controller
 {
     private $authUtils;
@@ -68,18 +71,17 @@ class SecurityController extends Controller
      * @Route("/register")
      * @Method({"GET", "POST"})
      *
-     * @param Request          $request
-     * @param SessionInterface $session
+     * @param Request $request
      *
      * @return Response
      */
-    public function registerAction(Request $request, SessionInterface $session): Response
+    public function registerAction(Request $request): Response
     {
         $form = $this->createForm(UserRegisterType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->userService->add($form->getData(), new \DateTimeImmutable());
-            $session->set('registered_email', $form->getData()->getEmail());
+            $request->getSession()->set('registered_email', $form->getData()->getEmail());
 
             return $this->redirectToRoute('balticrobo_website_security_registersuccess');
         }
@@ -111,7 +113,7 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/register/{token}/activate", requirements={"token" = "\w{32}"})
+     * @Route("/activate/{token}", requirements={"token" = "\w{32}"})
      * @Method("GET")
      *
      * @param string $token
@@ -143,7 +145,7 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/register/{email}/recreate-token")
+     * @Route("/token/{email}/recreate")
      * @Method("GET")
      *
      * TODO: This action is dispatched when User tries to activate account after token validity period expires, refactor it!
@@ -167,4 +169,52 @@ class SecurityController extends Controller
             'message' => $message ?? '',
         ]);
     }
+
+    /**
+     * @Route("/forgotten-password/request")
+     * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function requestForgottenPasswordAction(Request $request): Response
+    {
+        $form = $this->createForm(UserEmailType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+//            TODO: Implement resetting forgotten password, remember to recreate token
+//            $this->userService->requestForgottenPassword($form->getData(), new \DateTimeImmutable());
+            $request->getSession()->set('forgotten_password_email', $form->getData()->getEmail());
+
+            return $this->redirectToRoute('balticrobo_website_security_forgottenpasswordsuccess');
+        }
+
+        return $this->render('security/request_forgotten_password.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/forgotten-password/success")
+     * @Method("GET")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function forgottenPasswordSuccessAction(Request $request): Response
+    {
+        $email = $request->getSession()->get('forgotten_password_email');
+        if (!$email) {
+            return $this->redirectToRoute('balticrobo_website_default_home');
+        }
+        $request->getSession()->set('forgotten_password_email', null);
+
+        return $this->render('security/forgotten_password_success.html.twig', [
+            'email' => $email,
+        ]);
+    }
+
+    // TODO: Add handling request forgotten password - changing password on demand
 }

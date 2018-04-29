@@ -30,6 +30,7 @@ _menu:
   home: Główna
   rules: Regulaminy
 buttons:
+  forgotten_password: Zresetuj hasło
   login: Zaloguj się
   register: Zarejestruj się
   resend_validation_token: Wyślij ponownie token aktywacyjny
@@ -105,6 +106,9 @@ security:
     unsuccess_info: Konto nie zostało aktywowane. Sprawdź komunikat o błędzie, aby dowiedzieć się więcej o przyczynie. Jeżeli uważasz, że to jest błąd, skontaktuj się z nami.
   login:
     dont_have_account: Nie masz jeszcze konta?
+    forgot_password: Zapomniałeś hasło?
+  register:
+    read_terms: Regulamin (otwarcie w nowej karcie)
   register_success:
     additional_info: Jeżeli nie widizsz wiadomości email, sprawdź folder SPAM w swojej skrzynce pocztowej lub skontaktuj się z nami.
     email_info: 'Email podany podczas rejestracji: <strong>%email%</strong>'
@@ -124,4 +128,4 @@ user:
     password: Hasło
     password_repeat: Powtórz hasło
     surname: Nazwisko
-    terms: Akceptuję regulamin
+    terms: Akceptuję regulamin*
