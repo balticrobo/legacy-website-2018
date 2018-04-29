@@ -26,9 +26,8 @@ _common:
     microsumo: MicroSumo
     nanosumo: NanoSumo
 _menu:
+  competitor_zone: Competitor zone
   home: Homepage
-  login: Login
-  register: Register
   rules: Rules
 buttons:
   login: Login
@@ -108,11 +107,20 @@ security:
       successful: Activation successed
       unsuccessful: Activation failed
     unsuccess_info: Account activation failed, read exception message for more info. If it should not happend, contact us.
+  login:
+    dont_have_account: Do not have an account?
   register_success:
     additional_info: If you do not see confirmation email, check your SPAM folder or contact us.
     email_info: 'Registered email: <strong>%email%</strong>'
     success_info: You have successfully registered account. Now you should confirm account and register your teams.
     title: Well done!
+  resend_validation_token:
+    exception_message: 'Exception message:'
+    success_info: New activation token was created and send to you. Check your inbox.
+    title:
+      successful: New token created
+      unsuccessful: Token creation failed
+    unsuccess_info: Something somewhere went terribly wrong. Contact with us.
 user:
   form:
     email: Email

@@ -182,7 +182,7 @@ class User implements AdvancedUserInterface, MailRecipientInterface
         $this->tokenRequestedAt = $now;
     }
 
-    public function isTokenValid(string $token): bool
+    public function isTokenValid(?string $token): bool
     {
         $interval = \DateInterval::createFromDateString(self::TOKEN_VALIDATION_PERIOD);
 
