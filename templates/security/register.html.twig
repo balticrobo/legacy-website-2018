@@ -27,5 +27,11 @@
       </div>
       {{ form_end(form) }}
     </div>
+    <div class='container col-12 col-md-6 offset-md-3 pb-3'>
+      <hr/>
+      <a href='{{ path('balticrobo_website_default_terms') }}'>
+        * {{ 'security.register.read_terms'|trans }}
+      </a>
+    </div>
   </div>
 {% endblock %}
