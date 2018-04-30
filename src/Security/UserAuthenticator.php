@@ -93,13 +93,13 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator
 
     protected function getTargetRedirectUrl(Request $request): ?string
     {
+        // TODO: It's not working :( This session isn't creating
         return $request->getSession()->get('_security.app_web.target_path');
     }
 
     protected function getDefaultTargetRedirectUrl(): string
     {
-        // TODO: Change this
-        return $this->router->generate('balticrobo_website_default_home');
+        return $this->router->generate('balticrobo_website_competitor_dashboard');
     }
 
     private function validateCsrfToken(string $token): void

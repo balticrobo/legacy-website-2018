@@ -1,3 +1,5 @@
+forgotten_password:
+  subject: Forgotten password
 recreate_registration_token:
   subject: New confirmation token
 register:

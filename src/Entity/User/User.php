@@ -126,6 +126,20 @@ class User implements AdvancedUserInterface, MailRecipientInterface
         return array_unique(array_merge(['ROLE_USER'], $this->roles));
     }
 
+    public function addRole(string $role): void
+    {
+        $this->roles = array_unique(array_merge([$role], $this->roles));
+    }
+
+    public function removeRole(string $role): void
+    {
+        $key = array_search($role, $this->roles, true);
+        if ($key === false) {
+            return;
+        }
+        unset($this->roles[$key]);
+    }
+
     public function getPassword(): string
     {
         return $this->password;
@@ -182,11 +196,16 @@ class User implements AdvancedUserInterface, MailRecipientInterface
         $this->tokenRequestedAt = $now;
     }
 
-    public function isTokenValid(?string $token): bool
+    public function unsetToken(): void
+    {
+        $this->token = null;
+    }
+
+    public function isTokenValid(): bool
     {
         $interval = \DateInterval::createFromDateString(self::TOKEN_VALIDATION_PERIOD);
 
-        return $this->getToken() === $token && $this->getTokenRequestedAt()->add($interval) >= new \DateTimeImmutable();
+        return $this->getTokenRequestedAt()->add($interval) >= new \DateTimeImmutable();
     }
 
     public function getSalt(): ?string
@@ -201,7 +220,8 @@ class User implements AdvancedUserInterface, MailRecipientInterface
     public function activate(): void
     {
         $this->active = true;
-        $this->token = null;
+        $this->unsetToken();
+        $this->addRole('ROLE_COMPETITOR');
     }
 
     private function getTokenRequestedAt(): \DateTimeImmutable

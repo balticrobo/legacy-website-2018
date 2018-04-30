@@ -8,9 +8,12 @@ use BalticRobo\Website\Entity\User\User;
 use BalticRobo\Website\Exception\User\InvalidTokenException;
 use BalticRobo\Website\Exception\User\TokenPeriodValidException;
 use BalticRobo\Website\Exception\User\UserAlreadyActivatedException;
+use BalticRobo\Website\Exception\User\UserNotActivatedException;
 use BalticRobo\Website\Exception\User\UserNotFoundException;
+use BalticRobo\Website\Model\Mail\UserForgottenPasswordMail;
 use BalticRobo\Website\Model\Mail\UserRecreatedRegistrationTokenMail;
 use BalticRobo\Website\Model\Mail\UserRegisteredMail;
+use BalticRobo\Website\Model\User\UserPasswordDTO;
 use BalticRobo\Website\Model\User\UserRegisterDTO;
 use BalticRobo\Website\Repository\UserRepository;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -69,25 +72,49 @@ class UserService
     {
         if ($user->isEnabled()) {
             throw new UserAlreadyActivatedException();
-        } elseif (!$user->isTokenValid($user->getToken())) {
+        } elseif (!$user->isTokenValid()) {
             throw new InvalidTokenException();
         }
+
         $user->activate();
         $this->userRepository->save($user);
     }
 
-    public function recreateToken(User $user, \DateTimeImmutable $now): void
+    public function recreateActivationToken(User $user, \DateTimeImmutable $now): void
     {
         if ($user->isEnabled()) {
             throw new UserAlreadyActivatedException();
-        } elseif ($user->isTokenValid($user->getToken())) {
+        } elseif ($user->isTokenValid()) {
             throw new TokenPeriodValidException();
         }
 
         $user->setToken($this->generateToken(), $now);
         $this->userRepository->save($user);
-        // TODO: Create email content
         $this->mailerService->sendMail($user, new UserRecreatedRegistrationTokenMail($this->getActivationUrl($user)));
+    }
+
+    public function prepareToResetPassword(User $user, \DateTimeImmutable $now): void
+    {
+        if (!$user->isEnabled()) {
+            throw new UserNotActivatedException();
+        }
+
+        $user->setToken($this->generateToken(), $now);
+        $this->userRepository->save($user);
+        $this->mailerService->sendMail($user, new UserForgottenPasswordMail($this->getResetPasswordUrl($user)));
+    }
+
+    public function resetPassword(User $user, UserPasswordDTO $password): void
+    {
+        if (!$user->isEnabled()) {
+            throw new UserNotActivatedException();
+        } elseif (!$user->isTokenValid()) {
+            throw new InvalidTokenException();
+        }
+
+        $user->setPassword($this->passwordEncoder->encodePassword($user, $password->getPassword()));
+        $user->unsetToken();
+        $this->userRepository->save($user);
     }
 
     private function generateToken(): string
@@ -98,6 +125,13 @@ class UserService
     private function getActivationUrl(User $user): string
     {
         return $this->router->generate('balticrobo_website_security_activate', [
+            'token' => $user->getToken(),
+        ], UrlGeneratorInterface::ABSOLUTE_URL);
+    }
+
+    private function getResetPasswordUrl(User $user): string
+    {
+        return $this->router->generate('balticrobo_website_security_resetforgottenpassword', [
             'token' => $user->getToken(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);
     }

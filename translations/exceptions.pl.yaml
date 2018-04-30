@@ -6,4 +6,5 @@ user:
   invalid_token: Nieprawidłowy token.
   token_period_valid: Token wygasł.
   user_already_activated: Użytkownik jest już aktywny.
+  user_not_activated: Użytkownik nieaktywny.
   user_not_found: Użytkownik nie znaleziony.
