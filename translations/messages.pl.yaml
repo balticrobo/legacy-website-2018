@@ -26,13 +26,15 @@ _common:
     microsumo: MicroSumo
     nanosumo: NanoSumo
 _menu:
+  competitor_zone: Strefa zawodnika
+  for_kids: Dla dzieci
   home: Główna
-  login: Logowanie
-  register: Rejestracja
   rules: Regulaminy
 buttons:
+  forgotten_password: Zresetuj hasło
   login: Zaloguj się
   register: Zarejestruj się
+  resend_validation_token: Wyślij ponownie token aktywacyjny
 event:
   rule:
     _print_header: Regulamin konkurencji<br/><strong>%competition%</strong>
@@ -94,11 +96,32 @@ default:
       registration:
         _header: Rejestracja wkrótce!
 security:
+  activate:
+    exception_message: 'Komunikat o błędzie:'
+    login: Teraz możesz się zalogować
+    register: Zarejestruj się, jeżeli nie masz jeszcze konta
+    success_info: Konto jest teraz aktywne. Zarejestruj swoje drużyny i konstrukcje!
+    title:
+      successful: Aktywacja powiodła się
+      unsuccessful: Aktywacja nie powiodła się
+    unsuccess_info: Konto nie zostało aktywowane. Sprawdź komunikat o błędzie, aby dowiedzieć się więcej o przyczynie. Jeżeli uważasz, że to jest błąd, skontaktuj się z nami.
+  login:
+    dont_have_account: Nie masz jeszcze konta?
+    forgot_password: Zapomniałeś hasło?
+  register:
+    read_terms: Regulamin (otwarcie w nowej karcie)
   register_success:
     additional_info: Jeżeli nie widizsz wiadomości email, sprawdź folder SPAM w swojej skrzynce pocztowej lub skontaktuj się z nami.
     email_info: 'Email podany podczas rejestracji: <strong>%email%</strong>'
     success_info: Zarejestrowałeś swoje konto. Teraz potwierdź je i dodaj swój zespół.
     title: Świetna robota!
+  resend_validation_token:
+    exception_message: 'Komunikat o błędzie:'
+    success_info: Nowy token aktywacyjny został wysłany. Sprawdź swoją skrzynkę pocztową.
+    title:
+      successful: Wygenerowano nowy token
+      unsuccessful: Generowanie tokenu nie powiodło się
+    unsuccess_info: Cos gdzies poszło niesamowicie nie po naszej myśli. Skontakuj się z nami.
 user:
   form:
     email: Email
@@ -106,4 +129,4 @@ user:
     password: Hasło
     password_repeat: Powtórz hasło
     surname: Nazwisko
-    terms: Akceptuję regulamin
+    terms: Akceptuję regulamin*

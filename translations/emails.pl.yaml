@@ -1,2 +1,6 @@
+forgotten_password:
+  subject: Zapomniane hasło
+recreate_registration_token:
+  subject: Nowy token do aktywacji konta
 register:
   subject: Aktywuj swoje konto

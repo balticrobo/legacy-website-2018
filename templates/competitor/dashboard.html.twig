@@ -1,0 +1,21 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  <div class='wrapper'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-12'>
+          {% if app.request.locale == 'pl' %}
+            Strefa zawodnika jest chwilowo niedostępna.
+          {% else %}
+            Competitor zone is not available at the moment.
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

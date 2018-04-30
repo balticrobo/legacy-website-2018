@@ -1,0 +1,40 @@
+---
+layout: default-pl
+subject: Nowy token do aktywacji konta
+---
+<container>
+  {{> spacer 10 }}
+  <row>
+    <columns small='12' large='12'>
+      <p class='text-justify'>
+        Cześć,<br/>
+        Niestety, stary token wygasł i dostałeś nowy. Możesz teraz zaktywować swoje konto.<br/>
+        Masz 24 godziny na aktywację.
+      </p>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <center>
+        <button href="{{ param 'activateUrl' }}" class="expanded">Aktywuj konto</button>
+      </center>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <p class='text-justify'>
+        Jeżeli przycisk nie działa, wklej poniższy adres do przeglądarki:<br/>
+        <a href='{{ param 'activateUrl' }}'>{{ param 'activateUrl' }}</a>
+      </p>
+    </columns>
+  </row>
+  <row>
+    <columns small='12' large='12'>
+      <p>
+        <small>
+          Jeżeli nie rejestrowałeś się, poinformuj nas o tym.
+        </small>
+      </p>
+    </columns>
+  </row>
+</container>

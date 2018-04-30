@@ -1,0 +1,10 @@
+event:
+  event_competition_not_found: Konkurencja nie znaleziona.
+rule:
+  rule_not_found: Regulamin nie znaleziony.
+user:
+  invalid_token: Nieprawidłowy token.
+  token_period_valid: Token wygasł.
+  user_already_activated: Użytkownik jest już aktywny.
+  user_not_activated: Użytkownik nieaktywny.
+  user_not_found: Użytkownik nie znaleziony.

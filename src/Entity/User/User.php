@@ -15,6 +15,8 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  */
 class User implements AdvancedUserInterface, MailRecipientInterface
 {
+    private const TOKEN_VALIDATION_PERIOD = '1 day';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -54,6 +56,16 @@ class User implements AdvancedUserInterface, MailRecipientInterface
     private $roles;
 
     /**
+     * @ORM\Column(type="string", length=32, nullable=true)
+     */
+    private $token;
+
+    /**
+     * @ORM\Column(type="timestamp_immutable")
+     */
+    private $tokenRequestedAt;
+
+    /**
      * @ORM\Column(type="timestamp_immutable")
      */
     private $createdAt;
@@ -63,7 +75,7 @@ class User implements AdvancedUserInterface, MailRecipientInterface
      */
     private $lastLoginAt;
 
-    public static function createFromRegisterDTO(UserRegisterDTO $dto, \DateTimeImmutable $now): self
+    public static function createFromRegisterDTO(UserRegisterDTO $dto, string $token, \DateTimeImmutable $now): self
     {
         $entity = new self();
         $entity->forename = $dto->getForename();
@@ -72,6 +84,8 @@ class User implements AdvancedUserInterface, MailRecipientInterface
         $entity->plainPassword = $dto->getPassword();
         $entity->active = false;
         $entity->roles = ['ROLE_USER'];
+        $entity->token = $token;
+        $entity->tokenRequestedAt = $now;
         $entity->createdAt = $now;
 
         return $entity;
@@ -110,6 +124,20 @@ class User implements AdvancedUserInterface, MailRecipientInterface
     public function getRoles(): array
     {
         return array_unique(array_merge(['ROLE_USER'], $this->roles));
+    }
+
+    public function addRole(string $role): void
+    {
+        $this->roles = array_unique(array_merge([$role], $this->roles));
+    }
+
+    public function removeRole(string $role): void
+    {
+        $key = array_search($role, $this->roles, true);
+        if ($key === false) {
+            return;
+        }
+        unset($this->roles[$key]);
     }
 
     public function getPassword(): string
@@ -157,6 +185,29 @@ class User implements AdvancedUserInterface, MailRecipientInterface
         return $this->lastLoginAt;
     }
 
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(string $token, \DateTimeImmutable $now): void
+    {
+        $this->token = $token;
+        $this->tokenRequestedAt = $now;
+    }
+
+    public function unsetToken(): void
+    {
+        $this->token = null;
+    }
+
+    public function isTokenValid(): bool
+    {
+        $interval = \DateInterval::createFromDateString(self::TOKEN_VALIDATION_PERIOD);
+
+        return $this->getTokenRequestedAt()->add($interval) >= new \DateTimeImmutable();
+    }
+
     public function getSalt(): ?string
     {
         return null;
@@ -164,5 +215,17 @@ class User implements AdvancedUserInterface, MailRecipientInterface
 
     public function eraseCredentials(): void
     {
+    }
+
+    public function activate(): void
+    {
+        $this->active = true;
+        $this->unsetToken();
+        $this->addRole('ROLE_COMPETITOR');
+    }
+
+    private function getTokenRequestedAt(): \DateTimeImmutable
+    {
+        return $this->tokenRequestedAt;
     }
 }

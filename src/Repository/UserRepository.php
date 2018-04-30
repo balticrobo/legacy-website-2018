@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Repository;
 
 use BalticRobo\Website\Entity\User\User;
+use BalticRobo\Website\Exception\User\InvalidTokenException;
 use BalticRobo\Website\Exception\User\UserNotFoundException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -21,6 +22,16 @@ class UserRepository extends ServiceEntityRepository
         $user = $this->findOneBy(['email' => $email]);
         if (!$user) {
             throw new UserNotFoundException();
+        }
+
+        return $user;
+    }
+
+    public function getByToken(string $token): User
+    {
+        $user = $this->findOneBy(['token' => $token]);
+        if (!$user) {
+            throw new InvalidTokenException();
         }
 
         return $user;

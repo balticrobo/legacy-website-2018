@@ -1,0 +1,31 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  <div class='wrapper'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-12 col-md-6 offset-md-3'>
+          {% if success %}
+            {# TODO: Add translations #}
+            <div class="alert alert-success" role="alert">
+              <h4 class="alert-heading">{{ 'security.resend_validation_token.title.successful'|trans }}</h4>
+              <p>{{ 'security.resend_validation_token.success_info'|trans }}</p>
+            </div>
+          {% else %}
+            <div class="alert alert-danger" role="alert">
+              <h4 class="alert-heading">{{ 'security.resend_validation_token.title.unsuccessful'|trans }}</h4>
+              <p>{{ 'security.resend_validation_token.unsuccess_info'|trans }}</p>
+              <hr/>
+              <h6>{{ 'security.resend_validation_token.exception_message'|trans }}</h6>
+              <p>{{ message|trans({}, 'exceptions') }}</p>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -4,8 +4,15 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Controller;
 
+use BalticRobo\Website\Exception\User\InvalidTokenException;
+use BalticRobo\Website\Exception\User\TokenPeriodValidException;
+use BalticRobo\Website\Exception\User\UserAlreadyActivatedException;
+use BalticRobo\Website\Exception\User\UserNotActivatedException;
+use BalticRobo\Website\Exception\User\UserNotFoundException;
+use BalticRobo\Website\Form\User\UserEmailType;
 use BalticRobo\Website\Form\User\UserLoginType;
 use BalticRobo\Website\Form\User\UserRegisterType;
+use BalticRobo\Website\Form\User\UserResetPasswordType;
 use BalticRobo\Website\Model\User\UserLoginDTO;
 use BalticRobo\Website\Service\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -14,10 +21,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Translation\TranslatorInterface;
 
+/**
+ * @Route("/security")
+ */
 class SecurityController extends Controller
 {
     private $authUtils;
@@ -64,18 +74,17 @@ class SecurityController extends Controller
      * @Route("/register")
      * @Method({"GET", "POST"})
      *
-     * @param Request          $request
-     * @param SessionInterface $session
+     * @param Request $request
      *
      * @return Response
      */
-    public function registerAction(Request $request, SessionInterface $session): Response
+    public function registerAction(Request $request): Response
     {
         $form = $this->createForm(UserRegisterType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->userService->add($form->getData(), new \DateTimeImmutable());
-            $session->set('registered_email', $form->getData()->getEmail());
+            $request->getSession()->set('registered_email', $form->getData()->getEmail());
 
             return $this->redirectToRoute('balticrobo_website_security_registersuccess');
         }
@@ -89,20 +98,175 @@ class SecurityController extends Controller
      * @Route("/register/success")
      * @Method("GET")
      *
-     * @param SessionInterface $session
+     * @param Request $request
      *
      * @return Response
      */
-    public function registerSuccessAction(SessionInterface $session): Response
+    public function registerSuccessAction(Request $request): Response
     {
-        $email = $session->get('registered_email');
+        $email = $request->getSession()->get('registered_email');
         if (!$email) {
             return $this->redirectToRoute('balticrobo_website_default_home');
         }
-        $session->set('registered_email', null);
+        $request->getSession()->set('registered_email', null);
 
         return $this->render('security/register_success.html.twig', [
             'email' => $email,
+        ]);
+    }
+
+    /**
+     * @Route("/activate/{token}", requirements={"token" = "[0-9a-f]{32}"})
+     * @Method("GET")
+     *
+     * @param string $token
+     *
+     * @return Response
+     */
+    public function activateAction(string $token): Response
+    {
+        try {
+            $user = $this->userService->getByToken($token);
+            $this->userService->activate($user);
+        } catch (UserAlreadyActivatedException $e) {
+            $success = false;
+            $message = $e->getMessage();
+        } catch (InvalidTokenException $e) {
+            if (isset($user)) {
+                return $this->redirectToRoute('balticrobo_website_security_recreatetoken', [
+                    'email' => $user->getEmail(),
+                ]);
+            }
+            $success = false;
+            $message = $e->getMessage();
+        }
+
+        return $this->render('security/activate.html.twig', [
+            'success' => $success ?? true,
+            'message' => $message ?? '',
+        ]);
+    }
+
+    /**
+     * @Route("/token/{email}/recreate")
+     * @Method("GET")
+     *
+     * TODO: This action is dispatched when User tries to activate account after token validity period expires, refactor it!
+     *
+     * @param string $email
+     *
+     * @return Response
+     */
+    public function recreateTokenAction(string $email): Response
+    {
+        try {
+            $user = $this->userService->getByEmail($email);
+            $this->userService->recreateActivationToken($user, new \DateTimeImmutable());
+        } catch (UserNotFoundException | UserAlreadyActivatedException | TokenPeriodValidException $e) {
+            $success = false;
+            $message = $e->getMessage();
+        }
+
+        return $this->render('security/resend_validation_token.html.twig', [
+            'success' => $success ?? true,
+            'message' => $message ?? '',
+        ]);
+    }
+
+    /**
+     * @Route("/forgotten-password/request")
+     * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function requestForgottenPasswordAction(Request $request): Response
+    {
+        $form = $this->createForm(UserEmailType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $user = $this->userService->getByEmail($form->getData()->getEmail());
+                $this->userService->prepareToResetPassword($user, new \DateTimeImmutable());
+            } catch (UserNotFoundException | UserNotActivatedException $e) {
+                $request->getSession()->set('forgotten_password_exception', $e->getMessage());
+            }
+            $request->getSession()->set('forgotten_password_email', $form->getData()->getEmail());
+
+            return $this->redirectToRoute('balticrobo_website_security_forgottenpasswordsuccess');
+        }
+
+        return $this->render('security/request_forgotten_password.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/forgotten-password/success")
+     * @Method("GET")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function forgottenPasswordSuccessAction(Request $request): Response
+    {
+        $email = $request->getSession()->get('forgotten_password_email');
+        if (!$email) {
+            return $this->redirectToRoute('balticrobo_website_default_home');
+        }
+        $request->getSession()->remove('forgotten_password_email');
+
+        $exception = null;
+        if ($request->getSession()->has('forgotten_password_exception')) {
+            $exception = $request->getSession()->get('forgotten_password_exception');
+            $request->getSession()->remove('forgotten_password_exception');
+        }
+
+        return $this->render('security/forgotten_password_success.html.twig', [
+            'email' => $email,
+            'exception' => $exception,
+        ]);
+    }
+
+    /**
+     * @Route("/forgotten-password/{token}/reset", requirements={"token" = "[0-9a-f]{32}"})
+     * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param string  $token
+     *
+     * @return Response
+     */
+    public function resetForgottenPasswordAction(Request $request, string $token): Response
+    {
+        try {
+            $user = $this->userService->getByToken($token);
+        } catch (InvalidTokenException $e) {
+            $request->getSession()->set('forgotten_password_exception', $e->getMessage());
+            $request->getSession()->set('forgotten_password_email', 'x@x.com');
+
+            return $this->redirectToRoute('balticrobo_website_security_forgottenpasswordsuccess');
+        }
+        $form = $this->createForm(UserResetPasswordType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
+                $this->userService->resetPassword($user, $form->getData());
+            } catch (UserNotActivatedException | InvalidTokenException $e) {
+                $request->getSession()->set('forgotten_password_exception', $e->getMessage());
+                $request->getSession()->set('forgotten_password_email', $user->getEmail());
+
+                return $this->redirectToRoute('balticrobo_website_security_forgottenpasswordsuccess');
+            }
+            $request->getSession()->set(Security::LAST_USERNAME, $user->getEmail());
+
+            return $this->redirectToRoute('balticrobo_website_security_login');
+        }
+
+        return $this->render('security/reset_forgotten_password.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }

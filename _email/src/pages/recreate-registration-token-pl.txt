@@ -1,0 +1,14 @@
+---
+layout: default-text
+---
+Cześć,
+Niestety, stary token wygasł i dostałeś nowy. Możesz teraz zaktywować swoje konto.
+Masz 24 godziny na aktywację.
+
+Aby aktywować konto wklej link do przeglądarki:
+{{ param 'activateUrl' }}
+
+Nie rejestrowałeś się? Poinformuj nas o tym.
+
+Pozdrawiamy
+Zespół BBR
