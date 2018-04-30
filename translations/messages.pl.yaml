@@ -27,6 +27,7 @@ _common:
     nanosumo: NanoSumo
 _menu:
   competitor_zone: Strefa zawodnika
+  for_kids: Dla dzieci
   home: Główna
   rules: Regulaminy
 buttons:

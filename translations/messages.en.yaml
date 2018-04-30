@@ -27,6 +27,7 @@ _common:
     nanosumo: NanoSumo
 _menu:
   competitor_zone: Competitor zone
+  for_kids: For kids
   home: Homepage
   rules: Rules
 buttons:
