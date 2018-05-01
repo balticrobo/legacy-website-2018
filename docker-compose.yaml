@@ -21,7 +21,7 @@ services:
     working_dir: /var/www/app
     command: /opt/docker/start.sh
   node:
-    image: node:9
+    image: node:10
     user: node
     volumes:
       - .:/var/www/app

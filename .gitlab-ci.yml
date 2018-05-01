@@ -90,9 +90,14 @@ NPM Packages:
   tags: *tags_definition
   script:
     - yarn outdated
+  allow_failure: true
+
+NPM Email Packages:
+  stage: Validate
+  tags: *tags_definition
+  script:
     - cd _email && yarn outdated
   allow_failure: true
-  cache: *cache_definition
 
 Tests:
   stage: Test
