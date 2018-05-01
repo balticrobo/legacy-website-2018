@@ -27,7 +27,7 @@ class MailerService
     {
         $template = "_email/{$mail->getTemplateName()}-{$this->translator->getLocale()}";
         $message = (new \Swift_Message())
-            ->setFrom('no-reply@baltyckiebitwyrobotow.pl', $this->eventName)
+            ->setFrom('noreply@baltyckiebitwyrobotow.pl', $this->eventName)
             ->setTo($recipient->getEmail(), $recipient->getName())
             ->setSubject($this->translator->trans($mail->getSubjectKey(), [], 'emails'))
             ->setBody($this->twig->render("{$template}.html.twig", $mail->getParameters()), 'text/html')
