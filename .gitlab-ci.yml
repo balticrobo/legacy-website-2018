@@ -28,7 +28,7 @@ stages:
     paths:
       - vendor
       - node_modules
-      - _email/node_modules
+      - _mail/node_modules
     policy: pull
 
 Build for test:
@@ -37,13 +37,13 @@ Build for test:
   script:
     - composer install
     - yarn install
-    - cd _email && yarn install
+    - cd _mail && yarn install
   cache:
     key: test
     paths:
       - vendor
       - node_modules
-      - _email/node_modules
+      - _mail/node_modules
     policy: pull-push
 
 Lint Yaml:
@@ -96,7 +96,7 @@ NPM Email Packages:
   stage: Validate
   tags: *tags_definition
   script:
-    - cd _email && yarn outdated
+    - cd _mail && yarn outdated
   allow_failure: true
 
 Tests:
@@ -138,7 +138,7 @@ Build prod:
     - node assets.config.js
     - yarn build
     # inky
-    - cd _email
+    - cd _mail
     - yarn install
     - yarn build
     - cd ..
@@ -150,7 +150,7 @@ Build prod:
     paths:
       - vendor
       - node_modules
-      - _email/node_modules
+      - _mail/node_modules
     policy: pull-push
 
 Deploy develop:

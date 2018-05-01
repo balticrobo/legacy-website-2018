@@ -136,11 +136,11 @@ function mail() {
 function copyHTMLToProd() {
   return gulp.src('dist/**/*.html')
     .pipe(ext_replace('.html.twig'))
-    .pipe(gulp.dest('../templates/_email'));
+    .pipe(gulp.dest('../templates/_mail'));
 }
 
 function copyTXTToProd() {
   return gulp.src('dist/**/*.txt')
     .pipe(ext_replace('.txt.twig'))
-    .pipe(gulp.dest('../templates/_email'));
+    .pipe(gulp.dest('../templates/_mail'));
 }

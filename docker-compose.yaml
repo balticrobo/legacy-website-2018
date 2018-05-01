@@ -59,15 +59,15 @@ services:
       context: ./docs/docker/node_inky
     user: node
     volumes:
-      - ./_email:/var/www/app/_email
+      - ./_mail:/var/www/app/_mail
       - ./public:/var/www/app/public
-      - ./templates/_email:/var/www/app/templates/_email
+      - ./templates/_mail:/var/www/app/templates/_mail
       - ./docs/docker/node_inky:/opt/docker
     environment:
       DEPLOY_EMAIL_ASSETS_DOMAIN: http://localhost:8000/email/
     ports:
       - 3000:3000
-    working_dir: /var/www/app/_email
+    working_dir: /var/www/app/_mail
     command: /opt/docker/start.sh
 
 volumes:

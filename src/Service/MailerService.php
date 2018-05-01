@@ -25,7 +25,7 @@ class MailerService
 
     public function sendMail(MailRecipientInterface $recipient, MailTemplateInterface $mail): void
     {
-        $template = "_email/{$mail->getTemplateName()}-{$this->translator->getLocale()}";
+        $template = "_mail/{$mail->getTemplateName()}-{$this->translator->getLocale()}";
         $message = (new \Swift_Message())
             ->setFrom('noreply@baltyckiebitwyrobotow.pl', $this->eventName)
             ->setTo($recipient->getEmail(), $recipient->getName())

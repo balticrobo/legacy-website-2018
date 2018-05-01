@@ -7,8 +7,8 @@
 /assets/js/assets.js
 
 # Emails
-/templates/_email/*
-!/templates/_email/.gitkeep
+/templates/_mail/*
+!/templates/_mail/.gitkeep
 
 # Composer & Yarn
 /vendor
