@@ -1,3 +1,7 @@
+parameters:
+  env(SENTRY_DSN): ''
+  env(COMMIT_SHA): ''
+
 sentry:
   options:
     curl_method: async
