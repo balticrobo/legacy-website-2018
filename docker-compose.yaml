@@ -16,6 +16,8 @@ services:
       APP_SECRET: 7cbd4f1718b779f367516a8d917b6a29
       DATABASE_URL: mysql://root:mysql@mysql:3306/balticrobo
       MAILER_URL: smtp://mailhog:1025
+      SENTRY_DSN:
+      COMMIT_SHA:
     working_dir: /var/www/app
     command: /opt/docker/start.sh
   node:
