@@ -19,6 +19,16 @@ class TeamRepository extends ServiceEntityRepository
         parent::__construct($registry, Team::class);
     }
 
+    public function getByIdentifierAndEvent(string $identifier, Event $event): Team
+    {
+        $record = $this->findOneBy(['event' => $event, 'identifier' => $identifier]);
+        if (!$record) {
+            throw new \Exception(); // TODO: Throw correct exception
+        }
+
+        return $record;
+    }
+
     public function getByEventAndUser(Event $event, User $user): Collection
     {
         $records = $this->findBy(['event' => $event, 'createdBy' => $user]);

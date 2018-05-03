@@ -20,6 +20,11 @@ class CompetitionService
         $this->teamRepository = $teamRepository;
     }
 
+    public function getTeamByIdentifierAndEvent(string $identifier, Event $event): Team
+    {
+        return $this->teamRepository->getByIdentifierAndEvent($identifier, $event);
+    }
+
     public function getTeamsForUserInEvent(User $user, Event $event): Collection
     {
         return $this->teamRepository->getByEventAndUser($event, $user);

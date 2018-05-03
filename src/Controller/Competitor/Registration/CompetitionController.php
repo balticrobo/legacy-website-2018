@@ -34,6 +34,8 @@ class CompetitionController extends Controller
      * @Method({"GET", "POST"})
      *
      * @param Request $request
+     *
+     * @return Response
      */
     public function addTeamAction(Request $request): Response
     {
@@ -52,6 +54,25 @@ class CompetitionController extends Controller
 
         return $this->render('competitor/registration/competition/add_team.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{eventYear}/{identifier}", requirements={"year" = "\d{4}", "identifier" = "\w{2,4}"})
+     * @Method({"GET", "POST"})
+     *
+     * @param int    $eventYear
+     * @param string $identifier
+     *
+     * @return Response
+     */
+    public function teamDetailsAction(int $eventYear, string $identifier): Response
+    {
+        $event = $this->eventService->getEventByYear($eventYear);
+        $team = $this->competitionService->getTeamByIdentifierAndEvent($identifier, $event);
+
+        return $this->render('competitor/registration/competition/team_details.html.twig', [
+            'team' => $team,
         ]);
     }
 }

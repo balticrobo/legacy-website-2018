@@ -25,6 +25,7 @@ class AddTeamDTO
      *     min=2, minMessage="team_add.identifier.length.min",
      *     max=4, maxMessage="team_add.identifier.length.max"
      * )
+     * @Assert\Regex(pattern="/^\w+$/", message="team_add.identifier.alphanumeric")
      */
     private $identifier;
 

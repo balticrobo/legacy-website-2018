@@ -36,7 +36,10 @@
             {% for team in competition_teams %}
             <tr>
               <td class='align-middle'><strong>[{{ team.identifier }}]</strong> {{ team.name }}</td>
-              <td><a href='#' class='btn btn-primary btn-block'>{{ 'buttons.details'|trans }}</a></td>
+              <td><a href='{{ path('balticrobo_website_competitor_registration_competition_teamdetails', {
+                  'identifier': team.identifier,
+                  'eventYear': team.event.year
+                }) }}' class='btn btn-primary btn-block'>{{ 'buttons.details'|trans }}</a></td>
             </tr>
             {% endfor %}
             </tbody>

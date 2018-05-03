@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Repository;
 
 use BalticRobo\Website\Entity\Event\Event;
+use BalticRobo\Website\Exception\Event\EventnNotFoundException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -23,5 +24,15 @@ class EventRepository extends ServiceEntityRepository
             ->getQuery()
             ->setMaxResults(1)
             ->getSingleResult();
+    }
+
+    public function getEventByYear(int $year): Event
+    {
+        $record = $this->findOneBy(['year' => $year]);
+        if (!$record) {
+            throw new EventnNotFoundException();
+        }
+
+        return $record;
     }
 }
