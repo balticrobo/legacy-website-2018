@@ -6,6 +6,7 @@ namespace BalticRobo\Website\Entity\Registration\Competition;
 
 use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\User\User;
+use BalticRobo\Website\Model\Registration\Competition\AddTeamDTO;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Table(name="registration_teams",
  * uniqueConstraints={@ORM\UniqueConstraint(columns={"identifier", "event_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BalticRobo\Website\Repository\Registration\Competition\TeamRepository")
  */
 class Team
 {
@@ -40,7 +41,7 @@ class Team
     private $city;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=30, nullable=true)
      */
     private $scientificOrganization;
 
@@ -69,7 +70,7 @@ class Team
     private $createdAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="BalticRobo\Website\Entity\User\User")
+     * @ORM\ManyToOne(targetEntity="BalticRobo\Website\Entity\User\User")
      */
     private $createdBy;
 
@@ -77,6 +78,22 @@ class Team
     {
         $this->members = new ArrayCollection();
         $this->constructions = new ArrayCollection();
+    }
+
+    public static function createFromAddDTO(AddTeamDTO $dto, Event $event, User $author, \DateTimeImmutable $now): self
+    {
+        $entity = new self();
+        $entity->name = $dto->getName();
+        $entity->identifier = $dto->getIdentifier();
+        $entity->city = $dto->getCity();
+        $entity->scientificOrganization = $dto->getScientificOrganization();
+        $entity->event = $event;
+        $entity->createdAt = $now;
+        $entity->createdBy = $author;
+        $entity->members = new ArrayCollection();
+        $entity->constructions = new ArrayCollection();
+
+        return $entity;
     }
 
     public function getId(): int

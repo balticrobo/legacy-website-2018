@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Service;
 
+use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\Rule\Rule;
 use BalticRobo\Website\Repository\EventRepository;
 use BalticRobo\Website\Repository\RuleRepository;
@@ -33,5 +34,10 @@ class EventService
         $competition = $event->getCompetitionBySlug($competitionSlug);
 
         return $competition->getRuleByLocale($locale);
+    }
+
+    public function getCurrentEvent(): Event
+    {
+        return $this->eventRepository->getCurrentEvent();
     }
 }

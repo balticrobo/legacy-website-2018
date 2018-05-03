@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="events")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BalticRobo\Website\Repository\EventRepository")
  */
 class Event
 {
@@ -63,7 +63,7 @@ class Event
 
     public function getYear(): int
     {
-        return $this->year;
+        return (int) $this->year;
     }
 
     public function getEventStartsAt(): \DateTimeImmutable

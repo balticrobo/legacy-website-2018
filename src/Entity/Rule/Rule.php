@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Table(name="rules")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BalticRobo\Website\Repository\RuleRepository")
  */
 class Rule
 {

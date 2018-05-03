@@ -9,11 +9,42 @@
     <div class='container'>
       <div class='row'>
         <div class='col-12'>
-          {% if app.request.locale == 'pl' %}
-            Strefa zawodnika jest chwilowo niedostępna.
+          <h1>{{ 'competitor_zone.dashboard.welcome_header'|trans }}</h1>
+          <strong>{{ 'competitor_zone.dashboard.event_name'|trans }}:</strong>
+          {{ '_common.event_name'|trans }} {{ event.year }}<br/>
+          <strong>{{ 'competitor_zone.dashboard.competitor_name'|trans }}:</strong>
+          {{ competitor.name }}<br/>
+          <strong>{{ 'competitor_zone.dashboard.last_login_at'|trans }}:</strong>
+          {% if competitor.lastLoginAt is null %}
+            {{ 'competitor_zone.dashboard.never_logged_in'|trans }}
           {% else %}
-            Competitor zone is not available at the moment.
+            {{ competitor.lastLoginAt|date('Y-m-d') }}
           {% endif %}
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-12'>
+          <h2>{{ 'competitor_zone.dashboard.registration_competition'|trans }}</h2>
+          <table class='table table-hover'>
+            <thead>
+            <tr>
+              <th class='text-center'>{{ 'competitor_zone.registration.form.name'|trans }}</th>
+              <th class='w-25'></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for team in competition_teams %}
+            <tr>
+              <td class='align-middle'><strong>[{{ team.identifier }}]</strong> {{ team.name }}</td>
+              <td><a href='#' class='btn btn-primary btn-block'>{{ 'buttons.details'|trans }}</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          <a href='{{ path('balticrobo_website_competitor_registration_competition_addteam') }}'
+              class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
+            {{ 'buttons.add'|trans }}
+          </a>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * @ORM\Table(name="users")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BalticRobo\Website\Repository\UserRepository")
  */
 class User implements AdvancedUserInterface, MailRecipientInterface
 {
