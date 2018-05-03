@@ -19,7 +19,7 @@ stages:
     - rsync -a --delete --exclude ".env" --exclude "var" --rsh="ssh -o BatchMode=yes -o StrictHostKeyChecking=no"
       dist/ ${DEPLOY_HOST}:${DEPLOY_DIRECTORY}
     - ssh -o StrictHostKeyChecking=no ${DEPLOY_HOST} "
-      sed -i '/COMMIT_SHA/c\COMMIT_SHA=${CI_COMMIT_SHA}' ${DEPLOY_DIRECTORY}/.env
+      sed -i '/COMMIT_SHA/c\COMMIT_SHA=${CI_COMMIT_SHA}' ${DEPLOY_DIRECTORY}/.env &&
       php ${DEPLOY_DIRECTORY}/bin/console cache:clear &&
       php ${DEPLOY_DIRECTORY}/bin/console cache:warmup &&
       php ${DEPLOY_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction"
