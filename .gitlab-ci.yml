@@ -144,7 +144,7 @@ Build prod:
     - cd ..
     # artifacts
     - mkdir -p dist
-    - cp -r bin config public src templates translations vendor composer.json dist
+    - cp -r bin config public src templates translations vendor composer.json composer.lock dist
   cache:
     key: deploy
     paths:
