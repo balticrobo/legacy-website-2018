@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Entity\Registration\Competition;
 
 use BalticRobo\Website\Entity\Event\Event;
+use BalticRobo\Website\Entity\User\User;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
