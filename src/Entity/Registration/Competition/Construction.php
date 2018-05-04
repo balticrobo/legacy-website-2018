@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Entity\Registration\Competition;
 
 use BalticRobo\Website\Entity\Competition\Competition;
+use BalticRobo\Website\Model\Registration\Competition\AddConstructionDTO;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -46,7 +47,11 @@ class Construction
     private $competitions;
 
     /**
-     * @ORM\ManyToOne(targetEntity="BalticRobo\Website\Entity\Registration\Competition\Member")
+     * @ORM\ManyToMany(targetEntity="BalticRobo\Website\Entity\Registration\Competition\Member")
+     * @ORM\JoinTable(name="registration_constructions_creators",
+     *     joinColumns={@ORM\JoinColumn(name="construction_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="creator_id", referencedColumnName="id")}
+     * )
      *
      * @var Collection|Member[]
      */
@@ -61,6 +66,18 @@ class Construction
     {
         $this->competitions = new ArrayCollection();
         $this->creators = new ArrayCollection();
+    }
+
+    public static function createFromAddDTO(AddConstructionDTO $dto, Team $team, \DateTimeImmutable $now): self
+    {
+        $entity = new self();
+        $entity->name = $dto->getName();
+        $entity->competitions = $dto->getCompetitions();
+        $entity->team = $team;
+        $entity->createdAt = $now;
+        $entity->creators = new ArrayCollection();
+
+        return $entity;
     }
 
     public function getId(): int

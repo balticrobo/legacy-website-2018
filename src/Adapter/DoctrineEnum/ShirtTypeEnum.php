@@ -6,6 +6,7 @@ namespace BalticRobo\Website\Adapter\DoctrineEnum;
 
 class ShirtTypeEnum
 {
+    public const NONE = 0;
     public const FEMALE_XS = 10;
     public const FEMALE_S = 11;
     public const FEMALE_M = 12;
@@ -20,6 +21,7 @@ class ShirtTypeEnum
     public const MALE_XXXL = 26;
 
     private const NAMES = [
+        self::NONE => 'enum.shirt_type.none',
         self::FEMALE_XS => 'enum.shirt_type.female_xs',
         self::FEMALE_S => 'enum.shirt_type.female_s',
         self::FEMALE_M => 'enum.shirt_type.female_m',
@@ -49,6 +51,7 @@ class ShirtTypeEnum
     public static function getAvailableTypes(): array
     {
         return [
+            self::NONE,
             self::FEMALE_XS,
             self::FEMALE_S,
             self::FEMALE_M,
@@ -64,21 +67,12 @@ class ShirtTypeEnum
         ];
     }
 
-    public function getFormData(): array
+    public static function getFormData(): array
     {
-        return [
-            self::NAMES[self::FEMALE_XS] => self::FEMALE_XS,
-            self::NAMES[self::FEMALE_S] => self::FEMALE_S,
-            self::NAMES[self::FEMALE_M] => self::FEMALE_M,
-            self::NAMES[self::FEMALE_L] => self::FEMALE_L,
-            self::NAMES[self::FEMALE_XL] => self::FEMALE_XL,
-            self::NAMES[self::MALE_XS] => self::MALE_XS,
-            self::NAMES[self::MALE_S] => self::MALE_S,
-            self::NAMES[self::MALE_M] => self::MALE_M,
-            self::NAMES[self::MALE_L] => self::MALE_L,
-            self::NAMES[self::MALE_XL] => self::MALE_XL,
-            self::NAMES[self::MALE_XXL] => self::MALE_XXL,
-            self::NAMES[self::MALE_XXXL] => self::MALE_XXXL,
-        ];
+        return array_reduce(self::getAvailableTypes(), function (array $carry, string $item) {
+            $carry[self::NAMES[$item]] = $item;
+
+            return $carry;
+        }, []);
     }
 }

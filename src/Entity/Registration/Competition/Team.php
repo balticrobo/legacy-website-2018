@@ -46,14 +46,16 @@ class Team
     private $scientificOrganization;
 
     /**
-     * @ORM\OneToMany(targetEntity="BalticRobo\Website\Entity\Registration\Competition\Member", mappedBy="team")
+     * @ORM\OneToMany(targetEntity="BalticRobo\Website\Entity\Registration\Competition\Member", mappedBy="team",
+     * cascade={"persist"})
      *
      * @var Collection|Member[]
      */
     private $members;
 
     /**
-     * @ORM\OneToMany(targetEntity="BalticRobo\Website\Entity\Registration\Competition\Construction", mappedBy="team")
+     * @ORM\OneToMany(targetEntity="BalticRobo\Website\Entity\Registration\Competition\Construction", mappedBy="team",
+     * cascade={"persist"})
      *
      * @var Collection|Construction[]
      */
@@ -126,9 +128,19 @@ class Team
         return $this->members;
     }
 
+    public function addMember(Member $member): void
+    {
+        $this->members->add($member);
+    }
+
     public function getConstructions(): Collection
     {
         return $this->constructions;
+    }
+
+    public function addConstruction(Construction $construction): void
+    {
+        $this->constructions->add($construction);
     }
 
     public function getEvent(): Event

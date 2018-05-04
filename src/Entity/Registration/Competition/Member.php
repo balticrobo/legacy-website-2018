@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Entity\Registration\Competition;
 
 use BalticRobo\Website\Adapter\DoctrineEnum\ShirtTypeEnum;
+use BalticRobo\Website\Model\Registration\Competition\AddMemberDTO;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,6 +46,18 @@ class Member
      */
     private $createdAt;
 
+    public static function createFromAddDTO(AddMemberDTO $memberDTO, Team $team, \DateTimeImmutable $now): self
+    {
+        $entity = new self();
+        $entity->forename = $memberDTO->getForename();
+        $entity->surname = $memberDTO->getSurname();
+        $entity->shirtType = $memberDTO->getShirtType();
+        $entity->team = $team;
+        $entity->createdAt = $now;
+
+        return $entity;
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -58,6 +71,11 @@ class Member
     public function getSurname(): string
     {
         return $this->surname;
+    }
+
+    public function getName(): string
+    {
+        return "{$this->forename} {$this->surname}";
     }
 
     public function getShirtType(): int

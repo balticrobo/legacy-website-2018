@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Controller\Competitor\Registration;
 
+use BalticRobo\Website\Form\Registration\Competition\AddConstructionType;
+use BalticRobo\Website\Form\Registration\Competition\AddMemberType;
 use BalticRobo\Website\Form\Registration\Competition\AddTeamType;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\CompetitionService;
@@ -73,6 +75,74 @@ class CompetitionController extends Controller
 
         return $this->render('competitor/registration/competition/team_details.html.twig', [
             'event' => $event,
+            'team' => $team,
+        ]);
+    }
+
+    /**
+     * @Route("/{identifier}/add/member", requirements={"identifier" = "\w{2,4}"})
+     * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param string  $identifier
+     *
+     * @return Response
+     */
+    public function addMemberAction(Request $request, string $identifier): Response
+    {
+        $event = $this->eventService->getCurrentEvent();
+        $team = $this->competitionService->getTeamByIdentifierAndEvent($identifier, $event);
+
+        if ($team->getMembers()->count() >= 4) {
+            return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
+        }
+
+        $form = $this->createForm(AddMemberType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->competitionService->addMember($form->getData(), $team, new \DateTimeImmutable());
+
+            return $this->redirectToRoute('balticrobo_website_competitor_registration_competition_teamdetails', [
+                'eventYear' => $event->getYear(),
+                'identifier' => $team->getIdentifier(),
+            ]);
+        }
+
+        return $this->render('competitor/registration/competition/add_member.html.twig', [
+            'event' => $event,
+            'form' => $form->createView(),
+            'team' => $team,
+        ]);
+    }
+
+    /**
+     * @Route("/{identifier}/add/construction", requirements={"identifier" = "\w{2,4}"})
+     * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param string  $identifier
+     *
+     * @return Response
+     */
+    public function addConstructionAction(Request $request, string $identifier): Response
+    {
+        $event = $this->eventService->getCurrentEvent();
+        $team = $this->competitionService->getTeamByIdentifierAndEvent($identifier, $event);
+
+        $form = $this->createForm(AddConstructionType::class, null, ['event' => $event, 'team' => $team]);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->competitionService->addConstruction($form->getData(), $team, new \DateTimeImmutable());
+
+            return $this->redirectToRoute('balticrobo_website_competitor_registration_competition_teamdetails', [
+                'eventYear' => $event->getYear(),
+                'identifier' => $team->getIdentifier(),
+            ]);
+        }
+
+        return $this->render('competitor/registration/competition/add_construction.html.twig', [
+            'event' => $event,
+            'form' => $form->createView(),
             'team' => $team,
         ]);
     }

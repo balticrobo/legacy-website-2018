@@ -33,20 +33,62 @@
                 <tr>
                   <th>{{ 'competitor_zone.registration.form.forename'|trans }}
                       {{ 'competitor_zone.registration.form.surname'|trans }}</th>
+                  <th class='w-25'></th>
                 </tr>
                 </thead>
+                <tbody>
+                {% for member in team.members %}
+                  <tr>
+                    <td>{{ member.name }}</td>
+                    <td>{# TODO: Add removing and editing members? #}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
               </table>
           {% else %}
               {{ 'competitor_zone.registration.competition.team_details.add_member'|trans }}
           {% endif %}
           {% if team.members.count < 4 %}
-            <a href='#' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
+            <a href='{{ path('balticrobo_website_competitor_registration_competition_addmember', {
+              'identifier': team.identifier,
+            }) }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
                 {{ 'buttons.add'|trans }}
             </a>
           {% endif %}
         </div>
       </div>
-      {{ dump(team) }}
+      <div class='row'>
+        <div class='col-12'>
+          <h4>{{ 'competitor_zone.registration.competition.team_details.constructions'|trans }}</h4>
+          {% if not team.constructions.empty %}
+            <table class='table table-hover'>
+              <thead>
+              <tr>
+                <th>{{ 'competitor_zone.registration.form.construction_name'|trans }}</th>
+                <th class='w-25'></th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for construction in team.constructions %}
+                <tr>
+                  <td>{{ construction.name }}</td>
+                  <td>
+                    {# TODO: Add removing constructions? #}
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            {{ 'competitor_zone.registration.competition.team_details.add_construction'|trans }}
+          {% endif %}
+          <a href='{{ path('balticrobo_website_competitor_registration_competition_addconstruction', {
+            'identifier': team.identifier,
+          }) }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
+            {{ 'buttons.add'|trans }}
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 {% endblock %}
