@@ -72,6 +72,7 @@ class CompetitionController extends Controller
         $team = $this->competitionService->getTeamByIdentifierAndEvent($identifier, $event);
 
         return $this->render('competitor/registration/competition/team_details.html.twig', [
+            'event' => $event,
             'team' => $team,
         ]);
     }

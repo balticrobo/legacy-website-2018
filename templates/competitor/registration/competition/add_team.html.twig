@@ -6,6 +6,13 @@
   </div>
   {% include '_common/menu.html.twig' %}
   <div class='wrapper'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-12'>
+          <h2>{{ 'competitor_zone.registration.competition.add_team'|trans }}</h2>
+        </div>
+      </div>
+    </div>
     <div class='container col-12 col-md-6 offset-md-3'>
       {{ form_start(form, {class: 'form', attr: {novalidate: 'novalidate'}}) }}
       <div class='row'>
