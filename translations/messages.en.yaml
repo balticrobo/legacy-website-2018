@@ -1,3 +1,11 @@
+_button:
+  add: Add
+  details: Details
+  forgotten_password: Reset password
+  login: Login
+  logout: Logout
+  register: Register
+  resend_validation_token: Resend validation token
 _common:
   event_name: Baltic Robo Battles
   competition_group:
@@ -30,16 +38,36 @@ _menu:
   for_kids: For kids
   home: Homepage
   rules: Rules
-buttons:
-  forgotten_password: Reset password
-  login: Login
-  register: Register
-  resend_validation_token: Resend validation token
-event:
-  rule:
-    _print_header: Regulations for<br/><strong>%competition%</strong>
-    _screen_header: Regulations for <strong>%competition%</strong>
-    last_modified_at: Last modified at
+competitor_zone:
+  dashboard:
+    competitor_name: Name
+    event_name: Event
+    last_login_at: Last login at
+    never_logged_in: Never logged in
+    registration_competition: Registration for competitions
+    welcome_header: Competitor zone - Dashboard
+  registration:
+    competition:
+      add_construction: Add construction
+      add_member: Add member
+      add_team: Add team
+      team_details:
+        add_construction: You did not add any constructions of your team yet. Do it now!
+        add_member: You did not add any members of your team yet. Do it now! Remember to add yourself!
+        constructions: Constructions
+        info: Info
+        members: Members
+    form:
+      city: City
+      competitions: Competitions
+      construction_name: Construction name
+      creators: Creators
+      forename: Forename
+      identifier: Identifier
+      name: Team name
+      scientific_organization: Scientific organization
+      shirt_type: Shirt size
+      surname: Surname
 default:
   home:
     section:
@@ -99,6 +127,26 @@ default:
           skalp: an organisation created in 2015 by the members of Student Automatics Club SKALP, active since 2000 at Gdańsk University of Technology. Their activity goes beyond the club and consists og educational activity, leading various projects ind popularization of automatics and robotics.
       registration:
         _header: Registration soon!
+enum:
+  shirt_type:
+    none: None
+    female_xs: Female - XS
+    female_s: Female - S
+    female_m: Female - M
+    female_l: Female - L
+    female_xl: Female - XL
+    male_xs: Male - XS
+    male_s: Male - S
+    male_m: Male - M
+    male_l: Male - L
+    male_xl: Male - XL
+    male_xxl: Male - XXL
+    male_xxxl: Male - XXXL
+event:
+  rule:
+    _print_header: Regulations for<br/><strong>%competition%</strong>
+    _screen_header: Regulations for <strong>%competition%</strong>
+    last_modified_at: Last modified at
 security:
   activate:
     exception_message: 'Exception message:'
@@ -109,6 +157,14 @@ security:
       successful: Activation successed
       unsuccessful: Activation failed
     unsuccess_info: Account activation failed, read exception message for more info. If it should not happend, contact us.
+  forgotten_password_success:
+    additional_info: If you did not receive mail for few minutes, check your spam folder.
+    email_info: Now check your inbox for email with reset password token.
+    success_info: Change password request was handled properly. Process started.
+    title:
+      successful: Reset password request successed
+      unsuccessful: Can not handle your request
+    unsuccess_info: We can not handle your request to reset forgotten password. If it should not happen, just contact us.
   login:
     dont_have_account: Do not have an account?
     forgot_password: Forgotten password?

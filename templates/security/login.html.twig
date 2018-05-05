@@ -20,7 +20,7 @@
           {{ form_row(form.password, attr) }}
         </div>
         <div class='col-12 col-sm-6 offset-sm-6'>
-          <button type="submit" class="btn btn-block btn-primary">{{ 'buttons.login'|trans }}</button>
+          <button type="submit" class="btn btn-block btn-primary">{{ '_button.login'|trans }}</button>
         </div>
       </div>
       {{ form_end(form) }}
@@ -29,13 +29,13 @@
       <hr/>
       {{ 'security.login.dont_have_account'|trans }}
       <strong><a href='{{ path('balticrobo_website_security_register') }}'>
-          {{ 'buttons.register'|trans }}
+          {{ '_button.register'|trans }}
         </a></strong>
     </div>
     <div class='container col-12 col-md-6 offset-md-3 pb-3'>
       {{ 'security.login.forgot_password'|trans }}
       <strong><a href='{{ path('balticrobo_website_security_requestforgottenpassword') }}'>
-          {{ 'buttons.forgotten_password'|trans }}
+          {{ '_button.forgotten_password'|trans }}
         </a></strong>
     </div>
   </div>

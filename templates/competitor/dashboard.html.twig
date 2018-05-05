@@ -39,14 +39,14 @@
               <td><a href='{{ path('balticrobo_website_competitor_registration_competition_teamdetails', {
                   'identifier': team.identifier,
                   'eventYear': team.event.year
-                }) }}' class='btn btn-primary btn-block'>{{ 'buttons.details'|trans }}</a></td>
+                }) }}' class='btn btn-primary btn-block'>{{ '_button.details'|trans }}</a></td>
             </tr>
             {% endfor %}
             </tbody>
           </table>
           <a href='{{ path('balticrobo_website_competitor_registration_competition_addteam') }}'
               class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
-            {{ 'buttons.add'|trans }}
+            {{ '_button.add'|trans }}
           </a>
         </div>
       </div>

@@ -1,3 +1,11 @@
+_button:
+  add: Dodaj
+  details: Szczegóły
+  forgotten_password: Zresetuj hasło
+  login: Zaloguj się
+  logout: Wyloguj się
+  register: Zarejestruj się
+  resend_validation_token: Wyślij ponownie token aktywacyjny
 _common:
   event_name: Bałtyckie Bitwy Robotów
   competition_group:
@@ -30,16 +38,36 @@ _menu:
   for_kids: Dla dzieci
   home: Główna
   rules: Regulaminy
-buttons:
-  forgotten_password: Zresetuj hasło
-  login: Zaloguj się
-  register: Zarejestruj się
-  resend_validation_token: Wyślij ponownie token aktywacyjny
-event:
-  rule:
-    _print_header: Regulamin konkurencji<br/><strong>%competition%</strong>
-    _screen_header: Regulamin konkurencji <strong>%competition%</strong>
-    last_modified_at: Ostatnia modyfikacja
+competitor_zone:
+  dashboard:
+    competitor_name: Imię i nazwisko
+    event_name: Event
+    last_login_at: Data ostatniego logowania
+    never_logged_in: Nigdy nie zalogowano
+    registration_competition: Rejestracja konstrukcji
+    welcome_header: Strefa zaownika - Dashboard
+  registration:
+    competition:
+      add_construction: Dodaj konstrukcję
+      add_member: Dodaj członka zespołu
+      add_team: Dodaj zespół
+      team_details:
+        add_construction: Jeszcze nie dodałeś żadnych konstrukji, zrób to teraz!
+        add_member: Jeszcze nie dodałeś żadnych członków, zrób to teraz. Pamiętaj, żeby dodać też siebie!
+        constructions: Konstrukcje
+        info: Info
+        members: Członkowie
+    form:
+      city: Miasto
+      competitions: Konkurencje
+      construction_name: Nazwa konstrukcji
+      creators: Twórcy
+      forename: Imię
+      identifier: Identyfikator
+      name: Nazwa drużyny
+      scientific_organization: Koło naukowe
+      shirt_type: Rozmiar koszulki
+      surname: Nazwisko
 default:
   home:
     section:
@@ -95,6 +123,26 @@ default:
           skalp: czyli organizacja założona w 2015 roku przez członków Studenckiego Koła Automatyków SKALP, działającego od 2000 roku na Politechnice Gdańskiej. Działalność Stowarzyszenia wykracza poza działalność koła i obejmuje m.in. działalność edukacyjną, prowadzenie projektów naukowych i popularyzację automatyki i robotyki.
       registration:
         _header: Rejestracja wkrótce!
+enum:
+  shirt_type:
+    none: Żadna
+    female_xs: Damska - XS
+    female_s: Damska - S
+    female_m: Damska - M
+    female_l: Damska - L
+    female_xl: Damska - XL
+    male_xs: Męska - XS
+    male_s: Męska - S
+    male_m: Męska - M
+    male_l: Męska - L
+    male_xl: Męska - XL
+    male_xxl: Męska - XXL
+    male_xxxl: Męska - XXXL
+event:
+  rule:
+    _print_header: Regulamin konkurencji<br/><strong>%competition%</strong>
+    _screen_header: Regulamin konkurencji <strong>%competition%</strong>
+    last_modified_at: Ostatnia modyfikacja
 security:
   activate:
     exception_message: 'Komunikat o błędzie:'
@@ -105,6 +153,14 @@ security:
       successful: Aktywacja powiodła się
       unsuccessful: Aktywacja nie powiodła się
     unsuccess_info: Konto nie zostało aktywowane. Sprawdź komunikat o błędzie, aby dowiedzieć się więcej o przyczynie. Jeżeli uważasz, że to jest błąd, skontaktuj się z nami.
+  forgotten_password_success:
+    additional_info: Jeżeli nie dostaniesz wiadomości w ciągu kilku minut, sprawdź folder SPAM.
+    email_info: Sprawdź skrzynkę pocztową. Kod jest aktywny przez 24h.
+    success_info: Udało się! Żądanie resetu hasła zostało przetworzone pomyślnie.
+    title:
+      successful: Żądanie resetu zapomnianego hasła powiodło się
+      unsuccessful: Nie możemy przetworzeć Twojego żądania
+    unsuccess_info: Żądanie resetu zapomnianego hasła nie mogło zostać przetworzone. Sprawdź komunikat o błędzie, aby dowiedzieć się więcej o przyczynie. Jeżeli uważasz, że to jest błąd, skontaktuj się z nami.
   login:
     dont_have_account: Nie masz jeszcze konta?
     forgot_password: Zapomniałeś hasło?
