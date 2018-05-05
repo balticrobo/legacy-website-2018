@@ -142,7 +142,9 @@ default:
           skalp_header: Robotics Association SKALP
           skalp: an organisation created in 2015 by the members of Student Automatics Club SKALP, active since 2000 at Gdańsk University of Technology. Their activity goes beyond the club and consists og educational activity, leading various projects ind popularization of automatics and robotics.
       registration:
-        _header: Registration soon!
+        _header: Registration is now open!
+  terms:
+    header: Terms of use
 enum:
   shirt_type:
     none: None

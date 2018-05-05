@@ -138,7 +138,9 @@ default:
           skalp_header: Stowarzyszenie Robotyków Skalp
           skalp: czyli organizacja założona w 2015 roku przez członków Studenckiego Koła Automatyków SKALP, działającego od 2000 roku na Politechnice Gdańskiej. Działalność Stowarzyszenia wykracza poza działalność koła i obejmuje m.in. działalność edukacyjną, prowadzenie projektów naukowych i popularyzację automatyki i robotyki.
       registration:
-        _header: Rejestracja wkrótce!
+        _header: Rejestracja otwarta!
+  terms:
+    header: Regulamin ogólny zawodów
 enum:
   shirt_type:
     none: Żadna
