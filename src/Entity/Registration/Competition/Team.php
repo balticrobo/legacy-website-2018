@@ -12,8 +12,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="registration_teams",
- * uniqueConstraints={@ORM\UniqueConstraint(columns={"identifier", "event_id"})})
+ * @ORM\Table(name="registration_teams", uniqueConstraints={@ORM\UniqueConstraint(columns={"identifier", "event_id"})})
  * @ORM\Entity(repositoryClass="BalticRobo\Website\Repository\Registration\Competition\TeamRepository")
  */
 class Team
