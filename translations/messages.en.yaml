@@ -65,6 +65,7 @@ competitor_zone:
       creators_description: '*This information is collected to print on diplomas. It is not required.'
       forename: Forename
       identifier: Identifier
+      identifier_description: Identifier is 2-4 sign value to unique identify teams and constructions.
       name: Team name
       scientific_organization: Scientific organization
       shirt_type: Shirt size

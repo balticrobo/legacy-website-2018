@@ -16,11 +16,12 @@
     <div class='container col-12 col-md-6 offset-md-3'>
       {{ form_start(form, {class: 'form', attr: {novalidate: 'novalidate'}}) }}
       <div class='row'>
-        <div class='col-12 col-sm-8 offset-sm-2'>
+        <div class='col-12 col-sm-6'>
           {{ form_row(form.name) }}
           {{ form_row(form.identifier) }}
+          <small>{{ 'competitor_zone.registration.form.identifier_description'|trans }}</small>
         </div>
-        <div class='col-12 col-sm-8 offset-sm-2'>
+        <div class='col-12 col-sm-6'>
           {{ form_row(form.city) }}
           {{ form_row(form.scientificOrganization) }}
         </div>

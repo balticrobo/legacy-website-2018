@@ -45,7 +45,7 @@ competitor_zone:
     last_login_at: Data ostatniego logowania
     never_logged_in: Nigdy nie zalogowano
     registration_competition: Rejestracja konstrukcji
-    welcome_header: Strefa zaownika - Dashboard
+    welcome_header: Strefa zawodnika - Dashboard
   registration:
     competition:
       add_construction: Dodaj konstrukcję
@@ -65,6 +65,7 @@ competitor_zone:
       creators_description: '*Ta informacja jest zbierana do druku na dyplomach. Nie jest wymagana.'
       forename: Imię
       identifier: Identyfikator
+      identifier_description: Identyfikator to 2-4 znakowe oznaczenie drużyny. Służy do łatwiejszej identyfikacji drużyn i ich konstrukcji.
       name: Nazwa drużyny
       scientific_organization: Koło naukowe
       shirt_type: Rozmiar koszulki
