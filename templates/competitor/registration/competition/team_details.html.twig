@@ -48,7 +48,7 @@
           {% else %}
               {{ 'competitor_zone.registration.competition.team_details.add_member'|trans }}
           {% endif %}
-          {% if team.members.count < 4 %}
+          {% if team.members.count < constant('BalticRobo\\Website\\Entity\\Registration\\Competition\\Team::MAX_MEMBERS') %}
             <a href='{{ path('balticrobo_website_competitor_registration_competition_addmember', {
               'identifier': team.identifier,
             }) }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>

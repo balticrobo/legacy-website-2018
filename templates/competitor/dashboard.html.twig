@@ -52,6 +52,37 @@
       </div>
       <div class='row'>
         <div class='col-12'>
+          <h2>{{ 'competitor_zone.dashboard.registration_hackathon'|trans }}</h2>
+          <table class='table table-hover'>
+            <thead>
+            <tr>
+              <th class='text-center'>{{ 'competitor_zone.registration.form.name'|trans }}</th>
+              <th class='w-25'></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for team in hackathon_teams %}
+              <tr>
+                <td class='align-middle'>{{ team.name }}</td>
+                <td><a href='{{ path('balticrobo_website_competitor_registration_hackathon_teamdetails', {
+                    'eventYear': team.event.year,
+                    'name': team.name
+                  }) }}' class='btn btn-primary btn-block'>{{ '_button.details'|trans }}</a></td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% if hackathon_teams.count < constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MAX_TEAMS') %}
+            <a href='{{ path('balticrobo_website_competitor_registration_hackathon_addteam') }}'
+                class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
+              {{ '_button.add'|trans }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      <hr/>
+      <div class='row'>
+        <div class='col-12'>
           <a href='{{ path('balticrobo_website_security_logout') }}'
               class='btn btn-danger btn-block col-12 col-sm-4 offset-sm-8'>
             {{ '_button.logout'|trans }}

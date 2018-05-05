@@ -1,0 +1,58 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  <div class='wrapper'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-12'>
+          <h2>{{ 'competitor_zone.registration.hackathon.team_details.info'|trans }}</h2>
+          <dl class='row'>
+            <dt class='col-12 col-md-4 text-md-right'>{{ 'competitor_zone.dashboard.event_name'|trans }}</dt>
+            <dd class='col-12 col-md-8'>{{ '_common.event_name'|trans }} {{ event.year }}</dd>
+            <dt class='col-12 col-md-4 text-md-right'>{{ 'competitor_zone.registration.form.name'|trans }}</dt>
+            <dd class='col-12 col-md-8'>{{ team.name }}</dd>
+            <dt class='col-12 col-md-4 text-md-right'>{{ 'competitor_zone.registration.form.city'|trans }}</dt>
+            <dd class='col-12 col-md-8'>{{ team.city }}</dd>
+          </dl>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-12'>
+          <h4>{{ 'competitor_zone.registration.hackathon.team_details.members'|trans }}</h4>
+          {% if not team.members.empty %}
+            <table class='table table-hover'>
+              <thead>
+              <tr>
+                <th>{{ 'competitor_zone.registration.form.forename'|trans }}
+                  {{ 'competitor_zone.registration.form.surname'|trans }}</th>
+                <th class='w-25'></th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for member in team.members %}
+                <tr>
+                  <td>{{ member.name }}</td>
+                  <td>{# TODO: Add removing and editing members? #}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          {% else %}
+            {{ 'competitor_zone.registration.hackathon.team_details.add_member'|trans }}
+          {% endif %}
+          {% if team.members.count < constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MAX_MEMBERS') %}
+            <a href='{{ path('balticrobo_website_competitor_registration_hackathon_addmember', {
+              'name': team.name,
+            }) }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
+              {{ '_button.add'|trans }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

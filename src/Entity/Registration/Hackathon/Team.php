@@ -6,6 +6,7 @@ namespace BalticRobo\Website\Entity\Registration\Hackathon;
 
 use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\User\User;
+use BalticRobo\Website\Model\Registration\Hackathon\AddTeamDTO;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,6 +18,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Team
 {
+    public const MAX_TEAMS = 1;
+    public const MAX_MEMBERS = 6;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -45,14 +49,15 @@ class Team
     private $experience;
 
     /**
-     * @ORM\OneToMany(targetEntity="BalticRobo\Website\Entity\Registration\Hackathon\Member", mappedBy="team")
+     * @ORM\OneToMany(targetEntity="BalticRobo\Website\Entity\Registration\Hackathon\Member", mappedBy="team",
+     * cascade={"persist"})
      *
      * @var Collection|Member[]
      */
     private $members;
 
     /**
-     * @ORM\OneToOne(targetEntity="BalticRobo\Website\Entity\Registration\Hackathon\Member", mappedBy="team")
+     * @ORM\OneToOne(targetEntity="BalticRobo\Website\Entity\Registration\Hackathon\Member")
      */
     private $captain;
 
@@ -74,6 +79,22 @@ class Team
     public function __construct()
     {
         $this->members = new ArrayCollection();
+    }
+
+    public static function createFromAddDTO(AddTeamDTO $dto, Event $event, User $author, \DateTimeImmutable $now): self
+    {
+        $entity = new self();
+        $entity->name = $dto->getName();
+        $entity->city = $dto->getCity();
+        $entity->whyYou = $dto->getWhyYou();
+        $entity->experience = $dto->getExperience();
+        $entity->event = $event;
+        $entity->createdAt = $now;
+        $entity->createdBy = $author;
+        $entity->members = new ArrayCollection();
+        $entity->captain = null;
+
+        return $entity;
     }
 
     public function getId(): int
@@ -106,9 +127,19 @@ class Team
         return $this->members;
     }
 
-    public function getCaptain(): Member
+    public function addMember(Member $member): void
+    {
+        $this->members->add($member);
+    }
+
+    public function getCaptain(): ?Member
     {
         return $this->captain;
+    }
+
+    public function setCaptain(Member $captain): void
+    {
+        $this->captain = $captain;
     }
 
     public function getEvent(): Event

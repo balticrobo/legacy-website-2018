@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Controller\Competitor\Registration;
 
+use BalticRobo\Website\Entity\Registration\Competition\Team;
 use BalticRobo\Website\Form\Registration\Competition\AddConstructionType;
 use BalticRobo\Website\Form\Registration\Competition\AddMemberType;
 use BalticRobo\Website\Form\Registration\Competition\AddTeamType;
@@ -93,7 +94,7 @@ class CompetitionController extends Controller
         $event = $this->eventService->getCurrentEvent();
         $team = $this->competitionService->getTeamByIdentifierAndEvent($identifier, $event);
 
-        if ($team->getMembers()->count() >= 4) {
+        if ($team->getMembers()->count() >= Team::MAX_MEMBERS) {
             return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
         }
 

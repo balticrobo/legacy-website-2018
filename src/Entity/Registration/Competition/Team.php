@@ -17,6 +17,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Team
 {
+    public const MAX_MEMBERS = 4;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")

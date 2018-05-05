@@ -45,6 +45,7 @@ competitor_zone:
     last_login_at: Last login at
     never_logged_in: Never logged in
     registration_competition: Registration for competitions
+    registration_hackathon: Registration for Hackathon
     welcome_header: Competitor zone - Dashboard
   registration:
     competition:
@@ -58,18 +59,31 @@ competitor_zone:
         info: Info
         members: Members
     form:
+      age: Age
       city: City
       competitions: Competitions
       construction_name: Construction name
       creators: 'Creators*'
       creators_description: '*This information is collected to print on diplomas. It is not required.'
+      experience: Your experience
+      experience_description: Tell us about your experience in creating something from scratch.
       forename: Forename
       identifier: Identifier
       identifier_description: Identifier is 2-4 sign value to unique identify teams and constructions.
+      is_captain: Is captain?
       name: Team name
       scientific_organization: Scientific organization
       shirt_type: Shirt size
       surname: Surname
+      why_you: Why you?
+      why_you_description: Tell us why you should participate in Hackathon.
+    hackathon:
+      add_member: Add member
+      add_team: Add team
+      team_details:
+        add_member: You did not add any members yer. Do it now! Remember to add yourself and set someone as Captain!
+        info: Info
+        members: Members
 default:
   home:
     section:
