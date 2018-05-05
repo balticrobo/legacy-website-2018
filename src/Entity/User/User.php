@@ -185,6 +185,11 @@ class User implements AdvancedUserInterface, MailRecipientInterface
         return $this->lastLoginAt;
     }
 
+    public function setLastLoginAt(\DateTimeImmutable $now): void
+    {
+        $this->lastLoginAt = $now;
+    }
+
     public function getToken(): ?string
     {
         return $this->token;
