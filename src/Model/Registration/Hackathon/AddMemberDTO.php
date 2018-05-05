@@ -30,7 +30,6 @@ class AddMemberDTO
     /**
      * @Assert\NotBlank(message="member_add.age.not_blank")
      * @Assert\Range(min="18", minMessage="member_add.age.range.min")
-     * @Assert\Type(type="integer", message="member_add.age.type")
      */
     private $age;
 

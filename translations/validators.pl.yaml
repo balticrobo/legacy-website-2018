@@ -1,3 +1,31 @@
+construction_add:
+  competitions:
+    count:
+      min: Musisz zaznaczyć minimum {{ limit }} konkurencję.
+  name:
+    already_exists: Konstrukcja już jest dodana.
+    length:
+      max: Nazwa nie może być dłuższa niż {{ limit }} znaków.
+      min: Nazwa nie może być krótsza niż {{ limit }} znaków.
+    not_blank: Podaj nazwękonstrukcji.
+member_add:
+  age:
+    not_blank: Podaj wiek członka drużyny.
+    range:
+      min: Minimum age for competitors is {{ limit }}.
+  forename:
+    length:
+      max: Imię nie może być dłuższe niż {{ limit }} znaków.
+      min: Imię nie może być krótesze niż {{ limit }} znaków.
+    not_blank: Podaj imię członka drużyny.
+  shirt_type:
+    choice: Nieprawidłowa wartość. Wybierz rozmiar koszulki z listy.
+    not_blank: Wybierz rozmiar koszulki z listy.
+  surname:
+    length:
+      max: Nazwisko nie może być dłuższe niż {{ limit }} znaków.
+      min: Nazwisko nie może być krótesze niż {{ limit }} znaków.
+    not_blank: Podaj nazwisko członka drużyny.
 security:
   Account is locked:
     login: Konto jest nieaktywne.
@@ -5,6 +33,38 @@ security:
     login: Email lub hasło są niepoprawne.
   Username could not be found:
     login: Email lub hasło są niepoprawne.
+team_add:
+  city:
+    length:
+      max: Nazwa miasta nie może być dłuższa niż {{ limit }} znaków.
+      min: Nazwa miasta nie może być krótsza niż {{ limit }} znaków.
+    not_blank: Podaj nazwę miasta.
+  experience:
+    length:
+      max: Opis nie może być dłuższy niż {{ limit }} znaków.
+      min: Opis nie może być krótszy niż {{ limit }} znaków.
+    not_blank: Napisz nam o Waszym doświadczeniu.
+  identifier:
+    alphanumeric: Identyfikator zespołu musi być alfanumeryczny.
+    already_exists: Zespół z takim identyfikatorem już istnieje.
+    length:
+      max: Identyfikator zespołu nie może być dłuższy niż {{ limit }} znaków.
+      min: Identyfikator zespołu nie może być krótszy niż {{ limit }} znaków.
+    not_blank: Podaj identyfikator zespołu.
+  already_exists: Taki zespół już istnieje.
+  name:
+    length:
+      max: Nazwa zespołu nie może być dłuższa niż {{ limit }} znaków.
+      min: Nazwa zespołu nie może być krótsza niż {{ limit }} znaków.
+    not_blank: Podaj nazwę zespołu.
+  scientific_organization:
+    length:
+      max: Nazwa organizacji studenckiej nie może być dłuższa niż {{ limit }} znaków.
+  why_you:
+    length:
+      max: Opis nie może być dłuższy niż {{ limit }} znaków.
+      min: Opis nie może być krótszy niż {{ limit }} znaków.
+    not_blank: Napisz dlaczego mamy wybrać Wasz zespół.
 user_register:
   email:
     already_exists: Taki email już istnieje, zaloguj się.

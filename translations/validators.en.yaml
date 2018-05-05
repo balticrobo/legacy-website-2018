@@ -1,3 +1,31 @@
+construction_add:
+  competitions:
+    count:
+      min: You must assign min. {{ limit }} competition.
+  name:
+    already_exists: Construction with this name already exists.
+    length:
+      max: Maximum name length is {{ limit }} chars.
+      min: Minimum name length is {{ limit }} chars.
+    not_blank: Enter construction name.
+member_add:
+  age:
+    not_blank: Enter age.
+    range:
+      min: Minimum age for competitors is {{ limit }}.
+  forename:
+    length:
+      max: Maximum forename length is {{ limit }} chars.
+      min: Minimum forename length is {{ limit }} chars.
+    not_blank: Enter member forename.
+  shirt_type:
+    choice: Invalid value. Get it from select.
+    not_blank: Select shirt size.
+  surname:
+    length:
+      max: Maximum surname length is {{ limit }} chars.
+      min: Minimum surname length is {{ limit }} chars.
+    not_blank: Enter member surname.
 security:
   Account is locked:
     login: Account is locked.
@@ -5,6 +33,38 @@ security:
     login: Email or password are incorrect.
   Username could not be found:
     login: Email or password are incorrect.
+team_add:
+  city:
+    length:
+      max: Maximum city length is {{ limit }} chars.
+      min: Minimum city length is {{ limit }} chars.
+    not_blank: Enter city.
+  experience:
+    length:
+      max: This description should be shorter than {{ limit }} chars.
+      min: This description should be longer than {{ limit }} chars.
+    not_blank: Enter your experience description.
+  identifier:
+    alphanumeric: Identifier must be alphanumeric.
+    already_exists: Team with this identifier already exists.
+    length:
+      max: Maximum identifier length is {{ limit }} chars.
+      min: Minimum identifier length is {{ limit }} chars.
+    not_blank: Enter team identifier.
+  already_exists: Team with this name already exists.
+  name:
+    length:
+      max: Maximum team name length is {{ limit }} chars.
+      min: Minimum team name length is {{ limit }} chars.
+    not_blank: Enter team name.
+  scientific_organization:
+    length:
+      max: Maximum scientific organization name length is {{ limit }} chars.
+  why_you:
+    length:
+      max: This description should be shorter than {{ limit }} chars.
+      min: This description should be longer than {{ limit }} chars.
+    not_blank: Enter "why you" description.
 user_register:
   email:
     already_exists: Email already exists. Please log in.
