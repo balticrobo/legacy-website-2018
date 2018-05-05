@@ -61,7 +61,8 @@ competitor_zone:
       city: Miasto
       competitions: Konkurencje
       construction_name: Nazwa konstrukcji
-      creators: Twórcy
+      creators: 'Twórcy*'
+      creators_description: '*Ta informacja jest zbierana do druku na dyplomach. Nie jest wymagana.'
       forename: Imię
       identifier: Identyfikator
       name: Nazwa drużyny
