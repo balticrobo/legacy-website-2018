@@ -73,9 +73,9 @@ class Construction
         $entity = new self();
         $entity->name = $dto->getName();
         $entity->competitions = $dto->getCompetitions();
+        $entity->creators = $dto->getCreators();
         $entity->team = $team;
         $entity->createdAt = $now;
-        $entity->creators = new ArrayCollection();
 
         return $entity;
     }
