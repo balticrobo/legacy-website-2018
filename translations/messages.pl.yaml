@@ -140,6 +140,13 @@ enum:
     male_xl: Męska - XL
     male_xxl: Męska - XXL
     male_xxxl: Męska - XXXL
+    unisex_xs: XS
+    unisex_s: S
+    unisex_m: M
+    unisex_l: L
+    unisex_xl: XL
+    unisex_xxl: XXL
+    unisex_xxxl: XXXL
 event:
   rule:
     _print_header: Regulamin konkurencji<br/><strong>%competition%</strong>

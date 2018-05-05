@@ -19,6 +19,13 @@ class ShirtTypeEnum
     public const MALE_XL = 24;
     public const MALE_XXL = 25;
     public const MALE_XXXL = 26;
+    public const UNISEX_XS = 30;
+    public const UNISEX_S = 31;
+    public const UNISEX_M = 32;
+    public const UNISEX_L = 33;
+    public const UNISEX_XL = 34;
+    public const UNISEX_XXL = 35;
+    public const UNISEX_XXXL = 36;
 
     private const NAMES = [
         self::NONE => 'enum.shirt_type.none',
@@ -34,6 +41,13 @@ class ShirtTypeEnum
         self::MALE_XL => 'enum.shirt_type.male_xl',
         self::MALE_XXL => 'enum.shirt_type.male_xxl',
         self::MALE_XXXL => 'enum.shirt_type.male_xxxl',
+        self::UNISEX_XS => 'enum.shirt_type.unisex_xs',
+        self::UNISEX_S => 'enum.shirt_type.unisex_s',
+        self::UNISEX_M => 'enum.shirt_type.unisex_m',
+        self::UNISEX_L => 'enum.shirt_type.unisex_l',
+        self::UNISEX_XL => 'enum.shirt_type.unisex_xl',
+        self::UNISEX_XXL => 'enum.shirt_type.unisex_xxl',
+        self::UNISEX_XXXL => 'enum.shirt_type.unisex_xxxl',
     ];
 
     public static function getName(int $enum): string
@@ -52,18 +66,13 @@ class ShirtTypeEnum
     {
         return [
             self::NONE,
-            self::FEMALE_XS,
-            self::FEMALE_S,
-            self::FEMALE_M,
-            self::FEMALE_L,
-            self::FEMALE_XL,
-            self::MALE_XS,
-            self::MALE_S,
-            self::MALE_M,
-            self::MALE_L,
-            self::MALE_XL,
-            self::MALE_XXL,
-            self::MALE_XXXL,
+            self::UNISEX_XS,
+            self::UNISEX_S,
+            self::UNISEX_M,
+            self::UNISEX_L,
+            self::UNISEX_XL,
+            self::UNISEX_XXL,
+            self::UNISEX_XXXL,
         ];
     }
 
