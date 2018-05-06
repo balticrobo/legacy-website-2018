@@ -16,10 +16,12 @@ services:
       APP_SECRET: 7cbd4f1718b779f367516a8d917b6a29
       DATABASE_URL: mysql://root:mysql@mysql:3306/balticrobo
       MAILER_URL: smtp://mailhog:1025
+      SENTRY_DSN:
+      COMMIT_SHA:
     working_dir: /var/www/app
     command: /opt/docker/start.sh
   node:
-    image: node:9
+    image: node:10
     user: node
     volumes:
       - .:/var/www/app
@@ -57,15 +59,15 @@ services:
       context: ./docs/docker/node_inky
     user: node
     volumes:
-      - ./_email:/var/www/app/_email
+      - ./_mail:/var/www/app/_mail
       - ./public:/var/www/app/public
-      - ./templates/_email:/var/www/app/templates/_email
+      - ./templates/_mail:/var/www/app/templates/_mail
       - ./docs/docker/node_inky:/opt/docker
     environment:
       DEPLOY_EMAIL_ASSETS_DOMAIN: http://localhost:8000/email/
     ports:
       - 3000:3000
-    working_dir: /var/www/app/_email
+    working_dir: /var/www/app/_mail
     command: /opt/docker/start.sh
 
 volumes:

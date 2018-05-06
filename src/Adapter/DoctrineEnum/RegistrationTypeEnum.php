@@ -37,12 +37,12 @@ class RegistrationTypeEnum
         ];
     }
 
-    public function getFormData(): array
+    public static function getFormData(): array
     {
-        return [
-            self::NAMES[self::COMPETITION] => self::COMPETITION,
-            self::NAMES[self::HACKATHON] => self::HACKATHON,
-            self::NAMES[self::CONFERENCE] => self::CONFERENCE,
-        ];
+        return array_reduce(self::getAvailableTypes(), function (array $carry, string $item) {
+            $carry[self::NAMES[$item]] = $item;
+
+            return $carry;
+        }, []);
     }
 }

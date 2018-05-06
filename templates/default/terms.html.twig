@@ -8,9 +8,23 @@
   <div class='wrapper'>
     <div class='container'>
       <div class='row'>
-        <div class='col-12 col-md-6 offset-md-3'>
-          <h1>Terms of Use</h1>
-          {# TODO: Add TOS #}
+        <div class='col-12 col-md-8 offset-md-2'>
+          <h1>{{ 'default.terms.header'|trans }}</h1>
+          {% if app.request.locale == 'pl' %}
+            <ol>
+              <li>Organizatorem turnieju Bałtyckie Bitwy Robotów (dalej zwane “Wydarzeniem”) są Stowarzyszenie Robotyków SKALP oraz koło naukowe NKSA (dalej zwane “Organizatorem”). Wydarzenie odbywa się w dniach 26-27 maja na terenie Trójmiasta.</li>
+              <li>Regulamin obowiązuje wszystkie osoby (dalej zwane “Uczestnikami”), które wezmą udział w jakiejkolwiek części Wydarzenia (tj. dowolna konkurencja w ramach turnieju robotów, Robohackathon oraz konferencja). Każdy Uczestnik zobowiązany jest stosować się do postanowień Regulaminu.</li>
+              <li>Uczestnicy Wydarzenia wyrażają zgodę na nieodpłatne wykorzystanie ich wizerunku utrwalonego w trakcie Wydarzenia w materiałach promocyjnych i informacyjnych Organizatora.</li>
+              <li>Udział w Wydarzeniu jest równoznaczny z udzieleniem nieodpłatnej zgody na nagrywanie, fotografowanie, filmowanie lub dokonywanie innego rodzaju zapisu wizerunku Uczestnika w związku z Imprezą oraz na transmitowanie, rozpowszechnianie lub pokazywanie tego wizerunku i głosu w związku z jakimkolwiek programem przedstawiającym Imprezę. Uczestnikowi nie przysługują żadne roszczenia wobec Organizatora z tego tytułu.</li>
+              <li>Na terenie Imprezy zakazuje się prowadzenia bez zezwolenia Organizatora jakiejkolwiek działalności handlowej, zarobkowej, promocyjnej, reklamowej lub agitacji politycznej.</li>
+              <li>Uczestników Imprezy obowiązuje zakaz spożywania oraz pozostawania pod wpływem alkoholu lub innych środków psychoaktywnych oraz palenia tytoniu na terenie Imprezy.</li>
+              <li>Organizator nie ponosi odpowiedzialności za zmianę planu Wydarzenia, zmianę daty i miejsca Wydarzenia lub odwołanie Wydarzenia z przyczyn niezależnych od Organizatora.</li>
+              <li>Dane osobowe Uczestników będą wykorzystywane zgodnie z ustawą z 29 sierpnia 1997 r. o ochronie danych osobowych (tekst jednolity: Dz. U. z 2002 r., Nr 101 poz. 926 z późn. zm. ) w celach związanych z uczestnictwem w Wydarzeniu. Dane osobowe są zbierane na zasadzie dobrowolności, jednakże podanie prawdziwych danych w formularzu rejestracyjnym jest warunkiem wzięcia udziału w danej części Wydarzenia. Dane osobowe będą przetwarzane wyłącznie dla celów związanych z realizacją Imprezy. Każdy Uczestnik ma prawo do wglądu do swoich danych i do ich poprawiania.</li>
+              <li>Udział w Wydarzeniu jest równoznaczny z udzieleniem nieodpłatnej zgody na nagrywanie, fotografowanie, filmowanie lub dokonywanie innego rodzaju zapisu wizerunku Uczestnika w związku z Imprezą oraz na transmitowanie, rozpowszechnianie lub pokazywanie tego wizerunku i głosu w związku z jakimkolwiek programem przedstawiającym Imprezę. Uczestnikowi nie przysługują żadne roszczenia wobec Organizatora z tego tytułu.</li>
+            </ol>
+          {% else %}
+            Check Polish version of page for general tournament terms. Sorry for inconvenience.
+          {% endif %}
         </div>
       </div>
     </div>

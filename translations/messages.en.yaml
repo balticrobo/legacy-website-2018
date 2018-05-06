@@ -1,3 +1,11 @@
+_button:
+  add: Add
+  details: Details
+  forgotten_password: Reset password
+  login: Login
+  logout: Logout
+  register: Register
+  resend_validation_token: Resend validation token
 _common:
   event_name: Baltic Robo Battles
   competition_group:
@@ -30,16 +38,52 @@ _menu:
   for_kids: For kids
   home: Homepage
   rules: Rules
-buttons:
-  forgotten_password: Reset password
-  login: Login
-  register: Register
-  resend_validation_token: Resend validation token
-event:
-  rule:
-    _print_header: Regulations for<br/><strong>%competition%</strong>
-    _screen_header: Regulations for <strong>%competition%</strong>
-    last_modified_at: Last modified at
+competitor_zone:
+  dashboard:
+    competitor_name: Name
+    event_name: Event
+    last_login_at: Last login at
+    never_logged_in: Never logged in
+    registration_competition: Registration for competitions
+    registration_hackathon: Registration for Hackathon
+    welcome_header: Competitor zone - Dashboard
+  registration:
+    competition:
+      add_construction: Add construction
+      add_member: Add member
+      add_team: Add team
+      team_details:
+        add_construction: You did not add any constructions of your team yet. Do it now!
+        add_member: You did not add any members of your team yet. Do it now! Remember to add yourself!
+        constructions: Constructions
+        info: Info
+        members: Members
+    form:
+      age: Age
+      city: City
+      competitions: Competitions
+      construction_name: Construction name
+      creators: 'Creators*'
+      creators_description: '*This information is collected to print on diplomas. It is not required.'
+      experience: Your experience
+      experience_description: Tell us about your experience in creating something from scratch.
+      forename: Forename
+      identifier: Identifier
+      identifier_description: Identifier is 2-4 sign value to unique identify teams and constructions.
+      is_captain: Is captain?
+      name: Team name
+      scientific_organization: Scientific organization
+      shirt_type: Shirt size
+      surname: Surname
+      why_you: Why you?
+      why_you_description: Tell us why you should participate in Hackathon.
+    hackathon:
+      add_member: Add member
+      add_team: Add team
+      team_details:
+        add_member: You did not add any members yer. Do it now! Remember to add yourself and set someone as Captain!
+        info: Info
+        members: Members
 default:
   home:
     section:
@@ -60,23 +104,23 @@ default:
           description: It's a free competition. There are no regulations about robot's features. Their main goal is to delight the audience. They are rated according to audience's votes and proffesional jury's verdict.
           name: Freestyle
         lego:
-          description: It's a competitions for the youngest competitors. Using lego blocks they can build their first robots and compete with their peers. It's a geat opportunity to enter the world of robotics.<br/>There are two categories available:<ul><li><strong>Line Follower</strong> where one needs to beat a route markes with a black line.</li><li><strong>Sumo</strong>, where the opponent need to be pushed out of the ring.</li></ul>
+          description: It's a competitions for the youngest competitors. Using lego blocks they can build their first robots and compete with their peers. It's a geat opportunity to enter the world of robotics.<br/>There are two categories available:<ul><li><strong>Line Follower</strong> where one needs to beat a route marked with a black line.</li><li><strong>Sumo</strong>, where the opponent needs to be pushed out of the ring.</li></ul>
           name: LEGO
         line_follower:
           description: In this competition, the robot's speed and agility are crucial. They need to cover the route marked with a black line as fast as they can.<br/>Besides this, the robots can also compete in:<ul><li><strong>Turbo</strong>, where it's allowed to use a turbine to achieve higher adhesion.</li><li><strong>Enhanced</strong>, where they need to avoid obstacles on the route.</li><li><strong>Drag</strong>, a race in a straight line,</li><li><strong>3D</strong> where they need to beat obstacles straight out of a video game.</li></ul>
           name: Line follower
         micromouse:
-          description: In this competition the robots need to find the fastest way to the middle of the labirynth. In the first part the have to map the whole space to find the best way. In the next one they have to reach the finnish line as fast as possible. The first one to reach the the middle wins!
+          description: In this competition the robots need to find the fastest way to the middle of the labirynth. In the first part they have to map the whole space to find the best way. In the next one they have to reach the finish line as fast as possible. The first one to reach the the middle wins!
           name: Micromouse
         robohackathon:
           description: Laser, 3D printer, some electronic equipment and 40 hours of continuous hacking. Teams participating in RoboHackathon will have only so little to construct a robot that destroy opponents. Final battle will be carried in free-for-all style. The winner will be the last robot moving.
           name: Robohackathon
         sumo:
-          description: In this one, robots need to show their strenght and cunning to overcome their opponent and push them out of the ring. The fights are dealt into 4 categories, which differ in robots maximal size and weight and the size of the ring <ul><li><strong>Sumo</strong> up to 3kg, up to 200x200mm, ring up to 154cm,</li><li><strong>miniSumo</strong> up to 500g, up to 100x100mm, ring up to 77cm,</li><li><strong>microSumo</strong> up to 100g, up to 50x50x50mm, ring up to 38,5cm,</li><li><strong>nanoSumo</strong> up to 25g, up to 25x25x25mm, ring up to 19,25cm.</li></ul>
+          description: In this one, robots need to show their strength and cunning to overcome their opponent and push them out of the ring. The fights are dealt into 4 categories, which differ in robots maximal size and weight and the size of the ring <ul><li><strong>Sumo</strong> up to 3kg, up to 200x200mm, ring up to 154cm,</li><li><strong>miniSumo</strong> up to 500g, up to 100x100mm, ring up to 77cm,</li><li><strong>microSumo</strong> up to 100g, up to 50x50x50mm, ring up to 38,5cm,</li><li><strong>nanoSumo</strong> up to 25g, up to 25x25x25mm, ring up to 19,25cm.</li></ul>
           name: Sumo
       conference:
         _header: Conference
-        content: Closed event during which student teams from across the Polish will present their achievements. Rocket motors, Martian rovers, racing cars, satellites and solar cars are only part of the planned talks. If You are interested in participating in conference, please contact with organizers.
+        content: Closed event during which student teams from across the Poland will present their achievements. Rocket motors, Martian rovers, racing cars, satellites and solar cars are only part of the planned talks. If You are interested in participating in conference, please contact with organizers.
       contact:
         _header: Contact
         any_questions: 'Any questions? You can find us at:'
@@ -87,7 +131,7 @@ default:
         content: The history of may robotic meeting in Tricity goes as far as 2005. It was then when SKALP and NKSA organised Robots Day at Gdańsk University of Technology. After four editions it was decied to develop the idea into robotics competitions. The fist edition of Tricity Robots Tournament took place in 2009 and was organised by SKALP. It was only the second competition of the kind in Poland. The next year, NKSA also organised their own competition, Roboxy. Since then, two independent competitions took place in Tricity every year. It lasted up until 2018, there the two organisations decided to combine their efforts and create a new, even grander, event.
       location:
         _header: Location
-        content: The event will take place on the southern part of the Baltic Sea, i Tricity. Tricity is a metropolitan construct consisting of three cities:<ul><li><strong>Gdańsk</strong>, a place with a long and rich history, with various monuments and museums. It is no wonder that Gdańsk is often placed really high on the lists of the best travel destinations.</li><li><strong>Gdynia</strong>, which developed at a very high rate in the beginning of the 20th century, which makes Gdynia a pretty modern city.</li><li><strong>Sopot</strong>, which is the smallest of the three, but not lacking in charm. Here can you fing the biggest pier of the Baltic Sea.</li></ul>
+        content: The event will take place on the southern coast of the Baltic Sea, i Tricity. Tricity is a metropolitan construct consisting of three cities:<ul><li><strong>Gdańsk</strong>, a place with a long and rich history, with various monuments and museums. It is no wonder that Gdańsk is often placed really high on the lists of the best travel destinations.</li><li><strong>Gdynia</strong>, which developed at a very high rate in the beginning of the 20th century, which makes Gdynia a pretty modern city.</li><li><strong>Sopot</strong>, which is the smallest of the three, but not lacking in charm. Here can you find the biggest pier of the Baltic Sea.</li></ul>
       organisers:
         _header: Organisers
         content:
@@ -98,7 +142,36 @@ default:
           skalp_header: Robotics Association SKALP
           skalp: an organisation created in 2015 by the members of Student Automatics Club SKALP, active since 2000 at Gdańsk University of Technology. Their activity goes beyond the club and consists og educational activity, leading various projects ind popularization of automatics and robotics.
       registration:
-        _header: Registration soon!
+        _header: Registration is now open!
+  terms:
+    header: Terms of use
+enum:
+  shirt_type:
+    none: None
+    female_xs: Female - XS
+    female_s: Female - S
+    female_m: Female - M
+    female_l: Female - L
+    female_xl: Female - XL
+    male_xs: Male - XS
+    male_s: Male - S
+    male_m: Male - M
+    male_l: Male - L
+    male_xl: Male - XL
+    male_xxl: Male - XXL
+    male_xxxl: Male - XXXL
+    unisex_xs: XS
+    unisex_s: S
+    unisex_m: M
+    unisex_l: L
+    unisex_xl: XL
+    unisex_xxl: XXL
+    unisex_xxxl: XXXL
+event:
+  rule:
+    _print_header: Regulations for<br/><strong>%competition%</strong>
+    _screen_header: Regulations for <strong>%competition%</strong>
+    last_modified_at: Last modified at
 security:
   activate:
     exception_message: 'Exception message:'
@@ -109,6 +182,14 @@ security:
       successful: Activation successed
       unsuccessful: Activation failed
     unsuccess_info: Account activation failed, read exception message for more info. If it should not happend, contact us.
+  forgotten_password_success:
+    additional_info: If you did not receive mail for few minutes, check your spam folder.
+    email_info: Now check your inbox for email with reset password token.
+    success_info: Change password request was handled properly. Process started.
+    title:
+      successful: Reset password request successed
+      unsuccessful: Can not handle your request
+    unsuccess_info: We can not handle your request to reset forgotten password. If it should not happen, just contact us.
   login:
     dont_have_account: Do not have an account?
     forgot_password: Forgotten password?

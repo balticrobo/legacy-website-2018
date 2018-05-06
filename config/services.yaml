@@ -21,3 +21,7 @@ services:
     arguments:
       $defaultLocale: '%locale%'
       $availableLocales: '%available_locales%'
+
+  BalticRobo\Website\EventListener\LoginListener:
+    tags:
+      - { name: 'kernel.event_listener', event: 'security.interactive_login' }

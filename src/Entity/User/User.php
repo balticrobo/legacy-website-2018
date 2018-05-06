@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * @ORM\Table(name="users")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BalticRobo\Website\Repository\UserRepository")
  */
 class User implements AdvancedUserInterface, MailRecipientInterface
 {
@@ -183,6 +183,11 @@ class User implements AdvancedUserInterface, MailRecipientInterface
     public function getLastLoginAt(): ?\DateTimeImmutable
     {
         return $this->lastLoginAt;
+    }
+
+    public function setLastLoginAt(\DateTimeImmutable $now): void
+    {
+        $this->lastLoginAt = $now;
     }
 
     public function getToken(): ?string

@@ -245,7 +245,7 @@ class SecurityController extends Controller
             $user = $this->userService->getByToken($token);
         } catch (InvalidTokenException $e) {
             $request->getSession()->set('forgotten_password_exception', $e->getMessage());
-            $request->getSession()->set('forgotten_password_email', 'x@x.com');
+            $request->getSession()->set('forgotten_password_email', 'noreply@example.com');
 
             return $this->redirectToRoute('balticrobo_website_security_forgottenpasswordsuccess');
         }

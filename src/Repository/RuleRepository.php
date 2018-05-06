@@ -20,7 +20,7 @@ class RuleRepository extends ServiceEntityRepository
 
     public function getCurrentRulesByLocale(Event $event, string $locale): Collection
     {
-        $rules = $this->createQueryBuilder('r')
+        $records = $this->createQueryBuilder('r')
             ->join(Event::class, 'e')
             ->where('e.id = :eventId')
             ->andWhere('r.locale = :locale')
@@ -29,6 +29,6 @@ class RuleRepository extends ServiceEntityRepository
             ->setParameter('locale', $locale)
             ->getResult();
 
-        return new ArrayCollection($rules);
+        return new ArrayCollection($records);
     }
 }

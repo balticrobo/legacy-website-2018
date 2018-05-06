@@ -3,6 +3,10 @@ body {
   min-width: 240px;
 }
 
+legend {
+  font-size: $font-size-base;
+}
+
 .wrapper {
   background: $wrapper-bg;
 }

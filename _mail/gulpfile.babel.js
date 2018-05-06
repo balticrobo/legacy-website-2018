@@ -18,7 +18,7 @@ let CONFIG;
 gulp.task('default',
   gulp.series(clean, pages, sass, images, inline));
 gulp.task('watch',
-  gulp.series('default', server, watch));
+  gulp.series('default', copyHTMLToProd, copyTXTToProd, server, watch));
 gulp.task('mail',
   gulp.series('default', readconf, mail));
 gulp.task('build',
@@ -30,9 +30,8 @@ function clean(done) {
 }
 
 function pages() {
-  let pagesSrc = ['src/pages/**/*.html'];
+  let pagesSrc = ['src/pages/**/*.html', 'src/pages/**/*.txt'];
   if(PRODUCTION) {
-    pagesSrc.push('src/pages/**/*.txt');
     pagesSrc.push('!src/pages/foundation/**/*.html');
     pagesSrc.push('!src/pages/**/index.html');
   }
@@ -91,9 +90,9 @@ function server(done) {
 }
 
 function watch() {
-  gulp.watch('src/pages/**/*.html').on('all', gulp.series(pages, inline, browser.reload));
-  gulp.watch(['src/layouts/**/*', 'src/partials/**/*']).on('all', gulp.series(resetPages, pages, inline, browser.reload));
-  gulp.watch(['../scss/**/*.scss', 'src/assets/scss/**/*.scss']).on('all', gulp.series(resetPages, sass, pages, inline, browser.reload));
+  gulp.watch('src/pages/**/*.html').on('all', gulp.series(pages, inline, copyHTMLToProd, copyTXTToProd, browser.reload));
+  gulp.watch(['src/layouts/**/*', 'src/partials/**/*']).on('all', gulp.series(resetPages, pages, inline, copyHTMLToProd, copyTXTToProd, browser.reload));
+  gulp.watch(['../scss/**/*.scss', 'src/assets/scss/**/*.scss']).on('all', gulp.series(resetPages, sass, pages, inline, copyHTMLToProd, copyTXTToProd, browser.reload));
   gulp.watch('src/assets/img/**/*').on('all', gulp.series(images, browser.reload));
 }
 
@@ -136,11 +135,11 @@ function mail() {
 function copyHTMLToProd() {
   return gulp.src('dist/**/*.html')
     .pipe(ext_replace('.html.twig'))
-    .pipe(gulp.dest('../templates/_email'));
+    .pipe(gulp.dest('../templates/_mail'));
 }
 
 function copyTXTToProd() {
   return gulp.src('dist/**/*.txt')
     .pipe(ext_replace('.txt.twig'))
-    .pipe(gulp.dest('../templates/_email'));
+    .pipe(gulp.dest('../templates/_mail'));
 }
