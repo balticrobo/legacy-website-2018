@@ -8,6 +8,8 @@ use BalticRobo\Website\Entity\Registration\Competition\Team;
 use BalticRobo\Website\Form\Registration\Competition\AddConstructionType;
 use BalticRobo\Website\Form\Registration\Competition\AddMemberType;
 use BalticRobo\Website\Form\Registration\Competition\AddTeamType;
+use BalticRobo\Website\Form\Registration\Competition\EditConstructionType;
+use BalticRobo\Website\Model\Registration\Competition\EditConstructionDTO;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\CompetitionService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -142,6 +144,43 @@ class CompetitionController extends Controller
         }
 
         return $this->render('competitor/registration/competition/add_construction.html.twig', [
+            'event' => $event,
+            'form' => $form->createView(),
+            'team' => $team,
+        ]);
+    }
+
+    /**
+     * @Route("/{identifier}/construction/{name}", requirements={"identifier" = "\w{2,4}"})
+     * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param string  $identifier
+     * @param string  $name
+     *
+     * @return Response
+     */
+    public function editConstructionAction(Request $request, string $identifier, string $name): Response
+    {
+        $event = $this->eventService->getCurrentEvent();
+        $team = $this->competitionService->getTeamByIdentifierAndEvent($identifier, $event);
+        $construction = $this->competitionService->getConstructionByNameAndTeam($name, $team);
+
+        $form = $this->createForm(EditConstructionType::class, EditConstructionDTO::createFromEntity($construction), [
+            'event' => $event,
+            'team' => $team,
+        ]);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->competitionService->editConstruction($construction, $form->getData());
+
+            return $this->redirectToRoute('balticrobo_website_competitor_registration_competition_teamdetails', [
+                'eventYear' => $event->getYear(),
+                'identifier' => $team->getIdentifier(),
+            ]);
+        }
+
+        return $this->render('competitor/registration/competition/edit_construction.html.twig', [
             'event' => $event,
             'form' => $form->createView(),
             'team' => $team,

@@ -1,6 +1,7 @@
 _button:
   add: Add
   details: Details
+  edit: Edit
   forgotten_password: Reset password
   login: Login
   logout: Logout
@@ -52,6 +53,7 @@ competitor_zone:
       add_construction: Add construction
       add_member: Add member
       add_team: Add team
+      edit_construction: Edit construction
       team_details:
         add_construction: You did not add any constructions of your team yet. Do it now!
         add_member: You did not add any members of your team yet. Do it now! Remember to add yourself!

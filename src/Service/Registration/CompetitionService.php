@@ -12,16 +12,20 @@ use BalticRobo\Website\Entity\User\User;
 use BalticRobo\Website\Model\Registration\Competition\AddConstructionDTO;
 use BalticRobo\Website\Model\Registration\Competition\AddMemberDTO;
 use BalticRobo\Website\Model\Registration\Competition\AddTeamDTO;
+use BalticRobo\Website\Model\Registration\Competition\EditConstructionDTO;
+use BalticRobo\Website\Repository\Registration\Competition\ConstructionRepository;
 use BalticRobo\Website\Repository\Registration\Competition\TeamRepository;
 use Doctrine\Common\Collections\Collection;
 
 class CompetitionService
 {
     private $teamRepository;
+    private $constructionRepository;
 
-    public function __construct(TeamRepository $team)
+    public function __construct(TeamRepository $team, ConstructionRepository $construction)
     {
         $this->teamRepository = $team;
+        $this->constructionRepository = $construction;
     }
 
     public function getTeamByIdentifierAndEvent(string $identifier, Event $event): Team
@@ -32,6 +36,11 @@ class CompetitionService
     public function getTeamsForUserInEvent(User $user, Event $event): Collection
     {
         return $this->teamRepository->getByEventAndUser($event, $user);
+    }
+
+    public function getConstructionByNameAndTeam(string $name, Team $team): Construction
+    {
+        return $this->constructionRepository->getByNameAndTeam($name, $team);
     }
 
     public function addTeam(AddTeamDTO $teamDTO, Event $event, User $author, \DateTimeImmutable $now): void
@@ -52,5 +61,11 @@ class CompetitionService
         $construction = Construction::createFromAddDTO($constructionDTO, $team, $now);
         $team->addConstruction($construction);
         $this->teamRepository->save($team);
+    }
+
+    public function editConstruction(Construction $construction, EditConstructionDTO $constructionDTO): void
+    {
+        $construction = Construction::createFromEditDTO($construction, $constructionDTO);
+        $this->constructionRepository->save($construction);
     }
 }

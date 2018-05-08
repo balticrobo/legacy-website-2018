@@ -28,31 +28,31 @@
         <div class='col-12'>
           <h4>{{ 'competitor_zone.registration.competition.team_details.members'|trans }}</h4>
           {% if not team.members.empty %}
-              <table class='table table-hover'>
-                <thead>
+            <table class='table table-hover'>
+              <thead>
+              <tr>
+                <th>{{ 'competitor_zone.registration.form.forename'|trans }}
+                  {{ 'competitor_zone.registration.form.surname'|trans }}</th>
+                <th class='w-25'></th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for member in team.members %}
                 <tr>
-                  <th>{{ 'competitor_zone.registration.form.forename'|trans }}
-                      {{ 'competitor_zone.registration.form.surname'|trans }}</th>
-                  <th class='w-25'></th>
+                  <td>{{ member.name }}</td>
+                  <td>{# TODO: Add removing and editing members? #}</td>
                 </tr>
-                </thead>
-                <tbody>
-                {% for member in team.members %}
-                  <tr>
-                    <td>{{ member.name }}</td>
-                    <td>{# TODO: Add removing and editing members? #}</td>
-                  </tr>
-                {% endfor %}
-                </tbody>
-              </table>
+              {% endfor %}
+              </tbody>
+            </table>
           {% else %}
-              {{ 'competitor_zone.registration.competition.team_details.add_member'|trans }}
+            {{ 'competitor_zone.registration.competition.team_details.add_member'|trans }}
           {% endif %}
           {% if team.members.count < constant('BalticRobo\\Website\\Entity\\Registration\\Competition\\Team::MAX_MEMBERS') %}
             <a href='{{ path('balticrobo_website_competitor_registration_competition_addmember', {
               'identifier': team.identifier,
             }) }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
-                {{ '_button.add'|trans }}
+              {{ '_button.add'|trans }}
             </a>
           {% endif %}
         </div>
@@ -65,14 +65,26 @@
               <thead>
               <tr>
                 <th>{{ 'competitor_zone.registration.form.construction_name'|trans }}</th>
+                <th>{{ 'competitor_zone.registration.form.competitions'|trans }}</th>
                 <th class='w-25'></th>
               </tr>
               </thead>
               <tbody>
               {% for construction in team.constructions %}
                 <tr>
-                  <td>{{ construction.name }}</td>
+                  <td class='align-middle'>{{ construction.name }}</td>
                   <td>
+                    <ul style='margin: 0; padding: 0' class='list-unstyled'>
+                      {% for competition in construction.competitions %}
+                        <li>{{ competition.name }}</li>
+                      {% endfor %}
+                    </ul>
+                  </td>
+                  <td class='align-middle'>
+                    <a href='{{ path('balticrobo_website_competitor_registration_competition_editconstruction', {
+                      'identifier': team.identifier,
+                      'name': construction.name
+                    }) }}' class='btn btn-warning btn-block'>{{ '_button.edit'|trans }}</a>
                     {# TODO: Add removing constructions? #}
                   </td>
                 </tr>

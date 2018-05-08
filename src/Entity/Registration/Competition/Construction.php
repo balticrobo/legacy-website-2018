@@ -6,12 +6,13 @@ namespace BalticRobo\Website\Entity\Registration\Competition;
 
 use BalticRobo\Website\Entity\Competition\Competition;
 use BalticRobo\Website\Model\Registration\Competition\AddConstructionDTO;
+use BalticRobo\Website\Model\Registration\Competition\EditConstructionDTO;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="registration_constructions")
+ * @ORM\Table(name="registration_constructions", uniqueConstraints={@ORM\UniqueConstraint(columns={"name", "team_id"})})
  * @ORM\Entity
  */
 class Construction
@@ -76,6 +77,14 @@ class Construction
         $entity->creators = $dto->getCreators();
         $entity->team = $team;
         $entity->createdAt = $now;
+
+        return $entity;
+    }
+
+    public static function createFromEditDTO(self $entity, EditConstructionDTO $dto): self
+    {
+        $entity->competitions = $dto->getCompetitions();
+        $entity->creators = $dto->getCreators();
 
         return $entity;
     }

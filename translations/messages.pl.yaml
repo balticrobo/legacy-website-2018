@@ -1,6 +1,7 @@
 _button:
   add: Dodaj
   details: Szczegóły
+  edit: Edytuj
   forgotten_password: Zresetuj hasło
   login: Zaloguj się
   logout: Wyloguj się
@@ -52,6 +53,7 @@ competitor_zone:
       add_construction: Dodaj konstrukcję
       add_member: Dodaj członka zespołu
       add_team: Dodaj zespół
+      edit_construction: Zmień dane konstrukcji
       team_details:
         add_construction: Jeszcze nie dodałeś żadnych konstrukji, zrób to teraz!
         add_member: Jeszcze nie dodałeś żadnych członków, zrób to teraz. Pamiętaj, żeby dodać też siebie!
