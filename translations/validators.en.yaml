@@ -53,6 +53,7 @@ team_add:
     not_blank: Enter team identifier.
   already_exists: Team with this name already exists.
   name:
+    already_exists: Team with this name already exists.
     length:
       max: Maximum team name length is {{ limit }} chars.
       min: Minimum team name length is {{ limit }} chars.

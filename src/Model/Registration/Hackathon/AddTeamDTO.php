@@ -15,7 +15,7 @@ class AddTeamDTO
      *     min=3, minMessage="team_add.name.length.min",
      *     max=50, maxMessage="team_add.name.length.max"
      * )
-     * TODO: OwnAssert\TeamExists(message="team_add.name.already_exists")
+     * @OwnAssert\TeamExists(message="team_add.name.already_exists")
      */
     private $name;
 
