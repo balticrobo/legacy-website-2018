@@ -28,6 +28,17 @@ class CompetitionService
         $this->constructionRepository = $construction;
     }
 
+    public function isTeamNotExistsInEvent(string $identifier, Event $event): bool
+    {
+        try {
+            $this->teamRepository->getByIdentifierAndEvent($identifier, $event);
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function getTeamByIdentifierAndEvent(string $identifier, Event $event): Team
     {
         return $this->teamRepository->getByIdentifierAndEvent($identifier, $event);

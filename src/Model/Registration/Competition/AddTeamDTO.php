@@ -25,7 +25,7 @@ class AddTeamDTO
      *     max=4, maxMessage="team_add.identifier.length.max"
      * )
      * @Assert\Regex(pattern="/^\w+$/", message="team_add.identifier.alphanumeric")
-     * TODO: OwnAssert\TeamExists(message="team_add.identifier.already_exists")
+     * @OwnAssert\TeamExists(message="team_add.identifier.already_exists")
      */
     private $identifier;
 
