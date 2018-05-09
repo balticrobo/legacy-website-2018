@@ -1,0 +1,75 @@
+.event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.event-list > li {
+  padding: 0;
+  margin: 0 0 20px;
+}
+
+.event-list > li > .type {
+  display: inline-block;
+  width: 100%;
+  height: 7rem;
+  color: color('white');
+  background-color: theme-color('primary');
+  padding: 5px;
+  text-align: center;
+}
+
+.event-list > li > .type > span {
+  display: block;
+  font-size: 5.8rem;
+  font-weight: 100;
+  line-height: 1;
+}
+
+.event-list > li > .info {
+  padding-top: 5px;
+  text-align: center;
+}
+
+.event-list > li > .info > .desc {
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .event-list > li {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100px;
+    padding: 0;
+  }
+  .event-list > li > .type {
+    display: inline-block;
+    width: 100px;
+    float: left;
+  }
+
+  .event-list > li > .info {
+    background-color: $gray-100;
+    overflow: hidden;
+  }
+
+  .event-list > li > .type {
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .event-list > li > .info {
+    position: relative;
+    height: 100px;
+    text-align: left;
+  }
+
+  .event-list > li > .info > .desc {
+    padding: 0 10px;
+  }
+}

@@ -7,6 +7,7 @@ namespace BalticRobo\Website\Controller;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\CompetitionService;
 use BalticRobo\Website\Service\Registration\HackathonService;
+use BalticRobo\Website\Service\Registration\InformationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -22,12 +23,18 @@ class CompetitorController extends Controller
     private $eventService;
     private $competitionService;
     private $hackathonService;
+    private $informationService;
 
-    public function __construct(EventService $event, CompetitionService $competition, HackathonService $hackathon)
-    {
+    public function __construct(
+        EventService $event,
+        CompetitionService $competition,
+        HackathonService $hackathon,
+        InformationService $information
+    ) {
         $this->eventService = $event;
         $this->competitionService = $competition;
         $this->hackathonService = $hackathon;
+        $this->informationService = $information;
     }
 
     /**
@@ -41,12 +48,14 @@ class CompetitorController extends Controller
         $event = $this->eventService->getCurrentEvent();
         $competitionTeams = $this->competitionService->getTeamsForUserInEvent($this->getUser(), $event);
         $hackathonTeams = $this->hackathonService->getTeamsForUserInEvent($this->getUser(), $event);
+        $information = $this->informationService->getInformationByEvent($event);
 
         return $this->render('competitor/dashboard.html.twig', [
             'competition_teams' => $competitionTeams,
             'competitor' => $this->getUser(),
             'event' => $event,
             'hackathon_teams' => $hackathonTeams,
+            'information' => $information,
         ]);
     }
 }
