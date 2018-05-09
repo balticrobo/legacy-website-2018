@@ -53,6 +53,7 @@ team_add:
     not_blank: Podaj identyfikator zespołu.
   already_exists: Taki zespół już istnieje.
   name:
+    already_exists: Zespół z taką nazwą już istnieje.
     length:
       max: Nazwa zespołu nie może być dłuższa niż {{ limit }} znaków.
       min: Nazwa zespołu nie może być krótsza niż {{ limit }} znaków.

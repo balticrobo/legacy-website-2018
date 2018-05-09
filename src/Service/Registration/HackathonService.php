@@ -22,6 +22,17 @@ class HackathonService
         $this->teamRepository = $team;
     }
 
+    public function isTeamNotExistsInEvent(string $name, Event $event): bool
+    {
+        try {
+            $this->teamRepository->getByEventAndName($event, $name);
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function getTeamsForUserInEvent(User $user, Event $event): Collection
     {
         return $this->teamRepository->getByEventAndUser($event, $user);

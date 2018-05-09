@@ -151,7 +151,8 @@ class SecurityController extends Controller
      * @Route("/token/{email}/recreate")
      * @Method("GET")
      *
-     * TODO: This action is dispatched when User tries to activate account after token validity period expires, refactor it!
+     * TODO: This action is dispatched when User tries to activate account after token validity period expires,
+     *       refactor it!
      *
      * @param string $email
      *
