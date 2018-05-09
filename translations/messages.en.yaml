@@ -43,6 +43,7 @@ competitor_zone:
   dashboard:
     competitor_name: Name
     event_name: Event
+    information: Information
     last_login_at: Last login at
     never_logged_in: Never logged in
     registration_competition: Registration for competitions

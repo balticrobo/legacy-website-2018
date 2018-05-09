@@ -43,6 +43,7 @@ competitor_zone:
   dashboard:
     competitor_name: Imię i nazwisko
     event_name: Event
+    information: Informacje
     last_login_at: Data ostatniego logowania
     never_logged_in: Nigdy nie zalogowano
     registration_competition: Rejestracja konstrukcji
