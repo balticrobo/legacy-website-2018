@@ -184,7 +184,4 @@ Deploy master:
     DEPLOY_SENTRY_RELEASE_WEBHOOK_ADDRESS: $PROD_SENTRY_RELEASE_WEBHOOK_ADDRESS
   script: *deploy_definition
   after_script:
-    - |
-      curl ${DEPLOY_SENTRY_RELEASE_WEBHOOK_ADDRESS} -X POST
-      -H 'Content-Type: application/json'
-      -d '{"version": "${CI_COMMIT_SHA}"}'
+    - "curl ${DEPLOY_SENTRY_RELEASE_WEBHOOK_ADDRESS} -X POST -H 'Content-Type: application/json' -d '{\"version\": \"${CI_COMMIT_SHA}\"}'"
