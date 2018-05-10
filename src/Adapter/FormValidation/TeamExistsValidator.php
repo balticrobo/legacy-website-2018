@@ -27,18 +27,23 @@ class TeamExistsValidator extends ConstraintValidator
 
     public function validate($value, Constraint $constraint): void
     {
-        switch ($this->context->getClassName()) {
-            case Competition\AddTeamDTO::class:
-                $test = $this->competitionService->isTeamNotExistsInEvent($value, $this->event);
-                break;
-            case Hackathon\AddTeamDTO::class:
-                $test = $this->hackathonService->isTeamNotExistsInEvent($value, $this->event);
-                break;
-            default:
-                $test = false;
+        // TODO: Refactor it
+        if ($value) {
+            switch ($this->context->getClassName()) {
+                case Competition\AddTeamDTO::class:
+                    $test = $this->competitionService->isTeamNotExistsInEvent($value, $this->event);
+                    break;
+                case Hackathon\AddTeamDTO::class:
+                    $test = $this->hackathonService->isTeamNotExistsInEvent($value, $this->event);
+                    break;
+                default:
+                    $test = false;
+            }
+        } else {
+            $test = true;
         }
 
-        if ($value && $test) {
+        if ($test) {
             $this->context->buildViolation($constraint->message)->addViolation();
         }
     }
