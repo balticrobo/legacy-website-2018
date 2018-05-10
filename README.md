@@ -45,5 +45,6 @@ You have to set next parameters:
 | PROD_HOST | `username@host` where should be uploaded files from **master** | true |
 | PROD_DIRECTORY | `/path/to/folder` where should be stored files from **master** | true |
 | PROD_EMAIL_ASSETS_DOMAIN | full domain WITH trailing slash for **master** | false |
+| PROD_SENTRY_RELEASE_WEBHOOK_ADDRESS | address where you should enter info about each new prod release | true |
 
 *_EMAIL_ASSETS_DOMAIN, eg `https://baltyckiebitwyrobotow.pl/email/`
