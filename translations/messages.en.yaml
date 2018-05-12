@@ -100,7 +100,9 @@ default:
           The main part of the event is amateur robotics. It consists of 12 different competitions grouped in
           5 categories.<br/>
           The second part of the event is a conferene, directed to european robot building teams.<br/>
-          The last part of the event is Robo Hackathon.
+          The last part of the event is Robo Hackathon.<br/>
+          <center><h5>Registration will be closed at 15.05 23.59!<br/>
+          <span class='text-secondary'>Robohackathon start at 25.05 20.00!</span></h5></center>
       competitions:
         _header: Competitions
         freestyle:
@@ -145,7 +147,7 @@ default:
           skalp_header: Robotics Association SKALP
           skalp: an organisation created in 2015 by the members of Student Automatics Club SKALP, active since 2000 at Gdańsk University of Technology. Their activity goes beyond the club and consists og educational activity, leading various projects ind popularization of automatics and robotics.
       registration:
-        _header: Registration is now open!
+        _header: Registration is open to 15.05!
   terms:
     header: Terms of use
 enum:

@@ -93,7 +93,9 @@ default:
       about_tournament:
         _header: O turnieju
         content: |
-          Bałtyckie Bitwy Robotów to&nbsp;wydarzenie jedyne w&nbsp;swoim rodzaju. Łączy ono w&nbsp;sobie turniej robotyki amatorskiej, mini konferencję studencką oraz hackathonu. Pierwsza edycja odbędzie się w&nbsp;dniach 26&nbsp;-&nbsp;27 maja 2018 roku w&nbsp;Trójmieście. Organizatorami wydarzenia jest SKALP i NKSA, które do&nbsp;tej pory niezależnie tworzyły Trójmiejski Turniej Robotów i&nbsp;Roboxy.<br />Główną częścią wydarzenia jest turniej robotyki amatorskiej. Składa się on&nbsp;z&nbsp;12 konkurencji zgrupowanych w&nbsp;5 kategorii.<br />Drugą częścią wydarzenia jest konferencja, która jest skierowana do&nbsp;europejskich zespołów konstruujących roboty.<br />Ostatnią częścią wydarzenia jest RoboHackathon.
+          Bałtyckie Bitwy Robotów to&nbsp;wydarzenie jedyne w&nbsp;swoim rodzaju. Łączy ono w&nbsp;sobie turniej robotyki amatorskiej, mini konferencję studencką oraz hackathonu. Pierwsza edycja odbędzie się w&nbsp;dniach 26&nbsp;-&nbsp;27 maja 2018 roku w&nbsp;Trójmieście. Organizatorami wydarzenia jest SKALP i NKSA, które do&nbsp;tej pory niezależnie tworzyły Trójmiejski Turniej Robotów i&nbsp;Roboxy.<br />Główną częścią wydarzenia jest turniej robotyki amatorskiej. Składa się on&nbsp;z&nbsp;12 konkurencji zgrupowanych w&nbsp;5 kategorii.<br />Drugą częścią wydarzenia jest konferencja, która jest skierowana do&nbsp;europejskich zespołów konstruujących roboty.<br />Ostatnią częścią wydarzenia jest RoboHackathon.<br/>
+          <center><h5>Rejestracja zostanie zamknięta 15.05 o 23.59!<br/>
+          <span class='text-secondary'>Robohackathon start 25.05 20.00!</span></h5></center>
       competitions:
         _header: Konkurencje
         freestyle:
@@ -141,7 +143,7 @@ default:
           skalp_header: Stowarzyszenie Robotyków Skalp
           skalp: czyli organizacja założona w 2015 roku przez członków Studenckiego Koła Automatyków SKALP, działającego od 2000 roku na Politechnice Gdańskiej. Działalność Stowarzyszenia wykracza poza działalność koła i obejmuje m.in. działalność edukacyjną, prowadzenie projektów naukowych i popularyzację automatyki i robotyki.
       registration:
-        _header: Rejestracja otwarta!
+        _header: Rejestracja otwarta do 15.05!
   terms:
     header: Regulamin ogólny zawodów
 enum:
