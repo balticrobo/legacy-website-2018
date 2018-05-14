@@ -55,4 +55,9 @@ class EventService
     {
         return $this->ruleRepository->getById($id);
     }
+
+    public function updateRule(Rule $rule): void
+    {
+        $this->ruleRepository->save($rule);
+    }
 }

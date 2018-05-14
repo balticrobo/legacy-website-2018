@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Controller\Cms;
 
+use BalticRobo\Website\Entity\Rule\Rule;
 use BalticRobo\Website\Form\Cms\EditRuleType;
 use BalticRobo\Website\Model\Cms\EditRuleDTO;
 use BalticRobo\Website\Service\EventService;
@@ -60,6 +61,9 @@ class RuleController extends Controller
         $form = $this->createForm(EditRuleType::class, $dto);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->eventService->updateRule(Rule::createFromEditDTO($rule, $form->getData(), new \DateTimeImmutable()));
+
+            return $this->redirectToRoute('balticrobo_website_cms_rule_list');
         }
 
         return $this->render('_common/form/admin_view.html.twig', [

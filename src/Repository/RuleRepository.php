@@ -54,4 +54,10 @@ class RuleRepository extends ServiceEntityRepository
 
         return new ArrayCollection($records);
     }
+
+    public function save(Rule $rule): void
+    {
+        $this->getEntityManager()->persist($rule);
+        $this->getEntityManager()->flush();
+    }
 }
