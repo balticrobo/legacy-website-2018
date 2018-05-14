@@ -42,6 +42,9 @@ Encore
     'bootstrap/js/dist/popover',
   ])
   .addEntry('js/app', './assets/js/app.js')
-  .addStyleEntry('css/app', './assets/scss/main.scss');
+  .addStyleEntry('css/app', './assets/scss/main.scss')
+  .addEntry('js/admin', './assets/js/admin_app.js')
+  .addStyleEntry('css/admin', './assets/scss/admin_main.scss')
+;
 
 module.exports = Encore.getWebpackConfig();
