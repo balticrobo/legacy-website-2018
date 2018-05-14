@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Entity\Rule;
 
 use BalticRobo\Website\Entity\Event\EventCompetition;
+use BalticRobo\Website\Model\Cms\EditRuleDTO;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,6 +40,14 @@ class Rule
      * @ORM\ManyToOne(targetEntity="BalticRobo\Website\Entity\Event\EventCompetition", inversedBy="rules")
      */
     private $eventCompetition;
+
+    public static function createFromEditDTO(self $entity, EditRuleDTO $dto, \DateTimeImmutable $now): self
+    {
+        $entity->content = $dto->getContent();
+        $entity->lastUpdateAt = $now;
+
+        return $entity;
+    }
 
     public function getId(): int
     {

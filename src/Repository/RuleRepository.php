@@ -6,6 +6,7 @@ namespace BalticRobo\Website\Repository;
 
 use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\Rule\Rule;
+use BalticRobo\Website\Exception\Rule\RuleNotFoundException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -16,6 +17,16 @@ class RuleRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Rule::class);
+    }
+
+    public function getById(int $id): Rule
+    {
+        $record = $this->find($id);
+        if (!$record) {
+            throw new RuleNotFoundException();
+        }
+
+        return $record;
     }
 
     public function getCurrentRulesByLocale(Event $event, string $locale): Collection
@@ -30,5 +41,23 @@ class RuleRepository extends ServiceEntityRepository
             ->getResult();
 
         return new ArrayCollection($records);
+    }
+
+    public function getRulesByEvent(Event $event): Collection
+    {
+        $records = $this->createQueryBuilder('r')
+            ->join(Event::class, 'e')
+            ->where('e.id = :eventId')
+            ->getQuery()
+            ->setParameter('eventId', $event->getId())
+            ->getResult();
+
+        return new ArrayCollection($records);
+    }
+
+    public function save(Rule $rule): void
+    {
+        $this->getEntityManager()->persist($rule);
+        $this->getEntityManager()->flush();
     }
 }
