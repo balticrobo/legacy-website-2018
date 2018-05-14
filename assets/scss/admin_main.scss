@@ -1,6 +1,8 @@
 @import '~bootstrap/scss/functions';
 @import 'abstract/variables';
+@import 'abstract/admin_variables';
 @import '~bootstrap/scss/mixins';
+@import '~startbootstrap-sb-admin/scss/mixins';
 @import 'abstract/mixins';
 @import '~bootstrap/scss/print';
 @import '~bootstrap/scss/reboot';
@@ -36,8 +38,6 @@
 //@import '~bootstrap/scss/carousel';
 @import '~bootstrap/scss/utilities';
 
-@import '~startbootstrap-sb-admin/scss/variables';
-@import '~startbootstrap-sb-admin/scss/mixins';
 @import '~startbootstrap-sb-admin/scss/global';
 @import '~startbootstrap-sb-admin/scss/utilities';
 @import '~startbootstrap-sb-admin/scss/navbar/navbar_global';

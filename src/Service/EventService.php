@@ -45,4 +45,14 @@ class EventService
     {
         return $this->eventRepository->getEventByYear($year);
     }
+
+    public function getRulesByEvent(Event $event): Collection
+    {
+        return $this->ruleRepository->getRulesByEvent($event);
+    }
+
+    public function getRuleById(int $id): Rule
+    {
+        return $this->ruleRepository->getById($id);
+    }
 }

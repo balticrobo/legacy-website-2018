@@ -1,0 +1,28 @@
+{% extends '_admin_base.html.twig' %}
+
+{% block body %}
+  <div class='row'>
+    <div class='col-12'>
+      <table class='table table-hover'>
+        <thead>
+        <tr>
+          <th class='text-center'>{{ 'cms.rule.name'|trans }}</th>
+          <th class='text-center'>{{ 'cms.rule.locale'|trans }}</th>
+          <th class='w-25'></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for rule in rules %}
+          <tr>
+            <td class='align-middle'>{{ rule.eventCompetition.competition.name }}</td>
+            <td class='align-middle text-center text-uppercase'>{{ rule.locale }}</td>
+            <td><a href='{{ path('balticrobo_website_cms_rule_edit', {
+                id: rule.id
+              }) }}' class='btn btn-success btn-block'>{{ '_button.edit'|trans }}</a> </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Controller;
 
+use BalticRobo\Website\Service\EventService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -16,6 +17,13 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class CmsController extends Controller
 {
+    private $eventService;
+
+    public function __construct(EventService $event)
+    {
+        $this->eventService = $event;
+    }
+
     /**
      * @Route
      * @Method("GET")
@@ -25,7 +33,7 @@ class CmsController extends Controller
     public function dashboardAction(): Response
     {
         return $this->render('cms/dashboard.html.twig', [
-
+            'event' => $this->eventService->getCurrentEvent(),
         ]);
     }
 }
