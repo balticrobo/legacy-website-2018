@@ -16,7 +16,10 @@ class EditRuleType extends AbstractType
     {
         $builder
             ->add('content', TextareaType::class, [
-                'label' => 'content',
+                'label' => false,
+                'attr' => [
+                    'class' => 'wysiwyg',
+                ],
             ]);
     }
 
