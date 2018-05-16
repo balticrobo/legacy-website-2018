@@ -1,0 +1,28 @@
+{% extends '_admin_base.html.twig' %}
+
+{% block body %}
+  <div class='row'>
+    <div class='col-12'>
+      <table class='table table-hover'>
+        <thead>
+        <tr>
+          <th class='w-10'></th>
+          <th class='text-center'>{{ 'cms.file.address'|trans }}</th>
+          <th class='w-25'></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for file in files %}
+          <tr>
+            <td class='align-middle'><img src='{{ asset(file.address) }}' class='img-fluid'/></td>
+            <td class='align-middle'>{{ file.originalFilename }}<br/><code>{{ file.address }}</code></td>
+            <td>{# TODO: Add details action #}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <a href='{{ path('balticrobo_website_cms_file_add') }}'
+          class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>{{ '_button.add'|trans }}</a>
+    </div>
+  </div>
+{% endblock %}
