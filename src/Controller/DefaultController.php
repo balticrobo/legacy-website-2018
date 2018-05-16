@@ -42,4 +42,15 @@ class DefaultController extends Controller
     {
         return $this->render('default/terms.html.twig');
     }
+
+    /**
+     * @Route("/partners")
+     * @Method("GET")
+     *
+     * @return Response
+     */
+    public function partnersAction(): Response
+    {
+        return $this->render('default/partners.html.twig');
+    }
 }
