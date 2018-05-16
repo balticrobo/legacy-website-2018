@@ -60,4 +60,14 @@ class EventService
     {
         $this->ruleRepository->save($rule);
     }
+
+    public function isActiveRegistration(\DateTimeImmutable $now, bool $withExtendedPeriod = false): bool
+    {
+        $event = $this->getCurrentEvent();
+        if ($withExtendedPeriod) {
+            return $event->isActiveRegistration($now) || $event->isActiveRegistrationAgain($now);
+        }
+
+        return $event->isActiveRegistration($now);
+    }
 }

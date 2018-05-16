@@ -80,9 +80,13 @@ class Event
 
     public function isActiveRegistration(\DateTimeImmutable $now): bool
     {
-        return ($this->registrationStartsAt < $now && $this->registrationStopsAt > $now)
-            || ($this->registrationStopsAt->add(new \DateInterval(self::REOPEN_REGISTRATION_AFTER)) < $now
-                && $this->registrationEndsAt > $now);
+        return $this->registrationStartsAt < $now && $this->registrationStopsAt > $now;
+    }
+
+    public function isActiveRegistrationAgain(\DateTimeImmutable $now): bool
+    {
+        return $this->registrationStopsAt->add(new \DateInterval(self::REOPEN_REGISTRATION_AFTER)) < $now
+            && $this->registrationEndsAt > $now;
     }
 
     public function isDraft(): bool
