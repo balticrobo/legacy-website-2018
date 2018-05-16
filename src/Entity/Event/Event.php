@@ -71,14 +71,9 @@ class Event
         return $this->eventStartsAt;
     }
 
-    public function getRegistrationStartsAt(): \DateTimeImmutable
+    public function isActiveRegistration(\DateTimeImmutable $now): bool
     {
-        return $this->registrationStartsAt;
-    }
-
-    public function getRegistrationEndsAt(): \DateTimeImmutable
-    {
-        return $this->registrationEndsAt;
+        return $this->registrationStartsAt > $now && $this->registrationEndsAt < $now;
     }
 
     public function isDraft(): bool
