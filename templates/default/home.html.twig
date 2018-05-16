@@ -82,6 +82,8 @@
   </div>
   <div class='container-name secondary text-center'>
     <img src='{{ asset('build/images/registration.svg') }}' alt='' class='img-registration'/>
-    <span>{{ 'default.home.section.registration._header'|trans }}</span>
+    <span>{{ 'default.home.section.registration._header_opened'|trans({
+        '%date%': event.registrationEndsAt|date('d.m')
+      }) }}</span>
   </div>
 {% endblock %}

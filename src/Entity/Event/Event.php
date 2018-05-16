@@ -78,6 +78,16 @@ class Event
         return $this->eventStartsAt;
     }
 
+    public function getRegistrationStopsAt(): \DateTimeImmutable
+    {
+        return $this->registrationStopsAt;
+    }
+
+    public function getRegistrationEndsAt(): \DateTimeImmutable
+    {
+        return $this->registrationEndsAt;
+    }
+
     public function isActiveRegistration(\DateTimeImmutable $now): bool
     {
         return $this->registrationStartsAt < $now && $this->registrationStopsAt > $now;
