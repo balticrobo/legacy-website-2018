@@ -43,7 +43,7 @@
             {% endfor %}
             </tbody>
           </table>
-          {% if is_active_registration %}
+          {% if is_active_registration.extended_period %}
             <a href='{{ path('balticrobo_website_competitor_registration_competition_addteam') }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
               {{ '_button.add'|trans }}
             </a>
@@ -72,7 +72,7 @@
             {% endfor %}
             </tbody>
           </table>
-          {% if hackathon_teams.count < constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MAX_TEAMS') and is_active_registration %}
+          {% if hackathon_teams.count < constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MAX_TEAMS') and is_active_registration.standard_period %}
             <a href='{{ path('balticrobo_website_competitor_registration_hackathon_addteam') }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
               {{ '_button.add'|trans }}
             </a>

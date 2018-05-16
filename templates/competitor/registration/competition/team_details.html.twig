@@ -48,7 +48,7 @@
           {% else %}
             {{ 'competitor_zone.registration.competition.team_details.add_member'|trans }}
           {% endif %}
-          {% if team.members.count < constant('BalticRobo\\Website\\Entity\\Registration\\Competition\\Team::MAX_MEMBERS') %}
+          {% if team.members.count < constant('BalticRobo\\Website\\Entity\\Registration\\Competition\\Team::MAX_MEMBERS') and is_active_registration.extended_period %}
             <a href='{{ path('balticrobo_website_competitor_registration_competition_addmember', {
               'identifier': team.identifier,
             }) }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
@@ -81,11 +81,13 @@
                     </ul>
                   </td>
                   <td class='align-middle'>
-                    <a href='{{ path('balticrobo_website_competitor_registration_competition_editconstruction', {
-                      'identifier': team.identifier,
-                      'name': construction.name
-                    }) }}' class='btn btn-warning btn-block'>{{ '_button.edit'|trans }}</a>
-                    {# TODO: Add removing constructions? #}
+                    {% if is_active_registration.extended_period %}
+                      <a href='{{ path('balticrobo_website_competitor_registration_competition_editconstruction', {
+                        'identifier': team.identifier,
+                        'name': construction.name
+                      }) }}' class='btn btn-warning btn-block'>{{ '_button.edit'|trans }}</a>
+                      {# TODO: Add removing constructions? #}
+                    {% endif %}
                   </td>
                 </tr>
               {% endfor %}
@@ -94,11 +96,11 @@
           {% else %}
             {{ 'competitor_zone.registration.competition.team_details.add_construction'|trans }}
           {% endif %}
-          <a href='{{ path('balticrobo_website_competitor_registration_competition_addconstruction', {
-            'identifier': team.identifier,
-          }) }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
-            {{ '_button.add'|trans }}
-          </a>
+          {% if is_active_registration.extended_period %}
+            <a href='{{ path('balticrobo_website_competitor_registration_competition_addconstruction', {
+              'identifier': team.identifier,
+            }) }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>{{ '_button.add'|trans }}</a>
+          {% endif %}
         </div>
       </div>
     </div>

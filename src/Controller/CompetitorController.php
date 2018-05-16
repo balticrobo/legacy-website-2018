@@ -54,7 +54,10 @@ class CompetitorController extends Controller
             'competition_teams' => $competitionTeams,
             'competitor' => $this->getUser(),
             'event' => $event,
-            'is_active_registration' => $event->isActiveRegistration(new \DateTimeImmutable()),
+            'is_active_registration' => [
+                'standard_period' => $this->eventService->isActiveRegistration(new \DateTimeImmutable()),
+                'extended_period' => $this->eventService->isActiveRegistration(new \DateTimeImmutable(), true),
+            ],
             'hackathon_teams' => $hackathonTeams,
             'information' => $information,
         ]);

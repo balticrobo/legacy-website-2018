@@ -8,19 +8,19 @@ use Doctrine\DBAL\Migrations\AbortMigrationException;
 use Doctrine\DBAL\Migrations\AbstractMigration;
 use Doctrine\DBAL\Schema\Schema;
 
-class Version20180508185144 extends AbstractMigration
+class Version20180516164941 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
         $this->checkDatabaseType();
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_2D77EAC75E237E06296CD8AE
-          ON registration_constructions (name, team_id)');
+        $this->addSql('ALTER TABLE events
+          ADD registration_stops_at INT NOT NULL COMMENT \'(DC2Type:timestamp_immutable)\'');
     }
 
     public function down(Schema $schema)
     {
         $this->checkDatabaseType();
-        $this->addSql('DROP INDEX UNIQ_2D77EAC75E237E06296CD8AE ON registration_constructions');
+        $this->addSql('ALTER TABLE events DROP registration_stops_at');
     }
 
     private function checkDatabaseType(): void

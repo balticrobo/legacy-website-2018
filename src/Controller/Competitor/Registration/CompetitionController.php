@@ -44,6 +44,10 @@ class CompetitionController extends Controller
      */
     public function addTeamAction(Request $request): Response
     {
+        if (!$this->eventService->isActiveRegistration(new \DateTimeImmutable(), true)) {
+            return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
+        }
+
         $form = $this->createForm(AddTeamType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -79,6 +83,9 @@ class CompetitionController extends Controller
         return $this->render('competitor/registration/competition/team_details.html.twig', [
             'event' => $event,
             'team' => $team,
+            'is_active_registration' => [
+                'extended_period' => $this->eventService->isActiveRegistration(new \DateTimeImmutable(), true),
+            ],
         ]);
     }
 
@@ -93,6 +100,10 @@ class CompetitionController extends Controller
      */
     public function addMemberAction(Request $request, string $identifier): Response
     {
+        if (!$this->eventService->isActiveRegistration(new \DateTimeImmutable(), true)) {
+            return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
+        }
+
         $event = $this->eventService->getCurrentEvent();
         $team = $this->competitionService->getTeamByIdentifierAndEvent($identifier, $event);
 
@@ -129,6 +140,10 @@ class CompetitionController extends Controller
      */
     public function addConstructionAction(Request $request, string $identifier): Response
     {
+        if (!$this->eventService->isActiveRegistration(new \DateTimeImmutable(), true)) {
+            return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
+        }
+
         $event = $this->eventService->getCurrentEvent();
         $team = $this->competitionService->getTeamByIdentifierAndEvent($identifier, $event);
 
@@ -162,6 +177,10 @@ class CompetitionController extends Controller
      */
     public function editConstructionAction(Request $request, string $identifier, string $name): Response
     {
+        if (!$this->eventService->isActiveRegistration(new \DateTimeImmutable(), true)) {
+            return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
+        }
+
         $event = $this->eventService->getCurrentEvent();
         $team = $this->competitionService->getTeamByIdentifierAndEvent($identifier, $event);
         $construction = $this->competitionService->getConstructionByNameAndTeam($name, $team);

@@ -41,6 +41,10 @@ class HackathonController extends Controller
      */
     public function addTeamAction(Request $request): Response
     {
+        if (!$this->eventService->isActiveRegistration(new \DateTimeImmutable())) {
+            return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
+        }
+
         $event = $this->eventService->getCurrentEvent();
         $teams = $this->hackathonService->getTeamsForUserInEvent($this->getUser(), $event);
 
@@ -97,6 +101,10 @@ class HackathonController extends Controller
      */
     public function addMemberAction(Request $request, string $name): Response
     {
+        if (!$this->eventService->isActiveRegistration(new \DateTimeImmutable())) {
+            return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
+        }
+
         $event = $this->eventService->getCurrentEvent();
         $team = $this->hackathonService->getTeamByNameAndEvent($name, $event);
 

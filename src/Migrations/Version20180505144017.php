@@ -16,7 +16,8 @@ class Version20180505144017 extends AbstractMigration
           ADD captain_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE registration_teams_hackathon
           ADD CONSTRAINT FK_F1BB96B13346729B FOREIGN KEY (captain_id) REFERENCES registration_members_hackathon (id)');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_F1BB96B13346729B ON registration_teams_hackathon (captain_id)');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_F1BB96B13346729B
+          ON registration_teams_hackathon (captain_id)');
     }
 
     public function down(Schema $schema)

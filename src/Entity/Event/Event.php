@@ -14,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Event
 {
+    private const REOPEN_REGISTRATION_AFTER = 'PT20H';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -35,6 +37,11 @@ class Event
      * @ORM\Column(type="timestamp_immutable")
      */
     private $registrationStartsAt;
+
+    /**
+     * @ORM\Column(type="timestamp_immutable")
+     */
+    private $registrationStopsAt;
 
     /**
      * @ORM\Column(type="timestamp_immutable")
@@ -73,7 +80,13 @@ class Event
 
     public function isActiveRegistration(\DateTimeImmutable $now): bool
     {
-        return $this->registrationStartsAt > $now && $this->registrationEndsAt < $now;
+        return $this->registrationStartsAt < $now && $this->registrationStopsAt > $now;
+    }
+
+    public function isActiveRegistrationAgain(\DateTimeImmutable $now): bool
+    {
+        return $this->registrationStopsAt->add(new \DateInterval(self::REOPEN_REGISTRATION_AFTER)) < $now
+            && $this->registrationEndsAt > $now;
     }
 
     public function isDraft(): bool
