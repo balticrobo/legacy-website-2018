@@ -37,10 +37,10 @@ class TeamExistsValidator extends ConstraintValidator
                     $test = $this->hackathonService->isTeamNotExistsInEvent($value, $this->event);
                     break;
                 default:
-                    $test = false;
+                    $test = true;
             }
         } else {
-            $test = true;
+            $test = false;
         }
 
         if ($test) {

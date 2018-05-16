@@ -6,6 +6,8 @@ namespace BalticRobo\Website\Adapter\DoctrineEnum;
 
 class InformationTypeEnum
 {
+    use EnumTrait;
+
     public const INFO = 0;
     public const HOTEL = 1;
 
@@ -13,19 +15,11 @@ class InformationTypeEnum
         self::INFO => 'enm.information_type.info',
         self::HOTEL => 'enum.information_type.hotel',
     ];
+
     private const FONT_AWESOME = [
         self::INFO => 'fa-info-circle',
         self::HOTEL => 'fa-home',
     ];
-
-    public static function getName(int $enum): string
-    {
-        if (!isset(self::NAMES[$enum])) {
-            throw new UnknownEnumException((string) $enum);
-        }
-
-        return self::NAMES[$enum];
-    }
 
     public static function getFontAwesomeName(int $enum): string
     {
@@ -42,16 +36,8 @@ class InformationTypeEnum
     public static function getAvailableTypes(): array
     {
         return [
+            self::INFO,
             self::HOTEL,
         ];
-    }
-
-    public static function getFormData(): array
-    {
-        return array_reduce(self::getAvailableTypes(), function (array $carry, string $item) {
-            $carry[self::NAMES[$item]] = $item;
-
-            return $carry;
-        }, []);
     }
 }
