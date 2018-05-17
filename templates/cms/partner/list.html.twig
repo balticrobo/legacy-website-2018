@@ -7,21 +7,24 @@
         <thead>
         <tr>
           <th class='w-10'></th>
-          <th class='text-center'>{{ 'cms.file.address'|trans }}</th>
+          <th class='text-center'>{{ 'cms.partner.name'|trans }}</th>
           <th class='w-25'></th>
         </tr>
         </thead>
         <tbody>
         {% for record in records %}
           <tr>
-            <td class='align-middle'><img src='{{ asset(record.address) }}' class='img-fluid'/></td>
-            <td class='align-middle'>{{ record.originalFilename }}<br/><code>{{ record.address }}</code></td>
+            <td class='align-middle'><img src='{{ asset(record.file.address) }}' class='img-fluid'/></td>
+            <td class='align-middle'>
+              <em>{{ record.namedType }}</em> <strong>{{ record.name }}</strong><br/>
+              <code>{{ record.url }}</code>
+            </td>
             <td>{# TODO: Add details action #}</td>
           </tr>
         {% endfor %}
         </tbody>
       </table>
-      <a href='{{ path('balticrobo_website_cms_file_add') }}'
+      <a href='{{ path('balticrobo_website_cms_partner_add') }}'
           class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>{{ '_button.add'|trans }}</a>
     </div>
   </div>

@@ -29,12 +29,14 @@ class FileService
         return $this->fileRepository->getTotal();
     }
 
-    public function upload(AddFileDTO $fileDTO, \DateTimeImmutable $now): void
+    public function upload(AddFileDTO $fileDTO, \DateTimeImmutable $now): File
     {
         $this->createUploadFolderIfNotExists();
         $entity = File::createFromAddDTO($fileDTO, $now);
         $fileDTO->getFile()->move(File::LOCATION, $entity->getFilename());
         $this->fileRepository->save($entity);
+
+        return $entity;
     }
 
     private function createUploadFolderIfNotExists(): void

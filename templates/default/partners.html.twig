@@ -9,8 +9,18 @@
     <div class='container'>
       <div class='row'>
         <div class='col-12 col-md-8 offset-md-2'>
-          <h1>{{ 'default.partners.header'|trans }}</h1>
-
+          {% for type_name, types in records %}
+            <div class="container container-name text-center">{{ type_name }}</div>
+            <div class='row'>
+              {% for record in types %}
+                <div class='col-12 col-sm-6'>
+                  <a href='{{ record.url }}' target='_blank'>
+                    <img alt='' src='{{ record.file.address }}' class='img-fluid m-3'/>
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          {% endfor %}
         </div>
       </div>
     </div>

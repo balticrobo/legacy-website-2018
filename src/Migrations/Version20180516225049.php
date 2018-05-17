@@ -20,6 +20,8 @@ class Version20180516225049 extends AbstractMigration
             name VARCHAR(140) NOT NULL,
             url VARCHAR(250) NOT NULL,
             type SMALLINT NOT NULL,
+            sort_order SMALLINT NOT NULL,
+            created_at INT NOT NULL COMMENT \'(DC2Type:timestamp_immutable)\',
             INDEX IDX_A907B8B471F7E88B (event_id),
             INDEX IDX_A907B8B493CB796C (file_id),
             PRIMARY KEY(id)
