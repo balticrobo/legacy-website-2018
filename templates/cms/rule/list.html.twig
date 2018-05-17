@@ -12,12 +12,12 @@
         </tr>
         </thead>
         <tbody>
-        {% for rule in rules %}
+        {% for record in records %}
           <tr>
-            <td class='align-middle'>{{ rule.eventCompetition.competition.name }}</td>
-            <td class='align-middle text-center text-uppercase'>{{ rule.locale }}</td>
+            <td class='align-middle'>{{ record.eventCompetition.competition.name }}</td>
+            <td class='align-middle text-center text-uppercase'>{{ record.locale }}</td>
             <td><a href='{{ path('balticrobo_website_cms_rule_edit', {
-                id: rule.id
+                id: record.id
               }) }}' class='btn btn-success btn-block'>{{ '_button.edit'|trans }}</a> </td>
           </tr>
         {% endfor %}

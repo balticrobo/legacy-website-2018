@@ -38,6 +38,7 @@ _menu:
   competitor_zone: Strefa zawodnika
   for_kids: Dla dzieci
   home: Główna
+  partners: Partnerzy
   rules: Regulaminy
 competitor_zone:
   dashboard:
@@ -147,6 +148,10 @@ default:
   terms:
     header: Regulamin ogólny zawodów
 enum:
+  partner_type:
+    honorary_patronage: Patronat Honorowy
+    media_patronage: Patronat Medialny
+    sponsor: Sponsorzy
   shirt_type:
     none: Żadna
     female_xs: Damska - XS

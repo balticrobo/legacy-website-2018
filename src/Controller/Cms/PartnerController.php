@@ -4,9 +4,9 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Controller\Cms;
 
-use BalticRobo\Website\Form\Cms\AddFileType;
+use BalticRobo\Website\Form\Cms\AddPartnerType;
 use BalticRobo\Website\Service\EventService;
-use BalticRobo\Website\Service\Storage\FileService;
+use BalticRobo\Website\Service\PartnerService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -15,18 +15,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/cms/file")
+ * @Route("/cms/partner")
  * @Security("has_role('ROLE_CMS_USER')")
  */
-class FileController extends Controller
+class PartnerController extends Controller
 {
     private $eventService;
-    private $fileService;
+    private $partnerService;
 
-    public function __construct(EventService $event, FileService $file)
+    public function __construct(EventService $event, PartnerService $partner)
     {
         $this->eventService = $event;
-        $this->fileService = $file;
+        $this->partnerService = $partner;
     }
 
     /**
@@ -42,10 +42,10 @@ class FileController extends Controller
     {
         $limit = $request->query->getInt('limit', 20);
 
-        return $this->render('cms/file/list.html.twig', [
+        return $this->render('cms/partner/list.html.twig', [
             'event' => $this->eventService->getCurrentEvent(),
-            'records' => $this->fileService->getList(($page - 1) * $limit, $limit),
-            'total' => $this->fileService->getTotal(),
+            'records' => $this->partnerService->getList(($page - 1) * $limit, $limit),
+            'total' => $this->partnerService->getTotal(),
         ]);
     }
 
@@ -58,16 +58,18 @@ class FileController extends Controller
      */
     public function addAction(Request $request): Response
     {
-        $form = $this->createForm(AddFileType::class);
+        $event = $this->eventService->getCurrentEvent();
+
+        $form = $this->createForm(AddPartnerType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->fileService->upload($form->getData(), new \DateTimeImmutable());
+            $this->partnerService->add($form->getData(), $event, new \DateTimeImmutable());
 
-            return $this->redirectToRoute('balticrobo_website_cms_file_list');
+            return $this->redirectToRoute('balticrobo_website_cms_partner_list');
         }
 
         return $this->render('_common/form/admin_view.html.twig', [
-            'event' => $this->eventService->getCurrentEvent(),
+            'event' => $event,
             'form' => $form->createView(),
         ]);
     }

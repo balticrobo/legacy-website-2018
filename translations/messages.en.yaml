@@ -38,6 +38,7 @@ _menu:
   competitor_zone: Competitor zone
   for_kids: For kids
   home: Homepage
+  partners: Partners
   rules: Rules
 competitor_zone:
   dashboard:
@@ -151,6 +152,10 @@ default:
   terms:
     header: Terms of use
 enum:
+  partner_type:
+    honorary_patronage: Honorary Patronage
+    media_patronage: Media Patronage
+    sponsor: Sponsor
   shirt_type:
     none: None
     female_xs: Female - XS

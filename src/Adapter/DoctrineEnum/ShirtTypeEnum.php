@@ -6,6 +6,8 @@ namespace BalticRobo\Website\Adapter\DoctrineEnum;
 
 class ShirtTypeEnum
 {
+    use EnumTrait;
+
     public const NONE = 0;
     public const FEMALE_XS = 10;
     public const FEMALE_S = 11;
@@ -50,15 +52,6 @@ class ShirtTypeEnum
         self::UNISEX_XXXL => 'enum.shirt_type.unisex_xxxl',
     ];
 
-    public static function getName(int $enum): string
-    {
-        if (!isset(self::NAMES[$enum])) {
-            throw new UnknownEnumException((string) $enum);
-        }
-
-        return self::NAMES[$enum];
-    }
-
     /**
      * @return int[]
      */
@@ -74,14 +67,5 @@ class ShirtTypeEnum
             self::UNISEX_XXL,
             self::UNISEX_XXXL,
         ];
-    }
-
-    public static function getFormData(): array
-    {
-        return array_reduce(self::getAvailableTypes(), function (array $carry, string $item) {
-            $carry[self::NAMES[$item]] = $item;
-
-            return $carry;
-        }, []);
     }
 }

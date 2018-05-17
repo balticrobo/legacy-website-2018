@@ -40,7 +40,7 @@ class RuleController extends Controller
 
         return $this->render('cms/rule/list.html.twig', [
             'event' => $event,
-            'rules' => $this->eventService->getRulesByEvent($event),
+            'records' => $this->eventService->getRulesByEvent($event),
         ]);
     }
 
