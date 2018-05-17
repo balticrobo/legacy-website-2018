@@ -10,7 +10,7 @@
       <div class='row'>
         <div class='col-12 col-md-8 offset-md-2'>
           {% for type_name, types in records %}
-            <div class="container container-name text-center">{{ type_name }}</div>
+            <div class="container container-name text-center">{{ type_name|trans }}</div>
             <div class='row'>
               {% for record in types %}
                 <div class='col-12 col-sm-6'>

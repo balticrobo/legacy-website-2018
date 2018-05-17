@@ -16,7 +16,7 @@
           <tr>
             <td class='align-middle'><img src='{{ asset(record.file.address) }}' class='img-fluid'/></td>
             <td class='align-middle'>
-              <em>{{ record.namedType }}</em> <strong>{{ record.name }}</strong><br/>
+              <em>{{ record.namedType|trans }}</em> <strong>{{ record.name }}</strong><br/>
               <code>{{ record.url }}</code>
             </td>
             <td>{# TODO: Add details action #}</td>

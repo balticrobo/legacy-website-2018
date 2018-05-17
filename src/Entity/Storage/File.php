@@ -69,6 +69,11 @@ class File implements StorageInterface
         return $this->filename;
     }
 
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
     private static function generateName(): string
     {
         return md5(uniqid());

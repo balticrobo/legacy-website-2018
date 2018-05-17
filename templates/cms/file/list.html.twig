@@ -15,7 +15,7 @@
         {% for record in records %}
           <tr>
             <td class='align-middle'><img src='{{ asset(record.address) }}' class='img-fluid'/></td>
-            <td class='align-middle'>{{ record.originalFilename }}<br/><code>{{ record.address }}</code></td>
+            <td class='align-middle'>{{ record.description }}<br/><code>{{ record.address }}</code></td>
             <td>{# TODO: Add details action #}</td>
           </tr>
         {% endfor %}
