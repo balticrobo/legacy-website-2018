@@ -23,6 +23,7 @@
         <tr>
           <th class='text-center'>{{ 'team_name'|trans }}</th>
           <th class='text-center'>{{ 'members'|trans }}</th>
+          <th class='text-center'>{{ 'count_constructions'|trans }}</th>
           <th class='w-25'></th>
         </tr>
         </thead>
@@ -36,6 +37,7 @@
               {% endfor %}
               </ul>
             </td>
+            <td class='align-middle text-center display-4'> {{ record.constructions|length }}</td>
             <td>{# TODO: Add details action #}</td>
           </tr>
         {% endfor %}
