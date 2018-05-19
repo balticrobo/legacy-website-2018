@@ -13,7 +13,7 @@
             <div class="container container-name text-center">{{ type_name|trans }}</div>
             <div class='row'>
               {% for record in types %}
-                <div class='col-12 col-sm-6'>
+                <div class='col-12 col-sm-6 align-self-center text-center'>
                   <a href='{{ record.url }}' target='_blank'>
                     <img alt='' src='{{ record.file.address }}' class='img-fluid m-3'/>
                   </a>
