@@ -1,27 +1,7 @@
 <!DOCTYPE html>
 <html lang='{{ app.request.locale }}'>
 <head>
-  <meta charset='utf-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-  <meta name='description' content=''>
-  <meta name='author' content='Paweł Cierzniakowski <pawel@cierzniakowski.pl>'>
-  <title>{% block title %}{{ '_common.event_name'|trans }}{% endblock %}</title>
-  <link rel='apple-touch-icon' sizes='60x60' href='{{ asset('icons/apple-touch-icon-60x60.png') }}'>
-  <link rel='apple-touch-icon' sizes='76x76' href='{{ asset('icons/apple-touch-icon-76x76.png') }}'>
-  <link rel='apple-touch-icon' sizes='120x120' href='{{ asset('icons/apple-touch-icon-120x120.png') }}'>
-  <link rel='apple-touch-icon' sizes='152x152' href='{{ asset('icons/apple-touch-icon-152x152.png') }}'>
-  <link rel='apple-touch-icon' sizes='180x180' href='{{ asset('icons/apple-touch-icon-180x180.png') }}'>
-  <link rel='icon' type='image/png' sizes='32x32' href='{{ asset('icons/favicon-32x32.png') }}'>
-  <link rel='icon' type='image/png' sizes='194x194' href='{{ asset('icons/favicon-194x194.png') }}'>
-  <link rel='icon' type='image/png' sizes='192x192' href='{{ asset('icons/android-chrome-192x192.png') }}'>
-  <link rel='icon' type='image/png' sizes='16x16' href='{{ asset('icons/favicon-16x16.png') }}'>
-  <link rel='manifest' href='{{ asset('site.webmanifest') }}'>
-  <link rel='mask-icon' href='{{ asset('icons/safari-pinned-tab.svg') }}' color='#84c2e0'>
-  <link rel='shortcut icon' href='{{ asset('favicon.ico') }}'>
-  <meta name='msapplication-TileColor' content='#84c2e0'>
-  <meta name='msapplication-TileImage' content='{{ asset('icons/mstile-144x144.png') }}'>
-  <meta name='msapplication-config' content='{{ asset('browserconfig.xml') }}'>
-  <meta name='theme-color' content='#84c2e0'>
+  {% include '_common/_head.html.twig' %}
   {% block stylesheets %}
     <link rel='stylesheet' href='{{ asset('build/css/admin.css') }}'>
   {% endblock %}
@@ -32,48 +12,36 @@
     {{ '_common.event_name'|trans }}
   </a>
   <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse'
-      data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false'
-      aria-label='Toggle navigation'>
+      data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false'>
     <span class='navbar-toggler-icon'></span>
   </button>
   <div class='collapse navbar-collapse' id='navbarResponsive'>
     <ul class='navbar-nav navbar-sidenav'>
       <li class='nav-item'>
         <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
-          <i class='fa fa-fw fa-angle-double-left'></i>
-          <span class='nav-link-text'>{{ '_menu.cms.home'|trans }}</span>
+          <i class='fa fa-fw fa-angle-double-left'></i> <span class='nav-link-text'>{{ '_menu.cms.home'|trans }}</span>
         </a>
       </li>
       <li class='nav-item'>
-        <a class='nav-link' href='{{ path('balticrobo_website_cms_dashboard') }}'>
-          <i class='fa fa-fw fa-dashboard'></i>
-          <span class='nav-link-text'>{{ '_menu.cms.dashboard'|trans }}</span>
-        </a>
+        <a class='nav-link' href='{{ path('balticrobo_website_cms_dashboard') }}'> <i class='fa fa-fw fa-dashboard'></i>
+          <span class='nav-link-text'>{{ '_menu.cms.dashboard'|trans }}</span> </a>
       </li>
       <li class='nav-item'>
-        <a class='nav-link' href='{{ path('balticrobo_website_cms_rule_list') }}'>
-          <i class='fa fa-fw fa-dashboard'></i>
-          <span class='nav-link-text'>{{ '_menu.cms.rule'|trans }}</span>
-        </a>
+        <a class='nav-link' href='{{ path('balticrobo_website_cms_rule_list') }}'> <i class='fa fa-fw fa-dashboard'></i>
+          <span class='nav-link-text'>{{ '_menu.cms.rule'|trans }}</span> </a>
       </li>
       <li class='nav-item'>
-        <a class='nav-link' href='{{ path('balticrobo_website_cms_file_list') }}'>
-          <i class='fa fa-fw fa-dashboard'></i>
-          <span class='nav-link-text'>{{ '_menu.cms.file'|trans }}</span>
-        </a>
+        <a class='nav-link' href='{{ path('balticrobo_website_cms_file_list') }}'> <i class='fa fa-fw fa-dashboard'></i>
+          <span class='nav-link-text'>{{ '_menu.cms.file'|trans }}</span> </a>
       </li>
       <li class='nav-item'>
         <a class='nav-link' href='{{ path('balticrobo_website_cms_partner_list') }}'>
-          <i class='fa fa-fw fa-dashboard'></i>
-          <span class='nav-link-text'>{{ '_menu.cms.partner'|trans }}</span>
-        </a>
+          <i class='fa fa-fw fa-dashboard'></i> <span class='nav-link-text'>{{ '_menu.cms.partner'|trans }}</span> </a>
       </li>
     </ul>
     <ul class='navbar-nav sidenav-toggler'>
       <li class='nav-item'>
-        <a class='nav-link text-center' id='sidenavToggler'>
-          <i class='fa fa-fw fa-angle-left'></i>
-        </a>
+        <a class='nav-link text-center' id='sidenavToggler'> <i class='fa fa-fw fa-angle-left'></i> </a>
       </li>
     </ul>
     <ul class='navbar-nav ml-auto'>
