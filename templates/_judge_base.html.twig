@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang='{{ app.request.locale }}'>
+<head>
+  {% include '_common/_head.html.twig' %}
+  {% block stylesheets %}
+    <link rel='stylesheet' href='{{ asset('build/css/admin.css') }}'>
+  {% endblock %}
+</head>
+<body class='fixed-nav sticky-footer bg-dark'>
+<nav class='navbar navbar-expand-lg navbar-dark bg-dark fixed-top' id='mainNav'>
+  <a class='navbar-brand' href='{{ path('balticrobo_website_cms_dashboard') }}'>
+    {{ '_common.event_name'|trans }}
+  </a>
+  <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse'
+      data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false'>
+    <span class='navbar-toggler-icon'></span>
+  </button>
+  <div class='collapse navbar-collapse' id='navbarResponsive'>
+    <ul class='navbar-nav navbar-sidenav'>
+      <li class='nav-item'>
+        <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
+          <i class='fa fa-fw fa-angle-double-left'></i>
+          <span class='nav-link-text'>{{ '_menu.cms.home'|trans }}</span>
+        </a>
+      </li>
+      <li class='nav-item'>
+        <a class='nav-link' href='{{ path('balticrobo_website_judge_registration_list') }}'>
+          <i class='fa fa-fw fa-plus'></i>
+          <span class='nav-link-text'>{{ '_menu.judge.registration'|trans }}</span>
+        </a>
+      </li>
+    </ul>
+    <ul class='navbar-nav sidenav-toggler'>
+      <li class='nav-item'>
+        <a class='nav-link text-center' id='sidenavToggler'>
+          <i class='fa fa-fw fa-angle-left'></i>
+        </a>
+      </li>
+    </ul>
+    <ul class='navbar-nav ml-auto'>
+      <li class='nav-item'>
+        <a class='nav-link' href='{{ path('balticrobo_website_security_logout') }}'>
+          <i class='fa fa-fw fa-sign-out'></i>
+          {{ '_button.logout'|trans }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class='content-wrapper'>
+  <div class='container-fluid'>
+    {% block body %}{% endblock %}
+  </div>
+</div>
+<footer class='sticky-footer'>
+  <div class='container'>
+    <div class='text-center'>
+      <small>Copyright © {{ '_common.event_name'|trans }} {{ event.year }}</small>
+    </div>
+  </div>
+</footer>
+{% block javascripts %}
+  <script src='{{ asset('build/manifest.js') }}'></script>
+  <script src='{{ asset('build/js/common.js') }}'></script>
+  <script src='{{ asset('build/js/admin.js') }}'></script>
+{% endblock %}
+</body>
+</html>
