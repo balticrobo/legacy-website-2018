@@ -5,8 +5,11 @@ _button:
   forgotten_password: Zresetuj hasło
   login: Zaloguj się
   logout: Wyloguj się
+  no: Nie
   register: Zarejestruj się
   resend_validation_token: Wyślij ponownie token aktywacyjny
+  search: Wyszukaj
+  yes: Tak
 _common:
   event_name: Bałtyckie Bitwy Robotów
   competition_group:
@@ -34,9 +37,15 @@ _common:
     minisumo: Minisumo
     microsumo: MicroSumo
     nanosumo: NanoSumo
+  created_at: Utworzono
+  created_by: Utworzył(a)
 _menu:
+  cms:
+    home: Strona główna
   competitor_zone: Strefa zawodnika
   for_kids: Dla dzieci
+  judge:
+    registration: Rejestracja
   home: Główna
   partners: Partnerzy
   rules: Regulaminy
@@ -178,6 +187,19 @@ event:
     _print_header: Regulamin konkurencji<br/><strong>%competition%</strong>
     _screen_header: Regulamin konkurencji <strong>%competition%</strong>
     last_modified_at: Ostatnia modyfikacja
+judge:
+  common:
+    about_team: Szczegóły dot. drużyny
+    competition: Konkurencja
+    count_constructions: Ilość konstrukcji
+    count_members: Ilość członków
+  form:
+    member_surname: Nazwisko członka
+    team_name_or_identifier: Nazwa drużyny/identyfikator
+  registration:
+    presence: Obecny?
+    shirt_given_out: Koszulka?
+    tech_valid: Zgodny?
 security:
   activate:
     exception_message: 'Komunikat o błędzie:'

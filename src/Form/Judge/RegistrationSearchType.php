@@ -19,13 +19,13 @@ class RegistrationSearchType extends AbstractType
             ->add('teamNameOrIdentifier', TextType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'team_name_or_identifier',
+                    'placeholder' => 'judge.form.team_name_or_identifier',
                 ],
             ])
             ->add('memberSurname', TextType::class, [
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'member_surname',
+                    'placeholder' => 'judge.form.member_surname',
                 ],
             ]);
     }

@@ -3,7 +3,7 @@
 {% block body %}
   <div class='row'>
     <div class='col-12'>
-      <h2>{{ 'about_team'|trans }}</h2>
+      <h2>{{ 'judge.common.about_team'|trans }}</h2>
       <dl class='row'>
         <dt class='col-3 col-md-2'>{{ 'competitor_zone.registration.form.name'|trans }}</dt>
         <dd class='col-9 col-md-4'>{{ team.name }}</dd>
@@ -13,19 +13,19 @@
         <dd class='col-9 col-md-4'>{{ team.city }}</dd>
         <dt class='col-3 col-md-2'>{{ 'competitor_zone.registration.form.scientific_organization'|trans }}</dt>
         <dd class='col-9 col-md-4'>{{ team.scientificOrganization|default('- brak -') }}</dd>
-        <dt class='col-3 col-md-2'>{{ 'created_by'|trans }}</dt>
+        <dt class='col-3 col-md-2'>{{ '_common.created_by'|trans }}</dt>
         <dd class='col-9 col-md-4'>
           <a href='mailto:{{ team.createdBy.email }}'> <i class='fa fa-fw fa-envelope'></i> {{ team.createdBy.name }}
           </a>
         </dd>
-        <dt class='col-3 col-md-2'>{{ 'created_at'|trans }}</dt>
+        <dt class='col-3 col-md-2'>{{ '_common.created_at'|trans }}</dt>
         <dd class='col-9 col-md-4'>{{ team.createdAt|date('Y-m-d H:i') }}</dd>
-        <dt class='col-3 col-md-2'>{{ 'count_members'|trans }}</dt>
+        <dt class='col-3 col-md-2'>{{ 'judge.common.count_members'|trans }}</dt>
         <dd class='col-9 col-md-4'>{{ members|length }}</dd>
-        <dt class='col-3 col-md-2'>{{ 'count_constructions'|trans }}</dt>
+        <dt class='col-3 col-md-2'>{{ 'judge.common.count_constructions'|trans }}</dt>
         <dd class='col-9 col-md-4'>{{ team.constructions|length }} ({{ constructions|length }})</dd>
       </dl>
-      <h2>{{ 'members'|trans }}</h2>
+      <h2>{{ 'competitor_zone.registration.competition.team_details.members'|trans }}</h2>
       <table class='table table-hover'>
         <thead>
         <tr>
@@ -34,9 +34,9 @@
             {{ 'competitor_zone.registration.form.surname'|trans }}
           </th>
           <th class='text-center'>{{ 'competitor_zone.registration.form.shirt_type'|trans }}</th>
-          <th class='text-center'>{{ 'created_at'|trans }}</th>
-          <th class='text-center w-10'>{{ 'presence'|trans }}</th>
-          <th class='text-center w-10'>{{ 'shirt_given_out'|trans }}</th>
+          <th class='text-center'>{{ '_common.created_at'|trans }}</th>
+          <th class='text-center w-10'>{{ 'judge.registration.presence'|trans }}</th>
+          <th class='text-center w-10'>{{ 'judge.registration.shirt_given_out'|trans }}</th>
         </tr>
         </thead>
         <tbody>
@@ -78,15 +78,15 @@
         {% endfor %}
         </tbody>
       </table>
-      <h2>{{ 'constructions'|trans }}</h2>
+      <h2>{{ 'competitor_zone.registration.competition.team_details.constructions'|trans }}</h2>
       <table class='table table-hover'>
         <thead>
         <tr>
           <th class='text-center'>{{ 'competitor_zone.registration.form.construction_name'|trans }}</th>
-          <th class='text-center'>{{ 'competition'|trans }}</th>
-          <th class='text-center'>{{ 'created_at'|trans }}</th>
-          <th class='text-center w-10'>{{ 'presence'|trans }}</th>
-          <th class='text-center w-10'>{{ 'tech_validated'|trans }}</th>
+          <th class='text-center'>{{ 'judge.common.competition'|trans }}</th>
+          <th class='text-center'>{{ '_common.created_at'|trans }}</th>
+          <th class='text-center w-10'>{{ 'judge.registration.presence'|trans }}</th>
+          <th class='text-center w-10'>{{ 'judge.registration.tech_valid'|trans }}</th>
         </tr>
         </thead>
         <tbody>
