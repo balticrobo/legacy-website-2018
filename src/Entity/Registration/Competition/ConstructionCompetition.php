@@ -27,11 +27,42 @@ class ConstructionCompetition
      */
     private $competition;
 
+    /**
+     * @ORM\Column(type="timestamp_immutable", nullable=true)
+     */
+    private $presenceCheckedAt;
+
+    /**
+     * @ORM\Column(type="timestamp_immutable", nullable=true)
+     */
+    private $techValidatedAt;
+
     public static function create(Construction $construction, Competition $competition): self
     {
         $entity = new self();
         $entity->construction = $construction;
         $entity->competition = $competition;
+
+        return $entity;
+    }
+
+    public static function editFromRegisterTeam(
+        self $entity,
+        bool $isPresent,
+        bool $isTechValid,
+        \DateTimeImmutable $now
+    ): self {
+        // TODO: Refactor it
+        if ($isPresent && !$entity->presenceCheckedAt) {
+            $entity->presenceCheckedAt = $now;
+        } elseif ($isPresent && $entity->presenceCheckedAt) {
+            $entity->presenceCheckedAt = null;
+        }
+        if ($isTechValid && !$entity->techValidatedAt) {
+            $entity->techValidatedAt = $now;
+        } elseif ($isTechValid && $entity->techValidatedAt) {
+            $entity->techValidatedAt = null;
+        }
 
         return $entity;
     }
@@ -44,5 +75,15 @@ class ConstructionCompetition
     public function getCompetition(): Competition
     {
         return $this->competition;
+    }
+
+    public function getPresenceCheckedAt(): ?\DateTimeImmutable
+    {
+        return $this->presenceCheckedAt;
+    }
+
+    public function getTechValidatedAt(): ?\DateTimeImmutable
+    {
+        return $this->techValidatedAt;
     }
 }
