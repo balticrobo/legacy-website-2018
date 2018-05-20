@@ -11,8 +11,13 @@ security:
   role_hierarchy:
     ROLE_SUPERADMIN:
       - ROLE_ADMIN
+      - ROLE_CMS_ADMIN
+      - ROLE_CMS_USER
+      - ROLE_JUDGE
+      - ROLE_COMPETITOR
       - ROLE_USER
-
+    ROLE_CMS_ADMIN:
+      - ROLE_CMS_USER
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/

@@ -31,17 +31,13 @@ class Construction
 
     /**
      * @ORM\ManyToOne(targetEntity="BalticRobo\Website\Entity\Registration\Competition\Team",
-     *     inversedBy="constructions"
-     * )
+     * inversedBy="constructions")
      */
     private $team;
 
     /**
-     * @ORM\ManyToMany(targetEntity="BalticRobo\Website\Entity\Competition\Competition")
-     * @ORM\JoinTable(name="registration_constructions_competitions",
-     *     joinColumns={@ORM\JoinColumn(name="construction_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="competition_id", referencedColumnName="id")}
-     * )
+     * @ORM\OneToMany(targetEntity="BalticRobo\Website\Entity\Registration\Competition\ConstructionCompetition",
+     * mappedBy="construction", cascade={"persist"}, orphanRemoval=true)
      *
      * @var Collection|Competition[]
      */
@@ -73,7 +69,9 @@ class Construction
     {
         $entity = new self();
         $entity->name = $dto->getName();
-        $entity->competitions = $dto->getCompetitions();
+        $entity->competitions = $dto->getCompetitions()->map(function (Competition $competition) use ($entity) {
+            return ConstructionCompetition::create($entity, $competition);
+        });
         $entity->creators = $dto->getCreators();
         $entity->team = $team;
         $entity->createdAt = $now;
@@ -83,7 +81,9 @@ class Construction
 
     public static function createFromEditDTO(self $entity, EditConstructionDTO $dto): self
     {
-        $entity->competitions = $dto->getCompetitions();
+        $entity->competitions = $dto->getCompetitions()->map(function (Competition $competition) use ($entity) {
+            return ConstructionCompetition::create($entity, $competition);
+        });
         $entity->creators = $dto->getCreators();
 
         return $entity;
@@ -106,7 +106,9 @@ class Construction
 
     public function getCompetitions(): Collection
     {
-        return $this->competitions;
+        return $this->competitions->map(function (ConstructionCompetition $model) {
+            return $model->getCompetition();
+        });
     }
 
     public function getCreators(): Collection
