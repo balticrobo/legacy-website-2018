@@ -13,16 +13,11 @@ security:
       - ROLE_ADMIN
       - ROLE_CMS_ADMIN
       - ROLE_CMS_USER
-      - ROLE_JUDGE_ADMIN
-      - ROLE_JUDGE_REGISTRATION
-      - ROLE_JUDGE_JUDGE
+      - ROLE_JUDGE
       - ROLE_COMPETITOR
       - ROLE_USER
     ROLE_CMS_ADMIN:
       - ROLE_CMS_USER
-    ROLE_JUDGE_ADMIN:
-      - ROLE_JUDGE_REGISTRATION
-      - ROLE_JUDGE_JUDGE
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/

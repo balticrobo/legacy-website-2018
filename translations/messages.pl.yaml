@@ -41,10 +41,12 @@ _common:
   created_by: Utworzył(a)
 _menu:
   cms:
+    cms: CMS
     home: Strona główna
   competitor_zone: Strefa zawodnika
   for_kids: Dla dzieci
   judge:
+    judge: Sędziowanie
     registration: Rejestracja
   home: Główna
   partners: Partnerzy

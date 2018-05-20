@@ -33,6 +33,20 @@
             {{ '_menu.partners'|trans }}
           </a>
         </li>
+        {% if is_granted('ROLE_CMS_USER') %}
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ path('balticrobo_website_cms_dashboard') }}'>
+              {{ '_menu.cms.cms'|trans }}
+            </a>
+          </li>
+        {% endif %}
+        {% if is_granted('ROLE_JUDGE') %}
+          <li class='nav-item'>
+            <a class='nav-link' href='{{ path('balticrobo_website_judge_registration_list') }}'>
+              {{ '_menu.judge.judge'|trans }}
+            </a>
+          </li>
+        {% endif %}
       </ul>
     </div>
     <ul class='navbar-nav navbar-nav--locale'>

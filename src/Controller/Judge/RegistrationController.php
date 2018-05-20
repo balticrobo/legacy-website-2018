@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/judge/registration")
- * @Security("has_role('ROLE_JUDGE_REGISTRATION')")
+ * @Security("has_role('ROLE_JUDGE')")
  */
 class RegistrationController extends Controller
 {
