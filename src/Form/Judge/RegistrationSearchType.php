@@ -17,13 +17,13 @@ class RegistrationSearchType extends AbstractType
         $builder
             ->setMethod('GET')
             ->add('teamNameOrIdentifier', TextType::class, [
-                'label' => null,
+                'label' => false,
                 'attr' => [
                     'placeholder' => 'team_name_or_identifier',
                 ],
             ])
             ->add('memberSurname', TextType::class, [
-                'label' => null,
+                'label' => false,
                 'attr' => [
                     'placeholder' => 'member_surname',
                 ],
