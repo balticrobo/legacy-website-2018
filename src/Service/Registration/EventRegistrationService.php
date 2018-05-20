@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Service\Registration;
 
 use BalticRobo\Website\Entity\Event\Event;
+use BalticRobo\Website\Entity\Registration\Competition\Team;
 use BalticRobo\Website\Model\Judge\RegistrationSearchDTO;
 use BalticRobo\Website\Repository\Registration\Competition\ConstructionRepository;
 use BalticRobo\Website\Repository\Registration\Competition\TeamRepository;
@@ -24,5 +25,10 @@ class EventRegistrationService
     public function getTeamsByEvent(RegistrationSearchDTO $dto, Event $event): Collection
     {
         return $this->teamRepository->getFilteredByEvent($dto, $event);
+    }
+
+    public function getTeamByIdentifier(string $identifier, Event $event): Team
+    {
+        return $this->teamRepository->getByIdentifierAndEvent($identifier, $event);
     }
 }
