@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Entity\Event;
 
+use BalticRobo\Website\Entity\Storage\File;
 use BalticRobo\Website\Exception\Event\EventCompetitionNotFoundException;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -52,6 +53,12 @@ class Event
      * @ORM\Column(type="boolean")
      */
     private $draft = true;
+
+    /**
+     * @ORM\OneToOne(targetEntity="BalticRobo\Website\Entity\Storage\File")
+     * @ORM\JoinColumn(referencedColumnName="id")
+     */
+    private $schedule;
 
     /**
      * @ORM\OneToMany(targetEntity="BalticRobo\Website\Entity\Event\EventCompetition", mappedBy="event")
@@ -118,5 +125,10 @@ class Event
         }
 
         return $competition;
+    }
+
+    public function getSchedule(): ?File
+    {
+        return $this->schedule;
     }
 }

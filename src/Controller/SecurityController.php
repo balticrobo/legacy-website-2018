@@ -14,6 +14,7 @@ use BalticRobo\Website\Form\User\UserLoginType;
 use BalticRobo\Website\Form\User\UserRegisterType;
 use BalticRobo\Website\Form\User\UserResetPasswordType;
 use BalticRobo\Website\Model\User\UserLoginDTO;
+use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\UserService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -30,11 +31,13 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class SecurityController extends Controller
 {
+    private $eventService;
     private $authUtils;
     private $userService;
 
-    public function __construct(AuthenticationUtils $authUtils, UserService $userService)
+    public function __construct(EventService $event, AuthenticationUtils $authUtils, UserService $userService)
     {
+        $this->eventService = $event;
         $this->authUtils = $authUtils;
         $this->userService = $userService;
     }
@@ -57,6 +60,7 @@ class SecurityController extends Controller
         }
 
         return $this->render('security/login.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'form' => $form->createView(),
             'is_error' => (bool) $error,
         ]);
@@ -90,6 +94,7 @@ class SecurityController extends Controller
         }
 
         return $this->render('security/register.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'form' => $form->createView(),
         ]);
     }
@@ -111,6 +116,7 @@ class SecurityController extends Controller
         $request->getSession()->set('registered_email', null);
 
         return $this->render('security/register_success.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'email' => $email,
         ]);
     }
@@ -142,6 +148,7 @@ class SecurityController extends Controller
         }
 
         return $this->render('security/activate.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'success' => $success ?? true,
             'message' => $message ?? '',
         ]);
@@ -169,6 +176,7 @@ class SecurityController extends Controller
         }
 
         return $this->render('security/resend_validation_token.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'success' => $success ?? true,
             'message' => $message ?? '',
         ]);
@@ -199,6 +207,7 @@ class SecurityController extends Controller
         }
 
         return $this->render('security/request_forgotten_password.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'form' => $form->createView(),
         ]);
     }
@@ -226,6 +235,7 @@ class SecurityController extends Controller
         }
 
         return $this->render('security/forgotten_password_success.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'email' => $email,
             'exception' => $exception,
         ]);
@@ -267,6 +277,7 @@ class SecurityController extends Controller
         }
 
         return $this->render('security/reset_forgotten_password.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'form' => $form->createView(),
         ]);
     }

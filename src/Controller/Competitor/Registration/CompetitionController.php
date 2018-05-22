@@ -62,6 +62,7 @@ class CompetitionController extends Controller
         }
 
         return $this->render('competitor/registration/competition/add_team.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'form' => $form->createView(),
         ]);
     }

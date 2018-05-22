@@ -41,6 +41,7 @@ class EventController extends Controller
         $rules = $this->eventService->getCurrentRulesByLocale($request->getLocale());
 
         return $this->render('event/rules.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'rules' => $rules,
         ]);
     }
@@ -63,6 +64,7 @@ class EventController extends Controller
         }
 
         return $this->render('event/rule.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'rule' => $rule,
         ]);
     }
