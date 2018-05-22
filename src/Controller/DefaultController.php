@@ -41,7 +41,9 @@ class DefaultController extends Controller
      */
     public function termsAction(): Response
     {
-        return $this->render('default/terms.html.twig');
+        return $this->render('default/terms.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
+        ]);
     }
 
     /**
@@ -57,7 +59,21 @@ class DefaultController extends Controller
         $event = $this->eventService->getCurrentEvent();
 
         return $this->render('default/partners.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
             'records' => $service->getForEvent($event),
+        ]);
+    }
+
+    /**
+     * @Route("/schedule")
+     * @Method("GET")
+     *
+     * @return Response
+     */
+    public function scheduleAction(): Response
+    {
+        return $this->render('default/schedule.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
         ]);
     }
 }

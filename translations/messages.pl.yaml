@@ -51,6 +51,7 @@ _menu:
   home: Główna
   partners: Partnerzy
   rules: Regulaminy
+  schedule: Harmonogram
 competitor_zone:
   dashboard:
     competitor_name: Imię i nazwisko
@@ -156,6 +157,8 @@ default:
           skalp: czyli organizacja założona w 2015 roku przez członków Studenckiego Koła Automatyków SKALP, działającego od 2000 roku na Politechnice Gdańskiej. Działalność Stowarzyszenia wykracza poza działalność koła i obejmuje m.in. działalność edukacyjną, prowadzenie projektów naukowych i popularyzację automatyki i robotyki.
       registration:
         _header_opened: Rejestracja otwarta do %date%!
+  schedule:
+    will_be_posted_soon: Harmonogram zostanie wkrótce opublikowany.
   terms:
     header: Regulamin ogólny zawodów
 enum:
