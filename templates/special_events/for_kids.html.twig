@@ -14,16 +14,28 @@
       </div>
       <div class='row'>
         <div class='col-12'>
-          RoboPlanet to innowacyjne zajęcia z robotyki i programowania w Trójmieście. Rozwijamy wyobraźnię i uczymy
-          wytrwałości w dążeniu do celu, wyposażając przy tym dzieci w umiejętności niezbędne do funkcjonowania
-          w XXI wieku.<br/><br/>
-          Wśród naszej oferty znajdują się:
-          <ol>
-            <li>Zajęcia z robotyki</li>
-            <li>Kolonie</li>
-            <li>Półkolonie</li>
-            <li>Urodziny</li>
-          </ol>
+          {% if app.request.locale == 'pl' %}
+            RoboPlanet to innowacyjne zajęcia z robotyki i programowania w Trójmieście. Rozwijamy wyobraźnię i uczymy
+            wytrwałości w dążeniu do celu, wyposażając przy tym dzieci w umiejętności niezbędne do funkcjonowania
+            w XXI wieku.<br/><br/>
+            Wśród naszej oferty znajdują się:
+            <ol>
+              <li>Zajęcia z robotyki</li>
+              <li>Kolonie</li>
+              <li>Półkolonie</li>
+              <li>Urodziny</li>
+            </ol>
+          {% else %}
+            RoboPlanet is an educational company located in Gdańsk, Poland. We teach robotics, programming and
+            encourage children to pursue an education in STEM. Our curriculum develops analytical thinking and
+            empowers kids with abilities necessary to participate in the 21st century.<br/><br/>
+            Our offer includes:
+            <ol>
+              <li>Regular robotics classes with LEGO® Mindstorms™</li>
+              <li>Summer and winter camps</li>
+              <li>Birthday parties</li>
+            </ol>
+          {% endif %}
         </div>
       </div>
       <div class='row justify-content-center'>
@@ -39,10 +51,16 @@
       </div>
       <div class='row'>
         <div class='col-12'>
-          Specjalnie na Bałtyckie Bitwy Robotów, przygotowaliśmy masę atrakcji dla młodych pasjonatów robotyki!
-          <br/><br/>
-          Wystawa robotów budowanych na naszych zajęciach i koloniach. Każdy z robotów będzie dostępny do sterowania
-          i zabawy dla zwiedzających.
+          {% if app.request.locale == 'pl' %}
+            Specjalnie na Bałtyckie Bitwy Robotów, przygotowaliśmy masę atrakcji dla młodych pasjonatów robotyki!
+            <br/><br/>
+            Wystawa robotów budowanych na naszych zajęciach i koloniach. Każdy z robotów będzie dostępny do sterowania
+            i zabawy dla zwiedzających.
+          {% else %}
+            We have prepared plenty of attractions for robotics enthusiasts exclusively for Baltic Robo Battles!
+            <br/><br/>
+            Interactive exhibit of robots from our classes.
+          {% endif %}
         </div>
       </div>
       <div class='row justify-content-center'>
@@ -58,8 +76,13 @@
       </div>
       <div class='row'>
         <div class='col-12'>
-          Stanowisko do samodzielnej budowy – rodzice wraz z dziećmi będą mogli zbudować robota z instrukcji pod okiem
-          instruktorów, lub wymyślić całkowicie autorską konstrukcję.
+          {% if app.request.locale == 'pl' %}
+            Stanowisko do samodzielnej budowy – rodzice wraz z dziećmi będą mogli zbudować robota z instrukcji pod okiem
+            instruktorów, lub wymyślić całkowicie autorską konstrukcję.
+          {% else %}
+            Individual workshop stands – kids along with their parents will be able to assemble one construction from
+            our lessons, or develop their entirely new idea!
+          {% endif %}
         </div>
       </div>
       <div class='row justify-content-center'>
@@ -75,8 +98,12 @@
       </div>
       <div class='row'>
         <div class='col-12 text-center'>
-          Zapraszamy do udziału w Bałtyckich Bitwach Robotów<br/>
-          oraz do zapoznania się z ofertą  RoboPlanet!<br/><br/>
+          {% if app.request.locale == 'pl' %}
+            Zapraszamy do udziału w Bałtyckich Bitwach Robotów<br/>
+            oraz do zapoznania się z ofertą RoboPlanet!<br/><br/>
+          {% else %}
+            Meet us during Baltic Robo Battles and check our offer!<br/><br/>
+          {% endif %}
           <a href='http://roboplanet.pl' target='_blank'>roboplanet.pl</a> |
           <a href='https://fb.me/RoboplanetGdansk' target='_blank'>Facebook</a> |
           <a href='https://www.instagram.com/robo_planet' target='_blank'>Instagram</a> |
