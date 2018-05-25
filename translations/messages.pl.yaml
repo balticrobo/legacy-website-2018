@@ -47,7 +47,9 @@ _menu:
   for_kids: Dla dzieci
   judge:
     judge: Sędziowanie
-    registration: Rejestracja
+    registration:
+      competition: Rej. na zawody
+      hackathon: Rej. na hackathon
   home: Główna
   partners: Partnerzy
   rules: Regulaminy

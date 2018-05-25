@@ -5,11 +5,14 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Repository\Registration\Hackathon;
 
 use BalticRobo\Website\Entity\Event\Event;
+use BalticRobo\Website\Entity\Registration\Hackathon\Member;
 use BalticRobo\Website\Entity\Registration\Hackathon\Team;
 use BalticRobo\Website\Entity\User\User;
+use BalticRobo\Website\Model\Judge\RegistrationSearchDTO;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Query\Expr\Join;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class TeamRepository extends ServiceEntityRepository
@@ -34,6 +37,23 @@ class TeamRepository extends ServiceEntityRepository
         }
 
         return $record;
+    }
+
+    public function getFilteredByEvent(RegistrationSearchDTO $dto, Event $event): Collection
+    {
+        $query = $this->createQueryBuilder('t')
+            ->join(Member::class, 'm', Join::WITH, 't.id = m.team')
+            ->where('t.event = :event')
+            ->setParameter('event', $event)
+            ->orderBy('t.name', 'ASC');
+        if ($dto->getTeamNameOrIdentifier()) {
+            $query->andWhere('(t.name LIKE :name1)')->setParameter('name1', "%{$dto->getTeamNameOrIdentifier()}%");
+        }
+        if ($dto->getMemberSurname()) {
+            $query->andWhere('m.surname LIKE :surname')->setParameter('surname', "%{$dto->getMemberSurname()}%");
+        }
+
+        return new ArrayCollection($query->getQuery()->execute());
     }
 
     public function save(Team $team): void

@@ -42,6 +42,20 @@ class Member
     private $shirtType;
 
     /**
+     * @ORM\Column(type="timestamp_immutable", nullable=true)
+     *
+     * @var \DateTimeImmutable
+     */
+    private $presenceCheckedAt;
+
+    /**
+     * @ORM\Column(type="timestamp_immutable", nullable=true)
+     *
+     * @var \DateTimeImmutable
+     */
+    private $shirtGivenOutAt;
+
+    /**
      * @ORM\ManyToOne(targetEntity="BalticRobo\Website\Entity\Registration\Hackathon\Team", inversedBy="members")
      */
     private $team;
@@ -60,6 +74,27 @@ class Member
         $entity->shirtType = $memberDTO->getShirtType();
         $entity->team = $team;
         $entity->createdAt = $now;
+
+        return $entity;
+    }
+
+    public static function editFromRegisterTeam(
+        self $entity,
+        bool $isPresent,
+        bool $isShirtGivenOut,
+        \DateTimeImmutable $now
+    ): self {
+        // TODO: Refactor it
+        if ($isPresent && !$entity->presenceCheckedAt) {
+            $entity->presenceCheckedAt = $now;
+        } elseif ($isPresent && $entity->presenceCheckedAt) {
+            $entity->presenceCheckedAt = null;
+        }
+        if ($isShirtGivenOut && !$entity->shirtGivenOutAt) {
+            $entity->shirtGivenOutAt = $now;
+        } elseif ($isShirtGivenOut && $entity->shirtGivenOutAt) {
+            $entity->shirtGivenOutAt = null;
+        }
 
         return $entity;
     }
@@ -107,5 +142,15 @@ class Member
     public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
+    }
+
+    public function getPresenceCheckedAt(): ?\DateTimeImmutable
+    {
+        return $this->presenceCheckedAt;
+    }
+
+    public function getShirtGivenOutAt(): ?\DateTimeImmutable
+    {
+        return $this->shirtGivenOutAt;
     }
 }
