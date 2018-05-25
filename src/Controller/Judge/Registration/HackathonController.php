@@ -7,7 +7,7 @@ namespace BalticRobo\Website\Controller\Judge\Registration;
 use BalticRobo\Website\Form\Judge\RegistrationSearchType;
 use BalticRobo\Website\Model\Judge\RegistrationSearchDTO;
 use BalticRobo\Website\Service\EventService;
-use BalticRobo\Website\Service\Registration\EventCompetitionRegistrationService;
+use BalticRobo\Website\Service\Registration\EventHackathonRegistrationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -16,15 +16,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/judge/registration/competition")
+ * @Route("/judge/registration/hackathon")
  * @Security("has_role('ROLE_JUDGE')")
  */
-class CompetitionController extends Controller
+class HackathonController extends Controller
 {
     private $eventService;
     private $eventRegistrationService;
 
-    public function __construct(EventService $event, EventCompetitionRegistrationService $eventRegistration)
+    public function __construct(EventService $event, EventHackathonRegistrationService $eventRegistration)
     {
         $this->eventService = $event;
         $this->eventRegistrationService = $eventRegistration;
@@ -51,7 +51,7 @@ class CompetitionController extends Controller
 
         $records = $this->eventRegistrationService->getTeamsByEvent($searchQuery, $event);
 
-        return $this->render('judge/registration/competition/list.html.twig', [
+        return $this->render('judge/registration/hackathon/list.html.twig', [
             'event' => $event,
             'search' => $search->createView(),
             'query' => $searchQuery,
@@ -60,24 +60,24 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route("/{identifier}", requirements={"identifier" = "\w{2,4}"})
+     * @Route("/{name}")
      * @Method("GET")
      *
      * @param Request $request
      * @param string  $identifier
+     * @param string  $name
      *
      * @return Response
      */
-    public function detailsAction(Request $request, string $identifier): Response
+    public function detailsAction(Request $request, string $name): Response
     {
         $event = $this->eventService->getCurrentEvent();
-        $team = $this->eventRegistrationService->getTeamByIdentifier($identifier, $event);
+        $team = $this->eventRegistrationService->getTeamByName($name, $event);
 
-        return $this->render('judge/registration/competition/details.html.twig', [
+        return $this->render('judge/registration/hackathon/details.html.twig', [
             'event' => $event,
             'team' => $team,
             'members' => $team->getMembers(),
-            'constructions' => $this->eventRegistrationService->getConstructionsByTeam($team),
         ]);
     }
 
@@ -95,29 +95,8 @@ class CompetitionController extends Controller
         $member = $this->eventRegistrationService->getMemberById($id);
         $this->eventRegistrationService->setMember($member, $action, new \DateTimeImmutable());
 
-        return $this->redirectToRoute('balticrobo_website_judge_registration_competition_details', [
-            'identifier' => $member->getTeam()->getIdentifier(),
-        ]);
-    }
-
-    /**
-     * @Route("/accept/construction/{id}/{competitionId}/{action}",
-     * requirements={"id" = "\d+", "competitionId" = "\d+"})
-     * @Method("POST")
-     *
-     * @param int    $id
-     * @param int    $competitionId
-     * @param string $action
-     *
-     * @return Response
-     */
-    public function acceptConstructionAction(int $id, int $competitionId, string $action): Response
-    {
-        $construction = $this->eventRegistrationService->getConstructionCompetition($id, $competitionId);
-        $this->eventRegistrationService->setConstructionCompetition($construction, $action, new \DateTimeImmutable());
-
-        return $this->redirectToRoute('balticrobo_website_judge_registration_competition_details', [
-            'identifier' => $construction->getConstruction()->getTeam()->getIdentifier(),
+        return $this->redirectToRoute('balticrobo_website_judge_registration_hackathon_details', [
+            'name' => $member->getTeam()->getName(),
         ]);
     }
 }

@@ -15,7 +15,7 @@ use BalticRobo\Website\Repository\Registration\Competition\MemberRepository;
 use BalticRobo\Website\Repository\Registration\Competition\TeamRepository;
 use Doctrine\Common\Collections\Collection;
 
-class EventRegistrationService
+class EventCompetitionRegistrationService
 {
     private $teamRepository;
     private $constructionRepository;
