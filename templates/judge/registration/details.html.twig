@@ -51,7 +51,7 @@
             </td>
             <td class='align-middle text-center'>{{ member.createdAt|date('Y-m-d H:i') }}</td>
             <td class='align-middle text-center'>
-              <form action='{{ path('balticrobo_website_judge_registration_acceptmember', {
+              <form action='{{ path('balticrobo_website_judge_registration_competition_acceptmember', {
                 'id': member.id,
                 'action': 'presence'
               }) }}' method='post'>
@@ -63,7 +63,7 @@
               </form>
             </td>
             <td class='align-middle text-center'>
-              <form action='{{ path('balticrobo_website_judge_registration_acceptmember', {
+              <form action='{{ path('balticrobo_website_judge_registration_competition_acceptmember', {
                 'id': member.id,
                 'action': 'shirt_given'
               }) }}' method='post'>
@@ -101,7 +101,7 @@
               {% endif %}
             </td>
             <td class='align-middle text-center'>
-              <form action='{{ path('balticrobo_website_judge_registration_acceptconstruction', {
+              <form action='{{ path('balticrobo_website_judge_registration_competition_acceptconstruction', {
                 'id': construction.construction.id,
                 'competitionId': construction.competition.id,
                 'action': 'presence'
@@ -114,7 +114,7 @@
               </form>
             </td>
             <td class='align-middle text-center'>
-              <form action='{{ path('balticrobo_website_judge_registration_acceptconstruction', {
+              <form action='{{ path('balticrobo_website_judge_registration_competition_acceptconstruction', {
                 'id': construction.construction.id,
                 'competitionId': construction.competition.id,
                 'action': 'tech_valid'

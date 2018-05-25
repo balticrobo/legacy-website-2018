@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace BalticRobo\Website\Controller\Judge;
+namespace BalticRobo\Website\Controller\Judge\Registration;
 
 use BalticRobo\Website\Form\Judge\RegistrationSearchType;
 use BalticRobo\Website\Model\Judge\RegistrationSearchDTO;
@@ -16,10 +16,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/judge/registration")
+ * @Route("/judge/registration/competition")
  * @Security("has_role('ROLE_JUDGE')")
  */
-class RegistrationController extends Controller
+class CompetitionController extends Controller
 {
     private $eventService;
     private $eventRegistrationService;
@@ -95,7 +95,7 @@ class RegistrationController extends Controller
         $member = $this->eventRegistrationService->getMemberById($id);
         $this->eventRegistrationService->setMember($member, $action, new \DateTimeImmutable());
 
-        return $this->redirectToRoute('balticrobo_website_judge_registration_details', [
+        return $this->redirectToRoute('balticrobo_website_judge_registration_competition_details', [
             'identifier' => $member->getTeam()->getIdentifier(),
         ]);
     }
@@ -116,7 +116,7 @@ class RegistrationController extends Controller
         $construction = $this->eventRegistrationService->getConstructionCompetition($id, $competitionId);
         $this->eventRegistrationService->setConstructionCompetition($construction, $action, new \DateTimeImmutable());
 
-        return $this->redirectToRoute('balticrobo_website_judge_registration_details', [
+        return $this->redirectToRoute('balticrobo_website_judge_registration_competition_details', [
             'identifier' => $construction->getConstruction()->getTeam()->getIdentifier(),
         ]);
     }
