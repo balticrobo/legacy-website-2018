@@ -204,6 +204,7 @@ judge:
     member_surname: Nazwisko członka
     team_name_or_identifier: Nazwa drużyny/identyfikator
   registration:
+    added_in_extended_registration_period: Dodany po zamknięciu rejestracji
     presence: Obecny?
     shirt_given_out: Koszulka?
     tech_valid: Zgodny?

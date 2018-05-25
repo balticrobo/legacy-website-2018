@@ -5,6 +5,8 @@
     <div class='col-12'>
       <h2>{{ 'judge.common.about_team'|trans }}</h2>
       <dl class='row'>
+        <dt class='col-3 col-md-2'><i class='fa fa-fw fa-hashtag'></i></dt>
+        <dd class='col-9 col-md-4'>{{ team.id }}</dd>
         <dt class='col-3 col-md-2'>{{ 'competitor_zone.registration.form.name'|trans }}</dt>
         <dd class='col-9 col-md-4'>{{ team.name }}</dd>
         <dt class='col-3 col-md-2'>{{ 'competitor_zone.registration.form.city'|trans }}</dt>
@@ -39,9 +41,6 @@
             <td class='align-middle'>{{ member.name }}</td>
             <td class='align-middle text-center'>
               {{ member.namedShirtType|trans }}
-              {% if member.createdAt > event.registrationStopsAt %}
-                <br/>({{ 'added_in_extended_registration_period'|trans }})
-              {% endif %}
             </td>
             <td class='align-middle text-center'>{{ member.createdAt|date('Y-m-d H:i') }}</td>
             <td class='align-middle text-center'>
