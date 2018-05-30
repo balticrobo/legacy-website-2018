@@ -9,6 +9,7 @@ use BalticRobo\Website\Form\Registration\Competition\AddConstructionType;
 use BalticRobo\Website\Form\Registration\Competition\AddMemberType;
 use BalticRobo\Website\Form\Registration\Competition\AddTeamType;
 use BalticRobo\Website\Form\Registration\Competition\EditConstructionType;
+use BalticRobo\Website\Form\Registration\Competition\SurveyType;
 use BalticRobo\Website\Model\Registration\Competition\EditConstructionDTO;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\CompetitionService;
@@ -201,6 +202,41 @@ class CompetitionController extends Controller
         }
 
         return $this->render('competitor/registration/competition/edit_construction.html.twig', [
+            'event' => $event,
+            'form' => $form->createView(),
+            'team' => $team,
+        ]);
+    }
+
+    /**
+     * @Route("/{identifier}/survey", requirements={"identifier" = "\w{2,4}"})
+     * @Method({"GET", "POST"})
+     *
+     * @param Request $request
+     * @param string  $identifier
+     *
+     * @return Response
+     */
+    public function surveyAction(Request $request, string $identifier): Response
+    {
+        // TODO: Allow to fill survey only after event
+        $event = $this->eventService->getCurrentEvent();
+        $team = $this->competitionService->getTeamByIdentifierAndEvent($identifier, $event);
+
+        if ($this->competitionService->isSurveySent($identifier, $event)) {
+            return $this->redirectToRoute('balticrobo_website_competitor_registration_competition_teamdetails', [
+                'identifier' => $identifier,
+                'eventYear' => $event->getYear(),
+            ]);
+        }
+
+        $form = $this->createForm(SurveyType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            dump($form->getData());
+        }
+
+        return $this->render('competitor/registration/competition/survey.html.twig', [
             'event' => $event,
             'form' => $form->createView(),
             'team' => $team,

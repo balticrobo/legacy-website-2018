@@ -1,0 +1,18 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  <div class='wrapper'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-12'>
+          <h2>{{ 'competitor_zone.registration.competition.team_details.info'|trans }}</h2>
+          {{ form(form, {class: 'form', attr: {novalidate: 'novalidate'}}) }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
