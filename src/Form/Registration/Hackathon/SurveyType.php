@@ -16,7 +16,7 @@ class SurveyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $params = ['label_format' => 'competitor_zone.survey.form.%name%'];
+        $params = ['label_format' => 'competitor_zone.survey.form.%name%', 'mapped' => false];
 
         $builder
             ->add('sample_question', TextareaType::class, $params)
