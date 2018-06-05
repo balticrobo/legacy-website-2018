@@ -13,6 +13,7 @@ use BalticRobo\Website\Form\Registration\Competition\SurveyType;
 use BalticRobo\Website\Model\Registration\Competition\EditConstructionDTO;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\CompetitionService;
+use BalticRobo\Website\Service\Registration\SurveyService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -27,12 +28,14 @@ use Symfony\Component\HttpFoundation\Response;
 class CompetitionController extends Controller
 {
     private $competitionService;
+    private $surveyService;
     private $eventService;
 
-    public function __construct(CompetitionService $competitionService, EventService $eventService)
+    public function __construct(CompetitionService $competition, SurveyService $survey, EventService $event)
     {
-        $this->competitionService = $competitionService;
-        $this->eventService = $eventService;
+        $this->competitionService = $competition;
+        $this->surveyService = $survey;
+        $this->eventService = $event;
     }
 
     /**
@@ -209,37 +212,32 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route("/{identifier}/survey", requirements={"identifier" = "\w{2,4}"})
+     * @Route("/survey")
      * @Method({"GET", "POST"})
      *
      * @param Request $request
-     * @param string  $identifier
      *
      * @return Response
      */
-    public function surveyAction(Request $request, string $identifier): Response
+    public function surveyAction(Request $request): Response
     {
-        // TODO: Allow to fill survey only after event
         $event = $this->eventService->getCurrentEvent();
-        $team = $this->competitionService->getTeamByIdentifierAndEvent($identifier, $event);
-
-        if ($this->competitionService->isSurveySent($identifier, $event)) {
-            return $this->redirectToRoute('balticrobo_website_competitor_registration_competition_teamdetails', [
-                'identifier' => $identifier,
-                'eventYear' => $event->getYear(),
-            ]);
+        if (!$event->isActiveSurvey(new \DateTimeImmutable())
+            || $this->surveyService->isCompetitionSurveySent($this->getUser(), $event)) {
+            return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
         }
 
         $form = $this->createForm(SurveyType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($form->getData());
+            $this->surveyService->saveSurvey($form->getData(), $this->getUser(), $event, new \DateTimeImmutable());
+
+            return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
         }
 
         return $this->render('competitor/registration/competition/survey.html.twig', [
             'event' => $event,
             'form' => $form->createView(),
-            'team' => $team,
         ]);
     }
 }

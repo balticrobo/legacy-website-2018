@@ -10,7 +10,8 @@ use BalticRobo\Website\Model\Registration\SurveyDTO;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Table(name="registration_surveys")
+ * @ORM\Table(name="registration_surveys",
+ * uniqueConstraints={@ORM\UniqueConstraint(columns={"type", "event_id", "created_by_id"})})
  * @ORM\Entity
  */
 class Survey

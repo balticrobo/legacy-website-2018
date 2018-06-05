@@ -89,6 +89,8 @@ competitor_zone:
         add_member: You did not add any members yer. Do it now! Remember to add yourself and set someone as Captain!
         info: Info
         members: Members
+    survey:
+      header: Survey for competitors
 default:
   home:
     section:

@@ -102,6 +102,8 @@ competitor_zone:
         add_member: Nie dodałeś jeszcze żadnego członka drużyny, zrób to teraz! Nie zapomnij dodać siebie i oznaczyć kogoś mianem kapitana!
         info: Info
         members: Członkowie
+    survey:
+      header: Ankieta dla zawodników
 default:
   home:
     section:
