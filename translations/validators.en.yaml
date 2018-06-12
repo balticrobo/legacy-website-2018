@@ -42,6 +42,8 @@ survey:
     length:
       min: Enter value longer than {{ limit }} chars.
     not_blank: Enter value.
+  time:
+    not_blank: Rate time.
   yes_no:
     not_blank: Choose yes or no.
 team_add:

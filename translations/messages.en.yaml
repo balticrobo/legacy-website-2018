@@ -238,6 +238,15 @@ survey:
       very_good: (7) Very good
       great: (8) Great
       super: (9) SUPER!
+    simple_choice:
+      weak: (1) Weak
+      rather: (2) Rather good
+      good: (3) Good
+      very_good: (4) Very good
+    time:
+      too_short: Too short
+      enough: Enough
+      too_long: Too long
     yes_no:
       no: No
       yes: Yes
@@ -258,6 +267,15 @@ survey:
     scale_it_preparation: Rate IT preparation
     scale_graphic: Rate graphics (subjective)
     scale_overall_score: Overall rate event
+    scale_robohackathon: Overall rate Robohackathon
+    scale_robohackathon_comfort_in_room: Rate comfort of working in room
+    scale_robohackathon_comfort_in_workshop: Rate comfort of working in workshop
+    robohackathon_tools_and_materials_was_good: Did materials and tools was good?
+    robohackathon_food_was_good: Did food was good enouugh?
+    robohackathon_workshop_tools: Did you miss some tools and/or materials?
+    robohackathon_time: "Time was:"
+    robohackathon_volunteers: Rate volunteers work and helpfulness
+    robohackathon_final_battle: Was the great battle great?
     how_did_you_know_about_event: How did you know about the event?
     will_you_come_next_year: Wii you come next year?
     notes: Any additional issues, complains or words of encouragement and confidence

@@ -261,6 +261,15 @@ survey:
       very_good: (7) Bardzo dobrze
       great: (8) Wspaniale
       super: (9) SUPER!
+    simple_choice:
+      weak: (1) Słabo
+      rather: (2) Srednio
+      good: (3) Dobrze
+      very_good: (4) Bardzo dobrze
+    time:
+      too_short: Za krótki
+      enough: Wystarczający
+      too_long: Za długi
     yes_no:
       no: Nie
       yes: Tak
@@ -281,6 +290,15 @@ survey:
     scale_it_preparation: Oceń przygotowanie IT (strona, internet podczas zawodów)
     scale_graphic: Oceń grafikę (subjektywnie)
     scale_overall_score: Ogólna ocena zawodów
+    scale_robohackathon: Ogólna ocena Robohackathonu
+    scale_robohackathon_comfort_in_room: Oceń komfort pracy w sali
+    scale_robohackathon_comfort_in_workshop: Oceń komfort pracy w warsztacie
+    robohackathon_tools_and_materials_was_good: Czy materiały i narzędzia były zadowalające?
+    robohackathon_food_was_good: Czy jedzenie było zadowalające?
+    robohackathon_workshop_tools: Czy brakowało Wam jakiś narzędzi i/lub materiałów?
+    robohackathon_time: "Czas trwania był:"
+    robohackathon_volunteers: Jak oceniasz pracę wolontariuszy podczas Robohackathonu?
+    robohackathon_final_battle: Czy podobała Wam się forma wielkiej bitwy?
     how_did_you_know_about_event: Skąd dowiedziałeś/aś się o wydarzeniu?
     will_you_come_next_year: Czy wpadniesz też za rok?
     notes: Dodatkowe informacje, może chcesz dodać coś od siebie? Byłoby nam miło
