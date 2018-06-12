@@ -9,6 +9,7 @@ _button:
   register: Zarejestruj się
   resend_validation_token: Wyślij ponownie token aktywacyjny
   search: Wyszukaj
+  survey: Ankieta
   yes: Tak
 _common:
   event_name: Bałtyckie Bitwy Robotów
@@ -245,6 +246,44 @@ security:
       successful: Wygenerowano nowy token
       unsuccessful: Generowanie tokenu nie powiodło się
     unsuccess_info: Cos gdzies poszło niesamowicie nie po naszej myśli. Skontakuj się z nami.
+survey:
+  form:
+    age: Wiek (tak mniej więcej, do statystyk)
+    choice:
+      placeholder: Wybierz
+      dont_know: Nie wiem, nie mam zdania
+      very_weak: (1) Totalne dno
+      weak: (2) Słabo
+      more_or_less: (3) Tak sobie
+      rather: (4) Średnio
+      could_be_better: (5) Mogłoby być lepiej
+      its_ok: (6) Jest ok
+      very_good: (7) Bardzo dobrze
+      great: (8) Wspaniale
+      super: (9) SUPER!
+    yes_no:
+      no: Nie
+      yes: Tak
+    do_you_go_on_such_events: Czy brałeś/ać udział w podobnych wydarzeniach?
+    do_you_think_it_was_something_new: Czy to było coś nowego (w formie, konkurencjach itd.)?
+    do_you_think_two_day_event_was_great_idea: Czy dobrym pomysłem były zawody dwudniowe?
+    did_you_take_part_in_conference: Czy brałeś/aś udział w konferencji?
+    scale_atmosphere: Oceń atmosferę
+    scale_organization: Oceń organizację
+    scale_service_area: Oceń aleję serwisową (czy było wszystko co potrzebne?)
+    scale_prize: Oceń nagrody
+    scale_sumo_dojo: Oceń dojo do sumo
+    scale_line_follower_track: Oceń tor do Line Follower (wszystkich)
+    scale_line_follower_3d_track: Oceń tor do Line Follower 3D
+    scale_mouse_labyrinth: Oceń labirynt do micromouse
+    scale_communication: Oceń komunikację
+    scale_tech_preparation: Oceń przygotowanie techniczne
+    scale_it_preparation: Oceń przygotowanie IT (strona, internet podczas zawodów)
+    scale_graphic: Oceń grafikę (subjektywnie)
+    scale_overall_score: Ogólna ocena zawodów
+    how_did_you_know_about_event: Skąd dowiedziałeś/aś się o wydarzeniu?
+    will_you_come_next_year: Czy wpadniesz też za rok?
+    notes: Dodatkowe informacje, może chcesz dodać coś od siebie? Byłoby nam miło
 user:
   form:
     email: Email

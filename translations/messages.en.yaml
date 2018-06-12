@@ -7,6 +7,7 @@ _button:
   logout: Logout
   register: Register
   resend_validation_token: Resend validation token
+  survey: Survey
 _common:
   event_name: Baltic Robo Battles
   competition_group:
@@ -222,6 +223,44 @@ security:
       successful: New token created
       unsuccessful: Token creation failed
     unsuccess_info: Something somewhere went terribly wrong. Contact with us.
+survey:
+  form:
+    age: Age (more or less, statistics only)
+    choice:
+      placeholder: Choose
+      dont_know: Don't know, don't have an opinion
+      very_weak: (1) Very weak
+      weak: (2) Weak
+      more_or_less: (3) More or less
+      rather: (4) Rather good
+      could_be_better: (5) Could be better
+      its_ok: (6) It's ok
+      very_good: (7) Very good
+      great: (8) Great
+      super: (9) SUPER!
+    yes_no:
+      no: No
+      yes: Yes
+    do_you_go_on_such_events: Do you go on such events?
+    do_you_think_it_was_something_new: Do you think it was something new?
+    do_you_think_two_day_event_was_great_idea: Do you think that two day event was great idea?
+    did_you_take_part_in_conference: Did you take part in conference?
+    scale_atmosphere: Rate atmosphere
+    scale_organization: Rate organization
+    scale_service_area: Rate service area
+    scale_prize: Rate prize
+    scale_sumo_dojo: Rate sumo dojo
+    scale_line_follower_track: Rate line follower tracks
+    scale_line_follower_3d_track: Rate line follower 3d track
+    scale_mouse_labyrinth: Rate micromouse labyrinth
+    scale_communication: Rate communication
+    scale_tech_preparation: Rate technical preparation
+    scale_it_preparation: Rate IT preparation
+    scale_graphic: Rate graphics (subjective)
+    scale_overall_score: Overall rate event
+    how_did_you_know_about_event: How did you know about the event?
+    will_you_come_next_year: Wii you come next year?
+    notes: Any additional issues, complains or words of encouragement and confidence
 user:
   form:
     email: Email
