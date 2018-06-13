@@ -47,6 +47,10 @@
             <a href='{{ path('balticrobo_website_competitor_registration_competition_addteam') }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
               {{ '_button.add'|trans }}
             </a>
+          {% elseif is_survey.competition %}
+            <a href='{{ path('balticrobo_website_competitor_registration_competition_survey') }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
+              {{ '_button.survey'|trans }}
+            </a>
           {% endif %}
         </div>
       </div>
@@ -75,6 +79,10 @@
           {% if hackathon_teams.count < constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MAX_TEAMS') and is_active_registration.standard_period %}
             <a href='{{ path('balticrobo_website_competitor_registration_hackathon_addteam') }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
               {{ '_button.add'|trans }}
+            </a>
+          {% elseif is_survey.hackathon %}
+            <a href='{{ path('balticrobo_website_competitor_registration_hackathon_survey') }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
+              {{ '_button.survey'|trans }}
             </a>
           {% endif %}
         </div>

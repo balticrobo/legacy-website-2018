@@ -8,6 +8,7 @@ use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\CompetitionService;
 use BalticRobo\Website\Service\Registration\HackathonService;
 use BalticRobo\Website\Service\Registration\InformationService;
+use BalticRobo\Website\Service\Registration\SurveyService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -24,17 +25,20 @@ class CompetitorController extends Controller
     private $competitionService;
     private $hackathonService;
     private $informationService;
+    private $surveyService;
 
     public function __construct(
         EventService $event,
         CompetitionService $competition,
         HackathonService $hackathon,
-        InformationService $information
+        InformationService $information,
+        SurveyService $survey
     ) {
         $this->eventService = $event;
         $this->competitionService = $competition;
         $this->hackathonService = $hackathon;
         $this->informationService = $information;
+        $this->surveyService = $survey;
     }
 
     /**
@@ -57,6 +61,14 @@ class CompetitorController extends Controller
             'is_active_registration' => [
                 'standard_period' => $this->eventService->isActiveRegistration(new \DateTimeImmutable()),
                 'extended_period' => $this->eventService->isActiveRegistration(new \DateTimeImmutable(), true),
+            ],
+            'is_survey' => [
+                'competition' => !$this->surveyService->isCompetitionSurveySent($this->getUser(), $event)
+                    && $competitionTeams->count() >= 1
+                    && $event->isActiveSurvey(new \DateTimeImmutable()),
+                'hackathon' => !$this->surveyService->isHackathonSurveySent($this->getUser(), $event)
+                    && $hackathonTeams->count() >= 1
+                    && $event->isActiveSurvey(new \DateTimeImmutable()),
             ],
             'hackathon_teams' => $hackathonTeams,
             'information' => $information,

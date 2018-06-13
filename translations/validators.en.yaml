@@ -33,6 +33,19 @@ security:
     login: Email or password are incorrect.
   Username could not be found:
     login: Email or password are incorrect.
+survey:
+  age:
+    not_blank: Enter members age.
+  scale:
+    not_blank: Rate.
+  text:
+    length:
+      min: Enter value longer than {{ limit }} chars.
+    not_blank: Enter value.
+  time:
+    not_blank: Rate time.
+  yes_no:
+    not_blank: Choose yes or no.
 team_add:
   city:
     length:

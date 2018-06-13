@@ -16,6 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Event
 {
     private const REOPEN_REGISTRATION_AFTER = 'PT20H';
+    private const CLOSE_SURVEYS_AFTER = 'P2M';
 
     /**
      * @ORM\Id
@@ -104,6 +105,12 @@ class Event
     {
         return $this->registrationStopsAt->add(new \DateInterval(self::REOPEN_REGISTRATION_AFTER)) < $now
             && $this->registrationEndsAt > $now;
+    }
+
+    public function isActiveSurvey(\DateTimeImmutable $now): bool
+    {
+        return $this->registrationEndsAt < $now
+            && $this->registrationEndsAt->add(new \DateInterval(self::CLOSE_SURVEYS_AFTER)) > $now;
     }
 
     public function isDraft(): bool

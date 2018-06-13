@@ -9,6 +9,7 @@ _button:
   register: Zarejestruj się
   resend_validation_token: Wyślij ponownie token aktywacyjny
   search: Wyszukaj
+  survey: Ankieta
   yes: Tak
 _common:
   event_name: Bałtyckie Bitwy Robotów
@@ -102,6 +103,8 @@ competitor_zone:
         add_member: Nie dodałeś jeszcze żadnego członka drużyny, zrób to teraz! Nie zapomnij dodać siebie i oznaczyć kogoś mianem kapitana!
         info: Info
         members: Członkowie
+    survey:
+      header: Ankieta dla zawodników
 default:
   home:
     section:
@@ -243,6 +246,63 @@ security:
       successful: Wygenerowano nowy token
       unsuccessful: Generowanie tokenu nie powiodło się
     unsuccess_info: Cos gdzies poszło niesamowicie nie po naszej myśli. Skontakuj się z nami.
+survey:
+  form:
+    age: Wiek (tak mniej więcej, do statystyk)
+    choice:
+      placeholder: Wybierz
+      dont_know: Nie wiem, nie mam zdania
+      very_weak: (1) Totalne dno
+      weak: (2) Słabo
+      more_or_less: (3) Tak sobie
+      rather: (4) Średnio
+      could_be_better: (5) Mogłoby być lepiej
+      its_ok: (6) Jest ok
+      very_good: (7) Bardzo dobrze
+      great: (8) Wspaniale
+      super: (9) SUPER!
+    simple_choice:
+      weak: (1) Słabo
+      rather: (2) Srednio
+      good: (3) Dobrze
+      very_good: (4) Bardzo dobrze
+    time:
+      too_short: Za krótki
+      enough: Wystarczający
+      too_long: Za długi
+    yes_no:
+      no: Nie
+      yes: Tak
+    do_you_go_on_such_events: Czy brałeś/ać udział w podobnych wydarzeniach?
+    do_you_think_it_was_something_new: Czy to było coś nowego (w formie, konkurencjach itd.)?
+    do_you_think_two_day_event_was_great_idea: Czy dobrym pomysłem były zawody dwudniowe?
+    did_you_take_part_in_conference: Czy brałeś/aś udział w konferencji?
+    scale_atmosphere: Oceń atmosferę
+    scale_organization: Oceń organizację
+    scale_service_area: Oceń aleję serwisową (czy było wszystko co potrzebne?)
+    scale_prize: Oceń nagrody
+    scale_sumo_dojo: Oceń dojo do sumo
+    scale_line_follower_track: Oceń tor do Line Follower (wszystkich)
+    scale_line_follower_3d_track: Oceń tor do Line Follower 3D
+    scale_mouse_labyrinth: Oceń labirynt do micromouse
+    scale_communication: Oceń komunikację
+    scale_tech_preparation: Oceń przygotowanie techniczne
+    scale_it_preparation: Oceń przygotowanie IT (strona, internet podczas zawodów)
+    scale_graphic: Oceń grafikę (subjektywnie)
+    scale_overall_score: Ogólna ocena zawodów
+    scale_robohackathon: Ogólna ocena Robohackathonu
+    scale_robohackathon_comfort_in_room: Oceń komfort pracy w sali
+    scale_robohackathon_comfort_in_workshop: Oceń komfort pracy w warsztacie
+    any_complains_about_location: Czy masz jakieś zastrzeżenia dotyczące miejsca wydarzenia (jeżeli tak, to jakie)?
+    robohackathon_missing_tools_and_materials: Jakich narzędzi lub materiałów Twoim zdaniem brakowało?
+    robohackathon_food_was_good: Czy jedzenie było zadowalające?
+    robohackathon_time: "Czas trwania Robohackathonu był:"
+    robohackathon_volunteers: Jak oceniasz pracę wolontariuszy podczas Robohackathonu?
+    robohackathon_final_battle: Czy podobała Wam się forma wielkiej bitwy?
+    how_did_you_know_about_event: Skąd dowiedziałeś/aś się o wydarzeniu?
+    will_you_come_next_year: Czy wpadniesz też za rok?
+    robohackathon_will_you_come_next_year: Czy był(a)byś zainteresowany(a) wzięciem udziału w kolejnej edycji Robohackathonu?
+    notes: "Dodatkowe uwagi, które mogłyby pomóc w organizacji kolejnych edycju turnieju:"
 user:
   form:
     email: Email

@@ -2,7 +2,8 @@
   padding-left: 0;
 
   &.is-invalid {
-    input[type=checkbox] {
+    input[type=checkbox],
+    input[type=radio] {
       & + label {
         &::before {
           border: $input-border-width solid $red;
@@ -11,7 +12,8 @@
     }
   }
 
-  input[type=checkbox] {
+  input[type=checkbox],
+  input[type=radio] {
     display: none;
 
     &:checked + label::before {

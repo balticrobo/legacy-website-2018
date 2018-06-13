@@ -33,6 +33,19 @@ security:
     login: Email lub hasło są niepoprawne.
   Username could not be found:
     login: Email lub hasło są niepoprawne.
+survey:
+  age:
+    not_blank: Podaj wiek uczestników zespołu.
+  scale:
+    not_blank: Oceń.
+  text:
+    length:
+      min: Podana wartość musi być dłuższa niż {{ limit }} znaków.
+    not_blank: Podaj wartość.
+  time:
+    not_blank: Oceń czas.
+  yes_no:
+    not_blank: Wybierz tak lub nie.
 team_add:
   city:
     length:
