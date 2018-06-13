@@ -293,15 +293,16 @@ survey:
     scale_robohackathon: Ogólna ocena Robohackathonu
     scale_robohackathon_comfort_in_room: Oceń komfort pracy w sali
     scale_robohackathon_comfort_in_workshop: Oceń komfort pracy w warsztacie
-    robohackathon_tools_and_materials_was_good: Czy materiały i narzędzia były zadowalające?
+    any_complains_about_location: Czy masz jakieś zastrzeżenia dotyczące miejsca wydarzenia (jeżeli tak, to jakie)?
+    robohackathon_missing_tools_and_materials: Jakich narzędzi lub materiałów Twoim zdaniem brakowało?
     robohackathon_food_was_good: Czy jedzenie było zadowalające?
-    robohackathon_workshop_tools: Czy brakowało Wam jakiś narzędzi i/lub materiałów?
-    robohackathon_time: "Czas trwania był:"
+    robohackathon_time: "Czas trwania Robohackathonu był:"
     robohackathon_volunteers: Jak oceniasz pracę wolontariuszy podczas Robohackathonu?
     robohackathon_final_battle: Czy podobała Wam się forma wielkiej bitwy?
     how_did_you_know_about_event: Skąd dowiedziałeś/aś się o wydarzeniu?
     will_you_come_next_year: Czy wpadniesz też za rok?
-    notes: Dodatkowe informacje, może chcesz dodać coś od siebie? Byłoby nam miło
+    robohackathon_will_you_come_next_year: Czy był(a)byś zainteresowany(a) wzięciem udziału w kolejnej edycji Robohackathonu?
+    notes: "Dodatkowe uwagi, które mogłyby pomóc w organizacji kolejnych edycju turnieju:"
 user:
   form:
     email: Email

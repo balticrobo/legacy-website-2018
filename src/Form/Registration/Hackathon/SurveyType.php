@@ -23,11 +23,16 @@ class SurveyType extends AbstractType
         $params = ['label_format' => 'survey.form.%name%', 'mapped' => false];
 
         $builder
-            ->add('scale_robohackathon', ChoiceType::class, array_merge($params, $this->choiceScale()))
+            ->add('scale_robohackathon', ChoiceType::class, array_merge($params, $this->choiceSimpleScale()))
             ->add('scale_robohackathon_comfort_in_room', ChoiceType::class, array_merge($params, $this->choiceScale()))
             ->add('scale_robohackathon_comfort_in_workshop', ChoiceType::class, array_merge($params, $this->choiceScale()))
-            ->add('robohackathon_tools_and_materials_was_good', ChoiceType::class, array_merge($params, $this->choiceYesNo()))
-            ->add('robohackathon_workshop_tools', TextareaType::class, array_merge($params, [
+            ->add('any_complains_about_location', TextareaType::class, array_merge($params, [
+                'constraints' => [
+                    new NotBlank(['message' => 'survey.text.not_blank']),
+                    new Length(['min' => 3, 'minMessage' => 'survey.text.length.min']),
+                ],
+            ]))
+            ->add('robohackathon_missing_tools_and_materials', TextareaType::class, array_merge($params, [
                 'constraints' => [
                     new NotBlank(['message' => 'survey.text.not_blank']),
                 ],
@@ -42,7 +47,7 @@ class SurveyType extends AbstractType
                     new Length(['min' => 3, 'minMessage' => 'survey.text.length.min']),
                 ],
             ]))
-            ->add('will_you_come_next_year', ChoiceType::class, array_merge($params, $this->choiceYesNo()))
+            ->add('robohackathon_will_you_come_next_year', ChoiceType::class, array_merge($params, $this->choiceYesNo()))
             ->add('notes', TextareaType::class, $params)
         ;
     }
@@ -56,14 +61,14 @@ class SurveyType extends AbstractType
                     'scale_robohackathon' => $form->get('scale_robohackathon')->getData(),
                     'scale_robohackathon_comfort_in_room' => $form->get('scale_robohackathon_comfort_in_room')->getData(),
                     'scale_robohackathon_comfort_in_workshop' => $form->get('scale_robohackathon_comfort_in_workshop')->getData(),
-                    'robohackathon_tools_and_materials_was_good' => $form->get('robohackathon_tools_and_materials_was_good')->getData(),
-                    'robohackathon_workshop_tools' => $form->get('robohackathon_workshop_tools')->getData(),
+                    'any_complains_about_location' => $form->get('any_complains_about_location')->getData(),
+                    'robohackathon_missing_tools_and_materials' => $form->get('robohackathon_missing_tools_and_materials')->getData(),
                     'robohackathon_food_was_good' => $form->get('robohackathon_food_was_good')->getData(),
                     'robohackathon_time' => $form->get('robohackathon_time')->getData(),
                     'robohackathon_volunteers' => $form->get('robohackathon_volunteers')->getData(),
                     'robohackathon_final_battle' => $form->get('robohackathon_final_battle')->getData(),
                     'how_did_you_know_about_event' => $form->get('how_did_you_know_about_event')->getData(),
-                    'will_you_come_next_year' => $form->get('will_you_come_next_year')->getData(),
+                    'robohackathon_will_you_come_next_year' => $form->get('robohackathon_will_you_come_next_year')->getData(),
                     'notes' => $form->get('notes')->getData(),
                 ], RegistrationTypeEnum::HACKATHON);
             },
@@ -106,15 +111,15 @@ class SurveyType extends AbstractType
     {
         return [
             'choices' => [
-                'survey.form.choice.very_weak' => 'very_weak (1)',
-                'survey.form.choice.weak' => 'weak (2)',
-                'survey.form.choice.more_or_less' => 'more_or_less (3)',
-                'survey.form.choice.rather' => 'rather (4)',
-                'survey.form.choice.could_be_better' => 'could_be_better (5)',
-                'survey.form.choice.its_ok' => 'its_ok (6)',
-                'survey.form.choice.very_good' => 'very_good (7)',
-                'survey.form.choice.great' => 'great (8)',
-                'survey.form.choice.super' => 'super (9)',
+                'survey.form.choice.very_weak' => 'very_weak (1/9)',
+                'survey.form.choice.weak' => 'weak (2/9)',
+                'survey.form.choice.more_or_less' => 'more_or_less (3/9)',
+                'survey.form.choice.rather' => 'rather (4/9)',
+                'survey.form.choice.could_be_better' => 'could_be_better (5/9)',
+                'survey.form.choice.its_ok' => 'its_ok (6/9)',
+                'survey.form.choice.very_good' => 'very_good (7/9)',
+                'survey.form.choice.great' => 'great (8/9)',
+                'survey.form.choice.super' => 'super (9/9)',
             ],
             'expanded' => false,
             'multiple' => false,
@@ -129,10 +134,10 @@ class SurveyType extends AbstractType
     {
         return [
             'choices' => [
-                'survey.form.simple_choice.weak' => 'weak (1)',
-                'survey.form.simple_choice.rather' => 'rather (2)',
-                'survey.form.simple_choice.good' => 'good (3)',
-                'survey.form.simple_choice.very_good' => 'very_good (4)',
+                'survey.form.simple_choice.weak' => 'weak (1/4)',
+                'survey.form.simple_choice.rather' => 'rather (2/4)',
+                'survey.form.simple_choice.good' => 'good (3/4)',
+                'survey.form.simple_choice.very_good' => 'very_good (4/4)',
             ],
             'expanded' => false,
             'multiple' => false,

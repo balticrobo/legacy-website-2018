@@ -122,18 +122,18 @@ class SurveyType extends AbstractType
     private function choiceScale(bool $withoutAnswer = false): array
     {
         $choices = [
-            'survey.form.choice.very_weak' => 'very_weak (1)',
-            'survey.form.choice.weak' => 'weak (2)',
-            'survey.form.choice.more_or_less' => 'more_or_less (3)',
-            'survey.form.choice.rather' => 'rather (4)',
-            'survey.form.choice.could_be_better' => 'could_be_better (5)',
-            'survey.form.choice.its_ok' => 'its_ok (6)',
-            'survey.form.choice.very_good' => 'very_good (7)',
-            'survey.form.choice.great' => 'great (8)',
-            'survey.form.choice.super' => 'super (9)',
+            'survey.form.choice.very_weak' => 'very_weak (1/9)',
+            'survey.form.choice.weak' => 'weak (2/9)',
+            'survey.form.choice.more_or_less' => 'more_or_less (3/9)',
+            'survey.form.choice.rather' => 'rather (4/9)',
+            'survey.form.choice.could_be_better' => 'could_be_better (5/9)',
+            'survey.form.choice.its_ok' => 'its_ok (6/9)',
+            'survey.form.choice.very_good' => 'very_good (7/9)',
+            'survey.form.choice.great' => 'great (8/9)',
+            'survey.form.choice.super' => 'super (9/9)',
         ];
         if ($withoutAnswer) {
-            $choices = array_merge(['survey.form.choice.dont_know' => 'don\'t know'], $choices);
+            $choices = array_merge(['survey.form.choice.dont_know' => 'dont_know (0/9)'], $choices);
         }
 
         return [
