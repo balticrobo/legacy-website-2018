@@ -2,11 +2,11 @@ version: '3.7'
 
 services:
   php:
-    build: ./docs/docker/php
+    build: ./.misc/docker/php
     volumes:
     - .:/var/www/app
-    - ./docs/docker/php/php.ini:/usr/local/etc/php/php.ini
-    - ./docs/docker/php:/opt/docker
+    - ./.misc/docker/php/php.ini:/usr/local/etc/php/php.ini
+    - ./.misc/docker/php:/opt/docker
     environment:
       COMPOSER_ALLOW_SUPERUSER: 1
     working_dir: /var/www/app
@@ -16,7 +16,7 @@ services:
     user: node
     volumes:
     - .:/var/www/app
-    - ./docs/docker/node_assets:/opt/docker
+    - ./.misc/docker/node_assets:/opt/docker
     working_dir: /var/www/app
     command: /opt/docker/start.sh
   nginx:
@@ -25,7 +25,7 @@ services:
     - php
     volumes:
     - ./public:/var/www/app/public
-    - ./docs/docker/nginx/vhost.conf:/etc/nginx/conf.d/default.conf
+    - ./.misc/docker/nginx/vhost.conf:/etc/nginx/conf.d/default.conf
     ports:
     - 8000:80
     working_dir: /var/www/app/public
@@ -45,13 +45,13 @@ services:
     logging:
       driver: none
   node_inky:
-    build: ./docs/docker/node_inky
+    build: ./.misc/docker/node_inky
     user: node
     volumes:
     - ./_mail:/var/www/app/_mail
     - ./public:/var/www/app/public
     - ./templates/_mail:/var/www/app/templates/_mail
-    - ./docs/docker/node_inky:/opt/docker
+    - ./.misc/docker/node_inky:/opt/docker
     environment:
       DEPLOY_EMAIL_ASSETS_DOMAIN: http://localhost:8000/email/
     ports:

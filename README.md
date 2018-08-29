@@ -25,13 +25,13 @@ Containers will be ready to active development with installed composer packages,
 * localhost:3306 - MySQL,
 * localhost:9000 - PHP Xdebug.
 
-For more information check `docker-compose.yaml` and `docs/docker/`.
+For more information check `docker-compose.yaml` and `.misc/docker/`.
 
 ### Validate commits
 
 `composer.json` have script which sets default **pre-commit hook** to GIT. If
  you know what are you doing, you can change or remove it in file
- `docs/hooks/pre-commit`.
+ `.misc/hooks/pre-commit`.
 
 Same rules of validating commits are included in [Gitlab CI](#gitlab-ci).
 
