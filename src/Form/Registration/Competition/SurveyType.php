@@ -26,7 +26,11 @@ class SurveyType extends AbstractType
             ->add('age', ChoiceType::class, array_merge($params, $this->choiceAge()))
             ->add('do_you_go_on_such_events', ChoiceType::class, array_merge($params, $this->choiceYesNo()))
             ->add('do_you_think_it_was_something_new', ChoiceType::class, array_merge($params, $this->choiceYesNo()))
-            ->add('do_you_think_two_day_event_was_great_idea', ChoiceType::class, array_merge($params, $this->choiceYesNo()))
+            ->add(
+                'do_you_think_two_day_event_was_great_idea',
+                ChoiceType::class,
+                array_merge($params, $this->choiceYesNo())
+            )
             ->add('did_you_take_part_in_conference', ChoiceType::class, array_merge($params, $this->choiceYesNo()))
             ->add('scale_atmosphere', ChoiceType::class, array_merge($params, $this->choiceScale()))
             ->add('scale_organization', ChoiceType::class, array_merge($params, $this->choiceScale()))
@@ -61,7 +65,8 @@ class SurveyType extends AbstractType
                     'age' => $form->get('age')->getData(),
                     'do_you_go_on_such_events' => $form->get('do_you_go_on_such_events')->getData(),
                     'do_you_think_it_was_something_new' => $form->get('do_you_think_it_was_something_new')->getData(),
-                    'do_you_think_two_day_event_was_great_idea' => $form->get('do_you_think_two_day_event_was_great_idea')->getData(),
+                    'do_you_think_two_day_event_was_great_idea' =>
+                        $form->get('do_you_think_two_day_event_was_great_idea')->getData(),
                     'did_you_take_part_in_conference' => $form->get('did_you_take_part_in_conference')->getData(),
                     'scale_atmosphere' => $form->get('scale_atmosphere')->getData(),
                     'scale_organization' => $form->get('scale_organization')->getData(),

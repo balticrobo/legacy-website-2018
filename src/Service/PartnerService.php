@@ -31,11 +31,11 @@ class PartnerService
 
     public function getForEvent(Event $event): Collection
     {
-        $records = array_reduce(PartnerTypeEnum::getAvailableTypes(), function (array $records, int $type) use ($event) {
+        $records = array_reduce(PartnerTypeEnum::getAvailableTypes(), function (array $types, int $type) use ($event) {
             $typeName = PartnerTypeEnum::getName($type);
-            $records[$typeName] = $this->partnerRepository->getRecordsByEventAndType($event, $type);
+            $types[$typeName] = $this->partnerRepository->getRecordsByEventAndType($event, $type);
 
-            return $records;
+            return $types;
         }, []);
 
         return new ArrayCollection($records);

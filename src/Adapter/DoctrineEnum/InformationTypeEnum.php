@@ -27,7 +27,7 @@ class InformationTypeEnum
             throw new UnknownEnumException((string) $enum);
         }
 
-        return 'fa fa-fw '.self::FONT_AWESOME[$enum];
+        return 'fa fa-fw ' . self::FONT_AWESOME[$enum];
     }
 
     /**
