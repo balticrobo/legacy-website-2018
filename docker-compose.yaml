@@ -1,75 +1,63 @@
-version: '3.3'
+version: '3.7'
 
 services:
   php:
-    build:
-      dockerfile: Dockerfile
-      context: ./docs/docker/php
+    build: ./docs/docker/php
     volumes:
-      - .:/var/www/app
-      - ./docs/docker/php/php.ini:/usr/local/etc/php/php.ini
-      - ./docs/docker/php:/opt/docker
-      - composer_cache:/root/.composer/cache
+    - .:/var/www/app
+    - ./docs/docker/php/php.ini:/usr/local/etc/php/php.ini
+    - ./docs/docker/php:/opt/docker
     environment:
       COMPOSER_ALLOW_SUPERUSER: 1
-      APP_ENV: dev
-      APP_SECRET: 7cbd4f1718b779f367516a8d917b6a29
-      DATABASE_URL: mysql://root:mysql@mysql:3306/balticrobo
-      MAILER_URL: smtp://mailhog:1025
-      SENTRY_DSN:
-      COMMIT_SHA:
     working_dir: /var/www/app
     command: /opt/docker/start.sh
-  node:
+  node_assets:
     image: node:10
     user: node
     volumes:
-      - .:/var/www/app
-      - ./docs/docker/node:/opt/docker
+    - .:/var/www/app
+    - ./docs/docker/node_assets:/opt/docker
     working_dir: /var/www/app
     command: /opt/docker/start.sh
   nginx:
-    image: nginx:1.13
+    image: nginx:1.15
     depends_on:
-      - php
+    - php
     volumes:
-      - ./public:/var/www/app/public
-      - ./docs/docker/nginx/vhost.conf:/etc/nginx/conf.d/default.conf
+    - ./public:/var/www/app/public
+    - ./docs/docker/nginx/vhost.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - 8000:80
+    - 8000:80
     working_dir: /var/www/app/public
   mysql:
-    image: mysql:5.7
+    image: mysql:8.0
     volumes:
-      - mysql_data:/var/lib/mysql
+    - mysql_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: mysql
       MYSQL_DATABASE: balticrobo
     ports:
-      - 3306:3306
-    restart: always
+    - 3306:3306
   mailhog:
     image: mailhog/mailhog:v1.0.0
     ports:
-      - 8025:8025
-    restart: always
+    - 8001:8025
+    logging:
+      driver: none
   node_inky:
-    build:
-      dockerfile: Dockerfile
-      context: ./docs/docker/node_inky
+    build: ./docs/docker/node_inky
     user: node
     volumes:
-      - ./_mail:/var/www/app/_mail
-      - ./public:/var/www/app/public
-      - ./templates/_mail:/var/www/app/templates/_mail
-      - ./docs/docker/node_inky:/opt/docker
+    - ./_mail:/var/www/app/_mail
+    - ./public:/var/www/app/public
+    - ./templates/_mail:/var/www/app/templates/_mail
+    - ./docs/docker/node_inky:/opt/docker
     environment:
       DEPLOY_EMAIL_ASSETS_DOMAIN: http://localhost:8000/email/
     ports:
-      - 3000:3000
+    - 8002:3000
     working_dir: /var/www/app/_mail
     command: /opt/docker/start.sh
 
 volumes:
-  composer_cache:
   mysql_data:

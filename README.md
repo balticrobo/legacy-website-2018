@@ -6,7 +6,7 @@ Event website using Symfony 4.0.
 
 We are using Docker composer to setup dev env.
 
-You will need Docker engine in version **>= 17.06.0**.
+You will need Docker engine in version **>= 18.06.0**.
 
 To run container you have to enter command from the project root.
 
@@ -16,6 +16,14 @@ docker-compose up # with -d to daemonize
 
 Containers will be ready to active development with installed composer packages,
  node packages and running nginx with php-fpm and yarn watch to compile assets.
+
+#### Docker pages
+* [localhost:8000](http://localhost:8000) - BRB webpage,
+* [localhost:8001](http://localhost:8001) - MailHog,
+* [localhost:8002](http://localhost:8002) - Inky (email preview),
+* localhost:1025 - Mailhog SMTP,
+* localhost:3306 - MySQL,
+* localhost:9000 - PHP Xdebug.
 
 For more information check `docker-compose.yaml` and `docs/docker/`.
 
