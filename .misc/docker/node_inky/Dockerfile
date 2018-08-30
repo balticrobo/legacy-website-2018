@@ -1,4 +1,4 @@
-FROM node:9
+FROM node:10
 
 RUN npm install foundation-cli --global
 
