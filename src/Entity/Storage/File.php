@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class File implements StorageInterface
 {
-    public const LOCATION = __DIR__.'/../../../public/upload/';
+    public const LOCATION = __DIR__ . '/../../../public/upload/';
     private const URL = '/upload/';
 
     /**
@@ -48,7 +48,7 @@ class File implements StorageInterface
         $entity = new self();
         $entity->description = $dto->getDescription();
         $entity->originalFilename = $dto->getFile()->getClientOriginalName();
-        $entity->filename = self::generateName().".{$dto->getFile()->getClientOriginalExtension()}";
+        $entity->filename = self::generateName() . ".{$dto->getFile()->getClientOriginalExtension()}";
         $entity->createdAt = $now;
 
         return $entity;
@@ -56,7 +56,7 @@ class File implements StorageInterface
 
     public function getAddress(): string
     {
-        return self::URL.$this->filename;
+        return self::URL . $this->filename;
     }
 
     public function getOriginalFilename(): string

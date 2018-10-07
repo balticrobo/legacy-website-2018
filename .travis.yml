@@ -1,0 +1,59 @@
+language: minimal
+sudo: required
+
+addons:
+  ssh_known_hosts: balticrobo.eu
+
+services:
+- docker
+
+env:
+- DOCKER_COMPOSE_VERSION=1.22.0
+
+before_install:
+- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+- sudo apt-get update
+- sudo apt-get -y install docker-ce
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
+
+script:
+- docker-compose -f docker-compose.test.yaml up --exit-code-from php
+
+after_success:
+- docker-compose -f docker-compose.prod.yaml up
+
+before_deploy:
+- mkdir -p ${TRAVIS_BUILD_DIR}/dist/var/cache
+- cp -r bin config public src templates translations vendor composer.json composer.lock ${TRAVIS_BUILD_DIR}/dist
+- chmod -R 777 ${TRAVIS_BUILD_DIR}/dist/var
+- tar -zcvf ${TRAVIS_BUILD_DIR}/dist.tar.gz ${TRAVIS_BUILD_DIR}/dist
+- openssl aes-256-cbc -K ${encrypted_a54708e5d9c1_key} -iv ${encrypted_a54708e5d9c1_iv} -in ./.misc/deploy_rsa.enc -out /tmp/deploy_rsa -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/deploy_rsa
+- ssh-add /tmp/deploy_rsa
+- "echo '{\"version\": \"'\"${TRAVIS_COMMIT}\"'\"}' >> version.json"
+
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: |
+    rsync -a --delete --exclude ".env" --exclude "public/upload" --rsh="ssh -o BatchMode=yes"
+    ${TRAVIS_BUILD_DIR}/dist/ ${PROD_HOST}:${PROD_DIRECTORY} &&
+    ssh ${PROD_HOST} "sed -i '/COMMIT_SHA/c\COMMIT_SHA=${CI_COMMIT_SHA}' ${PROD_DIRECTORY}/.env &&
+    php ${PROD_DIRECTORY}/bin/console cache:clear &&
+    php ${PROD_DIRECTORY}/bin/console cache:warmup &&
+    php ${PROD_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction" &&
+    curl ${DEPLOY_SENTRY_RELEASE_WEBHOOK_ADDRESS} -X POST -H 'Content-Type: application/json' -d @version.json
+  on:
+    tags: true
+- provider: releases
+  skip_cleanup: true
+  file: ${TRAVIS_BUILD_DIR}/dist.tar.gz
+  api_key:
+    secure: SicrIqCm0LcWuHeAi57TsHLfwMiV+pXY+iFjdyDjGSWI6sDF1BMzwqRq4T/p47l0l3bQMF6Z8qxJciBtoL3fUqvpgfjuLcP0Epej0mHVLySP5NHBFZhKThXCEVl94SmtCqZmwlr575l8I8omuSSAOjAm44pgTLTcVNTWQuG27jGmHEJGoWmSoTWLNlFLw8T3YH2rFHRJbUsf0e5VIE0VGGVCCyX8qatTS7TPVIaLTSYp607G0P8jBDm1JHX6Fqp+6goMayd85QM1Ag5AdJSGX2BvQ+9fyb0+42QPAxGM1mXOpsl1DLovpUz3YQDnWHBQXUVyonH+QrjmGlrLVF1q4yY8DokR997MSBsSSCcXJ+6odhBa60Uv3HSQF4Ick1LLYWEg2N5vqa9iSF55JJFE/pWrBmwc1c1kenCyxwWJPPUjr5zxQ+29OYSgB7l3MkzvBDuGInpaxskXLcRYIYNJF6Q6pWsvsMAEd4Y+TDLw4aO46QW5gg5mr8eQWJl4ahVV4kRAS30iVWWzn8PMZUTWHXsPGs9WNUnIgJ6GGl8olKicNjqlo7Chcc3B8bnLuAD8x7QeU/Iqf+c0viWcTNzkgPDg+r23tWFW97FJQZIep2ZIbQ6AtK4tLa6bjcVrJIhDBmRCtqlo0x4HJXd6v1czAky0KQRWR6vOm4eO/qfPpmU=
+  on:
+    tags: true

@@ -4,7 +4,7 @@
 @import '~bootstrap/scss/mixins';
 @import '~startbootstrap-sb-admin/scss/mixins';
 @import 'abstract/mixins';
-@import '~bootstrap/scss/print';
+@import '~bootstrap/scss/root';
 @import '~bootstrap/scss/reboot';
 @import '../font/audiowide/audiowide';
 @import '../font/lato/lato';
@@ -37,14 +37,11 @@
 @import '~bootstrap/scss/popover';
 //@import '~bootstrap/scss/carousel';
 @import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/print';
 
 @import '~startbootstrap-sb-admin/scss/global';
 @import '~startbootstrap-sb-admin/scss/utilities';
-@import '~startbootstrap-sb-admin/scss/navbar/navbar_global';
-@import '~startbootstrap-sb-admin/scss/navbar/navbar_fixed';
-@import '~startbootstrap-sb-admin/scss/navbar/navbar_static';
-@import '~startbootstrap-sb-admin/scss/navbar/navbar_toggle';
-@import '~startbootstrap-sb-admin/scss/navbar/navbar_colors';
+@import '~startbootstrap-sb-admin/scss/navbar';
 @import '~startbootstrap-sb-admin/scss/cards';
 @import '~startbootstrap-sb-admin/scss/login';
 @import '~startbootstrap-sb-admin/scss/footer';

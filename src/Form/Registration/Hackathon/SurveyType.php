@@ -23,9 +23,21 @@ class SurveyType extends AbstractType
         $params = ['label_format' => 'survey.form.%name%', 'mapped' => false];
 
         $builder
-            ->add('scale_robohackathon', ChoiceType::class, array_merge($params, $this->choiceSimpleScale()))
-            ->add('scale_robohackathon_comfort_in_room', ChoiceType::class, array_merge($params, $this->choiceScale()))
-            ->add('scale_robohackathon_comfort_in_workshop', ChoiceType::class, array_merge($params, $this->choiceScale()))
+            ->add(
+                'scale_robohackathon',
+                ChoiceType::class,
+                array_merge($params, $this->choiceSimpleScale())
+            )
+            ->add(
+                'scale_robohackathon_comfort_in_room',
+                ChoiceType::class,
+                array_merge($params, $this->choiceScale())
+            )
+            ->add(
+                'scale_robohackathon_comfort_in_workshop',
+                ChoiceType::class,
+                array_merge($params, $this->choiceScale())
+            )
             ->add('any_complains_about_location', TextareaType::class, array_merge($params, [
                 'constraints' => [
                     new NotBlank(['message' => 'survey.text.not_blank']),
@@ -47,7 +59,11 @@ class SurveyType extends AbstractType
                     new Length(['min' => 3, 'minMessage' => 'survey.text.length.min']),
                 ],
             ]))
-            ->add('robohackathon_will_you_come_next_year', ChoiceType::class, array_merge($params, $this->choiceYesNo()))
+            ->add(
+                'robohackathon_will_you_come_next_year',
+                ChoiceType::class,
+                array_merge($params, $this->choiceYesNo())
+            )
             ->add('notes', TextareaType::class, $params)
         ;
     }
@@ -59,16 +75,21 @@ class SurveyType extends AbstractType
             'empty_data' => function (FormInterface $form) {
                 return new SurveyDTO([
                     'scale_robohackathon' => $form->get('scale_robohackathon')->getData(),
-                    'scale_robohackathon_comfort_in_room' => $form->get('scale_robohackathon_comfort_in_room')->getData(),
-                    'scale_robohackathon_comfort_in_workshop' => $form->get('scale_robohackathon_comfort_in_workshop')->getData(),
+                    'scale_robohackathon_comfort_in_room' => $form->get('scale_robohackathon_comfort_in_room')
+                        ->getData(),
+                    'scale_robohackathon_comfort_in_workshop' => $form->get('scale_robohackathon_comfort_in_workshop')
+                        ->getData(),
                     'any_complains_about_location' => $form->get('any_complains_about_location')->getData(),
-                    'robohackathon_missing_tools_and_materials' => $form->get('robohackathon_missing_tools_and_materials')->getData(),
-                    'robohackathon_food_was_good' => $form->get('robohackathon_food_was_good')->getData(),
+                    'robohackathon_missing_tools_and_materials' => $form
+                        ->get('robohackathon_missing_tools_and_materials')->getData(),
+                    'robohackathon_food_was_good' => $form->get('robohackathon_food_was_good')
+                        ->getData(),
                     'robohackathon_time' => $form->get('robohackathon_time')->getData(),
                     'robohackathon_volunteers' => $form->get('robohackathon_volunteers')->getData(),
                     'robohackathon_final_battle' => $form->get('robohackathon_final_battle')->getData(),
                     'how_did_you_know_about_event' => $form->get('how_did_you_know_about_event')->getData(),
-                    'robohackathon_will_you_come_next_year' => $form->get('robohackathon_will_you_come_next_year')->getData(),
+                    'robohackathon_will_you_come_next_year' => $form->get('robohackathon_will_you_come_next_year')
+                        ->getData(),
                     'notes' => $form->get('notes')->getData(),
                 ], RegistrationTypeEnum::HACKATHON);
             },
