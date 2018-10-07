@@ -8,10 +8,7 @@ addons:
   ssh_known_hosts: balticrobo.eu
 
 before_install:
-- phpenv help
-- phpenv versions
-- php -v
-- node -v
+- phpenv global 7.1
 
 install:
 - composer install
