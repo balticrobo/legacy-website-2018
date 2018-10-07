@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  php:
+    build: ./.misc/docker/test-php
+    volumes:
+    - .:/var/www/app
+    - ./.misc/docker/php/php.ini:/usr/local/etc/php/php.ini
+    - ./.misc/docker/test-php:/opt/docker
+    working_dir: /var/www/app
+    command: /opt/docker/start.sh

@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  php:
+    build: ./.misc/docker/prod-php
+    volumes:
+    - .:/var/www/app
+    - ./.misc/docker/php/php.ini:/usr/local/etc/php/php.ini
+    - ./.misc/docker/prod-php:/opt/docker
+    working_dir: /var/www/app
+    command: /opt/docker/start.sh
+  node:
+    build: ./.misc/docker/prod-node
+    user: node
+    volumes:
+    - .:/var/www/app
+    - ./.misc/docker/prod-node:/opt/docker
+    environment:
+      DEPLOY_EMAIL_ASSETS_DOMAIN: ${PROD_EMAIL_ASSETS_DOMAIN}
+    working_dir: /var/www/app
+    command: /opt/docker/start.sh
