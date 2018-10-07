@@ -13,7 +13,6 @@ services:
     command: /opt/docker/start.sh
   node:
     build: ./.misc/docker/prod-node
-    user: node
     volumes:
     - .:/var/www/app
     - ./.misc/docker/prod-node:/opt/docker
