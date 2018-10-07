@@ -8,9 +8,10 @@ addons:
   ssh_known_hosts: balticrobo.eu
 
 before_install:
+- phpenv help
+- phpenv versions
 - php -v
 - node -v
-- mysql -uroot -v
 
 install:
 - composer install
