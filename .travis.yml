@@ -19,6 +19,8 @@ before_install:
 - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
+- docker-compose -f docker-compose.test.yaml build
+- docker-compose -f docker-compose.prod.yaml build
 
 script:
 - docker-compose -f docker-compose.test.yaml up --exit-code-from php
@@ -26,6 +28,7 @@ script:
 before_deploy:
 - docker-compose -f docker-compose.prod.yaml up
 - mkdir -p ${TRAVIS_BUILD_DIR}/dist/var/cache
+- "echo '{\"version\": \"'\"${TRAVIS_COMMIT}\"'\"}' > ${TRAVIS_BUILD_DIR}/dist/version.json"
 - cp -r bin config public src templates translations vendor composer.json composer.lock ${TRAVIS_BUILD_DIR}/dist
 - chmod -R 777 ${TRAVIS_BUILD_DIR}/dist/var
 - tar -zcf ${TRAVIS_BUILD_DIR}/dist.tar.gz ${TRAVIS_BUILD_DIR}/dist
@@ -33,7 +36,6 @@ before_deploy:
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
 - ssh-add /tmp/deploy_rsa
-- "echo '{\"version\": \"'\"${TRAVIS_COMMIT}\"'\"}' >> version.json"
 
 deploy:
 - provider: script
@@ -47,7 +49,6 @@ deploy:
     php ${PROD_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction" &&
     curl ${DEPLOY_SENTRY_RELEASE_WEBHOOK_ADDRESS} -X POST -H 'Content-Type: application/json' -d @version.json
   on:
-    tags: true
     branch: develop
 - provider: releases
   skip_cleanup: true
