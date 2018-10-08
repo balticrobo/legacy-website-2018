@@ -40,13 +40,14 @@ before_deploy:
 deploy:
 - provider: script
   skip_cleanup: true
-  script: >
-    rsync -a --delete --exclude ".env" --exclude "public/upload" --rsh="ssh -o BatchMode=yes" ${TRAVIS_BUILD_DIR}/dist/ ${PROD_HOST}:${PROD_DIRECTORY} &&
-    ssh ${PROD_HOST} "sed -i '/COMMIT_SHA/c\COMMIT_SHA=${CI_COMMIT_SHA}' ${PROD_DIRECTORY}/.env &&
+  script: >-
+    rsync -a --delete --exclude ".env" --exclude "public/upload" --rsh="ssh -o BatchMode=yes"
+    ${TRAVIS_BUILD_DIR}/dist/ ${PROD_HOST}:${PROD_DIRECTORY} &&
+    ssh ${PROD_HOST} "sed -i \"/COMMIT_SHA/c\COMMIT_SHA=${CI_COMMIT_SHA}\" ${PROD_DIRECTORY}/.env &&
     php ${PROD_DIRECTORY}/bin/console cache:clear &&
     php ${PROD_DIRECTORY}/bin/console cache:warmup &&
-    php ${PROD_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction" &&
-    curl ${DEPLOY_SENTRY_RELEASE_WEBHOOK_ADDRESS} -X POST -H 'Content-Type: application/json' -d @version.json
+    php ${PROD_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction &&
+    curl ${DEPLOY_SENTRY_RELEASE_WEBHOOK_ADDRESS} -X POST -H 'Content-Type: application/json' -d @version.json"
   on:
     branch: develop
 - provider: releases
