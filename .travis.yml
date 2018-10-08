@@ -23,14 +23,12 @@ before_install:
 script:
 - docker-compose -f docker-compose.test.yaml up --exit-code-from php
 
-after_success:
-- docker-compose -f docker-compose.prod.yaml up
-
 before_deploy:
+- docker-compose -f docker-compose.prod.yaml up
 - mkdir -p ${TRAVIS_BUILD_DIR}/dist/var/cache
 - cp -r bin config public src templates translations vendor composer.json composer.lock ${TRAVIS_BUILD_DIR}/dist
 - chmod -R 777 ${TRAVIS_BUILD_DIR}/dist/var
-- tar -zcvf ${TRAVIS_BUILD_DIR}/dist.tar.gz ${TRAVIS_BUILD_DIR}/dist
+- tar -zcf ${TRAVIS_BUILD_DIR}/dist.tar.gz ${TRAVIS_BUILD_DIR}/dist
 - openssl aes-256-cbc -K ${encrypted_a54708e5d9c1_key} -iv ${encrypted_a54708e5d9c1_iv} -in ./.misc/deploy_rsa.enc -out /tmp/deploy_rsa -d
 - eval "$(ssh-agent -s)"
 - chmod 600 /tmp/deploy_rsa
@@ -50,6 +48,7 @@ deploy:
     curl ${DEPLOY_SENTRY_RELEASE_WEBHOOK_ADDRESS} -X POST -H 'Content-Type: application/json' -d @version.json
   on:
     tags: true
+    branch: develop
 - provider: releases
   skip_cleanup: true
   file: ${TRAVIS_BUILD_DIR}/dist.tar.gz
