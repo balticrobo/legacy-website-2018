@@ -21,6 +21,7 @@ Containers will be ready to active development with installed composer packages,
 | Webpage              | [localhost:8000](http://localhost:8000) | 8000 |
 | Mailhog client       | [localhost:8001](http://localhost:8001) | 8001 |
 | Inky (email preview) | [localhost:8002](http://localhost:8002) | 8002 |
+| PhpMyAdmin           | [localhost:8003](http://localhost:8003) | 8003 |
 | Mailhog SMTP         | ---                                     | 1025 |
 | MySQL                | ---                                     | 3306 |
 | Xdebug (PHP)         | ---                                     | 9000 |
