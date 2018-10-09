@@ -41,6 +41,11 @@ class EventService
         return $this->eventRepository->getCurrentEvent();
     }
 
+    public function getLastEvent(): Event
+    {
+        return $this->eventRepository->getLastEvent();
+    }
+
     public function getEventByYear(int $year): Event
     {
         return $this->eventRepository->getEventByYear($year);
