@@ -26,6 +26,17 @@ class EventRepository extends ServiceEntityRepository
             ->getSingleResult();
     }
 
+    public function getLastEvent(): Event
+    {
+        return $this->createQueryBuilder('e')
+            ->where('e.draft = FALSE')
+            ->orderBy('e.eventStartsAt', 'DESC')
+            ->getQuery()
+            ->setMaxResults(1)
+            ->setFirstResult(1)
+            ->getSingleResult();
+    }
+
     public function getEventByYear(int $year): Event
     {
         $record = $this->findOneBy(['year' => $year]);

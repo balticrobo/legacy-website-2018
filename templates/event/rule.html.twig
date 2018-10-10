@@ -13,6 +13,11 @@
         {% include '_common/header_print.html.twig' with {competition: rule.eventCompetition.competition.name} %}
       </div>
       <div class='row rule'>
+        {% if archive %}
+          <div class="container container-name text-center d-print-none">
+            {{ '_common.archive'|trans }}
+          </div>
+        {% endif %}
         <div class='d-block d-print-none'>
           <h2>
             {{ 'event.rule._screen_header'|trans({'%competition%': rule.eventCompetition.competition.name})|raw }}

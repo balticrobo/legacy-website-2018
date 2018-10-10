@@ -21,16 +21,13 @@ class EventService
         $this->ruleRepository = $ruleRepository;
     }
 
-    public function getCurrentRulesByLocale(string $locale): Collection
+    public function getRulesByEventAndLocale(Event $event, string $locale): Collection
     {
-        $event = $this->eventRepository->getCurrentEvent();
-
-        return $this->ruleRepository->getCurrentRulesByLocale($event, $locale);
+        return $this->ruleRepository->getRulesByEventAndLocale($event, $locale);
     }
 
-    public function getCurrentRuleBySlugAndLocale(string $competitionSlug, string $locale): Rule
+    public function getRuleBySlugAndEventAndLocale(Event $event, string $competitionSlug, string $locale): Rule
     {
-        $event = $this->eventRepository->getCurrentEvent();
         $competition = $event->getCompetitionBySlug($competitionSlug);
 
         return $competition->getRuleByLocale($locale);
@@ -39,6 +36,11 @@ class EventService
     public function getCurrentEvent(): Event
     {
         return $this->eventRepository->getCurrentEvent();
+    }
+
+    public function getLastEvent(): Event
+    {
+        return $this->eventRepository->getLastEvent();
     }
 
     public function getEventByYear(int $year): Event

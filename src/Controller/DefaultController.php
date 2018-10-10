@@ -56,11 +56,19 @@ class DefaultController extends Controller
      */
     public function partnersAction(PartnerService $service): Response
     {
-        $event = $this->eventService->getCurrentEvent();
+        $thisYearEvent = $this->eventService->getCurrentEvent();
+        $lastYearEvent = $this->eventService->getLastEvent();
 
         return $this->render('default/partners.html.twig', [
-            'event' => $this->eventService->getCurrentEvent(),
-            'records' => $service->getForEvent($event),
+            'event' => $thisYearEvent,
+            'this_year' => [
+                'event' => $thisYearEvent,
+                'records' => $service->getForEvent($thisYearEvent),
+            ],
+            'last_year' => [
+                'event' => $lastYearEvent,
+                'records' => $service->getForEvent($lastYearEvent),
+            ],
         ]);
     }
 

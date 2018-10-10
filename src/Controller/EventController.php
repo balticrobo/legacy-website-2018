@@ -7,6 +7,7 @@ namespace BalticRobo\Website\Controller;
 use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\Rule\Rule;
 use BalticRobo\Website\Exception\Event\EventCompetitionNotFoundException;
+use BalticRobo\Website\Exception\Event\EventnNotFoundException;
 use BalticRobo\Website\Exception\Rule\RuleNotFoundException;
 use BalticRobo\Website\Service\EventService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -38,34 +39,46 @@ class EventController extends Controller
      */
     public function rulesAction(Request $request): Response
     {
-        $rules = $this->eventService->getCurrentRulesByLocale($request->getLocale());
+        $event = $this->eventService->getCurrentEvent();
+        $rules = $this->eventService->getRulesByEventAndLocale($event, $request->getLocale());
+        $thisYear = true;
+        if ($rules->isEmpty()) {
+            $event = $this->eventService->getLastEvent();
+            $rules = $this->eventService->getRulesByEventAndLocale($event, $request->getLocale());
+            $thisYear = false;
+        }
 
         return $this->render('event/rules.html.twig', [
-            'event' => $this->eventService->getCurrentEvent(),
+            'event' => $event,
             'rules' => $rules,
+            'archive' => !$thisYear,
         ]);
     }
 
     /**
-     * @Route("/rule/{competitionSlug}")
+     * @Route("/{eventYear}/rule/{competitionSlug}")
      * @Method("GET")
      *
      * @param Request $request
+     * @param int     $eventYear
      * @param string  $competitionSlug
      *
      * @return Response
      */
-    public function ruleAction(Request $request, string $competitionSlug): Response
+    public function ruleAction(Request $request, int $eventYear, string $competitionSlug): Response
     {
         try {
-            $rule = $this->eventService->getCurrentRuleBySlugAndLocale($competitionSlug, $request->getLocale());
-        } catch (EventCompetitionNotFoundException | RuleNotFoundException $e) {
+            $event = $this->eventService->getEventByYear($eventYear);
+            $rule = $this->eventService
+                ->getRuleBySlugAndEventAndLocale($event, $competitionSlug, $request->getLocale());
+        } catch (EventnNotFoundException | EventCompetitionNotFoundException | RuleNotFoundException $e) {
             throw new NotFoundHttpException($e->getMessage());
         }
 
         return $this->render('event/rule.html.twig', [
             'event' => $this->eventService->getCurrentEvent(),
             'rule' => $rule,
+            'archive' => $event !== $this->eventService->getCurrentEvent(),
         ]);
     }
 }
