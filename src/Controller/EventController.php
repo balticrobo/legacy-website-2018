@@ -43,8 +43,8 @@ class EventController extends Controller
         $rules = $this->eventService->getRulesByEventAndLocale($event, $request->getLocale());
         $thisYear = true;
         if ($rules->isEmpty()) {
-            $event = $this->eventService->getLastEvent();
-            $rules = $this->eventService->getRulesByEventAndLocale($event, $request->getLocale());
+            $rules = $this->eventService
+                ->getRulesByEventAndLocale($this->eventService->getLastEvent(), $request->getLocale());
             $thisYear = false;
         }
 
