@@ -9,6 +9,11 @@
   <div class='wrapper'>
     <div class='container'>
       <div class='row rules'>
+        {% if archive %}
+          <div class="container container-name text-center">
+            {{ '_common.archive'|trans }} {{ event.year }}
+          </div>
+        {% endif %}
         {% set group = -1 %}
         {% for rule in rules %}
           {% if rule.eventCompetition.competition.group.id != group %}
@@ -21,7 +26,8 @@
           {% endif %}
           <div class='col-12 col-sm-6 col-md-4'>
             <a class='btn btn-primary btn-block' href='{{ path('balticrobo_website_event_rule', {
-              competitionSlug: rule.eventCompetition.competition.slug
+              competitionSlug: rule.eventCompetition.competition.slug,
+              eventYear: rule.eventCompetition.event.year
             }) }}'>
               {{ ('_common.competition.' ~ rule.eventCompetition.competition.slug)|trans }}
             </a>

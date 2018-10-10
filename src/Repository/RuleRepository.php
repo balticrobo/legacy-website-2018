@@ -5,11 +5,13 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Repository;
 
 use BalticRobo\Website\Entity\Event\Event;
+use BalticRobo\Website\Entity\Event\EventCompetition;
 use BalticRobo\Website\Entity\Rule\Rule;
 use BalticRobo\Website\Exception\Rule\RuleNotFoundException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Query\Expr\Join;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class RuleRepository extends ServiceEntityRepository
@@ -29,10 +31,11 @@ class RuleRepository extends ServiceEntityRepository
         return $record;
     }
 
-    public function getCurrentRulesByLocale(Event $event, string $locale): Collection
+    public function getRulesByEventAndLocale(Event $event, string $locale): Collection
     {
         $records = $this->createQueryBuilder('r')
-            ->join(Event::class, 'e')
+            ->join(EventCompetition::class, 'ec', Join::WITH, 'r.eventCompetition = ec.competition')
+            ->join(Event::class, 'e', Join::WITH, 'ec.event = e.id')
             ->where('e.id = :eventId')
             ->andWhere('r.locale = :locale')
             ->getQuery()
