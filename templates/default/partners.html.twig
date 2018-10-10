@@ -16,25 +16,30 @@
         <div class='col-12 col-md-8 offset-md-2'>
           {% for type_name, types in this_year.records %}
             {% if not types.isEmpty %}
-            <div class="container container-name text-center">{{ type_name|trans }}</div>
-            <div class='row'>
-              {% for record in types %}
-                <div class='col-12 col-sm-6 align-self-center text-center'>
-                  <a href='{{ record.url }}' target='_blank'>
-                    <img alt='' src='{{ record.file.address }}' class='img-fluid m-3'/>
-                  </a>
-                </div>
-              {% endfor %}
-            </div>
+              <div class="container container-name text-center">{{ type_name|trans }}</div>
+              <div class='row'>
+                {% for record in types %}
+                  <div class='col-12 col-sm-6 align-self-center text-center'>
+                    <a href='{{ record.url }}' target='_blank'>
+                      <img alt='' src='{{ record.file.address }}' class='img-fluid m-3'/> </a>
+                  </div>
+                {% endfor %}
+              </div>
             {% elseif type_name == 'enum.partner_type.sponsor' %}
               <div class="container container-name text-center">{{ type_name|trans }}</div>
               <br/><br/>
-              {% if app.request.locale == 'pl' %}
-                Poszukujemy sponsorów! Kontakt:
-              {% else %}
-                We are looking for sponsors! Become one:
-              {% endif %}
-              <a href='mailto:mateusz.dyrda@srskalp.pl'>Mateusz Dyrda</a>.
+              <h4>
+                {% if app.request.locale == 'pl' %}
+                  Jeżeli chcesz zostać jednym ze sponsorów skontaktuj się z nami:
+                {% else %}
+                  We are looking for sponsors! Become one, contact with:
+                {% endif %}
+              </h4>
+              <h5>
+                <a href='mailto:mateusz.dyrda@srskalp.pl'>
+                  <i class='fa fa-fw fa-envelope'></i> Mateusz Dyrda
+                </a>
+              </h5>
               <br/><br/>
             {% endif %}
           {% endfor %}
@@ -54,8 +59,7 @@
                 {% for record in types %}
                   <div class='col-12 col-sm-6 align-self-center text-center'>
                     <a href='{{ record.url }}' target='_blank'>
-                      <img alt='' src='{{ record.file.address }}' class='img-fluid m-3'/>
-                    </a>
+                      <img alt='' src='{{ record.file.address }}' class='img-fluid m-3'/> </a>
                   </div>
                 {% endfor %}
               </div>
