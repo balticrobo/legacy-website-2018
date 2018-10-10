@@ -111,10 +111,20 @@ default:
     section:
       about_tournament:
         _header: O turnieju
-        content: |
-          Bałtyckie Bitwy Robotów to&nbsp;wydarzenie jedyne w&nbsp;swoim rodzaju. Łączy ono w&nbsp;sobie turniej robotyki amatorskiej, mini konferencję studencką oraz hackathonu. Pierwsza edycja odbędzie się w&nbsp;dniach 26&nbsp;-&nbsp;27 maja 2018 roku w&nbsp;Trójmieście. Organizatorami wydarzenia jest SKALP i NKSA, które do&nbsp;tej pory niezależnie tworzyły Trójmiejski Turniej Robotów i&nbsp;Roboxy.<br />Główną częścią wydarzenia jest turniej robotyki amatorskiej. Składa się on&nbsp;z&nbsp;12 konkurencji zgrupowanych w&nbsp;5 kategorii.<br />Drugą częścią wydarzenia jest konferencja, która jest skierowana do&nbsp;europejskich zespołów konstruujących roboty.<br />Ostatnią częścią wydarzenia jest RoboHackathon.<br/>
-          <center><h5>Rejestracja zostanie zamknięta 23.05 o 23.59!<br/>
-          <span class='text-secondary'>Robohackathon start 25.05 20.00!</span></h5></center>
+        content: >-
+          Bałtyckie Bitwy Robotów to wydarzenie jedyne w swoim rodzaju. Łączy ono w sobie turniej robotyki amatorskiej,
+          mini konferencję studencką oraz robohackathon.  Organizatorami wydarzenia jest Stowarzyszenie Robotyków SKALP
+          (tworzące do tej pory Trójmiejski Turniej Robotów) i Naukowe Koło Studentów Automatyki NKSA (wydział EiA,
+          Politechnika Gdańska, organizujące dotychczas turniej Roboxy).<br/>
+          Pierwsza edycja odbyła się w dniach 25 - 27 maja 2018 roku w Gdańsku. Turniej zaprosił fanów robotyki i
+          nowoczesnych technologii z całego kraju do Gdańskiego Parku Naukowo-Technologicznego, gdzie gościł 184
+          zawodników i około 500 widzów.<br/>
+          Główną częścią wydarzenia jest turniej robotyki amatorskiej. Składa się on z 12 konkurencji zgrupowanych w 5
+          kategorii. Drugą częścią wydarzenia jest konferencja, która jest skierowana do europejskich zespołów
+          studenckich konstruktorskich.<br/>
+          Ostatnią częścią wydarzenia jest RoboHackathon, podczas którego drużyny konstruktorskie mając do swojej
+          dyspozycji drukarki 3d, sprzęt elektroniczny i 40 godzin ciągłej pracy muszą zbudować zgodną z wymaganiami
+          konstrukcję robota. Kończy się on finałową bitwą, gdzie zwycięzcą zostaje ostatni poruszający się robot.
       competitions:
         _header: Konkurencje
         freestyle:
@@ -145,10 +155,43 @@ default:
         want_update: Chcesz być na bieżąco z informacjami?
       history:
         _header: Historia
-        content: Historia majowych spotkań z robotyką w Trójmieście sięga już 2005 roku. Wtedy to po raz pierwszy koła naukowe SKALP i NKSA zorganizowały na Politechnice Gdańskiej Dzień Robota. Po czterech jego edycjach postanowiono rozwinąć ideę wydarzenia o zawody robotyczne. W 2009 roku odbyła się pierwsza edycja Trójmiejskiego Turnieju Robotów organizowana przez SKALP. Były to drugie zawody tego typu w Polsce. W następnym roku NKSA również powołało do życia swoje zawody o nazwie Roboxy. Od tego momentu rokrocznie w Trójmieście odbywały się dwa niezależne turnieje, aż do 2018 roku, kiedy to SKALP i NKSA postanowiły znów połączyć siły i stworzyć nowe wydarzenie na jeszcze wyższym poziomie.
+        content: >-
+          Historia majowych spotkań z robotyką w Trójmieście sięga już 2005 roku. Wtedy to po raz pierwszy koła naukowe
+          SKALP i NKSA zorganizowały na Politechnice Gdańskiej Dzień Robota. Po czterech jego edycjach postanowiono
+          rozwinąć ideę wydarzenia o zawody robotyczne. W 2009 roku odbyła się pierwsza edycja Trójmiejskiego Turnieju
+          Robotów organizowana przez SKALP. Były to drugie zawody tego typu w Polsce. W następnym roku NKSA również
+          powołało do życia swoje zawody o nazwie Roboxy. Od tego momentu rokrocznie w Trójmieście odbywały się dwa
+          niezależne turnieje, aż do 2018 roku, kiedy to Stowarzyszenie Robotyków SKALP i Naukowe koło Studentów
+          Automatyki NKSA postanowiły połączyć siły i stworzyć nowe wydarzenie na jeszcze wyższym poziomie.<br/>
+          Pierwsza edycja turnieju Bałtyckie Bitwy Robotów odbyła się w dniach 25 - 27 maja 2018 roku w Gdańsku.
+          Wydarzenie zaprosiło fanów robotyki i nowoczesnych technologii z całego kraju do Gdańskiego Parku
+          Naukowo-Technologicznego, gdzie goszczono 184 zawodników i około 500 widzów. Partnerem organizacyjnym 1.
+          edycji były instytucje: Gdański Park Naukowo-Technologiczny oraz Pomorska Specjalna Strefa Ekonomiczna. Wysoką
+          rangę wydarzenia podkreśla fakt objęcia go patronatem honorowym przez Wojewodę Pomorskiego, Prezydenta Miasta
+          Gdyni, Sopotu oraz Gdańska, Dziekana Wydziału Elektrotechniki i Automatyki Politechniki Gdańskiej oraz
+          Dziekana Wydziału Elektroniki, Telekomunikacji i Informatyki w.w. uczelni. Turniej był także promowany w
+          mediach. Można było znaleźć o nim informacje na portalu trojmiasto.pl, forbot, automatyka.com,
+          AutomatykaOnline.pl, ElektronikaPraktyczna czy też usłyszeć w wieczornym wydaniu wiadomości TVP. Wydarzenie
+          zawdzięcza swoją atrakcyjność firmom i organizacjom wspierającym takim jak: Alnea, Farnell, MPLTechma, ROBOD,
+          Satland Prototype, Procad, RoboPlanet, WhiteElectronics, TS PCB, UMC, bez których organizacja tak dużego
+          wydarzenia nie byłaby możliwa.<br/>
+          Trzeba wspomnieć, że na wydarzeniu poza zawodnikami goszczono wielu fanów robotyki. Zmagania robotów przybyli
+          oglądać ludzie w różnym wieku. Obecni byli zarówno studenci i młodzież, jak i rodziny z dziećmi. Poza samymi
+          zawodami widzowie mogli wziąć udział w warsztatach z budowy robotów z zestawów LegoMindstorms, a przy
+          stanowisku Stowarzyszenia Robotyków SKALP można było posłuchać o projektach Stowarzyszenia, m.in. o robocie
+          rolniczym Żukbot czy łaziku marsjańskim LEM – oba prezentowały się na stanowisku. Podczas tegorocznych
+          Bałtyckich Bitew Robotów po raz pierwszy w historii odbył się Robohackathon - 40-godzinny konkurs podczas
+          którego zadaniem uczestników było zbudowanie od zera zdalnie sterowanego robota walczącego. Do konkursu
+          przystąpiło pięć zespołów, łącznie 24 zawodników. Każdy z zespołów miał dostęp do części z elektroodpadów,
+          m.in. silników oraz części od komputerów czy drukarek oraz nowe części elektroniczne, takie jak Arduino,
+          mikrokomputer Raspberry Pi, moduły komunikacyjne i wiele innych. Do dyspozycji uczestników był również w pełni
+          wyposażony warsztat, w którym powstawały niesamowite konstrukcje mechaniczne oraz niebanalne obudowy. Dzięki
+          partnerom wydarzenia na miejscu znajdowały się również drukarki 3d, wysokiej klasy sprzęt lutowniczy oraz
+          pomiarowy.
       location:
-        _header: Miejsce
+        _header: Lokalizacja
         content: Wydarzenie zlokalizowane jest na południowym wybrzeżu Morza Bałtyckiego, a konkretnie w Trójmieście, które jest ośrodkiem metropolitalnym składającym się z trzech miast:<ul><li><strong>Gdańska</strong>, czyli miejsca o długiej i bogatej historii. W jego granicach odnajdziemy wiele ciekawych zabytków i muzeów. Nie bez powodu często plasuje się wysoko w rankingach najlepszych celów podróży.</li><li><strong>Gdyni</strong>, która rozrosła się bardzo szybko na początku XX wieku, w wyniku czego jest bardzo nowoczesnym miastem.</li><li><strong>Sopotu</strong>, który jest najmniejszy spośród trzech, jednak posiada swój niepowtarzalny urok. Znajduje się tu m.in. największe molo nad Morzem Bałtyckim.</li></ul>
+        more_soon: Lokalizację następnego eventu podamy wkrótce
       organisers:
         _header: Organizatorzy
         content:

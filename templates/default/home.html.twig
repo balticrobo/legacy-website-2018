@@ -27,6 +27,9 @@
     </div>
     {{ macro.simple_section('conference') }}
     {{ macro.simple_section('location') }}
+    <div class='container-name secondary text-center'>
+      <span>{{ 'default.home.section.location.more_soon'|trans }}</span>
+    </div><br/>
     {{ macro.simple_section('history') }}
     {{ macro.simple_section_header('organisers') }}
     <div class='container'>
@@ -48,6 +51,7 @@
             <img class="img-organiser align-self-center ml-3 d-none d-sm-block"
                 src="{{ asset('build/images/organiser-nksa.png') }}" alt=""/>
           </div>
+          {# ORGANISER 2018 EDITION - GPNT
           <div class="media">
             <img class="img-organiser align-self-center mr-3 d-none d-sm-block"
                 src="{{ asset('build/images/organiser-gpnt-' ~ app.request.locale ~ '.png') }}" alt=""/>
@@ -56,6 +60,7 @@
               <p class='text-justify'>{{ ('default.home.section.organisers.content.gpnt')|trans|raw }}</p>
             </div>
           </div>
+          #}
         </div>
       </div>
     </div>
@@ -65,7 +70,7 @@
           {{ macro.simple_section_header('contact') }}
           <div class='contact-question'>{{ 'default.home.section.contact.any_questions'|trans }}</div>
           <div class='d-flex flex-row justify-content-center'>
-            {{ macro.social('Mail', 'mailto:weronika.narloch@skalppg.pl') }}
+            {{ macro.social('Mail', 'mailto:weronika.narloch@srskalp.pl') }}
             {{ macro.social('Facebook', 'https://fb.me/balticrobo') }}
             {{ macro.social('Twitter', 'https://twitter.com/balticrobo') }}
             {{ macro.social('Instagram', 'https://instagram.com/balticrobo') }}
@@ -80,10 +85,12 @@
       </div>
     </div>
   </div>
+  {# RED FOOTER WITH INFO
   <div class='container-name secondary text-center'>
     <img src='{{ asset('build/images/registration.svg') }}' alt='' class='img-registration'/>
     <span>{{ 'default.home.section.registration._header_opened'|trans({
         '%date%': event.registrationEndsAt|date('d.m')
       }) }}</span>
   </div>
+  #}
 {% endblock %}
