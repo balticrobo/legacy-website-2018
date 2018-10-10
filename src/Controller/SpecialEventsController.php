@@ -23,7 +23,7 @@ class SpecialEventsController extends Controller
     }
 
     /**
-     * @Route("/for-kids")
+     * @ Route("/for-kids")
      * @Method("GET")
      */
     public function forKidsAction(): Response
