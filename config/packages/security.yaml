@@ -10,14 +10,14 @@ security:
 
   role_hierarchy:
     ROLE_SUPERADMIN:
-      - ROLE_ADMIN
-      - ROLE_CMS_ADMIN
-      - ROLE_CMS_USER
-      - ROLE_JUDGE
-      - ROLE_COMPETITOR
-      - ROLE_USER
+    - ROLE_ADMIN
+    - ROLE_CMS_ADMIN
+    - ROLE_CMS_USER
+    - ROLE_JUDGE
+    - ROLE_COMPETITOR
+    - ROLE_USER
     ROLE_CMS_ADMIN:
-      - ROLE_CMS_USER
+    - ROLE_CMS_USER
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -28,7 +28,7 @@ security:
       provider: user_login
       guard:
         authenticators:
-          - BalticRobo\Website\Security\UserAuthenticator
+        - BalticRobo\Website\Security\UserAuthenticator
       form_login:
         login_path: balticrobo_website_security_login
         check_path: balticrobo_website_security_login

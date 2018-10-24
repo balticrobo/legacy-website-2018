@@ -28,7 +28,7 @@ services:
     - 8000:80
     working_dir: /var/www/app/public
   mysql:
-    image: mysql:8.0
+    image: mysql:5.7
     volumes:
     - mysql_data:/var/lib/mysql
     - ./.misc/docker/mysql/schema:/docker-entrypoint-initdb.d

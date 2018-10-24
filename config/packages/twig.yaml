@@ -1,9 +1,13 @@
 twig:
   paths:
-    - '%kernel.project_dir%/templates'
+  - '%kernel.project_dir%/templates'
   debug: '%kernel.debug%'
   strict_variables: '%kernel.debug%'
   form_themes:
-    - '_common/form/bootstrap_4_layout.html.twig'
+  - '_common/form/bootstrap_4_layout.html.twig'
   globals:
     available_locales: '%available_locales%'
+
+framework:
+  assets:
+    json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
