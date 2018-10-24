@@ -5,11 +5,10 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Controller;
 
 use BalticRobo\Website\Service\EventService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/cms")
@@ -25,10 +24,7 @@ class CmsController extends Controller
     }
 
     /**
-     * @Route
-     * @Method("GET")
-     *
-     * @return Response
+     * @Route(methods={"GET"})
      */
     public function dashboardAction(): Response
     {

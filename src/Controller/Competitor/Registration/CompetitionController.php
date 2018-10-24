@@ -14,12 +14,11 @@ use BalticRobo\Website\Model\Registration\Competition\EditConstructionDTO;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\CompetitionService;
 use BalticRobo\Website\Service\Registration\SurveyService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/competitor-zone/registration/competition")
@@ -39,12 +38,9 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route("/add")
-     * @Method({"GET", "POST"})
+     * @Route("/add", methods={"GET", "POST"})
      *
      * @param Request $request
-     *
-     * @return Response
      */
     public function addTeamAction(Request $request): Response
     {
@@ -72,13 +68,14 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route("/{eventYear}/{identifier}", requirements={"year" = "\d{4}", "identifier" = "\w{2,4}"})
-     * @Method({"GET", "POST"})
+     * @Route(
+     *     "/{eventYear}/{identifier}",
+     *     requirements={"year" = "\d{4}", "identifier" = "\w{2,4}"},
+     *     methods={"GET", "POST"}
+     * )
      *
      * @param int    $eventYear
      * @param string $identifier
-     *
-     * @return Response
      */
     public function teamDetailsAction(int $eventYear, string $identifier): Response
     {
@@ -95,13 +92,10 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route("/{identifier}/add/member", requirements={"identifier" = "\w{2,4}"})
-     * @Method({"GET", "POST"})
+     * @Route("/{identifier}/add/member", requirements={"identifier" = "\w{2,4}"}, methods={"GET", "POST"})
      *
      * @param Request $request
      * @param string  $identifier
-     *
-     * @return Response
      */
     public function addMemberAction(Request $request, string $identifier): Response
     {
@@ -135,13 +129,10 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route("/{identifier}/add/construction", requirements={"identifier" = "\w{2,4}"})
-     * @Method({"GET", "POST"})
+     * @Route("/{identifier}/add/construction", requirements={"identifier" = "\w{2,4}"}, methods={"GET", "POST"})
      *
      * @param Request $request
      * @param string  $identifier
-     *
-     * @return Response
      */
     public function addConstructionAction(Request $request, string $identifier): Response
     {
@@ -171,14 +162,11 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route("/{identifier}/construction/{name}", requirements={"identifier" = "\w{2,4}"})
-     * @Method({"GET", "POST"})
+     * @Route("/{identifier}/construction/{name}", requirements={"identifier" = "\w{2,4}"}, methods={"GET", "POST"})
      *
      * @param Request $request
      * @param string  $identifier
      * @param string  $name
-     *
-     * @return Response
      */
     public function editConstructionAction(Request $request, string $identifier, string $name): Response
     {
@@ -212,12 +200,9 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route("/survey")
-     * @Method({"GET", "POST"})
+     * @Route("/survey", methods={"GET", "POST"})
      *
      * @param Request $request
-     *
-     * @return Response
      */
     public function surveyAction(Request $request): Response
     {

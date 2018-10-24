@@ -8,12 +8,11 @@ use BalticRobo\Website\Form\Judge\RegistrationSearchType;
 use BalticRobo\Website\Model\Judge\RegistrationSearchDTO;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\EventCompetitionRegistrationService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/judge/registration/competition")
@@ -31,12 +30,9 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route
-     * @Method("GET")
+     * @Route(methods={"GET"})
      *
      * @param Request $request
-     *
-     * @return Response
      */
     public function listAction(Request $request): Response
     {
@@ -60,13 +56,10 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route("/{identifier}", requirements={"identifier" = "\w{2,4}"})
-     * @Method("GET")
+     * @Route("/{identifier}", requirements={"identifier" = "\w{2,4}"}, methods={"GET"})
      *
      * @param Request $request
      * @param string  $identifier
-     *
-     * @return Response
      */
     public function detailsAction(Request $request, string $identifier): Response
     {
@@ -82,13 +75,10 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route("/accept/member/{id}/{action}", requirements={"id" = "\d+"})
-     * @Method("POST")
+     * @Route("/accept/member/{id}/{action}", requirements={"id" = "\d+"}, methods={"POST"})
      *
      * @param int    $id
      * @param string $action
-     *
-     * @return Response
      */
     public function acceptMemberAction(int $id, string $action): Response
     {
@@ -101,15 +91,15 @@ class CompetitionController extends Controller
     }
 
     /**
-     * @Route("/accept/construction/{id}/{competitionId}/{action}",
-     * requirements={"id" = "\d+", "competitionId" = "\d+"})
-     * @Method("POST")
+     * @Route(
+     *     "/accept/construction/{id}/{competitionId}/{action}",
+     *     requirements={"id" = "\d+", "competitionId" = "\d+"},
+     *     methods={"POST"}
+     * )
      *
      * @param int    $id
      * @param int    $competitionId
      * @param string $action
-     *
-     * @return Response
      */
     public function acceptConstructionAction(int $id, int $competitionId, string $action): Response
     {

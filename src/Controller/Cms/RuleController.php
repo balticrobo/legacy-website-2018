@@ -8,12 +8,11 @@ use BalticRobo\Website\Entity\Rule\Rule;
 use BalticRobo\Website\Form\Cms\EditRuleType;
 use BalticRobo\Website\Model\Cms\EditRuleDTO;
 use BalticRobo\Website\Service\EventService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/cms/rule")
@@ -29,10 +28,7 @@ class RuleController extends Controller
     }
 
     /**
-     * @Route
-     * @Method("GET")
-     *
-     * @return Response
+     * @Route(methods={"GET"})
      */
     public function listAction(): Response
     {
@@ -45,14 +41,11 @@ class RuleController extends Controller
     }
 
     /**
-     * @Route("/{id}/edit")
-     * @Method({"GET", "POST"})
+     * @Route("/{id}/edit", methods={"GET", "POST"})
      * @Security("has_role('ROLE_CMS_ADMIN')")
      *
      * @param Request $request
      * @param int     $id
-     *
-     * @return Response
      */
     public function editAction(Request $request, int $id): Response
     {

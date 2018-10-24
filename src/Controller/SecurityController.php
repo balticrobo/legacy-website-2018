@@ -16,12 +16,11 @@ use BalticRobo\Website\Form\User\UserResetPasswordType;
 use BalticRobo\Website\Model\User\UserLoginDTO;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\UserService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Translation\TranslatorInterface;
@@ -43,12 +42,9 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/login")
-     * @Method({"GET", "POST"})
+     * @Route("/login", methods={"GET"})
      *
      * @param TranslatorInterface $translator
-     *
-     * @return Response
      */
     public function loginAction(TranslatorInterface $translator): Response
     {
@@ -67,20 +63,16 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/logout")
-     * @Method({"GET", "POST"})
+     * @Route("/logout", methods={"GET", "POST"})
      */
     public function logoutAction(): void
     {
     }
 
     /**
-     * @Route("/register")
-     * @Method({"GET", "POST"})
+     * @Route("/register", methods={"GET", "POST"})
      *
      * @param Request $request
-     *
-     * @return Response
      */
     public function registerAction(Request $request): Response
     {
@@ -100,12 +92,9 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/register/success")
-     * @Method("GET")
+     * @Route("/register/success", methods={"GET"})
      *
      * @param Request $request
-     *
-     * @return Response
      */
     public function registerSuccessAction(Request $request): Response
     {
@@ -122,12 +111,9 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/activate/{token}", requirements={"token" = "[0-9a-f]{32}"})
-     * @Method("GET")
+     * @Route("/activate/{token}", requirements={"token" = "[0-9a-f]{32}"}, methods={"GET"})
      *
      * @param string $token
-     *
-     * @return Response
      */
     public function activateAction(string $token): Response
     {
@@ -155,15 +141,11 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/token/{email}/recreate")
-     * @Method("GET")
-     *
+     * @Route("/token/{email}/recreate", methods={"GET"})
      * TODO: This action is dispatched when User tries to activate account after token validity period expires,
      *       refactor it!
      *
      * @param string $email
-     *
-     * @return Response
      */
     public function recreateTokenAction(string $email): Response
     {
@@ -183,12 +165,9 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/forgotten-password/request")
-     * @Method({"GET", "POST"})
+     * @Route("/forgotten-password/request", methods={"GET", "POST"})
      *
      * @param Request $request
-     *
-     * @return Response
      */
     public function requestForgottenPasswordAction(Request $request): Response
     {
@@ -213,12 +192,9 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/forgotten-password/success")
-     * @Method("GET")
+     * @Route("/forgotten-password/success", methods={"GET"})
      *
      * @param Request $request
-     *
-     * @return Response
      */
     public function forgottenPasswordSuccessAction(Request $request): Response
     {
@@ -242,13 +218,10 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/forgotten-password/{token}/reset", requirements={"token" = "[0-9a-f]{32}"})
-     * @Method({"GET", "POST"})
+     * @Route("/forgotten-password/{token}/reset", requirements={"token" = "[0-9a-f]{32}"}, methods={"GET", "POST"})
      *
      * @param Request $request
      * @param string  $token
-     *
-     * @return Response
      */
     public function resetForgottenPasswordAction(Request $request, string $token): Response
     {
