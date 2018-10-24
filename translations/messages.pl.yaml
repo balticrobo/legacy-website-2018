@@ -128,26 +128,64 @@ default:
       competitions:
         _header: Konkurencje
         freestyle:
-          description: Jest to konkurencja dowolna. Nie istnieją ograniczenia co do zastosowania robota. Mają one przede wszystkim zachwycić sobą oglądających. Oceniane są na podstawie liczby głosów oddanych przez widzów oraz werdyktu profesjonalnego jury.
+          description: >-
+            Jest to konkurencja dowolna. Nie istnieją ograniczenia co do zastosowania robota. Mają one przede wszystkim
+            zachwycić sobą oglądających. Oceniane są na podstawie liczby głosów oddanych przez widzów oraz werdyktu
+            profesjonalnego jury.
           name: Freestyle
         lego:
-          description: Jest to konkurencja przeznaczona dla najmłodszych. Wykorzystując klocki Lego mogą oni budować swoje pierwsze konstrukcje i rywalizować ze swoimi rówieśnikami. Jest to świetna okazja do wejścia w fascynujący świat robotyki! Dostępne są dwie kategorie:<ul><li><strong>Line Follower</strong> w której należy jak najszybciej pokonać trasę wyznaczoną czarną linią,</li><li><strong>Sumo</strong> gdzie należy zepchnąć przeciwnika z ringu.</li></ul>
+          description: >-
+            Jest to konkurencja przeznaczona dla najmłodszych. Wykorzystując klocki Lego mogą oni budować swoje pierwsze
+            konstrukcje i rywalizować ze swoimi rówieśnikami. Jest to świetna okazja do wejścia w fascynujący świat
+            robotyki! Dostępne są dwie kategorie:<ul>
+            <li><strong>Line Follower</strong> w której należy jak najszybciej pokonać trasę wyznaczoną czarną linią,</li>
+            <li><strong>Sumo</strong> gdzie należy zepchnąć przeciwnika z ringu,</li>
+            <li><strong>TriathlON</strong> w której uczestnicy zmierzą się z:<ul>
+              <li>zebraniem przedmiotu i powrotem na określone miejsce,</li>
+              <li>Trasą LF, uważając na przeszkody obok trasy,</li>
+              <li>Labiryntem, aby dostać się na linię mety.</li></ul>
+            </ul>
           name: LEGO
         line_follower:
-          description: Konkurencja ta wymaga od robotów szybkości i zwinności. Muszą one w jak najkrótszym czasie pokonać wyznaczoną czarną linią trasę. Poza standardową wersją roboty mogą startować również w kategoriach:<ul><li><strong>Turbo</strong> w której dozwolone jest wykorzystywanie turbiny, dzięki której można uzyskać lepszą przyczepność,</li><li><strong>Enhanced</strong>, gdzie muszą również ominąć znajdujące się na trasie przeszkody,</li><li><strong>Drag</strong> czyli wyścigi po prostej lini,</li><li><strong>3D</strong>, gdzie muszą zmierzyć się z wymagającymi przeszkodami rodem ze zręcznościowych gier komputerowych.</li></ul>
+          description: >-
+            Konkurencja ta wymaga od robotów szybkości i zwinności. Muszą one w jak najkrótszym czasie pokonać
+            wyznaczoną czarną linią trasę. Roboty mogą startować również w kategoriach:
+            <ul>
+            <li><strong>Standard</strong> z typowym dla tego typu robotów zadaniem, do pokonania tor ze skrzyżowaniami i zakręgami,</li>
+            <li><strong>Turbo</strong> w której dozwolone jest wykorzystywanie turbiny, dzięki której można uzyskać lepszą przyczepność,</li>
+            <li><strong>Drag</strong> czyli wyścigi po prostej lini,</li>
+            <li><strong>Trio</strong> w którym konstrukcje zostaną poddane próbie wytrzymałości i uniwersalności; Trio składa się z trzech etapów &mdash; <strong>Standard</strong> z szybką trasą, <strong>Enhanced</strong> na torze z przeszkodami oraz <strong>3D</strong> z podjazdami, zjazdami i innymi niespodziankami!</li>
+            </ul>
           name: Line follower
         micromouse:
-          description: Roboty w tej konkurencji mają za zadanie odnaleźć najszybszą drogę do środka labiryntu. W pierwszym etapie mapują całą powierzchnię by znaleźć najbardziej optymalną trasę. W kolejnym muszą ją pokonać w jak najkrótszym czasie. Robot który to zrobi najszybciej wygrywa!
+          description: >-
+            Roboty w tej konkurencji mają za zadanie odnaleźć najszybszą drogę do środka labiryntu. W pierwszym etapie
+            mapują całą powierzchnię by znaleźć najbardziej optymalną trasę. W kolejnym muszą ją pokonać w jak
+            najkrótszym czasie. Robot który to zrobi najszybciej wygrywa!
           name: Micromouse
         robohackathon:
-          description: Laser, drukarka 3d, trochę sprzętu elektronicznego i 40 godzin ciągłej pracy. Tylko tyle będą mieli uczestni RoboHackathonu czyli konkursu konstruktorów, na zbudowanie robota który pokona przeciwników. O zwycięstwie zadecyduje finałowa bitwa realizowana w stylu free-for-all. Zwycięzcą zostanie ostatni poruszający się robot.
+          description: >-
+            Laser, drukarka 3d, trochę sprzętu elektronicznego i 40 godzin ciągłej pracy. Tylko tyle będą mieli
+            uczestnicy RoboHackathonu czyli konkursu konstruktorów, na zbudowanie robota który pokona przeciwników. O
+            zwycięstwie zadecyduje finałowa bitwa realizowana w stylu free-for-all. Zwycięzcą zostanie ostatni
+            poruszający się robot.
           name: Robohackathon
         sumo:
-          description: W tej konkurencji roboty muszą wykazać się siłą i sprytem, by przechytrzyć przeciwnika i zepchnąć go z ringu. Walki podzielone są na 4 kategorie, które różnią się maksymalnym rozmiarem i masą robota oraz wielkością ringu:<ul><li><strong>Sumo</strong> do 3kg, do 200x200mm, średnica ringu 154cm,</li><li><strong>miniSumo</strong> do 500g, do 100x100mm, średnica ringu 77cm,</li><li><strong>microSumo</strong> do 100g, do 50x50x50mm, średnica ringu 38,5cm,</li><li><strong>nanoSumo</strong> do 25g, do 25x25x25mm, średnica ringu 19,25cm.</li></ul>
+          description: >-
+            W tej konkurencji roboty muszą wykazać się siłą i sprytem, by przechytrzyć przeciwnika i zepchnąć go z
+            ringu. Walki podzielone są na 4 kategorie, które różnią się maksymalnym rozmiarem i masą robota oraz
+            wielkością ringu:<ul><li><strong>Sumo</strong> do 3kg, do 200x200mm, średnica ringu 154cm,</li>
+            <li><strong>miniSumo</strong> do 500g, do 100x100mm, średnica ringu 77cm,</li>
+            <li><strong>miniSumo Deathmatch</strong> do 500g, do 100x100mm, średnica ringu 154cm,</li>
+            <li><strong>microSumo</strong>do 100g, do 50x50x50mm, średnica ringu 38,5cm,</li>
+            <li><strong>nanoSumo</strong> do 25g, do 25x25x25mm, średnica ringu 19,25cm.</li></ul>
           name: Sumo
       conference:
         _header: Konferencja
-        content: Zamknięte wydarzenie podczas którego zespoły studenckie z całej polski przedstawią swoje dokonania. Silniki rakietowe, łaziki marsjańskie, bolidy wyścigowe, satelity i samochody solarne to tylko część z planowanych referatów. Osoby zainteresowane udziałem w konferencji proszone są o kontakt z organizatorami.
+        content: >-
+          Zamknięte wydarzenie podczas którego zespoły studenckie z całej polski przedstawią swoje dokonania. Silniki
+          rakietowe, łaziki marsjańskie, bolidy wyścigowe, satelity i samochody solarne to tylko część z planowanych
+          referatów. Osoby zainteresowane udziałem w konferencji proszone są o kontakt z organizatorami.
       contact:
         _header: Kontakt
         any_questions: 'Masz pytania? Znajdziesz nas na:'

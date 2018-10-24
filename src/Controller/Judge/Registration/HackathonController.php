@@ -8,12 +8,11 @@ use BalticRobo\Website\Form\Judge\RegistrationSearchType;
 use BalticRobo\Website\Model\Judge\RegistrationSearchDTO;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\EventHackathonRegistrationService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/judge/registration/hackathon")
@@ -31,12 +30,9 @@ class HackathonController extends Controller
     }
 
     /**
-     * @Route
-     * @Method("GET")
+     * @Route(methods={"GET"})
      *
      * @param Request $request
-     *
-     * @return Response
      */
     public function listAction(Request $request): Response
     {
@@ -60,16 +56,11 @@ class HackathonController extends Controller
     }
 
     /**
-     * @Route("/{name}")
-     * @Method("GET")
+     * @Route("/{name}", methods={"GET"})
      *
-     * @param Request $request
-     * @param string  $identifier
-     * @param string  $name
-     *
-     * @return Response
+     * @param string $name
      */
-    public function detailsAction(Request $request, string $name): Response
+    public function detailsAction(string $name): Response
     {
         $event = $this->eventService->getCurrentEvent();
         $team = $this->eventRegistrationService->getTeamByName($name, $event);
@@ -82,13 +73,10 @@ class HackathonController extends Controller
     }
 
     /**
-     * @Route("/accept/member/{id}/{action}", requirements={"id" = "\d+"})
-     * @Method("POST")
+     * @Route("/accept/member/{id}/{action}", requirements={"id" = "\d+"}, methods={"POST"})
      *
      * @param int    $id
      * @param string $action
-     *
-     * @return Response
      */
     public function acceptMemberAction(int $id, string $action): Response
     {

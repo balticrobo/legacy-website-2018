@@ -4,18 +4,15 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Controller;
 
-use BalticRobo\Website\Entity\Event\Event;
-use BalticRobo\Website\Entity\Rule\Rule;
 use BalticRobo\Website\Exception\Event\EventCompetitionNotFoundException;
 use BalticRobo\Website\Exception\Event\EventnNotFoundException;
 use BalticRobo\Website\Exception\Rule\RuleNotFoundException;
 use BalticRobo\Website\Service\EventService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/event")
@@ -30,12 +27,9 @@ class EventController extends Controller
     }
 
     /**
-     * @Route("/rules")
-     * @Method("GET")
+     * @Route("/rules", methods={"GET"})
      *
      * @param Request $request
-     *
-     * @return Response
      */
     public function rulesAction(Request $request): Response
     {
@@ -56,14 +50,11 @@ class EventController extends Controller
     }
 
     /**
-     * @Route("/{eventYear}/rule/{competitionSlug}")
-     * @Method("GET")
+     * @Route("/{eventYear}/rule/{competitionSlug}", methods={"GET"})
      *
      * @param Request $request
      * @param int     $eventYear
      * @param string  $competitionSlug
-     *
-     * @return Response
      */
     public function ruleAction(Request $request, int $eventYear, string $competitionSlug): Response
     {

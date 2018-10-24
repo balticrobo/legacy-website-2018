@@ -11,12 +11,11 @@ use BalticRobo\Website\Form\Registration\Hackathon\SurveyType;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\HackathonService;
 use BalticRobo\Website\Service\Registration\SurveyService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/competitor-zone/registration/hackathon")
@@ -36,12 +35,9 @@ class HackathonController extends Controller
     }
 
     /**
-     * @Route("/add")
-     * @Method({"GET", "POST"})
+     * @Route("/add", methods={"GET", "POST"})
      *
      * @param Request $request
-     *
-     * @return Response
      */
     public function addTeamAction(Request $request): Response
     {
@@ -76,13 +72,10 @@ class HackathonController extends Controller
     }
 
     /**
-     * @Route("/{eventYear}/{name}", requirements={"year" = "\d{4}"})
-     * @Method({"GET", "POST"})
+     * @Route("/{eventYear}/{name}", requirements={"year" = "\d{4}"}, methods={"GET", "POST"})
      *
      * @param int    $eventYear
      * @param string $name
-     *
-     * @return Response
      */
     public function teamDetailsAction(int $eventYear, string $name): Response
     {
@@ -96,13 +89,10 @@ class HackathonController extends Controller
     }
 
     /**
-     * @Route("/{name}/add/member")
-     * @Method({"GET", "POST"})
+     * @Route("/{name}/add/member", methods={"GET", "POST"})
      *
      * @param Request $request
      * @param string  $name
-     *
-     * @return Response
      */
     public function addMemberAction(Request $request, string $name): Response
     {
@@ -136,12 +126,9 @@ class HackathonController extends Controller
     }
 
     /**
-     * @Route("/survey")
-     * @Method({"GET", "POST"})
+     * @Route("/survey", methods={"GET", "POST"})
      *
      * @param Request $request
-     *
-     * @return Response
      */
     public function surveyAction(Request $request): Response
     {

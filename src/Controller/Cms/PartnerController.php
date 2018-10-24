@@ -7,12 +7,11 @@ namespace BalticRobo\Website\Controller\Cms;
 use BalticRobo\Website\Form\Cms\AddPartnerType;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\PartnerService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/cms/partner")
@@ -30,13 +29,10 @@ class PartnerController extends Controller
     }
 
     /**
-     * @Route("/{page}", requirements={"page" = "\d+"}, defaults={"page" = 1})
-     * @Method("GET")
+     * @Route("/{page}", requirements={"page" = "\d+"}, defaults={"page" = 1}, methods={"GET"})
      *
      * @param Request $request
      * @param int     $page
-     *
-     * @return Response
      */
     public function listAction(Request $request, int $page): Response
     {
@@ -50,8 +46,7 @@ class PartnerController extends Controller
     }
 
     /**
-     * @Route("/add")
-     * @Method({"GET", "POST"})
+     * @Route("/add", methods={"GET", "POST"})
      * @Security("has_role('ROLE_CMS_ADMIN')")
      *
      * @param Request $request

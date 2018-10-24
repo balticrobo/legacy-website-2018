@@ -9,11 +9,10 @@ use BalticRobo\Website\Service\Registration\CompetitionService;
 use BalticRobo\Website\Service\Registration\HackathonService;
 use BalticRobo\Website\Service\Registration\InformationService;
 use BalticRobo\Website\Service\Registration\SurveyService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/competitor-zone")
@@ -42,10 +41,7 @@ class CompetitorController extends Controller
     }
 
     /**
-     * @Route
-     * @Method("GET")
-     *
-     * @return Response
+     * @Route(methods={"GET"})
      */
     public function dashboardAction(): Response
     {

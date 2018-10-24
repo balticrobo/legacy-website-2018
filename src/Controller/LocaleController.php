@@ -5,11 +5,10 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Controller;
 
 use BalticRobo\Website\Service\LocaleService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/locale")
@@ -24,13 +23,10 @@ class LocaleController extends Controller
     }
 
     /**
-     * @Route("/change/{locale}", requirements={"locale" = "[a-zA-Z]{1,8}"})
-     * @Method("POST")
+     * @Route("/change/{locale}", requirements={"locale" = "[a-zA-Z]{1,8}"}, methods={"POST"})
      *
      * @param string  $locale
      * @param Request $request
-     *
-     * @return Response
      */
     public function changeLocaleAction(string $locale, Request $request): Response
     {

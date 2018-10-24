@@ -6,11 +6,13 @@ namespace BalticRobo\Website\Controller;
 
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\PartnerService;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route
+ */
 class DefaultController extends Controller
 {
     private $eventService;
@@ -21,10 +23,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route
-     * @Method("GET")
-     *
-     * @return Response
+     * @Route(methods={"GET"})
      */
     public function homeAction(): Response
     {
@@ -34,10 +33,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/terms")
-     * @Method("GET")
-     *
-     * @return Response
+     * @Route("/terms", methods={"GET"})
      */
     public function termsAction(): Response
     {
@@ -47,12 +43,9 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/partners")
-     * @Method("GET")
+     * @Route("/partners", methods={"GET"})
      *
      * @param PartnerService $service
-     *
-     * @return Response
      */
     public function partnersAction(PartnerService $service): Response
     {
@@ -73,10 +66,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/schedule")
-     * @Method("GET")
-     *
-     * @return Response
+     * @Route("/schedule", methods={"GET"})
      */
     public function scheduleAction(): Response
     {
