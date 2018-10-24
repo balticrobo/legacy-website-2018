@@ -23,7 +23,7 @@ class LocaleController extends Controller
     }
 
     /**
-     * @Route("/change/{locale}", requirements={"locale" = "[a-zA-Z]{1,8}"}, methods={"GET"})
+     * @Route("/change/{locale}", requirements={"locale" = "[a-zA-Z]{1,8}"}, methods={"POST"})
      *
      * @param string  $locale
      * @param Request $request
