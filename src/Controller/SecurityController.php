@@ -42,7 +42,7 @@ class SecurityController extends Controller
     }
 
     /**
-     * @Route("/login", methods={"GET"})
+     * @Route("/login", methods={"GET", "POST"})
      *
      * @param TranslatorInterface $translator
      */
