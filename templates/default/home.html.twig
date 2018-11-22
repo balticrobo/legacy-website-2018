@@ -7,6 +7,9 @@
   <div class='wrapper'>
     {% include '_common/header.html.twig' with {is_social_visible: true} %}
     {{ macro.simple_section('about_tournament') }}
+    <div class='container-name secondary text-center'>
+      <span>{{ 'default.home.section.location.more_soon'|trans|raw }}</span>
+    </div><br/>
     {{ macro.simple_section_header('competitions', true) }}
     <div class='container'>
       <div class='row justify-content-center'>
@@ -28,7 +31,7 @@
     {{ macro.simple_section('conference') }}
     {{ macro.simple_section('location') }}
     <div class='container-name secondary text-center'>
-      <span>{{ 'default.home.section.location.more_soon'|trans }}</span>
+      <small>{{ 'default.home.section.location.gpnt_loc'|trans|raw }}</small>
     </div><br/>
     {{ macro.simple_section('history') }}
     {{ macro.simple_section_header('organisers') }}
@@ -51,7 +54,7 @@
             <img class="img-organiser align-self-center ml-3 d-none d-sm-block"
                 src="{{ asset('build/images/organiser-nksa.png') }}" alt=""/>
           </div>
-          {# ORGANISER 2018 EDITION - GPNT
+          {# ORGANISER 2018/2019 EDITION - GPNT #}
           <div class="media">
             <img class="img-organiser align-self-center mr-3 d-none d-sm-block"
                 src="{{ asset('build/images/organiser-gpnt-' ~ app.request.locale ~ '.png') }}" alt=""/>
@@ -60,7 +63,7 @@
               <p class='text-justify'>{{ ('default.home.section.organisers.content.gpnt')|trans|raw }}</p>
             </div>
           </div>
-          #}
+          {# END OF ORGANISER 2018 #}
         </div>
       </div>
     </div>
