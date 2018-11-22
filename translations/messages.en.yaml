@@ -120,7 +120,10 @@ default:
             compete with their peers. It's a great opportunity to enter the world of robotics.<br/>There are two
             categories available:<ul>
             <li><strong>Line Follower</strong> where one needs to beat a route marked with a black line.</li>
-            <li><strong>Sumo</strong>, where the opponent needs to be pushed out of the ring.</li>
+            <li><strong>TriathlON</strong> where you will:<ul>
+              <li>catch item and move it to target location,</li>
+              <li>Line Follower, with additional obstackles,</li>
+              <li>labyrinth, to reach finish line.</li></ul>
             </ul>
           name: LEGO
         line_follower:
@@ -173,7 +176,8 @@ default:
       location:
         _header: Location
         content: The event will take place on the southern coast of the Baltic Sea, i Tricity. Tricity is a metropolitan construct consisting of three cities:<ul><li><strong>Gdańsk</strong>, a place with a long and rich history, with various monuments and museums. It is no wonder that Gdańsk is often placed really high on the lists of the best travel destinations.</li><li><strong>Gdynia</strong>, which developed at a very high rate in the beginning of the 20th century, which makes Gdynia a pretty modern city.</li><li><strong>Sopot</strong>, which is the smallest of the three, but not lacking in charm. Here can you find the biggest pier of the Baltic Sea.</li></ul>
-        more_soon: Location of next event we will post soon
+        gpnt_loc: Gdansk Science and Technology Park is located at Trzy&nbsp;Lipy 3 in&nbsp;Gdansk
+        more_soon: Baltic Robot Battles 2019<br/>17-19 V 2019<br/>Gdansk Science and Technology Park
       organisers:
         _header: Organisers
         content:
