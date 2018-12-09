@@ -16,7 +16,7 @@ use BalticRobo\Website\Form\User\UserResetPasswordType;
 use BalticRobo\Website\Model\User\UserLoginDTO;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\UserService;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +28,7 @@ use Symfony\Component\Translation\TranslatorInterface;
 /**
  * @Route("/security")
  */
-class SecurityController extends Controller
+class SecurityController extends AbstractController
 {
     private $eventService;
     private $authUtils;

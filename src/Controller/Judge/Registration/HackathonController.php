@@ -9,7 +9,7 @@ use BalticRobo\Website\Model\Judge\RegistrationSearchDTO;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\EventHackathonRegistrationService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/judge/registration/hackathon")
  * @Security("has_role('ROLE_JUDGE')")
  */
-class HackathonController extends Controller
+class HackathonController extends AbstractController
 {
     private $eventService;
     private $eventRegistrationService;

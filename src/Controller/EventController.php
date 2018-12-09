@@ -8,7 +8,7 @@ use BalticRobo\Website\Exception\Event\EventCompetitionNotFoundException;
 use BalticRobo\Website\Exception\Event\EventnNotFoundException;
 use BalticRobo\Website\Exception\Rule\RuleNotFoundException;
 use BalticRobo\Website\Service\EventService;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/event")
  */
-class EventController extends Controller
+class EventController extends AbstractController
 {
     private $eventService;
 

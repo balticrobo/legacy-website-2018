@@ -5,14 +5,14 @@ declare(strict_types = 1);
 namespace BalticRobo\Website\Controller;
 
 use BalticRobo\Website\Service\EventService;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/special-events")
  */
-class SpecialEventsController extends Controller
+class SpecialEventsController extends AbstractController
 {
     private $eventService;
 
