@@ -330,6 +330,15 @@ security:
       successful: Wygenerowano nowy token
       unsuccessful: Generowanie tokenu nie powiodło się
     unsuccess_info: Cos gdzies poszło niesamowicie nie po naszej myśli. Skontakuj się z nami.
+newsletter:
+  form:
+    email: Adres email
+  opt_in:
+    header: Zapisz się na listę subskrypcyjną
+  success:
+    header: Sukces
+    opt_id: Twój adres email został zapisany w naszej bazie danych.
+    opt_out: Twój adres email został usunięty z naczej bazy danych.
 survey:
   form:
     age: Wiek (tak mniej więcej, do statystyk)

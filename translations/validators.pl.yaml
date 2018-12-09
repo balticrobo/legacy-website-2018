@@ -26,6 +26,18 @@ member_add:
       max: Nazwisko nie może być dłuższe niż {{ limit }} znaków.
       min: Nazwisko nie może być krótesze niż {{ limit }} znaków.
     not_blank: Podaj nazwisko członka drużyny.
+newsletter:
+  email:
+    already_exists: Taki email już istnieje, bardzo dziękujemy za zaufanie.
+    email: To nie jest poprawny adres email.
+    length:
+      max: Email nie może być dłuższy niż {{ limit }} znaków.
+      min: Email nie może byc krótszy niż {{ limit }} znaków.
+    not_blank: Podaj email.
+  id:
+    not_blank: Brakuje klucza identyfikacyjnego
+    not_exists: Taki email nie istnieje w naszej bazie.
+    uuid: Niepoprawny format identyfikatora.
 security:
   Account is locked:
     login: Konto jest nieaktywne.

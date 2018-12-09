@@ -12,6 +12,7 @@ doctrine:
     url: '%env(resolve:DATABASE_URL)%'
     types:
       timestamp_immutable: BalticRobo\Website\Adapter\DoctrineMapping\TimestampImmutable
+      uuid:  Ramsey\Uuid\Doctrine\UuidType
   orm:
     auto_generate_proxy_classes: '%kernel.debug%'
     naming_strategy: doctrine.orm.naming_strategy.underscore
