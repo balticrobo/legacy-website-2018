@@ -20,7 +20,7 @@ before_install:
 - docker-compose -f docker-compose.prod.yaml build
 
 script:
-- docker-compose -f docker-compose.test.yaml up --exit-code-from php
+- docker-compose -f docker-compose.test.yaml up --exit-code-from test_php
 
 before_deploy:
 - docker-compose -f docker-compose.prod.yaml up
