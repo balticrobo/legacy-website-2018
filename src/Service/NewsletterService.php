@@ -6,6 +6,7 @@ namespace BalticRobo\Website\Service;
 
 use BalticRobo\Website\Entity\Newsletter\Newsletter;
 use BalticRobo\Website\Model\Newsletter\NewsletterEmailDTO;
+use BalticRobo\Website\Model\Newsletter\NewsletterIdDTO;
 use BalticRobo\Website\Repository\NewsletterRepository;
 
 final class NewsletterService
@@ -23,8 +24,19 @@ final class NewsletterService
         $this->newsletterRepository->save($entity);
     }
 
+    public function optOut(NewsletterIdDTO $dto): void
+    {
+        $entity = $this->newsletterRepository->getById($dto);
+        $this->newsletterRepository->remove($entity);
+    }
+
     public function isOptedInByEmail(string $email): bool
     {
         return $this->newsletterRepository->isOptedIn($email);
+    }
+
+    public function isRegisteredForNewsletter(NewsletterIdDTO $dto): bool
+    {
+        return $this->newsletterRepository->isRegisteredForNewsletter($dto);
     }
 }

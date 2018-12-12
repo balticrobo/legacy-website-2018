@@ -9,18 +9,17 @@
     <div class='container'>
       <div class='row'>
         <div class='col-12 text-center'>
-          <h2>{{ 'newsletter.success.header'|trans }}</h2>
+          <h2>{{ 'newsletter.opt_out.header'|trans }}</h2>
         </div>
       </div>
+      {{ form_start(form, {class: 'form', attr: {novalidate: 'novalidate'}, }) }}
+      {{ form_row(form.id) }}
       <div class='row'>
-        <div class='col-12 text-center'>
-          {% if action == 'opt_in' %}
-            {{ 'newsletter.success.opt_id'|trans }}
-          {% elseif action == 'opt_out' %}
-            {{ 'newsletter.success.opt_out'|trans }}
-          {% endif %}
+        <div class='col-12 col-sm-6 offset-sm-3'>
+          <button type="submit" class="btn btn-block btn-danger">{{ '_button.confirm'|trans }}</button>
         </div>
       </div>
+      {{ form_end(form) }}
     </div>
   </div>
 {% endblock %}

@@ -14,10 +14,9 @@ final class NewsletterEmailType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('email', EmailType::class, [
-                'label' => 'newsletter.form.email',
-            ]);
+        $builder->add('email', EmailType::class, [
+            'label' => 'newsletter.form.email',
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

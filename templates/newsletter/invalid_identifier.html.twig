@@ -9,16 +9,12 @@
     <div class='container'>
       <div class='row'>
         <div class='col-12 text-center'>
-          <h2>{{ 'newsletter.success.header'|trans }}</h2>
+          <h2>{{ 'newsletter.opt_out.invalid_identifier'|trans }}</h2>
         </div>
       </div>
       <div class='row'>
-        <div class='col-12 text-center'>
-          {% if action == 'opt_in' %}
-            {{ 'newsletter.success.opt_id'|trans }}
-          {% elseif action == 'opt_out' %}
-            {{ 'newsletter.success.opt_out'|trans }}
-          {% endif %}
+        <div class='col-12'>
+          <p>{{ 'newsletter.opt_out.invalid_identifier_message'|trans }}</p>
         </div>
       </div>
     </div>
