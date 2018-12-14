@@ -6,6 +6,7 @@ namespace BalticRobo\Website\Entity\Newsletter;
 
 use BalticRobo\Website\Model\Newsletter\NewsletterEmailDTO;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\UuidInterface;
 
 /**
  * @ORM\Entity
@@ -18,6 +19,8 @@ class Newsletter
      * @ORM\Column(type="uuid", unique=true)
      * @ORM\GeneratedValue(strategy="CUSTOM")
      * @ORM\CustomIdGenerator(class="Ramsey\Uuid\Doctrine\UuidGenerator")
+     *
+     * @var UuidInterface
      */
     private $id;
 
@@ -38,5 +41,28 @@ class Newsletter
         $entity->createdAt = $now;
 
         return $entity;
+    }
+
+    public function getId(): string
+    {
+        return $this->id->toString();
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function getCreatedAt(): \DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function getCsvRecord(): array
+    {
+        return [
+            $this->email,
+            $this->createdAt->format('Y-m-d H:i'),
+        ];
     }
 }

@@ -8,6 +8,7 @@ use BalticRobo\Website\Entity\Newsletter\Newsletter;
 use BalticRobo\Website\Model\Newsletter\NewsletterEmailDTO;
 use BalticRobo\Website\Model\Newsletter\NewsletterIdDTO;
 use BalticRobo\Website\Repository\NewsletterRepository;
+use Doctrine\Common\Collections\Collection;
 
 final class NewsletterService
 {
@@ -38,5 +39,15 @@ final class NewsletterService
     public function isRegisteredForNewsletter(NewsletterIdDTO $dto): bool
     {
         return $this->newsletterRepository->isRegisteredForNewsletter($dto);
+    }
+
+    public function getList(int $skip, int $take): Collection
+    {
+        return $this->newsletterRepository->getRecords($skip, $take);
+    }
+
+    public function getTotal(): int
+    {
+        return $this->newsletterRepository->getTotal();
     }
 }

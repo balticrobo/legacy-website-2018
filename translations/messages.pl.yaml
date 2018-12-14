@@ -4,6 +4,7 @@ _button:
   details: Szczegóły
   edit: Edytuj
   forgotten_password: Zresetuj hasło
+  get_csv: Pobierz plik CSV
   login: Zaloguj się
   logout: Wyloguj się
   no: Nie
