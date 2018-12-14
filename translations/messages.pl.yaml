@@ -406,6 +406,7 @@ user:
   form:
     email: Email
     forename: Imię
+    newsletter: Zgadzam się na zapisanie do newslettera
     password: Hasło
     password_repeat: Powtórz hasło
     surname: Nazwisko

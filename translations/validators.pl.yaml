@@ -35,8 +35,7 @@ newsletter:
       min: Email nie może byc krótszy niż {{ limit }} znaków.
     not_blank: Podaj email.
   id:
-    not_blank: Brakuje klucza identyfikacyjnego
-    not_exists: Taki email nie istnieje w naszej bazie.
+    not_blank: Brakuje klucza identyfikacyjnego.
     uuid: Niepoprawny format identyfikatora.
 security:
   Account is locked:
