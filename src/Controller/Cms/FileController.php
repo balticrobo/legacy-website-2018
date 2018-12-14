@@ -8,7 +8,7 @@ use BalticRobo\Website\Form\Cms\AddFileType;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Storage\FileService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/cms/file")
  * @Security("has_role('ROLE_CMS_USER')")
  */
-class FileController extends Controller
+class FileController extends AbstractController
 {
     private $eventService;
     private $fileService;

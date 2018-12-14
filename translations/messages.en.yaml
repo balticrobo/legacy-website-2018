@@ -1,8 +1,10 @@
 _button:
   add: Add
+  confirm: Confirm
   details: Details
   edit: Edit
   forgotten_password: Reset password
+  get_csv: Get CSV file
   login: Login
   logout: Logout
   register: Register
@@ -259,6 +261,19 @@ security:
       successful: New token created
       unsuccessful: Token creation failed
     unsuccess_info: Something somewhere went terribly wrong. Contact with us.
+newsletter:
+  form:
+    email: Email address
+  opt_in:
+    header: Opt-in for newsletter
+  opt_out:
+    header: Are you sure you want to leave our newsletter?
+    invalid_identifier: Incorrect ID
+    invalid_identifier_message: Invalid identifier. It perhaps is something wrong so please, contact us.
+  success:
+    header: Success
+    opt_id: Your email is now in our database. Thank you!
+    opt_out: You email address was successfully removed from our database.
 survey:
   form:
     age: Age (more or less, statistics only)
@@ -320,6 +335,7 @@ user:
   form:
     email: Email
     forename: Forename
+    newsletter: Opt-in for newsletter
     password: Password
     password_repeat: Retype password
     surname: Surename

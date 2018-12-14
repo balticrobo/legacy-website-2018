@@ -47,6 +47,8 @@ class UserRegisterDTO
      */
     private $surname;
 
+    private $newsletter = false;
+
     /**
      * @Assert\IsTrue(message="user_register.terms.is_true")
      */
@@ -90,6 +92,16 @@ class UserRegisterDTO
     public function setSurname(string $surname): void
     {
         $this->surname = $surname;
+    }
+
+    public function isNewsletter(): bool
+    {
+        return $this->newsletter;
+    }
+
+    public function setNewsletter(bool $newsletter): void
+    {
+        $this->newsletter = $newsletter;
     }
 
     public function isTerms(): bool

@@ -1,0 +1,22 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  <div class='wrapper'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-12 text-center'>
+          <h2>{{ 'newsletter.opt_out.invalid_identifier'|trans }}</h2>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-12'>
+          <p>{{ 'newsletter.opt_out.invalid_identifier_message'|trans }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

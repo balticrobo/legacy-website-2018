@@ -6,7 +6,7 @@ namespace BalticRobo\Website\Controller;
 
 use BalticRobo\Website\Service\EventService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/cms")
  * @Security("has_role('ROLE_CMS_USER')")
  */
-class CmsController extends Controller
+class CmsController extends AbstractController
 {
     private $eventService;
 

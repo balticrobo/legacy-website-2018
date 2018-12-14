@@ -4,13 +4,8 @@ sudo: required
 addons:
   ssh_known_hosts: balticrobo.eu
 
-services:
-- docker
-
-env:
-- DOCKER_COMPOSE_VERSION=1.22.0
-
 before_install:
+- export DOCKER_COMPOSE_VERSION=1.23.1
 - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 - sudo apt-get update
@@ -25,7 +20,7 @@ before_install:
 - docker-compose -f docker-compose.prod.yaml build
 
 script:
-- docker-compose -f docker-compose.test.yaml up --exit-code-from php
+- docker-compose -f docker-compose.test.yaml up --exit-code-from test_php
 
 before_deploy:
 - docker-compose -f docker-compose.prod.yaml up

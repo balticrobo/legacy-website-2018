@@ -12,7 +12,7 @@ use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\HackathonService;
 use BalticRobo\Website\Service\Registration\SurveyService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @Route("/competitor-zone/registration/hackathon")
  * @Security("has_role('ROLE_COMPETITOR')")
  */
-class HackathonController extends Controller
+class HackathonController extends AbstractController
 {
     private $hackathonService;
     private $surveyService;

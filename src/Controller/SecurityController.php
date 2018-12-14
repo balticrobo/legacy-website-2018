@@ -13,10 +13,12 @@ use BalticRobo\Website\Form\User\UserEmailType;
 use BalticRobo\Website\Form\User\UserLoginType;
 use BalticRobo\Website\Form\User\UserRegisterType;
 use BalticRobo\Website\Form\User\UserResetPasswordType;
+use BalticRobo\Website\Model\Newsletter\NewsletterEmailDTO;
 use BalticRobo\Website\Model\User\UserLoginDTO;
 use BalticRobo\Website\Service\EventService;
+use BalticRobo\Website\Service\NewsletterService;
 use BalticRobo\Website\Service\UserService;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,17 +30,23 @@ use Symfony\Component\Translation\TranslatorInterface;
 /**
  * @Route("/security")
  */
-class SecurityController extends Controller
+class SecurityController extends AbstractController
 {
     private $eventService;
     private $authUtils;
     private $userService;
+    private $newsletterService;
 
-    public function __construct(EventService $event, AuthenticationUtils $authUtils, UserService $userService)
-    {
+    public function __construct(
+        EventService $event,
+        NewsletterService $newsletter,
+        UserService $userService,
+        AuthenticationUtils $authUtils
+    ) {
         $this->eventService = $event;
-        $this->authUtils = $authUtils;
         $this->userService = $userService;
+        $this->newsletterService = $newsletter;
+        $this->authUtils = $authUtils;
     }
 
     /**
@@ -79,8 +87,15 @@ class SecurityController extends Controller
         $form = $this->createForm(UserRegisterType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->userService->add($form->getData(), new \DateTimeImmutable());
-            $request->getSession()->set('registered_email', $form->getData()->getEmail());
+            $now = new \DateTimeImmutable();
+            $email = $form->getData()->getEmail();
+            $this->userService->add($form->getData(), $now);
+            if ($form->getData()->isNewsletter() && !$this->newsletterService->isOptedInByEmail($email)) {
+                $dto = new NewsletterEmailDTO();
+                $dto->setEmail($email);
+                $this->newsletterService->optIn($dto, $now);
+            }
+            $request->getSession()->set('registered_email', $email);
 
             return $this->redirectToRoute('balticrobo_website_security_registersuccess');
         }

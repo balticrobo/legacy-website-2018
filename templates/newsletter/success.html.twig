@@ -1,0 +1,26 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  <div class='wrapper'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-12 text-center'>
+          <h2>{{ 'newsletter.success.header'|trans }}</h2>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-12 text-center'>
+          {% if action == 'opt_in' %}
+            {{ 'newsletter.success.opt_id'|trans }}
+          {% elseif action == 'opt_out' %}
+            {{ 'newsletter.success.opt_out'|trans }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

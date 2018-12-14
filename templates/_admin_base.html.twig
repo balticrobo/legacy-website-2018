@@ -6,78 +6,81 @@
     <link rel='stylesheet' href='{{ asset('build/css/admin.css') }}'>
   {% endblock %}
 </head>
-<body class='fixed-nav sticky-footer bg-dark
-{% if app.request.cookies.get('admin_menu_collapse')|default('0') == '1' %}sidenav-toggled{% endif %}'>
-<nav class='navbar navbar-expand-lg navbar-dark bg-dark fixed-top' id='mainNav'>
-  <a class='navbar-brand' href='{{ path('balticrobo_website_cms_dashboard') }}'>
+<body id='page-top'>
+<nav class='navbar navbar-expand navbar-dark bg-dark static-top'>
+  <a class='navbar-brand mr-1' href='{{ path('balticrobo_website_cms_dashboard') }}'>
     {{ '_common.event_name'|trans }}
   </a>
-  <button class='navbar-toggler navbar-toggler-right' type='button' data-toggle='collapse'
-      data-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false'>
-    <span class='navbar-toggler-icon'></span>
+  <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <i class="fa fa-bars"></i>
   </button>
-  <div class='collapse navbar-collapse' id='navbarResponsive'>
-    <ul class='navbar-nav navbar-sidenav'>
-      <li class='nav-item'>
-        <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
-          <i class='fa fa-fw fa-angle-double-left'></i>
-          <span class='nav-link-text'>{{ '_menu.cms.home'|trans }}</span>
-        </a>
-      </li>
-      <li class='nav-item'>
-        <a class='nav-link' href='{{ path('balticrobo_website_cms_dashboard') }}'>
-          <i class='fa fa-fw fa-dashboard'></i>
-          <span class='nav-link-text'>{{ '_menu.cms.dashboard'|trans }}</span>
-        </a>
-      </li>
-      <li class='nav-item'>
-        <a class='nav-link' href='{{ path('balticrobo_website_cms_rule_list') }}'>
-          <i class='fa fa-fw fa-dashboard'></i>
-          <span class='nav-link-text'>{{ '_menu.cms.rule'|trans }}</span>
-        </a>
-      </li>
-      <li class='nav-item'>
-        <a class='nav-link' href='{{ path('balticrobo_website_cms_file_list') }}'>
-          <i class='fa fa-fw fa-dashboard'></i>
-          <span class='nav-link-text'>{{ '_menu.cms.file'|trans }}</span>
-        </a>
-      </li>
-      <li class='nav-item'>
-        <a class='nav-link' href='{{ path('balticrobo_website_cms_partner_list') }}'>
-          <i class='fa fa-fw fa-dashboard'></i>
-          <span class='nav-link-text'>{{ '_menu.cms.partner'|trans }}</span>
-        </a>
-      </li>
-    </ul>
-    <ul class='navbar-nav sidenav-toggler'>
-      <li class='nav-item'>
-        <a class='nav-link text-center' id='sidenavToggler'>
-          <i class='fa fa-fw fa-angle-left'></i>
-        </a>
-      </li>
-    </ul>
-    <ul class='navbar-nav ml-auto'>
-      <li class='nav-item'>
-        <a class='nav-link' href='{{ path('balticrobo_website_security_logout') }}'>
-          <i class='fa fa-fw fa-sign-out'></i>
-          {{ '_button.logout'|trans }}
-        </a>
-      </li>
-    </ul>
-  </div>
+  <ul class="navbar-nav ml-auto ml-md-0">
+    <li class="nav-item dropdown no-arrow">
+      <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+        <i class="fa fa-user-circle fa-fw"></i>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="{{ path('balticrobo_website_security_logout') }}"
+            data-toggle="modal" data-target="#logoutModal">{{ '_button.logout'|trans }}</a>
+      </div>
+    </li>
+  </ul>
 </nav>
-<div class='content-wrapper'>
-  <div class='container-fluid mb-3'>
-    {% block body %}{% endblock %}
-  </div>
-</div>
-<footer class='sticky-footer'>
-  <div class='container'>
-    <div class='text-center'>
-      <small>Copyright © {{ '_common.event_name'|trans }} {{ event.year }}</small>
+<div id='wrapper'>
+  <ul class="sidebar navbar-nav">
+    <li class='nav-item'>
+      <a class='nav-link' href='{{ path('balticrobo_website_default_home') }}'>
+        <i class='fa fa-fw fa-angle-double-left'></i>
+        <span>{{ '_menu.cms.home'|trans }}</span>
+      </a>
+    </li>
+    <li class='nav-item'>
+      <a class='nav-link' href='{{ path('balticrobo_website_cms_dashboard') }}'>
+        <i class='fa fa-fw fa-dashboard'></i>
+        <span>{{ '_menu.cms.dashboard'|trans }}</span>
+      </a>
+    </li>
+    <li class='nav-item'>
+      <a class='nav-link' href='{{ path('balticrobo_website_cms_rule_list') }}'>
+        <i class='fa fa-fw fa-dashboard'></i>
+        <span>{{ '_menu.cms.rule'|trans }}</span>
+      </a>
+    </li>
+    <li class='nav-item'>
+      <a class='nav-link' href='{{ path('balticrobo_website_cms_file_list') }}'>
+        <i class='fa fa-fw fa-dashboard'></i>
+        <span>{{ '_menu.cms.file'|trans }}</span>
+      </a>
+    </li>
+    <li class='nav-item'>
+      <a class='nav-link' href='{{ path('balticrobo_website_cms_partner_list') }}'>
+        <i class='fa fa-fw fa-dashboard'></i>
+        <span>{{ '_menu.cms.partner'|trans }}</span>
+      </a>
+    </li>
+    <li class='nav-item'>
+      <a class='nav-link' href='{{ path('balticrobo_website_cms_newsletter_list') }}'>
+        <i class='fa fa-fw fa-envelope-o'></i>
+        <span>{{ '_menu.cms.newsletter_participants'|trans }}</span>
+      </a>
+    </li>
+  </ul>
+  <div id='content-wrapper'>
+    <div class='container-fluid'>
+      {% block body %}{% endblock %}
     </div>
   </div>
-</footer>
+  <footer class='sticky-footer'>
+    <div class='container my-auto'>
+      <div class='copyright text-center my-auto'>
+        <small>Copyright © {{ '_common.event_name'|trans }} {{ event.year }}</small>
+      </div>
+    </div>
+  </footer>
+</div>
+<a class="scroll-to-top rounded" href="#page-top" style="display: none;">
+  <i class="fas fa-angle-up"></i>
+</a>
 {% block javascripts %}
   <script src='{{ asset('build/manifest.js') }}'></script>
   <script src='{{ asset('build/js/common.js') }}'></script>

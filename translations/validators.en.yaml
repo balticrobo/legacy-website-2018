@@ -26,6 +26,17 @@ member_add:
       max: Maximum surname length is {{ limit }} chars.
       min: Minimum surname length is {{ limit }} chars.
     not_blank: Enter member surname.
+newsletter:
+  email:
+    already_exists: Email already exists.
+    email: It is not valid email address.
+    length:
+      max: Maximum email length is {{ limit }} chars.
+      min: Minimum email length is {{ limit }} chars.
+    not_blank: Enter your email.
+  id:
+    not_blank: There is no identifier number.
+    uuid: Invalid identifier format.
 security:
   Account is locked:
     login: Account is locked.
