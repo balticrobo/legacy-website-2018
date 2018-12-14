@@ -68,3 +68,7 @@ $fa-li-width: (30em / 14) !default;
 @import '~trumbowyg/dist/ui/sass/trumbowyg';
 
 @import 'component/form';
+
+#wrapper {
+  background-color: gray('100');
+}
