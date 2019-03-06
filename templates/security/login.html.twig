@@ -1,4 +1,5 @@
 {% extends '_base.html.twig' %}
+{% import 'default/_home_macro.html.twig' as macro %}
 
 {% block body %}
   <div class='wrapper'>
@@ -39,4 +40,5 @@
         </a></strong>
     </div>
   </div>
+  {{ macro.registration_footer(event) }}
 {% endblock %}
