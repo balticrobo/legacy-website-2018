@@ -26,18 +26,21 @@ _common:
     freestyle: Freestyle
     lego-line-follower: LEGO LF
     lego-sumo: LEGO Sumo
+    lego-triathlon: LEGO TriathlON
     line-follower-3d: LF 3D
     line-follower-drag: LF Drag
     line-follower-enhanced: LF Enhanced
     line-follower-standard: LF Standard
+    line-follower-trio: LF Trio
     line-follower-turbo: LF Turbo
     micromouse-8x8: Mouse 8x8
     micromouse-16x16: Mouse 16x16
     robohackathon: Robohackathon
     sumo: Sumo
-    minisumo: Minisumo
-    microsumo: MicroSumo
-    nanosumo: NanoSumo
+    minisumo: mSumo
+    minisumo-deathmatch: mSumo DM
+    microsumo: uSumo
+    nanosumo: nSumo
 _menu:
   competitor_zone: Competitor zone
   for_kids: For kids
@@ -179,7 +182,7 @@ default:
         _header: Location
         content: The event will take place on the southern coast of the Baltic Sea, i Tricity. Tricity is a metropolitan construct consisting of three cities:<ul><li><strong>Gdańsk</strong>, a place with a long and rich history, with various monuments and museums. It is no wonder that Gdańsk is often placed really high on the lists of the best travel destinations.</li><li><strong>Gdynia</strong>, which developed at a very high rate in the beginning of the 20th century, which makes Gdynia a pretty modern city.</li><li><strong>Sopot</strong>, which is the smallest of the three, but not lacking in charm. Here can you find the biggest pier of the Baltic Sea.</li></ul>
         gpnt_loc: Gdansk Science and Technology Park is located at Trzy&nbsp;Lipy 3 in&nbsp;Gdansk
-        more_soon: Baltic Robot Battles 2019<br/>17-19 V 2019<br/>Gdansk Science and Technology Park
+        more_soon: Baltic Robot Battles 2019<br/>17-19 V 2019<br/>Gdansk Science and Technology Park<br/>Registration open from 7 IV to 30. IV
       organisers:
         _header: Organisers
         content:

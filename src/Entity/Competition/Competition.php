@@ -40,6 +40,11 @@ class Competition
      */
     private $group;
 
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $sortOrder;
+
     public function getId(): int
     {
         return $this->id;
@@ -68,5 +73,10 @@ class Competition
     public function getGroup(): CompetitionGroup
     {
         return $this->group;
+    }
+
+    public function getSortOrder(): int
+    {
+        return $this->sortOrder;
     }
 }

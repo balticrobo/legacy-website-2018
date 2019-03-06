@@ -58,8 +58,6 @@ class ShirtTypeEnum
     public static function getAvailableTypes(): array
     {
         return [
-            self::NONE,
-            self::UNISEX_XS,
             self::UNISEX_S,
             self::UNISEX_M,
             self::UNISEX_L,

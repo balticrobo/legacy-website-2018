@@ -41,7 +41,7 @@
       </a>
     </li>
     <li class='nav-item'>
-      <a class='nav-link' href='{{ path('balticrobo_website_cms_rule_list') }}'>
+      <a class='nav-link' href='{{ path('balticrobo_website_cms_rule_list', {'eventYear': event.year}) }}'>
         <i class='fa fa-fw fa-dashboard'></i>
         <span>{{ '_menu.cms.rule'|trans }}</span>
       </a>

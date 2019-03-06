@@ -29,18 +29,21 @@ _common:
     freestyle: Freestyle
     lego-line-follower: LEGO LF
     lego-sumo: LEGO Sumo
+    lego-triathlon: LEGO TriathlON
     line-follower-3d: LF 3D
     line-follower-drag: LF Drag
     line-follower-enhanced: LF Enhanced
     line-follower-standard: LF Standard
+    line-follower-trio: LF Trio
     line-follower-turbo: LF Turbo
     micromouse-8x8: Mouse 8x8
     micromouse-16x16: Mouse 16x16
     robohackathon: Robohackathon
     sumo: Sumo
-    minisumo: Minisumo
-    microsumo: MicroSumo
-    nanosumo: NanoSumo
+    minisumo: mSumo
+    minisumo-deathmatch: mSumo DM
+    microsumo: uSumo
+    nanosumo: nSumo
   created_at: Utworzono
   created_by: Utworzył(a)
 _menu:
@@ -231,7 +234,7 @@ default:
         _header: Lokalizacja
         content: Wydarzenie zlokalizowane jest na południowym wybrzeżu Morza Bałtyckiego, a konkretnie w Trójmieście, które jest ośrodkiem metropolitalnym składającym się z trzech miast:<ul><li><strong>Gdańska</strong>, czyli miejsca o długiej i bogatej historii. W jego granicach odnajdziemy wiele ciekawych zabytków i muzeów. Nie bez powodu często plasuje się wysoko w rankingach najlepszych celów podróży.</li><li><strong>Gdyni</strong>, która rozrosła się bardzo szybko na początku XX wieku, w wyniku czego jest bardzo nowoczesnym miastem.</li><li><strong>Sopotu</strong>, który jest najmniejszy spośród trzech, jednak posiada swój niepowtarzalny urok. Znajduje się tu m.in. największe molo nad Morzem Bałtyckim.</li></ul>
         gpnt_loc: Gdański Park Naukowo-Technologiczny mieści się przy ul.&nbsp;Trzy&nbsp;Lipy 3 w&nbsp;Gdańsku
-        more_soon: Bałtyckie Bitwy Robotów 2019<br/>17-19.05.2019r.<br/>Gdański Park Naukowo-Technologiczny
+        more_soon: Bałtyckie Bitwy Robotów 2019<br/>17-19.05.2019r.<br/>Gdański Park Naukowo-Technologiczny<br/>Rejestracja otwarta od 7.04 do 30.04
       organisers:
         _header: Organizatorzy
         content:

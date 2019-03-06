@@ -30,9 +30,23 @@ class RuleController extends AbstractController
     /**
      * @Route(methods={"GET"})
      */
-    public function listAction(): Response
+    public function redirectToListAction(): Response
     {
         $event = $this->eventService->getCurrentEvent();
+
+        return $this->redirectToRoute('balticrobo_website_cms_rule_list', [
+            'eventYear' => $event->getYear(),
+        ]);
+    }
+
+    /**
+     * @Route("/{eventYear}", methods={"GET"})
+     *
+     * @param int $eventYear
+     */
+    public function listAction(int $eventYear): Response
+    {
+        $event = $this->eventService->getEventByYear($eventYear);
 
         return $this->render('cms/rule/list.html.twig', [
             'event' => $event,

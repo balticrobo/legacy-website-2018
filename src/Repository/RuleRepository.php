@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Repository;
 
+use BalticRobo\Website\Entity\Competition\Competition;
 use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\Event\EventCompetition;
 use BalticRobo\Website\Entity\Rule\Rule;
@@ -34,10 +35,12 @@ class RuleRepository extends ServiceEntityRepository
     public function getRulesByEventAndLocale(Event $event, string $locale): Collection
     {
         $records = $this->createQueryBuilder('r')
-            ->join(EventCompetition::class, 'ec', Join::WITH, 'r.eventCompetition = ec.competition')
+            ->join(EventCompetition::class, 'ec', Join::WITH, 'r.eventCompetition = ec.id')
+            ->join(Competition::class, 'c', Join::WITH, 'ec.competition = c.id')
             ->join(Event::class, 'e', Join::WITH, 'ec.event = e.id')
             ->where('e.id = :eventId')
             ->andWhere('r.locale = :locale')
+            ->orderBy('c.sortOrder')
             ->getQuery()
             ->setParameter('eventId', $event->getId())
             ->setParameter('locale', $locale)
@@ -49,8 +52,11 @@ class RuleRepository extends ServiceEntityRepository
     public function getRulesByEvent(Event $event): Collection
     {
         $records = $this->createQueryBuilder('r')
-            ->join(Event::class, 'e')
+            ->join(EventCompetition::class, 'ec', Join::WITH, 'r.eventCompetition = ec.id')
+            ->join(Competition::class, 'c', Join::WITH, 'ec.competition = c.id')
+            ->join(Event::class, 'e', Join::WITH, 'ec.event = e.id')
             ->where('e.id = :eventId')
+            ->orderBy('c.sortOrder')
             ->getQuery()
             ->setParameter('eventId', $event->getId())
             ->getResult();
