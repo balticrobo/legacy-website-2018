@@ -34,7 +34,7 @@ class RuleRepository extends ServiceEntityRepository
     public function getRulesByEventAndLocale(Event $event, string $locale): Collection
     {
         $records = $this->createQueryBuilder('r')
-            ->join(EventCompetition::class, 'ec', Join::WITH, 'r.eventCompetition = ec.competition')
+            ->join(EventCompetition::class, 'ec', Join::WITH, 'r.eventCompetition = ec.id')
             ->join(Event::class, 'e', Join::WITH, 'ec.event = e.id')
             ->where('e.id = :eventId')
             ->andWhere('r.locale = :locale')
