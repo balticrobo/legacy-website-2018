@@ -52,8 +52,11 @@ class RuleRepository extends ServiceEntityRepository
     public function getRulesByEvent(Event $event): Collection
     {
         $records = $this->createQueryBuilder('r')
-            ->join(Event::class, 'e')
+            ->join(EventCompetition::class, 'ec', Join::WITH, 'r.eventCompetition = ec.id')
+            ->join(Competition::class, 'c', Join::WITH, 'ec.competition = c.id')
+            ->join(Event::class, 'e', Join::WITH, 'ec.event = e.id')
             ->where('e.id = :eventId')
+            ->orderBy('c.sortOrder')
             ->getQuery()
             ->setParameter('eventId', $event->getId())
             ->getResult();
