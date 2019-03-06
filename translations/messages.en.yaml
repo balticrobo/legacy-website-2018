@@ -26,18 +26,21 @@ _common:
     freestyle: Freestyle
     lego-line-follower: LEGO LF
     lego-sumo: LEGO Sumo
+    lego-triathlon: LEGO TriathlON
     line-follower-3d: LF 3D
     line-follower-drag: LF Drag
     line-follower-enhanced: LF Enhanced
     line-follower-standard: LF Standard
+    line-follower-trio: LF Trio
     line-follower-turbo: LF Turbo
     micromouse-8x8: Mouse 8x8
     micromouse-16x16: Mouse 16x16
     robohackathon: Robohackathon
     sumo: Sumo
-    minisumo: Minisumo
-    microsumo: MicroSumo
-    nanosumo: NanoSumo
+    minisumo: mSumo
+    minisumo-deathmatch: mSumo DM
+    microsumo: uSumo
+    nanosumo: nSumo
 _menu:
   competitor_zone: Competitor zone
   for_kids: For kids
