@@ -8,24 +8,18 @@ use Doctrine\DBAL\Migrations\AbortMigrationException;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-final class Version20181209133436 extends AbstractMigration
+final class Version20190306125104 extends AbstractMigration
 {
     public function up(Schema $schema): void
     {
         $this->checkDatabaseType();
-        $this->addSql('CREATE TABLE newsletter_emails (
-            id CHAR(36) NOT NULL COMMENT \'(DC2Type:uuid)\',
-            email VARCHAR(80) NOT NULL,
-            created_at INT NOT NULL COMMENT \'(DC2Type:timestamp_immutable)\',
-            UNIQUE INDEX UNIQ_F6DBB31BE7927C74 (email),
-            PRIMARY KEY(id)
-        ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE competitions ADD sort_order SMALLINT NOT NULL');
     }
 
     public function down(Schema $schema): void
     {
         $this->checkDatabaseType();
-        $this->addSql('DROP TABLE newsletter_emails');
+        $this->addSql('ALTER TABLE competitions DROP sort_order');
     }
 
     private function checkDatabaseType(): void

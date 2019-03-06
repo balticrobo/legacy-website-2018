@@ -38,6 +38,7 @@ class AddConstructionType extends AbstractType
                         ->join(EventCompetition::class, 'ec', Join::WITH, 'c.id = ec.competition')
                         ->where('c.registrationType = :type')
                         ->andWhere('ec.event = :event')
+                        ->orderBy('c.sortOrder')
                         ->setParameter('type', RegistrationTypeEnum::COMPETITION)
                         ->setParameter('event', $event);
                 },
