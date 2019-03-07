@@ -70,7 +70,9 @@ class RuleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->eventService->updateRule(Rule::createFromEditDTO($rule, $form->getData(), new \DateTimeImmutable()));
 
-            return $this->redirectToRoute('balticrobo_website_cms_rule_list');
+            return $this->redirectToRoute('balticrobo_website_cms_rule_list', [
+                'eventYear' => $rule->getEventCompetition()->getEvent()->getYear(),
+            ]);
         }
 
         return $this->render('_common/form/admin_view.html.twig', [
