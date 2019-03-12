@@ -19,6 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Team
 {
     public const MAX_TEAMS = 1;
+    public const MINIMUM_FULL_TEAM_MEMBERS = 4;
     public const MAX_MEMBERS = 6;
 
     /**
@@ -135,6 +136,11 @@ class Team
     public function getCaptain(): ?Member
     {
         return $this->captain;
+    }
+
+    public function hasCaptain(): bool
+    {
+        return (bool) $this->captain;
     }
 
     public function setCaptain(Member $captain): void

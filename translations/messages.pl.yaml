@@ -68,6 +68,7 @@ competitor_zone:
     event_name: Event
     information: Informacje
     last_login_at: Data ostatniego logowania
+    members: (%count% członków)
     never_logged_in: Nigdy nie zalogowano
     registration_competition: Rejestracja konstrukcji
     registration_hackathon: Rejestracja drużyn na Hackathon
@@ -91,6 +92,7 @@ competitor_zone:
       construction_name: Nazwa konstrukcji
       creators: 'Twórcy*'
       creators_description: '*Ta informacja jest zbierana do druku na dyplomach. Nie jest wymagana.'
+      email: Email
       experience: Wasze doświadczenie
       experience_description: Opiszcie nam jakie macie doświadczenie z budowaniem elektroniki od zera.
       forename: Imię
@@ -98,6 +100,7 @@ competitor_zone:
       identifier_description: Identyfikator to 2-4 znakowe oznaczenie drużyny. Służy do łatwiejszej identyfikacji drużyn i ich konstrukcji.
       is_captain: Kapitan drużyny
       name: Nazwa drużyny
+      phone_number: Numer telefonu
       scientific_organization: Koło naukowe
       shirt_type: Rozmiar koszulki
       surname: Nazwisko
@@ -106,10 +109,14 @@ competitor_zone:
     hackathon:
       add_member: Dodaj członka drużyny
       add_team: Dodaj zespół
+      completed_team: Drużyna w pełnym składzie
+      completed_team_description: Drużyna w pełnym składzie oznacza %min_members% lub więcej osób, pełen zespół to %max_members% osób.
+      not_completed_team: Drużyna w niepełnym składzie (pojedyncze osoby)
       team_details:
         add_member: Nie dodałeś jeszcze żadnego członka drużyny, zrób to teraz! Nie zapomnij dodać siebie i oznaczyć kogoś mianem kapitana!
         info: Info
         members: Członkowie
+        status: Status drużyny
     survey:
       header: Ankieta dla zawodników
 default:

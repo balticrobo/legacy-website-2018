@@ -66,8 +66,21 @@
             </thead>
             <tbody>
             {% for team in hackathon_teams %}
+              {% set team_members = team.members|length %}
               <tr>
-                <td class='align-middle'>{{ team.name }}</td>
+                <td class='align-middle'>
+                  {{ team.name }}
+                  {% if team_members >= constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MINIMUM_FULL_TEAM_MEMBERS') %}
+                    <em style='font-size:.8em'>{{ 'competitor_zone.registration.hackathon.completed_team'|trans }}</em>
+                  {% endif %}
+                  <br/>
+                  <span class='font-italic
+                    {% if team_members == 0 %}text-danger
+                    {% elseif team_members == constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MAX_MEMBERS') %}text-success
+                    {% endif %}'>
+                    {{ 'competitor_zone.dashboard.members'|trans({'%count%': team_members}) }}
+                  </span>
+                </td>
                 <td><a href='{{ path('balticrobo_website_competitor_registration_hackathon_teamdetails', {
                     'eventYear': team.event.year,
                     'name': team.name

@@ -9,6 +9,7 @@ use BalticRobo\Website\Model\Registration\Hackathon\AddMemberDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -32,6 +33,12 @@ class AddMemberType extends AbstractType
             ->add('shirtType', ChoiceType::class, [
                 'label' => 'competitor_zone.registration.form.shirt_type',
                 'choices' => ShirtTypeEnum::getFormData(),
+            ])
+            ->add('phoneNumber', TextType::class, [
+                'label' => 'competitor_zone.registration.form.phone_number',
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'competitor_zone.registration.form.email',
             ])
             ->add('captain', CheckboxType::class, [
                 'label' => 'competitor_zone.registration.form.is_captain',
