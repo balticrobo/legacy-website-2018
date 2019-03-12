@@ -27,6 +27,7 @@ _common:
   competition:
     conference: Konferencja
     freestyle: Freestyle
+    lego-freestyle: LEGO Freestyle
     lego-line-follower: LEGO LF
     lego-sumo: LEGO Sumo
     lego-triathlon: LEGO TriathlON
