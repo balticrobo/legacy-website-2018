@@ -39,7 +39,19 @@ class AddMemberDTO
      */
     private $shirtType;
 
-    private $captain;
+    private $captain = false;
+
+    /**
+     * @Assert\NotBlank(message="member_add.phone_number.not_blank")
+     * @Assert\Regex(pattern="/^[0-9]{9}$/", message="member_add.phone_number.regex")
+     */
+    private $phoneNumber;
+
+    /**
+     * @Assert\NotBlank(message="member_add.email.not_blank")
+     * @Assert\Email(message="member_add.email.email")
+     */
+    private $email;
 
     public function getForename(): ?string
     {
@@ -86,7 +98,7 @@ class AddMemberDTO
         return ShirtTypeEnum::getAvailableTypes();
     }
 
-    public function isCaptain(): ?bool
+    public function isCaptain(): bool
     {
         return $this->captain;
     }
@@ -94,5 +106,25 @@ class AddMemberDTO
     public function setCaptain(bool $captain): void
     {
         $this->captain = $captain;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(string $phoneNumber): void
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
 }

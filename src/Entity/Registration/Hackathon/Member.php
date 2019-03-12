@@ -42,6 +42,16 @@ class Member
     private $shirtType;
 
     /**
+     * @ORM\Column(type="string", length=9)
+     */
+    private $phoneNumber;
+
+    /**
+     * @ORM\Column(type="string", length=80)
+     */
+    private $email;
+
+    /**
      * @ORM\Column(type="timestamp_immutable", nullable=true)
      *
      * @var \DateTimeImmutable
@@ -72,6 +82,8 @@ class Member
         $entity->surname = $memberDTO->getSurname();
         $entity->age = $memberDTO->getAge();
         $entity->shirtType = $memberDTO->getShirtType();
+        $entity->phoneNumber = $memberDTO->getPhoneNumber();
+        $entity->email = $memberDTO->getEmail();
         $entity->team = $team;
         $entity->createdAt = $now;
 
@@ -134,6 +146,16 @@ class Member
         return ShirtTypeEnum::getName($this->shirtType);
     }
 
+    public function getPhoneNumber(): string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
     public function getTeam(): Team
     {
         return $this->team;
@@ -152,5 +174,14 @@ class Member
     public function getShirtGivenOutAt(): ?\DateTimeImmutable
     {
         return $this->shirtGivenOutAt;
+    }
+
+    public function isCaptain(): bool
+    {
+        if (!$this->team->hasCaptain()) {
+            return false;
+        }
+
+        return $this->team->getCaptain() === $this;
     }
 }

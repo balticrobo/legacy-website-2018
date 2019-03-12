@@ -12,12 +12,18 @@ member_add:
   age:
     not_blank: Podaj wiek członka drużyny.
     range:
-      min: Minimum age for competitors is {{ limit }}.
+      min: Minimalny wiek zawodnika to {{ limit }}.
+  email:
+    email: To nie jest poprawny adres email.
+    not_blank: Podaj email.
   forename:
     length:
       max: Imię nie może być dłuższe niż {{ limit }} znaków.
       min: Imię nie może być krótesze niż {{ limit }} znaków.
     not_blank: Podaj imię członka drużyny.
+  phone_number:
+    not_blank: Podaj numer telefonu.
+    regex: Podaj numer telefonu.
   shirt_type:
     choice: Nieprawidłowa wartość. Wybierz rozmiar koszulki z listy.
     not_blank: Wybierz rozmiar koszulki z listy.

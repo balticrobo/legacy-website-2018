@@ -17,6 +17,24 @@
             <dd class='col-12 col-md-8'>{{ team.name }}</dd>
             <dt class='col-12 col-md-4 text-md-right'>{{ 'competitor_zone.registration.form.city'|trans }}</dt>
             <dd class='col-12 col-md-8'>{{ team.city }}</dd>
+            <dt class='col-12 col-md-4 text-md-right'>{{ 'competitor_zone.registration.hackathon.team_details.members'|trans }}</dt>
+            <dd class='col-12 col-md-8'>
+              {{ team.members|length }} /
+              {{ constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MAX_MEMBERS') }}
+            </dd>
+            <dt class='col-12 col-md-4 text-md-right'>{{ 'competitor_zone.registration.hackathon.team_details.status'|trans }}</dt>
+            <dd class='col-12 col-md-8'>
+              {% if team.members|length >= constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MINIMUM_FULL_TEAM_MEMBERS') %}
+                {{ 'competitor_zone.registration.hackathon.completed_team'|trans }}
+              {% else %}
+                {{ 'competitor_zone.registration.hackathon.not_completed_team'|trans }}
+              {% endif %}
+            <dd class='col-12'>
+              {{ 'competitor_zone.registration.hackathon.completed_team_description'|trans({
+                '%min_members%': constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MINIMUM_FULL_TEAM_MEMBERS'),
+                '%max_members%': constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MAX_MEMBERS')
+              }) }}
+            </dd>
           </dl>
         </div>
       </div>
@@ -25,18 +43,19 @@
           <h4>{{ 'competitor_zone.registration.hackathon.team_details.members'|trans }}</h4>
           {% if not team.members.empty %}
             <table class='table table-hover'>
-              <thead>
-              <tr>
-                <th>{{ 'competitor_zone.registration.form.forename'|trans }}
-                  {{ 'competitor_zone.registration.form.surname'|trans }}</th>
-                <th class='w-25'></th>
-              </tr>
-              </thead>
               <tbody>
               {% for member in team.members %}
                 <tr>
-                  <td>{{ member.name }}</td>
-                  <td>{# TODO: Add removing and editing members? #}</td>
+                  <td>
+                    <i class='fa fa-fw fa-user-o'></i> {{ member.name }}
+                    {% if member.captain %}
+                      <i class='fa fa-fw fa-trophy'></i> {{ 'competitor_zone.registration.form.is_captain'|trans }}
+                    {% endif %}
+                    <br/>
+                    <i class='fa fa-fw fa-envelope-o'></i> {{ member.email }}
+                    <i class='fa fa-fw fa-mobile-phone'></i> {{ member.phoneNumber }}
+                  </td>
+                  {# TODO: Add removing and editing members? #}
                 </tr>
               {% endfor %}
               </tbody>
@@ -44,7 +63,7 @@
           {% else %}
             {{ 'competitor_zone.registration.hackathon.team_details.add_member'|trans }}
           {% endif %}
-          {% if team.members.count < constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MAX_MEMBERS') %}
+          {% if team.members.count < constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MAX_MEMBERS') and is_active_registration.standard_period %}
             <a href='{{ path('balticrobo_website_competitor_registration_hackathon_addmember', {
               'name': team.name,
             }) }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>

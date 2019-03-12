@@ -13,11 +13,17 @@ member_add:
     not_blank: Enter age.
     range:
       min: Minimum age for competitors is {{ limit }}.
+  email:
+    email: It is not valid email address.
+    not_blank: Enter email.
   forename:
     length:
       max: Maximum forename length is {{ limit }} chars.
       min: Minimum forename length is {{ limit }} chars.
     not_blank: Enter member forename.
+  phone_number:
+    not_blank: Enter phone number.
+    regex: Enter correct phone number.
   shirt_type:
     choice: Invalid value. Get it from select.
     not_blank: Select shirt size.

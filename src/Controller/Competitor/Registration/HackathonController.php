@@ -85,6 +85,9 @@ class HackathonController extends AbstractController
         return $this->render('competitor/registration/hackathon/team_details.html.twig', [
             'event' => $event,
             'team' => $team,
+            'is_active_registration' => [
+                'standard_period' => $this->eventService->isActiveRegistration(new \DateTimeImmutable()),
+            ],
         ]);
     }
 
@@ -107,7 +110,7 @@ class HackathonController extends AbstractController
             return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
         }
 
-        $form = $this->createForm(AddMemberType::class, null, ['team_have_captain' => (bool) $team->getCaptain()]);
+        $form = $this->createForm(AddMemberType::class, null, ['team_have_captain' => $team->hasCaptain()]);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $this->hackathonService->addMember($form->getData(), $team, new \DateTimeImmutable());
