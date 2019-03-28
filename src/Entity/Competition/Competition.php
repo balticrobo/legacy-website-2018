@@ -13,6 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Competition
 {
+    public const REGISTRATION_TYPE_EVENT = 1;
+    public const REGISTRATION_TYPE_HACKATHON = 2;
+    public const REGISTRATION_TYPE_CONFERENCE = 3;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
