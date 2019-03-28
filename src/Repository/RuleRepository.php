@@ -40,10 +40,12 @@ class RuleRepository extends ServiceEntityRepository
             ->join(Event::class, 'e', Join::WITH, 'ec.event = e.id')
             ->where('e.id = :eventId')
             ->andWhere('r.locale = :locale')
+            ->andWhere('c.registrationType <> :notRegistrationType')
             ->orderBy('c.sortOrder')
             ->getQuery()
             ->setParameter('eventId', $event->getId())
             ->setParameter('locale', $locale)
+            ->setParameter('notRegistrationType', Competition::REGISTRATION_TYPE_CONFERENCE)
             ->getResult();
 
         return new ArrayCollection($records);

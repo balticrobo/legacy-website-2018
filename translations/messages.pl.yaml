@@ -25,6 +25,8 @@ _common:
     robohackathon: Hackathon
     sumo: Sumo
   competition:
+    _common: Regulamin ogólny
+    _gdpr: Klauzula RODO
     conference: Konferencja
     freestyle: Freestyle
     lego-freestyle: LEGO Freestyle
@@ -120,6 +122,8 @@ competitor_zone:
     survey:
       header: Ankieta dla zawodników
 default:
+  gdpr:
+    header: Klauzula informacyjna RODO
   home:
     section:
       about_tournament:
@@ -242,7 +246,7 @@ default:
         _header: Lokalizacja
         content: Wydarzenie zlokalizowane jest na południowym wybrzeżu Morza Bałtyckiego, a konkretnie w Trójmieście, które jest ośrodkiem metropolitalnym składającym się z trzech miast:<ul><li><strong>Gdańska</strong>, czyli miejsca o długiej i bogatej historii. W jego granicach odnajdziemy wiele ciekawych zabytków i muzeów. Nie bez powodu często plasuje się wysoko w rankingach najlepszych celów podróży.</li><li><strong>Gdyni</strong>, która rozrosła się bardzo szybko na początku XX wieku, w wyniku czego jest bardzo nowoczesnym miastem.</li><li><strong>Sopotu</strong>, który jest najmniejszy spośród trzech, jednak posiada swój niepowtarzalny urok. Znajduje się tu m.in. największe molo nad Morzem Bałtyckim.</li></ul>
         gpnt_loc: Gdański Park Naukowo-Technologiczny mieści się przy ul.&nbsp;Trzy&nbsp;Lipy 3 w&nbsp;Gdańsku
-        more_soon: Bałtyckie Bitwy Robotów 2019<br/>17-19.05.2019r.<br/>Gdański Park Naukowo-Technologiczny<br/>Rejestracja otwarta od 7.04 do 30.04
+        more_soon: Bałtyckie Bitwy Robotów 2019<br/>17-19.05.2019r.<br/>Gdański Park Naukowo-Technologiczny<br/>Rejestracja otwarta od 1.04 do 25.04
       organisers:
         _header: Organizatorzy
         content:
@@ -330,6 +334,7 @@ security:
     dont_have_account: Nie masz jeszcze konta?
     forgot_password: Zapomniałeś hasło?
   register:
+    read_gdpr: Klauzula informacyjna RODO (otwarcie w nowej karcie)
     read_terms: Regulamin (otwarcie w nowej karcie)
   register_success:
     additional_info: Jeżeli nie widizsz wiadomości email, sprawdź folder SPAM w swojej skrzynce pocztowej lub skontaktuj się z nami.
@@ -417,7 +422,11 @@ user:
   form:
     email: Email
     forename: Imię
-    newsletter: Zgadzam się na zapisanie do newslettera
+    gdpr: Akceptuję klauzulę RODO**
+    newsletter_and_marketing: >
+      Wyrażam zgodę na przetwarzanie moich danych osobowych w postaci adresu poczty elektronicznej w celu przesyłania mi
+      informacji marketingowych dotyczących oferowanych produktów i usług za pomocą środków komunikacji elektronicznej,
+      stosownie do treści przepisu art. 10 ust. 1 i 2 ustawy o świadczeniu usług drogą elektroniczną.
     password: Hasło
     password_repeat: Powtórz hasło
     surname: Nazwisko

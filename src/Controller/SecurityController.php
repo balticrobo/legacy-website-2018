@@ -15,6 +15,7 @@ use BalticRobo\Website\Form\User\UserRegisterType;
 use BalticRobo\Website\Form\User\UserResetPasswordType;
 use BalticRobo\Website\Model\Newsletter\NewsletterEmailDTO;
 use BalticRobo\Website\Model\User\UserLoginDTO;
+use BalticRobo\Website\Model\User\UserRegisterDTO;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\NewsletterService;
 use BalticRobo\Website\Service\UserService;
@@ -87,10 +88,12 @@ class SecurityController extends AbstractController
         $form = $this->createForm(UserRegisterType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UserRegisterDTO $formData */
+            $formData = $form->getData();
             $now = new \DateTimeImmutable();
-            $email = $form->getData()->getEmail();
-            $this->userService->add($form->getData(), $now);
-            if ($form->getData()->isNewsletter() && !$this->newsletterService->isOptedInByEmail($email)) {
+            $email = $formData->getEmail();
+            $this->userService->add($formData, $now);
+            if ($formData->isNewsletterAndMarketing() && !$this->newsletterService->isOptedInByEmail($email)) {
                 $dto = new NewsletterEmailDTO();
                 $dto->setEmail($email);
                 $this->newsletterService->optIn($dto, $now);

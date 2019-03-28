@@ -109,6 +109,8 @@ user_register:
       max: Imię nie może być dłuższe niż {{ limit }} znaków.
       min: Imię nie może być krótesze niż {{ limit }} znaków.
     not_blank: Podaj imię.
+  gdpr:
+    is_true: Musisz zaakceptować klauzulę.
   password:
     length:
       max: Hasło nie może być dłuższe niż {{ limit }} znaków.

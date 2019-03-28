@@ -47,12 +47,17 @@ class UserRegisterDTO
      */
     private $surname;
 
-    private $newsletter = false;
+    private $newsletterAndMarketing = false;
 
     /**
      * @Assert\IsTrue(message="user_register.terms.is_true")
      */
     private $terms = false;
+
+    /**
+     * @Assert\IsTrue(message="user_register.gdpr.is_true")
+     */
+    private $gdpr = false;
 
     public function getEmail(): ?string
     {
@@ -94,14 +99,14 @@ class UserRegisterDTO
         $this->surname = $surname;
     }
 
-    public function isNewsletter(): bool
+    public function isNewsletterAndMarketing(): bool
     {
-        return $this->newsletter;
+        return $this->newsletterAndMarketing;
     }
 
-    public function setNewsletter(bool $newsletter): void
+    public function setNewsletterAndMarketing(bool $newsletterAndMarketing): void
     {
-        $this->newsletter = $newsletter;
+        $this->newsletterAndMarketing = $newsletterAndMarketing;
     }
 
     public function isTerms(): bool
@@ -112,5 +117,15 @@ class UserRegisterDTO
     public function setTerms(bool $terms): void
     {
         $this->terms = $terms;
+    }
+
+    public function isGdpr(): bool
+    {
+        return $this->gdpr;
+    }
+
+    public function setGdpr(bool $gdpr): void
+    {
+        $this->gdpr = $gdpr;
     }
 }

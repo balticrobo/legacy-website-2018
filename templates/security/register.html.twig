@@ -18,13 +18,16 @@
           {{ form_row(form.forename) }}
           {{ form_row(form.surname) }}
         </div>
-        <div class='col-12 col-sm-6 offset-sm-6'>
-          {{ form_row(form.newsletter) }}
-        </div>
         <div class='col-12 col-sm-6'>
           {{ form_row(form.terms) }}
         </div>
         <div class='col-12 col-sm-6'>
+          {{ form_row(form.gdpr) }}
+        </div>
+        <div class='col-12'>
+          {{ form_row(form.newsletterAndMarketing) }}
+        </div>
+        <div class='col-12 col-sm-6 offset-sm-6'>
           <button type="submit" class="btn btn-block btn-primary">{{ '_button.register'|trans }}</button>
         </div>
       </div>
@@ -34,6 +37,9 @@
       <hr/>
       <a href='{{ path('balticrobo_website_default_terms') }}' target='_blank'>
         *{{ 'security.register.read_terms'|trans }}
+      </a><br/>
+      <a href='{{ path('balticrobo_website_default_gdpr') }}' target='_blank'>
+        **{{ 'security.register.read_gdpr'|trans }}
       </a>
     </div>
   </div>

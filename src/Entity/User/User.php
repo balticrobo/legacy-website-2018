@@ -51,6 +51,11 @@ class User implements AdvancedUserInterface, MailRecipientInterface
     private $active;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $marketing;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles;
@@ -83,6 +88,7 @@ class User implements AdvancedUserInterface, MailRecipientInterface
         $entity->email = $dto->getEmail();
         $entity->plainPassword = $dto->getPassword();
         $entity->active = false;
+        $entity->marketing = $dto->isNewsletterAndMarketing();
         $entity->roles = ['ROLE_USER'];
         $entity->token = $token;
         $entity->tokenRequestedAt = $now;

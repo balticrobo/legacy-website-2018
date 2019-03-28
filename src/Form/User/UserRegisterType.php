@@ -38,11 +38,14 @@ class UserRegisterType extends AbstractType
             ->add('surname', TextType::class, [
                 'label' => 'user.form.surname',
             ])
-            ->add('newsletter', CheckboxType::class, [
-                'label' => 'user.form.newsletter',
+            ->add('newsletterAndMarketing', CheckboxType::class, [
+                'label' => 'user.form.newsletter_and_marketing',
             ])
             ->add('terms', CheckboxType::class, [
                 'label' => 'user.form.terms',
+            ])
+            ->add('gdpr', CheckboxType::class, [
+                'label' => 'user.form.gdpr',
             ]);
     }
 
