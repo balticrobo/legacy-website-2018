@@ -25,6 +25,8 @@ _common:
     robohackathon: Hackathon
     sumo: Sumo
   competition:
+    _common: Regulamin ogólny
+    _gdpr: Klauzula RODO
     conference: Konferencja
     freestyle: Freestyle
     lego-freestyle: LEGO Freestyle
@@ -120,6 +122,8 @@ competitor_zone:
     survey:
       header: Ankieta dla zawodników
 default:
+  gdpr:
+    header: Klauzula informacyjna RODO
   home:
     section:
       about_tournament:
@@ -330,6 +334,7 @@ security:
     dont_have_account: Nie masz jeszcze konta?
     forgot_password: Zapomniałeś hasło?
   register:
+    read_gdpr: Klauzula informacyjna RODO (otwarcie w nowej karcie)
     read_terms: Regulamin (otwarcie w nowej karcie)
   register_success:
     additional_info: Jeżeli nie widizsz wiadomości email, sprawdź folder SPAM w swojej skrzynce pocztowej lub skontaktuj się z nami.
@@ -417,7 +422,11 @@ user:
   form:
     email: Email
     forename: Imię
-    newsletter: Zgadzam się na zapisanie do newslettera
+    gdpr: Akceptuję klauzulę RODO**
+    newsletter_and_marketing: >
+      Wyrażam zgodę na przetwarzanie moich danych osobowych w postaci adresu poczty elektronicznej w celu przesyłania mi
+      informacji marketingowych dotyczących oferowanych produktów i usług za pomocą środków komunikacji elektronicznej,
+      stosownie do treści przepisu art. 10 ust. 1 i 2 ustawy o świadczeniu usług drogą elektroniczną.
     password: Hasło
     password_repeat: Powtórz hasło
     surname: Nazwisko

@@ -109,6 +109,8 @@ user_register:
       max: Maximum forename length is {{ limit }} chars.
       min: Minimum forename length is {{ limit }} chars.
     not_blank: Enter your forename.
+  gdpr:
+    is_true: You have to accept clause.
   password:
     length:
       max: Maximum password length is {{ limit }} chars.

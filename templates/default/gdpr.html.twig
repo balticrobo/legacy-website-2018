@@ -1,0 +1,50 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  <div class='wrapper'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-12 col-md-8 offset-md-2 text-justify'>
+          <h1>{{ 'default.gdpr.header'|trans }}</h1>
+          {% if app.request.locale == 'pl' %}
+Zgodnie z&nbsp;art.&nbsp;13 ust.&nbsp;1&nbsp;i&nbsp;2&nbsp;Rozporządzenia Parlamentu Europejskiego i&nbsp;Rady (UE)
+2016/679 z&nbsp;dnia 27&nbsp;kwietnia 2016 r.&nbsp;w&nbsp;sprawie ochrony osób fizycznych w&nbsp;związku
+z&nbsp;przetwarzaniem danych osobowych i&nbsp;w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy
+95/46/WE (ogólne rozporządzenie o&nbsp;ochronie danych) (Dz.&nbsp;U.&nbsp;UE.&nbsp;L.&nbsp;z&nbsp;2016r.&nbsp;Nr&nbsp;119,
+str.1&nbsp;z&nbsp;późn.&nbsp;zm.) (dalej również jako „RODO”) &ndash;&nbsp;informujemy, że:
+<ol>
+  <li>Administratorem Twoich danych osobowych przekazanych w&nbsp;formularzu rejestracyjnym jest Stowarzyszenie
+    Robotyków SKALP oraz Koło Naukowe NKSA, zwani dalej: „Administratorami”. Możesz skontaktować się
+    z&nbsp;Administratorami pisząc na&nbsp;adres: <a href="mailto:info@srskalp.pl">info@srskalp.pl</a> lub telefonując
+    pod numer: +48 795-386-973</li>
+  <li>Podstawą prawną przetwarzania Twoich danych jest umowa pomiędzy Tobą a&nbsp;Administratorami, zwana dalej:
+    „Umową”, do&nbsp;zawarcia której dochodzi wskutek akceptacji Regulaminu i&nbsp;dla wykonania której przetwarzanie
+    Twoich danych jest niezbędne, lub Twoja zgoda na&nbsp;przetwarzanie Twoich danych osobowych.</li>
+  <li>Twoje dane osobowe przetwarzane są&nbsp;wyłącznie dla celów związanych z&nbsp;realizacją Umowy oraz
+    do&nbsp;podjęcia niezbędnych działań przed zawarciem Umowy.</li>
+  <li>Podanie danych osobowych nie jest obowiązkowe, jednakże ich niepodanie spowoduje, że&nbsp;zawarcie
+    i&nbsp;realizacja Umowy będą niemożliwe.</li>
+  <li>Twoje dane będą przechowywane nie dłużej niż jest to&nbsp;konieczne, tj. przez okres 24&nbsp;miesięcy od&nbsp;dnia
+    rozwiązania Umowy.</li>
+  <li>Administratorzy nie przekazują Twoich danych podmiotom trzecim.</li>
+  <li>Administratorzy nie zamierzają przekazywać Twoich danych do&nbsp;państwa trzeciego ani do&nbsp;organizacji
+    międzynarodowych.</li>
+  <li>Masz prawo żądać od&nbsp;Administratorów dostępu do&nbsp;swoich danych, ich sprostowania, przenoszenia
+    i&nbsp;usunięcia, a&nbsp;także prawo do&nbsp;ograniczenia przetwarzania danych.</li>
+  <li>W związku z&nbsp;przetwarzaniem Twoich danych osobowych przez Administratorów przysługuje Ci&nbsp;prawo wniesienia
+    skargi do&nbsp;organu nadzorczego.</li>
+  <li>W oparciu o&nbsp;Twoje dane osobowe Administratorzy nie będą podejmowali wobec Ciebie zautomatyzowanych decyzji,
+    w&nbsp;tym decyzji będących wynikiem profilowania.</li>
+</ol>
+          {% else %}
+            Check Polish version of page for GDPR information clause. Sorry for inconvenience.
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

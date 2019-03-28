@@ -22,6 +22,8 @@ _common:
     robohackathon: Hackathon
     sumo: Sumo
   competition:
+    _common: Terms of use
+    _gdpr: GDPR clause
     conference: Conference
     freestyle: Freestyle
     lego-freestyle: LEGO Freestyle
@@ -107,6 +109,8 @@ competitor_zone:
     survey:
       header: Survey for competitors
 default:
+  gdpr:
+    header: GDPR information clause
   home:
     section:
       about_tournament:
@@ -259,6 +263,7 @@ security:
     dont_have_account: Do not have an account?
     forgot_password: Forgotten password?
   register:
+    read_gdpr: GDPR clause (will open in new window)
     read_terms: Terms (will open in new window)
   register_success:
     additional_info: If you do not see confirmation email, check your SPAM folder or contact us.
@@ -346,7 +351,8 @@ user:
   form:
     email: Email
     forename: Forename
-    newsletter: Opt-in for newsletter
+    gdpr: Accept GDPR clause**
+    newsletter_and_marketing: Opt-in for newsletter
     password: Password
     password_repeat: Retype password
     surname: Surename

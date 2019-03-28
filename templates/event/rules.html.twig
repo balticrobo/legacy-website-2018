@@ -9,6 +9,16 @@
   <div class='wrapper'>
     <div class='container'>
       <div class='row rules'>
+        <div class='col-12 col-sm-6 col-md-4'>
+          <a class='btn btn-primary btn-block' href='{{ path('balticrobo_website_default_terms') }}'>
+            {{ ('_common.competition._common')|trans }}
+          </a>
+        </div>
+        <div class='col-12 col-sm-6 col-md-4'>
+          <a class='btn btn-primary btn-block' href='{{ path('balticrobo_website_default_gdpr') }}'>
+            {{ ('_common.competition._gdpr')|trans }}
+          </a>
+        </div>
         {% if archive %}
           <div class="container container-name text-center">
             {{ '_common.archive'|trans }}

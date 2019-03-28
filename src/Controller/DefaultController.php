@@ -43,6 +43,16 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("/terms/gdpr", methods={"GET"})
+     */
+    public function gdprAction(): Response
+    {
+        return $this->render('default/gdpr.html.twig', [
+            'event' => $this->eventService->getCurrentEvent(),
+        ]);
+    }
+
+    /**
      * @Route("/partners", methods={"GET"})
      *
      * @param PartnerService $service
