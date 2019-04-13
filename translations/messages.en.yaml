@@ -162,8 +162,8 @@ default:
         robohackathon:
           description: >-
             Laser, 3D printer, some electronic equipment and 40 hours of continuous hacking. Teams participating in
-             RoboHackathon will have only so little to construct a robot that destroy opponents. Final battle will be
-              carried in free-for-all style. The winner will be the last robot moving.
+            RoboHackathon will have only so little to construct a robot that destroy opponents. The victory will be
+            decided by the final battle during which robots will have to show agility, speed and reliability.
           name: Robohackathon
         sumo:
           description: >-
