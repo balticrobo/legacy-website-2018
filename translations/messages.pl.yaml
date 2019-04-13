@@ -183,8 +183,8 @@ default:
           description: >-
             Laser, drukarka 3d, trochę sprzętu elektronicznego i 40 godzin ciągłej pracy. Tylko tyle będą mieli
             uczestnicy RoboHackathonu czyli konkursu konstruktorów, na zbudowanie robota który pokona przeciwników. O
-            zwycięstwie zadecyduje finałowa bitwa realizowana w stylu free-for-all. Zwycięzcą zostanie ostatni
-            poruszający się robot.
+            zwycięstwie zadecyduje finałowa bitwa podczas której roboty będą musiały wykazać się zwinnością, szybkością
+            i niezawodnością.
           name: Robohackathon
         sumo:
           description: >-
