@@ -1,0 +1,71 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  {% if app.request.locale != 'pl' %}
+    <div class='wrapper'>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-12 text-center'>
+            This page is reserved only for polish native speakers. Sorry for inconvenience.<br/><br/>
+            <form action='{{ path('balticrobo_website_locale_changelocale', {locale: 'pl'}) }}' method='post'>
+              <button type='submit' class='btn btn-primary'>
+                Go to polish site
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class='wrapper'>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-12'>
+            <h2>{{ 'volunteer.home.header'|trans }}</h2>
+          </div>
+        </div>
+      </div>
+      <div class='container col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 pb-4'>
+        {{ form_start(form, {class: 'form', attr: {novalidate: 'novalidate'}}) }}
+        <div class='row'>
+          <div class='col-12 col-sm-6'>
+            {{ form_row(form.name) }}
+            {{ form_row(form.birthYear) }}
+          </div>
+          <div class='col-12 col-sm-6'>
+            {{ form_row(form.email) }}
+            {{ form_row(form.phoneNumber) }}
+          </div>
+          <div class='col-12 col-sm-6'>
+            {{ form_row(form.arrangementDays) }}
+          </div>
+          <div class='col-12 col-sm-6'>
+            {{ form_row(form.helpIn) }}
+          </div>
+          <div class='col-12 col-sm-6'>
+            {{ form_row(form.beenVolunteer) }}
+            {{ form_row(form.beenVolunteerDuties) }}
+          </div>
+          <div class='col-12 col-sm-6'>
+            {{ form_row(form.shirtType) }}
+          </div>
+          <div class='col-12 col-sm-6'>
+            {{ form_row(form.agreement) }}
+          </div>
+          <div class='col-12 col-sm-6'>
+            <button type="submit" class="btn btn-block btn-primary">{{ '_button.send'|trans }}</button>
+          </div>
+        </div>
+        {{ form_end(form) }}
+        <hr/>
+        <a href='{{ path('balticrobo_website_default_terms') }}' target='_blank'>
+          {{ 'security.register.read_terms'|trans }}
+        </a>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

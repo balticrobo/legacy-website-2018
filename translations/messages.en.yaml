@@ -7,9 +7,13 @@ _button:
   get_csv: Get CSV file
   login: Login
   logout: Logout
+  no: No
   register: Register
   resend_validation_token: Resend validation token
+  search: Search
+  send: Send
   survey: Survey
+  yes: Yes
 _common:
   archive: Archive
   event_name: Baltic Robo Battles
@@ -51,6 +55,7 @@ _menu:
   partners: Partners
   rules: Rules
   schedule: Schedule
+  volunteer: Become volunteer
 competitor_zone:
   dashboard:
     competitor_name: Name

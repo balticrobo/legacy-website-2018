@@ -1,0 +1,52 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  <div class='wrapper'>
+    <div class='container'>
+      {% if app.request.locale != 'pl' %}
+      <div class='row'>
+        <div class='col-12 text-center'>
+          This page is reserved only for polish native speakers. Sorry for inconvenience.<br/><br/>
+          <form action='{{ path('balticrobo_website_locale_changelocale', {locale: 'pl'}) }}' method='post'>
+            <button type='submit' class='btn btn-primary'>
+              Go to polish site
+            </button>
+          </form>
+        </div>
+      </div>
+      {% else %}
+        <div class='row'>
+          <div class='col-12'>
+            <h1>{{ 'volunteer.home.header'|trans }}</h1>
+          </div>
+          <div class='col-12 pt-5 pb-5'>
+            Zostań wolontariuszem Bałtyckich Bitew Robotów!
+            <div class='text-center'>
+              <a class='btn btn-success btn-lg' href='{{ path('balticrobo_website_volunteer_register') }}'>
+                Zgłoś się już teraz!
+              </a>
+            </div><br/><br/>
+            Zgłosiłeś(aś) się już? Nie zapomnij zapoznać się z porozumieniem.
+            <div class='text-center'>
+              <a class='btn btn-primary btn-lg' target='_blank'
+                  href='{{ app.request.schemeAndHttpHost ~ app.request.baseUrl }}/files/bbr2019_volunteer.pdf'>
+                Porozumienie
+              </a>
+            </div>
+          </div>
+          <div class='col-12 text-justify'>
+            <small>{{ 'volunteer.form.agreement'|trans }}</small>
+            <hr/>
+            <a href='{{ path('balticrobo_website_default_terms') }}' target='_blank'>
+              {{ 'security.register.read_terms'|trans }}
+            </a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
