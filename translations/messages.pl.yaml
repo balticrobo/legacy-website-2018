@@ -11,6 +11,7 @@ _button:
   register: Zarejestruj się
   resend_validation_token: Wyślij ponownie token aktywacyjny
   search: Wyszukaj
+  send: Wyślij
   survey: Ankieta
   yes: Tak
 _common:
@@ -64,6 +65,7 @@ _menu:
   partners: Partnerzy
   rules: Regulaminy
   schedule: Harmonogram
+  volunteer: Wolontariat
 competitor_zone:
   dashboard:
     competitor_name: Imię i nazwisko
@@ -293,6 +295,33 @@ enum:
     unisex_xl: XL
     unisex_xxl: XXL
     unisex_xxxl: XXXL
+  volunteer_arrangement:
+    first_day: Pierwszy dzień turnieju (18 maja, sob.)
+    first_night: Dyżur nocny 1 - hackathon (17/18 maja)
+    information_meeting: Spotkanie informacyjne (9 maja, pt.)
+    postering: Rozwieszanie plakatów (od "zaraz")
+    preparing: Pakowanie/przeniesienie rzeczy przed turniejem (wieczór 16 maja, czw.)
+    preparing_2: Przygotowanie przed turniejem (17 maja, pt.)
+    second_day: Drugi dzień turnieju (19 maja, n.)
+    second_night: Dyżur nocny 2 - hackathon (18/19 maja)
+  volunteer_help_in:
+    be_anchroman: Konferansjerka
+    calligrapher: Umiem ładnie pisać i mogę wypisać dyplomy\
+    driver_with_car: Kierowca (z samochodem)
+    golden_hand: Jestem złotą rączką
+    judgement_with_experience: Sędziowanie (mam w tym doświadczenie)
+    judgement_without_experience: Sędziowanie (nie mam w tym doświadczenia)
+    media: Rozmowy z mediami/ udzielanie wywiadów
+    medical_assistance: Pomoc medyczna
+    partners_caregiver: Opieka nad sponsorami/gośćmi honorowymi
+    photography: Fotograf
+    registration: Rejestracja
+    social_media_fan: Obsługa Facebooka i Instagrama
+    stay_at_entrance: Witanie widzów na wejściu
+    stream_stuff: Obsługa streama
+    watching_over_hackathon: Pilnowanie warsztatu hackathonu (znam podstawy obsługi elektronarzędzi oraz zasady BHP)
+    watching_over_rooms: Pilnowanie sal
+    workshop_with_children: Pomoc w warsztatach dla dzieci
 event:
   rule:
     _print_header: Regulamin konkurencji<br/><strong>%competition%</strong>
@@ -335,7 +364,7 @@ security:
     forgot_password: Zapomniałeś hasło?
   register:
     read_gdpr: Klauzula informacyjna RODO (otwarcie w nowej karcie)
-    read_terms: Regulamin (otwarcie w nowej karcie)
+    read_terms: Regulamin ogólny Zawodów (otwarcie w nowej karcie)
   register_success:
     additional_info: Jeżeli nie widizsz wiadomości email, sprawdź folder SPAM w swojej skrzynce pocztowej lub skontaktuj się z nami.
     email_info: 'Email podany podczas rejestracji: <strong>%email%</strong>'
@@ -431,3 +460,20 @@ user:
     password_repeat: Powtórz hasło
     surname: Nazwisko
     terms: Akceptuję regulamin*
+volunteer:
+  form:
+    agreement: >-
+      Wypełnienie formularza jest jednoznaczne z akceptacją treści regulaminu ogólnego Bałtyckich Bitew
+      Robotów 2019 oraz porozumienia, jakie będzie zawierane pomiędzy wolontariuszem a organizatorami
+      wydarzenia.
+    arrangement: Mogę zaangażować się w
+    been_volunteer_duties: Jakie były Twoje obowiązki w związku z wolontariatem na BBR/TTR/Roboxy?
+    been_volunteer_in_previous_editions: Byłeś(aś) wolontariuszem podczas BBR/TTR/Roboxy?
+    birth_year: Rok urodzenia
+    email: Email
+    help_in: Mogę pomóc w
+    name: Imię i nazwisko
+    phone_number: Numer telefonu
+    shirt_type: Rozmiar koszulki
+  home:
+    header: Zostań wolontariuszem!

@@ -7,7 +7,7 @@ construction_add:
     length:
       max: Nazwa nie może być dłuższa niż {{ limit }} znaków.
       min: Nazwa nie może być krótsza niż {{ limit }} znaków.
-    not_blank: Podaj nazwękonstrukcji.
+    not_blank: Podaj nazwę konstrukcji.
 member_add:
   age:
     not_blank: Podaj wiek członka drużyny.
@@ -124,3 +124,32 @@ user_register:
     not_blank: Podaj nazwisko.
   terms:
     is_true: Musisz zaakceptować regulamin.
+volunteer:
+  agreement:
+    is_true: Musisz zaakceptować regulamin.
+  arrangement_days:
+    not_blank: Powiedz kiedy możesz do nas dołączyć.
+  been_volunteer:
+    not_null: Powiedz czy już byłeś(aś) wolontariuszem.
+  been_volunteer_duties:
+    not_blank: Powiedz co robiłeś(aś) jako wolontariusz.
+  birth_year:
+    not_blank: Podaj rok urodzenia.
+    range:
+      max: Chyba jestes trochę za młody(a).
+  email:
+    email: To nie jest poprawny adres email.
+    length:
+      max: Email nie może być dłuższy niż {{ limit }} znaków.
+      min: Email nie może byc krótszy niż {{ limit }} znaków.
+    not_blank: Podaj email.
+  help_in:
+    not_blank: Powiedz w czym możesz nam pomóc.
+  name:
+    length:
+      max: Imię i nazwisko nie może być dłuższe niż {{ limit }} znaków.
+      min: Imię i nazwisko nie może być krótesze niż {{ limit }} znaków.
+    not_blank: Podaj imię i nazwisko.
+  phone_number:
+    not_blank: Podaj numer telefonu.
+    regex: Podaj numer telefonu.
