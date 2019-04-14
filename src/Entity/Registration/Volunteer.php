@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="volunteers")
  * @ORM\Entity
  */
-final class Volunteer
+class Volunteer
 {
     /**
      * @ORM\Id
