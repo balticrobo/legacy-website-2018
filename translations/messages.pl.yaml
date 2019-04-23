@@ -7,6 +7,7 @@ _button:
   get_csv: Pobierz plik CSV
   login: Zaloguj się
   logout: Wyloguj się
+  more: Więcej
   no: Nie
   register: Zarejestruj się
   resend_validation_token: Wyślij ponownie token aktywacyjny
@@ -60,6 +61,7 @@ _menu:
     newsletter_participants: Lista newslettera
     partner: Partnerzy
     rule: Regulaminy
+    volunteer: Wolontariat
   competitor_zone: Strefa zawodnika
   for_kids: Dla dzieci
   judge:
