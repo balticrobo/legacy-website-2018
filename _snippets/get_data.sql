@@ -15,8 +15,11 @@ FROM registration_teams t
   JOIN users u on t.created_by_id = u.id
   JOIN registration_constructions c on t.id = c.team_id
   JOIN registration_members m on t.id = m.team_id
+  JOIN events e on t.event_id = e.id
+WHERE e.year = 2019
 GROUP BY t.id;
 
+-- OLD !!! 2018 !!! OLD
 -- get members
 SELECT
   m.id AS member_id,
@@ -37,6 +40,8 @@ SELECT
   FROM_UNIXTIME(m.created_at) AS member_created_at
 FROM registration_members m
   JOIN registration_teams t on m.team_id = t.id
+  JOIN events e on t.event_id = e.id
+WHERE e.year = 2019
 ORDER BY t.id;
 
 -- get count of constructions in each competition

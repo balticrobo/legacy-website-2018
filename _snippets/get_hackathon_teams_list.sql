@@ -13,5 +13,7 @@ SELECT
 FROM registration_teams_hackathon t
   JOIN registration_members_hackathon m on t.captain_id = m.id
   JOIN users u on t.created_by_id = u.id
+  JOIN events e on t.event_id = e.id
+WHERE e.year = 2019
 ;
 
