@@ -19,27 +19,27 @@ class AddPartnerType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Partner name',
+                'label' => 'cms.partner.name',
                 'attr' => [
                     'placeholder' => 'Acme Corp',
                 ],
             ])
             ->add('url', TextType::class, [
-                'label' => 'Partner url (full)',
+                'label' => 'cms.partner.url',
                 'attr' => [
                     'placeholder' => 'https://acme.com',
                 ],
             ])
             ->add('type', ChoiceType::class, [
-                'label' => 'Partner type',
+                'label' => 'cms.partner.type',
                 'choices' => PartnerTypeEnum::getFormData(),
             ])
             ->add('sortOrder', NumberType::class, [
-                'label' => 'Sort order (higher means more important)',
+                'label' => 'cms.partner.sort_order',
                 'data' => 0,
             ])
             ->add('file', AddFileWithoutDescriptionType::class, [
-                'label' => 'Logo',
+                'label' => 'cms.partner.logo_file',
             ]);
     }
 

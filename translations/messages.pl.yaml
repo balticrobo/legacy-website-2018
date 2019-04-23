@@ -10,6 +10,7 @@ _button:
   no: Nie
   register: Zarejestruj się
   resend_validation_token: Wyślij ponownie token aktywacyjny
+  save: Zapisz
   search: Wyszukaj
   send: Wyślij
   survey: Ankieta
@@ -53,7 +54,12 @@ _common:
 _menu:
   cms:
     cms: CMS
+    dashboard: Dashboard
+    file: Pliki
     home: Strona główna
+    newsletter_participants: Lista newslettera
+    partner: Partnerzy
+    rule: Regulaminy
   competitor_zone: Strefa zawodnika
   for_kids: Dla dzieci
   judge:
@@ -66,6 +72,24 @@ _menu:
   rules: Regulaminy
   schedule: Harmonogram
   volunteer: Wolontariat
+cms:
+  file:
+    address: Plik
+    description: Opis
+    file: Plik
+  newsletter:
+    created_at: Data dodania do listy
+    mail: Adres email
+  partner:
+    logo_file: Logo partnera
+    name: Partner wydarzenia
+    sort_order: Kolejność sortowania (więcej znaczy ważniejszy)
+    type: Typ partnera
+    url: Adres do strony www
+  rule:
+    header: Regulaminy
+    locale: Język
+    name: Konkurencja
 competitor_zone:
   dashboard:
     competitor_name: Imię i nazwisko
