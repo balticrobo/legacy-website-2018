@@ -16,8 +16,8 @@ class AddFileType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', FileType::class)
-            ->add('description', TextareaType::class);
+            ->add('file', FileType::class, ['label' => 'cms.file.file'])
+            ->add('description', TextareaType::class, ['label' => 'cms.file.description']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

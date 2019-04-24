@@ -1,0 +1,64 @@
+{% extends '_admin_base.html.twig' %}
+
+{% block body %}
+  <div class='row'>
+    <div class='col-12'>
+      <h4>{{ 'cms.volunteer.header'|trans }}</h4>
+      {% for record in records %}
+        <div class='container'>
+          <div class='row'>
+            <div class='col-12'>
+              <hr/>
+            </div>
+            <div class='col-12 col-md-9'>
+              {% if record.beenVolunteer %}
+                <i class='fa fa-fw fa-circle text-success' data-toggle='tooltip'
+                    title='{{ 'cms.volunteer.been_volunteer.yes'|trans }}'></i>
+              {% else %}
+                <i class='fa fa-fw fa-circle text-danger' data-toggle='tooltip'
+                    title='{{ 'cms.volunteer.been_volunteer.no'|trans }}'></i>
+              {% endif %}
+              <strong>{{ record.name }}</strong> ({{ record.age }} {{ 'cms.volunteer.years_old'|trans }})
+              <i class='fa fa-fw fa-clock-o'></i> {{ record.createdAt|date('Y-m-d') }}
+              <br/>
+              <i class='fa fa-fw fa-mobile-phone'></i>
+              <a href='tel:+48{{ record.phoneNumber }}'>{{ record.phoneNumber }}</a>
+              <i class='fa fa-fw fa-envelope-o'></i>
+              <a href='mailto:{{ record.email }}'>{{ record.email }}</a>
+              <i class='fa fa-fw fa-user-o'></i> {{ record.shirtType|trans }}
+            </div>
+            <div class='col-12 col-sm-3'>
+              <button class='btn btn-primary btn-sm btn-block' type='button' data-toggle='collapse'
+                  data-target='#volunteer_{{ record.id }}' aria-expanded='false'
+                  aria-controls='volunteer_{{ record.id }}'>
+                {{ '_button.more'|trans }}
+              </button>
+            </div>
+            <div class='col-12'>
+              <div class='collapse' id='volunteer_{{ record.id }}'>
+                <dl class='pt-2 pt-md-3'>
+                  <dt>
+                    {% if record.beenVolunteer %}
+                      {{ 'cms.volunteer.been_volunteer.yes'|trans }}
+                    {% else %}
+                      {{ 'cms.volunteer.been_volunteer.no'|trans }}
+                    {% endif %}
+                  </dt>
+                  <dd>{{ record.beenVolunteerDuties }}</dd>
+                  <dt>{{ 'volunteer.form.arrangement'|trans }}:</dt>
+                  <dd><ul>{% for arrangement in record.arrangementDays %}
+                    <li>{{  arrangement|trans }}</li>
+                  {% endfor %}</ul></dd>
+                  <dt>{{ 'volunteer.form.help_in'|trans }}:</dt>
+                  <dd><ul>{% for helpIn in record.helpIn %}
+                        <li>{{  helpIn|trans }}</li>
+                      {% endfor %}</ul></dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -8,6 +8,7 @@ use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\Registration\Volunteer;
 use BalticRobo\Website\Model\Registration\VolunteerDTO;
 use BalticRobo\Website\Repository\Registration\VolunteerRepository;
+use Doctrine\Common\Collections\Collection;
 
 final class VolunteerService
 {
@@ -16,6 +17,11 @@ final class VolunteerService
     public function __construct(VolunteerRepository $repository)
     {
         $this->repository = $repository;
+    }
+
+    public function getByEvent(Event $event): Collection
+    {
+        return $this->repository->getByEvent($event);
     }
 
     public function add(VolunteerDTO $dto, Event $event, \DateTimeImmutable $now): void

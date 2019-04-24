@@ -7,6 +7,7 @@ _button:
   get_csv: Get CSV file
   login: Login
   logout: Logout
+  more: More
   no: No
   register: Register
   resend_validation_token: Resend validation token
