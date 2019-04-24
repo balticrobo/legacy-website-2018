@@ -92,6 +92,12 @@ cms:
     header: Regulaminy
     locale: Język
     name: Konkurencja
+  volunteer:
+    been_volunteer:
+      no: Nie byłem wolontariuszem
+      yes: Byłem wolontariuszem
+    header: Lista wolontariuszy
+    years_old: lat
 competitor_zone:
   dashboard:
     competitor_name: Imię i nazwisko

@@ -4,6 +4,9 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Website\Entity\Registration;
 
+use BalticRobo\Website\Adapter\DoctrineEnum\ShirtTypeEnum;
+use BalticRobo\Website\Adapter\DoctrineEnum\VolunteerArrangementEnum;
+use BalticRobo\Website\Adapter\DoctrineEnum\VolunteerHelpInEnum;
 use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Model\Registration\VolunteerDTO;
 use Doctrine\ORM\Mapping as ORM;
@@ -95,5 +98,56 @@ class Volunteer
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getAge(): int
+    {
+        $currentYear = (int) (new \DateTimeImmutable())->format('Y');
+
+        return $currentYear - $this->birthYear;
+    }
+
+    public function getPhoneNumber(): string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function isBeenVolunteer(): bool
+    {
+        return $this->beenVolunteer;
+    }
+
+    public function getBeenVolunteerDuties(): ?string
+    {
+        return $this->beenVolunteerDuties;
+    }
+
+    public function getArrangementDays(): array
+    {
+        return array_map(function (int $arrangement): string {
+            return VolunteerArrangementEnum::getName($arrangement);
+        }, $this->arrangementDays);
+    }
+
+    public function getHelpIn(): array
+    {
+        return array_map(function (int $helpIn): string {
+            return VolunteerHelpInEnum::getName($helpIn);
+        }, $this->helpIn);
+    }
+
+    public function getShirtType(): string
+    {
+        return ShirtTypeEnum::getName($this->shirtType);
+    }
+
+    public function getCreatedAt(): \DateTimeImmutable
+    {
+        return $this->createdAt;
     }
 }
