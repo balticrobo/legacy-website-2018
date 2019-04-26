@@ -1,0 +1,80 @@
+{% extends '_admin_base.html.twig' %}
+
+{% block body %}
+  <div class='row'>
+    <div class='col-12'>
+      <h4>{{ 'cms.register.hackathon.header'|trans }}</h4>
+      {% for record in records %}
+        <div class='container'>
+          <div class='row'>
+            <div class='col-12'>
+              <hr/>
+            </div>
+            <div class='col-12 col-md-9'>
+              <strong>{{ record.name }}</strong>
+              <i class='fa fa-fw fa-map'></i> {{ record.city }}
+              <i class='fa fa-fw fa-clock-o'></i> {{ record.createdAt|date('Y-m-d') }}
+              <br/>
+              <i class='fa fa-fw fa-trophy'></i> {{ record.captain.name }}
+              <i class='fa fa-fw fa-mobile-phone'></i>
+              <a href='tel:+48{{ record.captain.phoneNumber }}'>{{ record.captain.phoneNumber }}</a>
+              <i class='fa fa-fw fa-envelope-o'></i>
+              <a href='mailto:{{ record.captain.email }}'>{{ record.captain.email }}</a>
+            </div>
+            <div class='col-12 col-sm-3'>
+              <button class='btn btn-primary btn-sm btn-block' type='button' data-toggle='collapse'
+                  data-target='#team_{{ record.id }}' aria-expanded='false'
+                  aria-controls='team_{{ record.id }}'>
+                {{ '_button.more'|trans }}
+              </button>
+            </div>
+            <div class='col-12'>
+              <div class='collapse' id='team_{{ record.id }}'>
+                <dl class='pt-2 pt-md-3'>
+                  <dt>{{ 'competitor_zone.registration.form.why_you'|trans }}</dt>
+                  <dd>{{ record.whyYou }}</dd>
+                  <dt>{{ 'competitor_zone.registration.form.experience'|trans }}</dt>
+                  <dd>{{ record.experience }}</dd>
+                  <dt>{{ 'cms.register.hackathon.created_by'|trans }}</dt>
+                  <dd>
+                    <strong>{{ record.createdBy.name }}</strong>
+                    <i class='fa fa-fw fa-envelope-o'></i>
+                    <a href='mailto:{{ record.createdBy.email }}'>{{ record.createdBy.email }}</a>
+                  </dd>
+                  <dt>{{ 'cms.register.hackathon.team_members'|trans }}</dt>
+                  <dd>
+                    <table class='table table-hover'>
+                      <thead>
+                      <tr>
+                        <th><i class='fa fa-fw fa-user-o'></i> {{ 'volunteer.form.name'|trans }}</th>
+                        <th><i class='fa fa-fw fa-mobile-phone'></i> {{ 'volunteer.form.phone_number'|trans }}</th>
+                        <th><i class='fa fa-fw fa-envelope-o'></i> {{ 'volunteer.form.email'|trans }}</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      {% for member in record.members %}
+                        <tr>
+                          <td>
+                            {% if member.captain %}
+                              <i class='fa fa-fw fa-trophy'></i>
+                            {% else %}
+                              <i class='fa fa-fw'></i>
+                            {% endif %}
+                            {{ member.name }}
+                          </td>
+                          <td><a href='tel:+48{{ member.phoneNumber }}'>{{ member.phoneNumber }}</a></td>
+                          <td><a href='mailto:{{ member.email }}'>{{ member.email }}</a></td>
+                        </tr>
+                      {% endfor %}
+                      </tbody>
+                    </table>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
