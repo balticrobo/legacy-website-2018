@@ -90,6 +90,11 @@ cms:
     sort_order: Kolejność sortowania (więcej znaczy ważniejszy)
     type: Typ partnera
     url: Adres do strony www
+  register:
+    hackathon:
+      created_by: Założyciel drużyny (nie kapitan, tylko właściciel konta)
+      header: Drużyny Hackathonu
+      team_members: Członkowie drużyny
   rule:
     header: Regulaminy
     locale: Język
