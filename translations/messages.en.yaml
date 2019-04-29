@@ -200,7 +200,7 @@ default:
         _header: Location
         content: The event will take place on the southern coast of the Baltic Sea, i Tricity. Tricity is a metropolitan construct consisting of three cities:<ul><li><strong>Gdańsk</strong>, a place with a long and rich history, with various monuments and museums. It is no wonder that Gdańsk is often placed really high on the lists of the best travel destinations.</li><li><strong>Gdynia</strong>, which developed at a very high rate in the beginning of the 20th century, which makes Gdynia a pretty modern city.</li><li><strong>Sopot</strong>, which is the smallest of the three, but not lacking in charm. Here can you find the biggest pier of the Baltic Sea.</li></ul>
         gpnt_loc: Gdansk Science and Technology Park is located at Trzy&nbsp;Lipy 3 in&nbsp;Gdansk
-        more_soon: Baltic Robot Battles 2019<br/>17-19 V 2019<br/>Gdansk Science and Technology Park<br/>Registration open from 1 IV to 25 IV
+        more_soon: Baltic Robot Battles 2019<br/>17-19 V 2019<br/>Gdansk Science and Technology Park
       organisers:
         _header: Organisers
         content:
@@ -211,6 +211,8 @@ default:
           skalp_header: Robotics Association SKALP
           skalp: an organisation created in 2015 by the members of Student Automatics Club SKALP, active since 2000 at Gdańsk University of Technology. Their activity goes beyond the club and consists og educational activity, leading various projects ind popularization of automatics and robotics.
       registration:
+        _header_closed: Registration closed
+        _header_extended: Registration is extended to %date%!
         _header_opened: Registration is open to %date%!
   schedule:
     will_be_posted_soon: Schedule will be posted soon.

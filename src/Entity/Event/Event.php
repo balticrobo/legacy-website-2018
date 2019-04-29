@@ -96,21 +96,43 @@ class Event
         return $this->registrationEndsAt;
     }
 
-    public function isActiveRegistration(\DateTimeImmutable $now): bool
+    public function isActiveRegistration(\DateTimeImmutable $now = null): bool
     {
+        if (null === $now) {
+            $now = new \DateTimeImmutable();
+        }
+
         return $this->registrationStartsAt < $now && $this->registrationStopsAt > $now;
     }
 
-    public function isActiveRegistrationAgain(\DateTimeImmutable $now): bool
+    public function isActiveRegistrationAgain(\DateTimeImmutable $now = null): bool
     {
+        if (null === $now) {
+            $now = new \DateTimeImmutable();
+        }
+
         return $this->registrationStopsAt->add(new \DateInterval(self::REOPEN_REGISTRATION_AFTER)) < $now
             && $this->registrationEndsAt > $now;
     }
 
-    public function isActiveSurvey(\DateTimeImmutable $now): bool
+    public function isClosedRegistration(\DateTimeImmutable $now = null): bool
     {
+        if (null === $now) {
+            $now = new \DateTimeImmutable();
+        }
+
         return $this->registrationEndsAt < $now
-            && $this->registrationEndsAt->add(new \DateInterval(self::CLOSE_SURVEYS_AFTER)) > $now;
+            && $this->eventStartsAt > $now;
+    }
+
+    public function isActiveSurvey(\DateTimeImmutable $now = null): bool
+    {
+        if (null === $now) {
+            $now = new \DateTimeImmutable();
+        }
+
+        return $this->eventStartsAt < $now
+            && $this->eventStartsAt->add(new \DateInterval(self::CLOSE_SURVEYS_AFTER)) > $now;
     }
 
     public function isDraft(): bool
