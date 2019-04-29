@@ -54,13 +54,24 @@
 {% endmacro %}
 
 {% macro registration_footer(event) %}
-{# RED FOOTER WITH INFO
- #}
-<div class='container-name secondary text-center'>
-  <img src='{{ asset('build/images/registration.svg') }}' alt='' class='img-registration'/>
-  <span>{{ 'default.home.section.registration._header_opened'|trans({
-      '%date%': event.registrationStopsAt|date('d.m')
-    }) }}</span>
-</div>
-{# #}
+  {% if event.isActiveRegistration
+    or event.isActiveRegistrationAgain
+    or event.isClosedRegistration %}
+    <div class='container-name secondary text-center'>
+      <img src='{{ asset('build/images/registration.svg') }}' alt='' class='img-registration'/>
+      <span>
+        {% if event.isActiveRegistration %}
+          {{ 'default.home.section.registration._header_opened'|trans({
+              '%date%': event.registrationStopsAt|date('d.m')
+            }) }}
+        {% elseif event.isActiveRegistrationAgain %}
+          {{ 'default.home.section.registration._header_extended'|trans({
+              '%date%': event.registrationEndsAt|date('d.m')
+            }) }}
+        {% elseif event.isClosedRegistration %}
+          {{ 'default.home.section.registration._header_closed'|trans }}
+        {% endif %}
+      </span>
+    </div>
+  {% endif %}
 {% endmacro %}
