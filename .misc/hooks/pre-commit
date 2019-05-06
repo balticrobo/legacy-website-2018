@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 
-docker-compose -f docker-compose.test.yaml down -v
-docker-compose -f docker-compose.test.yaml up --build --exit-code-from test_php
+IMAGE_NAME=bbr_website_test
+
+docker build -f .misc/docker-test/Dockerfile -t ${IMAGE_NAME} .
+docker rm ${IMAGE_NAME}
+docker run --name=${IMAGE_NAME} ${IMAGE_NAME}

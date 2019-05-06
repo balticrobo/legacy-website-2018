@@ -1,0 +1,5 @@
+parameters:
+  env(MAILER_URL): ''
+
+swiftmailer:
+  disable_delivery: true
