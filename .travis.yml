@@ -20,7 +20,7 @@ before_install:
 - docker-compose -f docker-compose.prod.yaml build
 
 script:
-- docker rm bbr_website_test
+- docker rm bbr_website_test || true
 - docker run --name=bbr_website_test bbr_website_test
 
 before_deploy:
