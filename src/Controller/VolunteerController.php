@@ -31,8 +31,13 @@ final class VolunteerController extends AbstractController
      */
     public function homeAction(): Response
     {
+        $event = $this->eventService->getCurrentEvent();
+        if (!$event->isEnabledVolunteerRegistration()) {
+            return $this->redirectToRoute('balticrobo_website_default_home');
+        }
+
         return $this->render('volunteer/home.html.twig', [
-            'event' => $this->eventService->getCurrentEvent(),
+            'event' => $event,
         ]);
     }
 
@@ -44,6 +49,10 @@ final class VolunteerController extends AbstractController
     public function registerAction(Request $request): Response
     {
         $event = $this->eventService->getCurrentEvent();
+        if (!$event->isEnabledVolunteerRegistration()) {
+            return $this->redirectToRoute('balticrobo_website_default_home');
+        }
+
         $form = $this->createForm(VolunteerType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
