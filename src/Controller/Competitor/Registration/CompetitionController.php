@@ -9,11 +9,9 @@ use BalticRobo\Website\Form\Registration\Competition\AddConstructionType;
 use BalticRobo\Website\Form\Registration\Competition\AddMemberType;
 use BalticRobo\Website\Form\Registration\Competition\AddTeamType;
 use BalticRobo\Website\Form\Registration\Competition\EditConstructionType;
-use BalticRobo\Website\Form\Registration\Competition\SurveyType;
 use BalticRobo\Website\Model\Registration\Competition\EditConstructionDTO;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\CompetitionService;
-use BalticRobo\Website\Service\Registration\SurveyService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,13 +25,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class CompetitionController extends AbstractController
 {
     private $competitionService;
-    private $surveyService;
     private $eventService;
 
-    public function __construct(CompetitionService $competition, SurveyService $survey, EventService $event)
+    public function __construct(CompetitionService $competition, EventService $event)
     {
         $this->competitionService = $competition;
-        $this->surveyService = $survey;
         $this->eventService = $event;
     }
 
@@ -196,33 +192,6 @@ class CompetitionController extends AbstractController
             'event' => $event,
             'form' => $form->createView(),
             'team' => $team,
-        ]);
-    }
-
-    /**
-     * @Route("/survey", methods={"GET", "POST"})
-     *
-     * @param Request $request
-     */
-    public function surveyAction(Request $request): Response
-    {
-        $event = $this->eventService->getCurrentEvent();
-        if (!$event->isActiveSurvey(new \DateTimeImmutable())
-            || $this->surveyService->isCompetitionSurveySent($this->getUser(), $event)) {
-            return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
-        }
-
-        $form = $this->createForm(SurveyType::class);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->surveyService->saveSurvey($form->getData(), $this->getUser(), $event, new \DateTimeImmutable());
-
-            return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
-        }
-
-        return $this->render('competitor/registration/competition/survey.html.twig', [
-            'event' => $event,
-            'form' => $form->createView(),
         ]);
     }
 }

@@ -48,7 +48,7 @@
               {{ '_button.add'|trans }}
             </a>
           {% elseif is_survey.competition %}
-            <a href='{{ path('balticrobo_website_competitor_registration_competition_survey') }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
+            <a href='{{ path('balticrobo_website_competitor_competition_survey') }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
               {{ '_button.survey'|trans }}
             </a>
           {% endif %}
@@ -94,7 +94,7 @@
               {{ '_button.add'|trans }}
             </a>
           {% elseif is_survey.hackathon %}
-            <a href='{{ path('balticrobo_website_competitor_registration_hackathon_survey') }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
+            <a href='{{ path('balticrobo_website_competitor_hackathon_survey') }}' class='btn btn-success btn-block col-12 col-sm-4 offset-sm-8'>
               {{ '_button.survey'|trans }}
             </a>
           {% endif %}
