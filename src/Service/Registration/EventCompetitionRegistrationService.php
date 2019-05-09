@@ -10,7 +10,6 @@ use BalticRobo\Website\Entity\Registration\Competition\Member;
 use BalticRobo\Website\Entity\Registration\Competition\Team;
 use BalticRobo\Website\Model\Judge\RegistrationSearchDTO;
 use BalticRobo\Website\Repository\Registration\Competition\ConstructionCompetitionRepository;
-use BalticRobo\Website\Repository\Registration\Competition\ConstructionRepository;
 use BalticRobo\Website\Repository\Registration\Competition\MemberRepository;
 use BalticRobo\Website\Repository\Registration\Competition\TeamRepository;
 use Doctrine\Common\Collections\Collection;
@@ -18,18 +17,15 @@ use Doctrine\Common\Collections\Collection;
 class EventCompetitionRegistrationService
 {
     private $teamRepository;
-    private $constructionRepository;
     private $constructionCompetitionRepository;
     private $memberRepository;
 
     public function __construct(
         TeamRepository $teamRepository,
-        ConstructionRepository $constructionRepository,
         ConstructionCompetitionRepository $constructionCompetitionRepository,
         MemberRepository $memberRepository
     ) {
         $this->teamRepository = $teamRepository;
-        $this->constructionRepository = $constructionRepository;
         $this->constructionCompetitionRepository = $constructionCompetitionRepository;
         $this->memberRepository = $memberRepository;
     }
