@@ -40,7 +40,13 @@
               {% for member in team.members %}
                 <tr>
                   <td>{{ member.name }}</td>
-                  <td>{# TODO: Add removing and editing members? #}</td>
+                  <td>
+                    {# TODO: Add removing and editing members? #}
+                    <a class='btn btn-primary btn-block'
+                        href='{{ path('balticrobo_website_competitor_competition_getguardianconsent', {'id': member.id}) }}'>
+                      {{ '_button.guardian_consent'|trans }}
+                    </a>
+                  </td>
                 </tr>
               {% endfor %}
               </tbody>

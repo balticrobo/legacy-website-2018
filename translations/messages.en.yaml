@@ -5,6 +5,7 @@ _button:
   edit: Edit
   forgotten_password: Reset password
   get_csv: Get CSV file
+  guardian_consent: Guardian consent
   login: Login
   logout: Logout
   more: More

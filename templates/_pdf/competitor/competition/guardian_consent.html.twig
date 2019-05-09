@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <title>{{ '_button.guardian_consent'|trans }}</title>
+  <style>
+    body { font-family: DejaVu Sans; }
+  </style>
+</head>
+<body>
+<h4>ZAŁĄCZNIK NR 1</h4>
+<br/>
+<h3 style='text-align: center;'>
+  ZGODA OPIEKUNA PRAWNEGO NA UDZIAŁ OSOBY MAŁOLETNIEJ
+  <br/>
+  W&nbsp;WYDARZENIU &bdquo;{{ '_common.event_name'|trans }} {{ event.year }}&rdquo;
+</h3>
+<br/><br/>
+Ja, niżej podpisany _________________________________________ oświadczam, że:
+<ol>
+  <li>
+    Jestem opiekunem prawnym osoby małoletniej
+    <div style='text-align: center'>
+      <strong>{{ member.name }}</strong> (zespół {{ member.team.name }})
+    </div>
+    i&nbsp;wyrażam zgodę na jej udział w&nbsp;Wydarzeniu
+    &bdquo;{{ '_common.event_name'|trans }} {{ event.year }}&rdquo;
+    <br/>
+    w&nbsp;charakterze Zawodnika.
+  </li>
+  <li>
+    Oświadczam, że&nbsp;znany jest mi Regulamin Wydarzenia i&nbsp;akceptuję jego treść.
+  </li>
+</ol>
+<br/>
+<div style='width: 300px; float: right; text-align: center;'>
+  Podpis
+  <br/><br/>
+  ______________________________
+</div>
+</body>
+</html>
