@@ -19,7 +19,6 @@ FROM registration_teams t
 WHERE e.year = 2019
 GROUP BY t.id;
 
--- OLD !!! 2018 !!! OLD
 -- get members
 SELECT
   m.id AS member_id,
@@ -48,10 +47,37 @@ ORDER BY t.id;
 SELECT
   c.name AS competition_name,
   COUNT(rcc.competition_id) AS count
-FROM competitions c
-  LEFT JOIN registration_constructions_competitions rcc on c.id = rcc.competition_id
-GROUP BY c.id;
+FROM registration_constructions rc
+  JOIN registration_constructions_competitions rcc on rc.id = rcc.construction_id
+  JOIN competitions c on rcc.competition_id = c.id
+  JOIN registration_teams rt on rc.team_id = rt.id
+  JOIN events e on rt.event_id = e.id
+WHERE e.year = 2019
+GROUP BY rcc.competition_id;
 
+-- get volunteers
+SELECT
+  v.id AS id,
+  v.name AS name,
+  v.phone_number AS phone_number,
+  v.email AS email,
+  CASE v.shirt_type
+    WHEN 0 THEN 'Brak'
+    WHEN 30 THEN 'XS'
+    WHEN 31 THEN 'S'
+    WHEN 32 THEN 'M'
+    WHEN 33 THEN 'L'
+    WHEN 34 THEN 'XL'
+    WHEN 35 THEN 'XXL'
+    WHEN 36 THEN 'XXXL'
+    ELSE '??? ZŁE DANE ???'
+    END AS shirt_type,
+  FROM_UNIXTIME(v.created_at) AS created_at
+FROM volunteers v
+  JOIN events e on v.event_id = e.id
+WHERE e.year = 2019;
+
+-- OLD !!! 2018 !!! OLD
 -- get names of members to print identifiers and other stuff
 SELECT t1.*
 FROM (

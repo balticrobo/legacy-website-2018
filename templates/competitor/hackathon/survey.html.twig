@@ -1,0 +1,25 @@
+{% extends '_base.html.twig' %}
+
+{% block body %}
+  <div class='wrapper'>
+    {% include '_common/header.html.twig' %}
+  </div>
+  {% include '_common/menu.html.twig' %}
+  <div class='wrapper'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-12'>
+          <h2>{{ 'competitor_zone.registration.survey.header'|trans }}</h2>
+          {{ form_start(form, {class: 'form', attr: {novalidate: 'novalidate'}}) }}
+          <div class='col-12'>
+          {{ form_widget(form) }}
+          </div>
+          <div class='col-12 col-md-4 offset-md-8'>
+            <button class='btn btn-success btn-block'>{{ '_button.add'|trans }}</button>
+          </div>
+          {{ form_end(form) }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

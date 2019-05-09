@@ -56,6 +56,11 @@ class Event
     private $draft = true;
 
     /**
+     * @ORM\Column(name="volunteer_registration", type="boolean")
+     */
+    private $enabledVolunteerRegistration = false;
+
+    /**
      * @ORM\OneToOne(targetEntity="BalticRobo\Website\Entity\Storage\File")
      * @ORM\JoinColumn(referencedColumnName="id")
      */
@@ -138,6 +143,11 @@ class Event
     public function isDraft(): bool
     {
         return $this->draft;
+    }
+
+    public function isEnabledVolunteerRegistration(): bool
+    {
+        return $this->enabledVolunteerRegistration;
     }
 
     public function getCompetitionBySlug(string $slug): EventCompetition

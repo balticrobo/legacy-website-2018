@@ -5,7 +5,7 @@ addons:
   ssh_known_hosts: balticrobo.eu
 
 before_install:
-- export DOCKER_COMPOSE_VERSION=1.23.1
+- export DOCKER_COMPOSE_VERSION=1.24.0
 - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 - sudo apt-get update
@@ -16,11 +16,12 @@ before_install:
   docker-compose
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
-- docker-compose -f docker-compose.test.yaml build
+- docker build -f .misc/docker-test/Dockerfile -t bbr_website_test .
 - docker-compose -f docker-compose.prod.yaml build
 
 script:
-- docker-compose -f docker-compose.test.yaml up --exit-code-from test_php
+- docker rm bbr_website_test || true
+- docker run --name=bbr_website_test bbr_website_test
 
 before_deploy:
 - docker-compose -f docker-compose.prod.yaml up

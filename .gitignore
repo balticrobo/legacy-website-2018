@@ -1,11 +1,11 @@
 # Secrets and cache
-/.env
-/var
-/public/build
-/public/bundles
-/public/email
 /assets/js/assets.js
-/public/upload
+/.env
+/var/
+/public/build/
+/public/bundles/
+/public/email/
+/public/upload/
 
 # Emails
 /templates/_mail/*
@@ -14,8 +14,8 @@
 # Composer & Yarn
 /vendor
 /node_modules/
-/npm-debug.log
-/yarn-error.log
+npm-debug.log
+yarn-error.log
 
 # Static analyze
 /.php_cs

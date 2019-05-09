@@ -1,52 +1,45 @@
-version: '3.4'
+version: '3.5'
 
 services:
   php:
     build: ./.misc/docker/php
     volumes:
-    - .:/var/www/app
-    working_dir: /var/www/app
+    - .:/app
   node_assets:
     build: ./.misc/docker/node_assets
     volumes:
-    - .:/var/www/app
-    working_dir: /var/www/app
+    - .:/app
   nginx:
-    image: nginx:1.15
+    build: ./.misc/docker/nginx
     volumes:
-    - ./public:/var/www/app/public
-    - ./.misc/docker/nginx/vhost.conf:/etc/nginx/conf.d/default.conf
+    - ./public:/app/public
     ports:
-    - 8000:80
-    working_dir: /var/www/app/public
+    - 8000:8000
   mysql:
     image: mysql:5.7
     volumes:
     - mysql_data:/var/lib/mysql
-    - ./.misc/docker/mysql/schema:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: mysql
       MYSQL_DATABASE: balticrobo
     ports:
     - 3306:3306
-  mailhog:
-    image: mailhog/mailhog:v1.0.0
-    ports:
-    - 8001:8025
-    logging:
-      driver: none
   node_inky:
     build: ./.misc/docker/node_inky
-    user: node
     volumes:
-    - ./_mail:/var/www/app/_mail
-    - ./public:/var/www/app/public
-    - ./templates/_mail:/var/www/app/templates/_mail
+    - ./_mail:/app/_mail
+    - ./public:/app/public
+    - ./templates/_mail:/app/templates/_mail
     environment:
       DEPLOY_EMAIL_ASSETS_DOMAIN: http://localhost:8000/email/
     ports:
-    - 8002:3000
-    working_dir: /var/www/app/_mail
+    - 8001:3000
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+    - 8002:8025
+    logging:
+      driver: none
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
@@ -58,6 +51,8 @@ services:
       PMA_PASSWORD: mysql
     ports:
     - 8003:80
+    logging:
+      driver: none
 
 volumes:
   mysql_data:
