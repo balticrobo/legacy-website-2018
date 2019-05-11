@@ -8,6 +8,7 @@ use BalticRobo\Website\Form\Registration\Competition\SurveyType;
 use BalticRobo\Website\Service\EventService;
 use BalticRobo\Website\Service\Registration\EventCompetitionRegistrationService;
 use BalticRobo\Website\Service\Registration\SurveyService;
+use Cocur\Slugify\Slugify;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -45,8 +46,8 @@ class CompetitionController extends AbstractController
         if (!$this->eventCompetitionRegistrationService->isMemberBelongsToUserAccount($member, $this->getUser())) {
             return $this->redirectToRoute('balticrobo_website_competitor_dashboard');
         }
-
-        $filename = 'BBR Guardian consent';
+        $slugify = new Slugify(['lowercase' => false]);
+        $filename = "BBR Guardian consent ({$slugify->slugify($member->getName(), ' ')})";
 
         $options = new Options();
         $options->setIsHtml5ParserEnabled(true);
