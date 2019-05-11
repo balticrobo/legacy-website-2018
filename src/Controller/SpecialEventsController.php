@@ -22,9 +22,10 @@ class SpecialEventsController extends AbstractController
     }
 
     /**
-     * TODO: It's for 2018 event.
+     * It's for 2018 event.
+     * Also 2019 event.
      *
-     * @ Route("/for-kids", methods={"GET"})
+     * @Route("/for-kids", methods={"GET"})
      */
     public function forKidsAction(): Response
     {
