@@ -24,12 +24,17 @@
             <h1>{{ 'volunteer.home.header'|trans }}</h1>
           </div>
           <div class='col-12 pt-5 pb-5'>
-            Zostań wolontariuszem Bałtyckich Bitew Robotów!
-            <div class='text-center'>
-              <a class='btn btn-success btn-lg' href='{{ path('balticrobo_website_volunteer_register') }}'>
-                Zgłoś się już teraz!
-              </a>
-            </div><br/><br/>
+            {% if event.enabledVolunteerRegistration %}
+              Zostań wolontariuszem Bałtyckich Bitew Robotów!
+              <div class='text-center'>
+                <a class='btn btn-success btn-lg' href='{{ path('balticrobo_website_volunteer_register') }}'>
+                  Zgłoś się już teraz!
+                </a>
+              </div>
+            {% else %}
+              Rejestracja wolontariuszy jest obecnie nieaktywna. Dziękujemy za zainteresowanie!
+            {% endif %}
+            <br/><hr/>
             Zgłosiłeś(aś) się już? Nie zapomnij zapoznać się z porozumieniem.
             <div class='text-center'>
               <a class='btn btn-primary btn-lg' target='_blank'

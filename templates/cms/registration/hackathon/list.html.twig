@@ -11,6 +11,20 @@
               <hr/>
             </div>
             <div class='col-12 col-md-9'>
+              {% if record.chosenToStartInEvent %}
+                <i class='fa fa-fw fa-circle text-success' data-toggle='tooltip'
+                    title='{{ 'cms.register.hackathon.choosed'|trans }}'></i>
+              {% else %}
+                <i class='fa fa-fw fa-circle text-danger' data-toggle='tooltip'
+                    title='{{ 'cms.register.hackathon.not_choosed'|trans }}'></i>
+              {% endif %}
+              {% if record.members|length >= constant('BalticRobo\\Website\\Entity\\Registration\\Hackathon\\Team::MINIMUM_FULL_TEAM_MEMBERS') %}
+                <i class='fa fa-fw fa-circle text-success' data-toggle='tooltip'
+                    title='{{ 'cms.register.hackathon.complete_team'|trans }}'></i>
+              {% else %}
+                <i class='fa fa-fw fa-circle text-danger' data-toggle='tooltip'
+                    title='{{ 'cms.register.hackathon.not_complete_team'|trans }}'></i>
+              {% endif %}
               <strong>{{ record.name }}</strong>
               <i class='fa fa-fw fa-map'></i> {{ record.city }}
               <i class='fa fa-fw fa-clock-o'></i> {{ record.createdAt|date('Y-m-d') }}
@@ -70,6 +84,21 @@
                     </table>
                   </dd>
                 </dl>
+                <div class='col-12 col-sm-6 offset-sm-6 col-md-4 offset-md-8'>
+                  {% if record.chosenToStartInEvent %}
+                    <form method='post' action='{{ path('balticrobo_website_cms_registration_hackathon_disallowstart', {id: record.id}) }}'>
+                      <button type='submit' class='btn btn-warning btn-block'>
+                        {{ '_button.deactivate'|trans }}
+                      </button>
+                    </form>
+                  {% else %}
+                    <form method='post' action='{{ path('balticrobo_website_cms_registration_hackathon_allowstart', {id: record.id}) }}'>
+                      <button type='submit' class='btn btn-success btn-block'>
+                        {{ '_button.activate'|trans }}
+                      </button>
+                    </form>
+                  {% endif %}
+                </div>
               </div>
             </div>
           </div>

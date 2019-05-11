@@ -1,6 +1,6 @@
 {% import _self as macro %}
 
-<nav class='navbar navbar-light navbar-expand-md sticky-top d-print-none'>
+<nav class='navbar navbar-light navbar-expand-lg sticky-top d-print-none'>
   <div class='container-fluid container-navbar'>
     <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav'
         aria-controls='navbarNav' aria-expanded='false'>
@@ -35,13 +35,18 @@
             {{ '_menu.partners'|trans }}
           </a>
         </li>
-        {% if event.enabledVolunteerRegistration %}
+        {% if route_exists('balticrobo_website_specialevents_forkids') %}
           <li class='nav-item'>
-            <a class='nav-link' href='{{ path('balticrobo_website_volunteer_home') }}'>
-              {{ '_menu.volunteer'|trans }}
+            <a class='nav-link' href='{{ path('balticrobo_website_specialevents_forkids') }}'>
+              {{ '_menu.for_kids'|trans }}
             </a>
           </li>
         {% endif %}
+        <li class='nav-item'>
+          <a class='nav-link' href='{{ path('balticrobo_website_volunteer_home') }}'>
+            {{ '_menu.volunteer'|trans }}
+          </a>
+        </li>
         {% if is_granted('ROLE_CMS_USER') %}
           <li class='nav-item'>
             <a class='nav-link' href='{{ path('balticrobo_website_cms_dashboard') }}'>
