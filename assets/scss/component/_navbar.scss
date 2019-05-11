@@ -12,6 +12,10 @@
     border-bottom-width: 30px;
   }
 
+  &-nav {
+    max-width: calc(100% - 89px);
+  }
+
   &-nav--locale {
     flex-direction: row;
     position: absolute;
@@ -30,4 +34,8 @@
       }
     }
   }
+}
+
+.nav-link {
+  white-space: nowrap;
 }
