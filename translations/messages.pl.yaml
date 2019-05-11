@@ -89,14 +89,17 @@ cms:
         registration_restarts_at: Data re-otwarcia rejestracji:<br/><strong>%date%</strong>
         registration_starts_at: Data rozpoczęcia rejestracji:<br/><strong>%date%</strong>
         registration_status:
-          closed: Obecny status rejestracji:<br/><strong>ZAMKNIĘTA</strong>
-          open: Obecny status rejestracji:<br/><strong>OTWARTA</strong>
-          reopened: Obecny status rejestracji:<br/><strong>OTWARTA PONOWNIE</strong><br/><small>(bez Hackathonu)</small>
-          temporarily_closed: Obecny status rejestracji:<br/><strong>ZAMKNIĘTA</strong><br/><small>(tymczasowo)</small>
+          closed: Rejestracja na zawody:<br/><strong>ZAMKNIĘTA</strong>
+          open: Rejestracja na zawody:<br/><strong>OTWARTA</strong>
+          reopened: Rejestracja na zawody:<br/><strong>OTWARTA PONOWNIE</strong><br/><small>(bez Hackathonu)</small>
+          temporarily_closed: Rejestracja na zawody:<br/><strong>ZAMKNIĘTA</strong><br/><small>(tymczasowo)</small>
         registration_stops_at: Data zakończenia rejestracji:<br/><strong>%date%</strong>
         survey:
-          active: Ankieta:<br/><strong>KATYWNA</strong>
+          active: Ankieta:<br/><strong>AKTYWNA</strong>
           not_active: Ankieta:<br/><strong>NIEKATYWNA</strong>
+        volunteer_registration:
+          active: Formularz rejestracyjny dla wolontariuszy:<br/><strong>AKTYWNY</strong>
+          not_active: Formularz rejestracyjny dla wolontariuszy:<br/><strong>NIEKATYWNY</strong>
   file:
     address: Plik
     description: Opis

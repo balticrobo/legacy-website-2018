@@ -5,6 +5,11 @@
   <div class='row'>
     {{ macro.section('event') }}
     {{ macro.card('event', 'current_event', {'%year%': event.year}, 'calendar-o') }}
+    {% if event.enabledVolunteerRegistration %}
+      {{ macro.card('event', 'volunteer_registration.active', {}, 'plus-circle', null, 'success') }}
+    {% else %}
+      {{ macro.card('event', 'volunteer_registration.not_active', {}, 'times-circle', null, 'danger') }}
+    {% endif %}
     {{ macro.card('event', 'registration_starts_at', {'%date%': event.registrationStartsAt|date('Y-m-d H:i')}, 'calendar-plus-o') }}
     {{ macro.card('event', 'registration_stops_at', {'%date%': event.registrationStopsAt|date('Y-m-d H:i')}, 'calendar-times-o') }}
     {{ macro.card('event', 'registration_restarts_at', {'%date%': event.registrationRestartsAt|date('Y-m-d H:i')}, 'calendar-plus-o') }}
