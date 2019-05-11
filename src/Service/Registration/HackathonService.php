@@ -8,7 +8,6 @@ use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\Registration\Hackathon\Member;
 use BalticRobo\Website\Entity\Registration\Hackathon\Team;
 use BalticRobo\Website\Entity\User\User;
-use BalticRobo\Website\Model\Judge\RegistrationSearchDTO;
 use BalticRobo\Website\Model\Registration\Hackathon\AddMemberDTO;
 use BalticRobo\Website\Model\Registration\Hackathon\AddTeamDTO;
 use BalticRobo\Website\Repository\Registration\Hackathon\TeamRepository;
@@ -41,7 +40,7 @@ class HackathonService
 
     public function getTeamsByEvent(Event $event): Collection
     {
-        return $this->teamRepository->getFilteredByEvent(new RegistrationSearchDTO(), $event);
+        return $this->teamRepository->getByEvent($event);
     }
 
     public function getTeamsForUserInEvent(User $user, Event $event): Collection

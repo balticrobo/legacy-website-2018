@@ -50,12 +50,24 @@ class TeamRepository extends ServiceEntityRepository
         return $record;
     }
 
+    public function getByEvent(Event $event): Collection
+    {
+        $query = $this->createQueryBuilder('t')
+            ->join(Member::class, 'm', Join::WITH, 't.id = m.team')
+            ->where('t.event = :event')
+            ->setParameter('event', $event)
+            ->orderBy('t.name', 'ASC');
+
+        return new ArrayCollection($query->getQuery()->execute());
+    }
+
     public function getFilteredByEvent(RegistrationSearchDTO $dto, Event $event): Collection
     {
         $query = $this->createQueryBuilder('t')
             ->join(Member::class, 'm', Join::WITH, 't.id = m.team')
             ->where('t.event = :event')
             ->setParameter('event', $event)
+            ->andWhere('t.chosenToStartInEvent = true')
             ->orderBy('t.name', 'ASC');
         if ($dto->getTeamNameOrIdentifier()) {
             $query->andWhere('(t.name LIKE :name1)')->setParameter('name1', "%{$dto->getTeamNameOrIdentifier()}%");

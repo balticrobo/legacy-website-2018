@@ -45,7 +45,7 @@ class HackathonController extends AbstractController
             $searchQuery = $search->getData();
         }
 
-        $records = $this->eventRegistrationService->getTeamsByEvent($searchQuery, $event);
+        $records = $this->eventRegistrationService->getTeamsByEventWithFilter($searchQuery, $event);
 
         return $this->render('judge/registration/hackathon/list.html.twig', [
             'event' => $event,

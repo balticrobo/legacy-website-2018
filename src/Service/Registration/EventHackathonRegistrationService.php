@@ -23,7 +23,7 @@ class EventHackathonRegistrationService
         $this->memberRepository = $memberRepository;
     }
 
-    public function getTeamsByEvent(RegistrationSearchDTO $dto, Event $event): Collection
+    public function getTeamsByEventWithFilter(RegistrationSearchDTO $dto, Event $event): Collection
     {
         return $this->teamRepository->getFilteredByEvent($dto, $event);
     }
