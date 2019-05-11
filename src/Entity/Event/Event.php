@@ -91,9 +91,19 @@ class Event
         return $this->eventStartsAt;
     }
 
+    public function getRegistrationStartsAt(): \DateTimeImmutable
+    {
+        return $this->registrationStartsAt;
+    }
+
     public function getRegistrationStopsAt(): \DateTimeImmutable
     {
         return $this->registrationStopsAt;
+    }
+
+    public function getRegistrationRestartsAt(): \DateTimeImmutable
+    {
+        return $this->registrationStopsAt->add(new \DateInterval(self::REOPEN_REGISTRATION_AFTER));
     }
 
     public function getRegistrationEndsAt(): \DateTimeImmutable
@@ -116,7 +126,7 @@ class Event
             $now = new \DateTimeImmutable();
         }
 
-        return $this->registrationStopsAt->add(new \DateInterval(self::REOPEN_REGISTRATION_AFTER)) < $now
+        return $this->getRegistrationRestartsAt() < $now
             && $this->registrationEndsAt > $now;
     }
 

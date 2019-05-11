@@ -78,6 +78,25 @@ _menu:
   schedule: Harmonogram
   volunteer: Wolontariat
 cms:
+  dashboard:
+    section:
+      event: Event
+    section_cards:
+      event:
+        current_event: Obecny event:<br/><h2>%year%</h2>
+        event_starts_at: Data rozpoczęcia wydarzenia:<br/><strong>%date%</strong>
+        registration_ends_at: Data zamknięcia rejestracji:<br/><strong>%date%</strong>
+        registration_restarts_at: Data re-otwarcia rejestracji:<br/><strong>%date%</strong>
+        registration_starts_at: Data rozpoczęcia rejestracji:<br/><strong>%date%</strong>
+        registration_status:
+          closed: Obecny status rejestracji:<br/><strong>ZAMKNIĘTA</strong>
+          open: Obecny status rejestracji:<br/><strong>OTWARTA</strong>
+          reopened: Obecny status rejestracji:<br/><strong>OTWARTA PONOWNIE</strong><br/><small>(bez Hackathonu)</small>
+          temporarily_closed: Obecny status rejestracji:<br/><strong>ZAMKNIĘTA</strong><br/><small>(tymczasowo)</small>
+        registration_stops_at: Data zakończenia rejestracji:<br/><strong>%date%</strong>
+        survey:
+          active: Ankieta:<br/><strong>KATYWNA</strong>
+          not_active: Ankieta:<br/><strong>NIEKATYWNA</strong>
   file:
     address: Plik
     description: Opis
