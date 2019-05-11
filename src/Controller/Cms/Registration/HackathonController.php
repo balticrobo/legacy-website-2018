@@ -39,4 +39,30 @@ final class HackathonController extends AbstractController
             'records' => $records,
         ]);
     }
+
+    /**
+     * @Route("/{id}/allow-start", methods={"POST"}, requirements={"id" = "\d+"})
+     *
+     * @param int $id
+     */
+    public function allowStartAction(int $id): Response
+    {
+        $team = $this->hackathonService->getTeamById($id);
+        $this->hackathonService->allowToStartInEvent($team);
+
+        return $this->redirectToRoute('balticrobo_website_cms_registration_hackathon_list');
+    }
+
+    /**
+     * @Route("/{id}/disallow-start", methods={"POST"}, requirements={"id" = "\d+"})
+     *
+     * @param int $id
+     */
+    public function disallowStartAction(int $id): Response
+    {
+        $team = $this->hackathonService->getTeamById($id);
+        $this->hackathonService->disallowToStartInEvent($team);
+
+        return $this->redirectToRoute('balticrobo_website_cms_registration_hackathon_list');
+    }
 }

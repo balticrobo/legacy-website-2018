@@ -1,6 +1,8 @@
 _button:
+  activate: Activate
   add: Add
   confirm: Confirm
+  deactivate: Deactivate
   details: Details
   edit: Edit
   forgotten_password: Reset password

@@ -50,6 +50,11 @@ class Team
     private $experience;
 
     /**
+     * @ORM\Column(name="chosen", type="boolean")
+     */
+    private $chosenToStartInEvent = false;
+
+    /**
      * @ORM\OneToMany(targetEntity="BalticRobo\Website\Entity\Registration\Hackathon\Member", mappedBy="team",
      * cascade={"persist"})
      *
@@ -94,6 +99,20 @@ class Team
         $entity->createdBy = $author;
         $entity->members = new ArrayCollection();
         $entity->captain = null;
+
+        return $entity;
+    }
+
+    public static function allowToStartInEvent(self $entity): self
+    {
+        $entity->chosenToStartInEvent = true;
+
+        return $entity;
+    }
+
+    public static function disallowToStartInEvent(self $entity): self
+    {
+        $entity->chosenToStartInEvent = false;
 
         return $entity;
     }
@@ -161,5 +180,10 @@ class Team
     public function getCreatedBy(): User
     {
         return $this->createdBy;
+    }
+
+    public function isChosenToStartInEvent(): bool
+    {
+        return $this->chosenToStartInEvent;
     }
 }

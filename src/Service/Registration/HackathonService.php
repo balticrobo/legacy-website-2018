@@ -34,6 +34,11 @@ class HackathonService
         return true;
     }
 
+    public function getTeamById(int $id): Team
+    {
+        return $this->teamRepository->getById($id);
+    }
+
     public function getTeamsByEvent(Event $event): Collection
     {
         return $this->teamRepository->getFilteredByEvent(new RegistrationSearchDTO(), $event);
@@ -47,6 +52,16 @@ class HackathonService
     public function getTeamByNameAndEvent(string $name, Event $event): Team
     {
         return $this->teamRepository->getByEventAndName($event, $name);
+    }
+
+    public function allowToStartInEvent(Team $team): void
+    {
+        $this->teamRepository->allowToStartInEvent($team);
+    }
+
+    public function disallowToStartInEvent(Team $team): void
+    {
+        $this->teamRepository->disallowToStartInEvent($team);
     }
 
     public function addTeam(AddTeamDTO $teamDTO, Event $event, User $author, \DateTimeImmutable $now): void

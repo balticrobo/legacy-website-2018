@@ -1,6 +1,8 @@
 _button:
+  activate: Aktywacja
   add: Dodaj
   confirm: Potwierdź
+  deactivate: Deaktywacja
   details: Szczegóły
   edit: Edytuj
   forgotten_password: Zresetuj hasło
@@ -115,8 +117,12 @@ cms:
     url: Adres do strony www
   register:
     hackathon:
+      choosed: Zespół wybrany do wzięcia udziału w evencie
+      not_choosed: Zespół nie wybrany do wzięcia udziału w evencie
+      complete_team: Zespół "pełny"
       created_by: Założyciel drużyny (nie kapitan, tylko właściciel konta)
       header: Drużyny Hackathonu
+      not_complete_team: Zespół "niepełny"
       team_members: Członkowie drużyny
   rule:
     header: Regulaminy

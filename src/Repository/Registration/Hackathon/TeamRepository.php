@@ -8,6 +8,7 @@ use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\Registration\Hackathon\Member;
 use BalticRobo\Website\Entity\Registration\Hackathon\Team;
 use BalticRobo\Website\Entity\User\User;
+use BalticRobo\Website\Exception\CompetitorZone\TeamNotFoundException;
 use BalticRobo\Website\Model\Judge\RegistrationSearchDTO;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -22,6 +23,16 @@ class TeamRepository extends ServiceEntityRepository
         parent::__construct($registry, Team::class);
     }
 
+    public function getById(int $id): Team
+    {
+        $record = $this->find($id);
+        if (!$record) {
+            throw new TeamNotFoundException();
+        }
+
+        return $record;
+    }
+
     public function getByEventAndUser(Event $event, User $user): Collection
     {
         $records = $this->findBy(['event' => $event, 'createdBy' => $user]);
@@ -33,7 +44,7 @@ class TeamRepository extends ServiceEntityRepository
     {
         $record = $this->findOneBy(['name' => $name, 'event' => $event]);
         if (!$record) {
-            throw new \Exception(); // TODO: create TeamNotFoundException
+            throw new TeamNotFoundException();
         }
 
         return $record;
@@ -59,6 +70,18 @@ class TeamRepository extends ServiceEntityRepository
     public function save(Team $team): void
     {
         $this->getEntityManager()->persist($team);
+        $this->getEntityManager()->flush();
+    }
+
+    public function allowToStartInEvent(Team $team): void
+    {
+        $this->getEntityManager()->merge(Team::allowToStartInEvent($team));
+        $this->getEntityManager()->flush();
+    }
+
+    public function disallowToStartInEvent(Team $team): void
+    {
+        $this->getEntityManager()->merge(Team::disallowToStartInEvent($team));
         $this->getEntityManager()->flush();
     }
 }
