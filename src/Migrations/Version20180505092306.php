@@ -4,15 +4,18 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Migrations;
 
-use Doctrine\DBAL\Migrations\AbortMigrationException;
-use Doctrine\DBAL\Migrations\AbstractMigration;
+use BalticRobo\Website\Migrations\Migration;
 use Doctrine\DBAL\Schema\Schema;
 
-class Version20180505092306 extends AbstractMigration
+final class Version20180505092306 extends Migration
 {
-    public function up(Schema $schema)
+    public function getDescription(): string
     {
-        $this->checkDatabaseType();
+        return 'Add Hackathon Teams and all related things and relations';
+    }
+
+    public function up(Schema $schema): void
+    {
         $this->addSql('CREATE TABLE registration_members_hackathon (
             id INT AUTO_INCREMENT NOT NULL,
             team_id INT DEFAULT NULL,
@@ -46,18 +49,10 @@ class Version20180505092306 extends AbstractMigration
           ADD CONSTRAINT FK_F1BB96B1B03A8386 FOREIGN KEY (created_by_id) REFERENCES users (id)');
     }
 
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
-        $this->checkDatabaseType();
         $this->addSql('ALTER TABLE registration_members_hackathon DROP FOREIGN KEY FK_191CCE73296CD8AE');
         $this->addSql('DROP TABLE registration_members_hackathon');
         $this->addSql('DROP TABLE registration_teams_hackathon');
-    }
-
-    private function checkDatabaseType(): void
-    {
-        if ($this->connection->getDatabasePlatform()->getName() !== 'mysql') {
-            throw new AbortMigrationException('MySQL only!');
-        }
     }
 }

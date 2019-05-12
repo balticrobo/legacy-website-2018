@@ -4,15 +4,18 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Migrations;
 
-use Doctrine\DBAL\Migrations\AbortMigrationException;
-use Doctrine\DBAL\Migrations\AbstractMigration;
+use BalticRobo\Website\Migrations\Migration;
 use Doctrine\DBAL\Schema\Schema;
 
-class Version20180522130338 extends AbstractMigration
+final class Version20180522130338 extends Migration
 {
-    public function up(Schema $schema)
+    public function getDescription(): string
     {
-        $this->checkDatabaseType();
+        return 'Modify Event - add Schedule selected from File';
+    }
+
+    public function up(Schema $schema): void
+    {
         $this->addSql('ALTER TABLE events
           ADD schedule_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE events
@@ -20,18 +23,10 @@ class Version20180522130338 extends AbstractMigration
         $this->addSql('CREATE UNIQUE INDEX UNIQ_5387574AA40BC2D5 ON events (schedule_id)');
     }
 
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
-        $this->checkDatabaseType();
         $this->addSql('ALTER TABLE events DROP FOREIGN KEY FK_5387574AA40BC2D5');
         $this->addSql('DROP INDEX UNIQ_5387574AA40BC2D5 ON events');
         $this->addSql('ALTER TABLE events DROP schedule_id');
-    }
-
-    private function checkDatabaseType(): void
-    {
-        if ($this->connection->getDatabasePlatform()->getName() !== 'mysql') {
-            throw new AbortMigrationException('MySQL only!');
-        }
     }
 }

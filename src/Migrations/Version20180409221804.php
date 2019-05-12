@@ -4,15 +4,18 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Migrations;
 
-use Doctrine\DBAL\Migrations\AbortMigrationException;
-use Doctrine\DBAL\Migrations\AbstractMigration;
+use BalticRobo\Website\Migrations\Migration;
 use Doctrine\DBAL\Schema\Schema;
 
-class Version20180409221804 extends AbstractMigration
+final class Version20180409221804 extends Migration
 {
+    public function getDescription(): string
+    {
+        return 'Add Event, Competition and all related things and relations';
+    }
+
     public function up(Schema $schema): void
     {
-        $this->checkDatabaseType();
         $this->addSql('CREATE TABLE rules (
             id INT AUTO_INCREMENT NOT NULL,
             event_competition_id INT DEFAULT NULL,
@@ -76,7 +79,6 @@ class Version20180409221804 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        $this->checkDatabaseType();
         $this->addSql('ALTER TABLE event_competitions
             DROP FOREIGN KEY FK_4ACE4CCE71F7E88B');
         $this->addSql('ALTER TABLE rules
@@ -90,12 +92,5 @@ class Version20180409221804 extends AbstractMigration
         $this->addSql('DROP TABLE event_competitions');
         $this->addSql('DROP TABLE competition_groups');
         $this->addSql('DROP TABLE competitions');
-    }
-
-    private function checkDatabaseType(): void
-    {
-        if ($this->connection->getDatabasePlatform()->getName() !== 'mysql') {
-            throw new AbortMigrationException('MySQL only!');
-        }
     }
 }

@@ -4,15 +4,18 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Migrations;
 
-use Doctrine\DBAL\Migrations\AbortMigrationException;
-use Doctrine\DBAL\Migrations\AbstractMigration;
+use BalticRobo\Website\Migrations\Migration;
 use Doctrine\DBAL\Schema\Schema;
 
-class Version20180504215726 extends AbstractMigration
+final class Version20180504215726 extends Migration
 {
-    public function up(Schema $schema)
+    public function getDescription(): string
     {
-        $this->checkDatabaseType();
+        return 'Modify Team - add Creators of Constructions (relation)';
+    }
+
+    public function up(Schema $schema): void
+    {
         $this->addSql('CREATE TABLE registration_constructions_creators (
             construction_id INT NOT NULL,
             creator_id INT NOT NULL,
@@ -29,20 +32,12 @@ class Version20180504215726 extends AbstractMigration
         $this->addSql('ALTER TABLE registration_constructions DROP creators_id');
     }
 
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
-        $this->checkDatabaseType();
         $this->addSql('DROP TABLE registration_constructions_creators');
         $this->addSql('ALTER TABLE registration_constructions ADD creators_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE registration_constructions
           ADD CONSTRAINT FK_2D77EAC7D8A599F6 FOREIGN KEY (creators_id) REFERENCES registration_members (id)');
         $this->addSql('CREATE INDEX IDX_2D77EAC7D8A599F6 ON registration_constructions (creators_id)');
-    }
-
-    private function checkDatabaseType(): void
-    {
-        if ($this->connection->getDatabasePlatform()->getName() !== 'mysql') {
-            throw new AbortMigrationException('MySQL only!');
-        }
     }
 }

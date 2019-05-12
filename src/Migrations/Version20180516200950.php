@@ -4,15 +4,18 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Migrations;
 
-use Doctrine\DBAL\Migrations\AbortMigrationException;
-use Doctrine\DBAL\Migrations\AbstractMigration;
+use BalticRobo\Website\Migrations\Migration;
 use Doctrine\DBAL\Schema\Schema;
 
-class Version20180516200950 extends AbstractMigration
+final class Version20180516200950 extends Migration
 {
-    public function up(Schema $schema)
+    public function getDescription(): string
     {
-        $this->checkDatabaseType();
+        return 'Add Files component (to store info about images and other uploaded files)';
+    }
+
+    public function up(Schema $schema): void
+    {
         $this->addSql('CREATE TABLE storage_files (
             id INT AUTO_INCREMENT NOT NULL,
             description LONGTEXT NOT NULL,
@@ -23,16 +26,8 @@ class Version20180516200950 extends AbstractMigration
         ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
     }
 
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
-        $this->checkDatabaseType();
         $this->addSql('DROP TABLE storage_files');
-    }
-
-    private function checkDatabaseType(): void
-    {
-        if ($this->connection->getDatabasePlatform()->getName() !== 'mysql') {
-            throw new AbortMigrationException('MySQL only!');
-        }
     }
 }

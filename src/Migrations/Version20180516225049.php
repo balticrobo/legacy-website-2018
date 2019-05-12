@@ -4,15 +4,18 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Migrations;
 
-use Doctrine\DBAL\Migrations\AbortMigrationException;
-use Doctrine\DBAL\Migrations\AbstractMigration;
+use BalticRobo\Website\Migrations\Migration;
 use Doctrine\DBAL\Schema\Schema;
 
-class Version20180516225049 extends AbstractMigration
+final class Version20180516225049 extends Migration
 {
-    public function up(Schema $schema)
+    public function getDescription(): string
     {
-        $this->checkDatabaseType();
+        return 'Add Partners';
+    }
+
+    public function up(Schema $schema): void
+    {
         $this->addSql('CREATE TABLE event_partners (
             id INT AUTO_INCREMENT NOT NULL,
             event_id INT DEFAULT NULL,
@@ -32,16 +35,8 @@ class Version20180516225049 extends AbstractMigration
           ADD CONSTRAINT FK_A907B8B493CB796C FOREIGN KEY (file_id) REFERENCES storage_files (id)');
     }
 
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
-        $this->checkDatabaseType();
         $this->addSql('DROP TABLE event_partners');
-    }
-
-    private function checkDatabaseType(): void
-    {
-        if ($this->connection->getDatabasePlatform()->getName() !== 'mysql') {
-            throw new AbortMigrationException('MySQL only!');
-        }
     }
 }

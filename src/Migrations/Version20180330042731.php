@@ -4,15 +4,18 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Migrations;
 
-use Doctrine\DBAL\Migrations\AbortMigrationException;
-use Doctrine\DBAL\Migrations\AbstractMigration;
+use BalticRobo\Website\Migrations\Migration;
 use Doctrine\DBAL\Schema\Schema;
 
-class Version20180330042731 extends AbstractMigration
+final class Version20180330042731 extends Migration
 {
+    public function getDescription(): string
+    {
+        return 'Add User (account)';
+    }
+
     public function up(Schema $schema): void
     {
-        $this->checkDatabaseType();
         $this->addSql("CREATE TABLE users (
             id INT AUTO_INCREMENT NOT NULL,
             forename VARCHAR(30) NOT NULL,
@@ -30,14 +33,6 @@ class Version20180330042731 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        $this->checkDatabaseType();
         $this->addSql('DROP TABLE users');
-    }
-
-    private function checkDatabaseType(): void
-    {
-        if ($this->connection->getDatabasePlatform()->getName() !== 'mysql') {
-            throw new AbortMigrationException('MySQL only!');
-        }
     }
 }

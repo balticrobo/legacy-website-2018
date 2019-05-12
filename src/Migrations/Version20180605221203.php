@@ -4,15 +4,18 @@ declare(strict_types = 1);
 
 namespace BalticRobo\Migrations;
 
-use Doctrine\DBAL\Migrations\AbortMigrationException;
-use Doctrine\DBAL\Migrations\AbstractMigration;
+use BalticRobo\Website\Migrations\Migration;
 use Doctrine\DBAL\Schema\Schema;
 
-class Version20180605221203 extends AbstractMigration
+final class Version20180605221203 extends Migration
 {
-    public function up(Schema $schema)
+    public function getDescription(): string
     {
-        $this->checkDatabaseType();
+        return 'Add Survey';
+    }
+
+    public function up(Schema $schema): void
+    {
         $this->addSql('CREATE TABLE registration_surveys (
             id INT AUTO_INCREMENT NOT NULL,
             event_id INT DEFAULT NULL,
@@ -31,16 +34,8 @@ class Version20180605221203 extends AbstractMigration
           ADD CONSTRAINT FK_EFD97B01B03A8386 FOREIGN KEY (created_by_id) REFERENCES users (id)');
     }
 
-    public function down(Schema $schema)
+    public function down(Schema $schema): void
     {
-        $this->checkDatabaseType();
         $this->addSql('DROP TABLE registration_surveys');
-    }
-
-    private function checkDatabaseType(): void
-    {
-        if ($this->connection->getDatabasePlatform()->getName() !== 'mysql') {
-            throw new AbortMigrationException('MySQL only!');
-        }
     }
 }

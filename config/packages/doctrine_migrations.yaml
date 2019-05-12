@@ -2,4 +2,4 @@ doctrine_migrations:
   dir_name: '%kernel.project_dir%/src/Migrations'
   namespace: BalticRobo\Migrations
   name: 'Balticrobo Migrations'
-  custom_template: ~
+  custom_template: '%kernel.project_dir%/src/Migrations/migration.tpl'
