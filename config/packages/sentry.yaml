@@ -4,8 +4,7 @@ parameters:
 
 sentry:
   options:
-    curl_method: async
-  skip_capture:
-  - 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'
-  - 'Symfony\Component\HttpKernel\Exception\BadRequestHttpException'
-  - 'Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException'
+    excluded_exceptions:
+    - 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'
+    - 'Symfony\Component\HttpKernel\Exception\BadRequestHttpException'
+    - 'Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException'
