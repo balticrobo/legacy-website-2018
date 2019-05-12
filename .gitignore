@@ -7,6 +7,16 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
+
 # Secrets and cache
 /assets/js/assets.js
 /public/build/
@@ -21,8 +31,3 @@
 /node_modules/
 npm-debug.log
 yarn-error.log
-
-# Static analyze
-/.php_cs
-/.php_cs.cache
-/.phpcs.xml
