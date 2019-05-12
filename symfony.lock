@@ -107,9 +107,6 @@
     "ocramius/proxy-manager": {
         "version": "2.2.0"
     },
-    "paragonie/random_compat": {
-        "version": "v9.99.99"
-    },
     "phenx/php-font-lib": {
         "version": "0.5.1"
     },
@@ -275,11 +272,11 @@
     "symfony/options-resolver": {
         "version": "v4.0.6"
     },
-    "symfony/polyfill-ctype": {
-        "version": "v1.9.0"
-    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.7.0"
+    },
+    "symfony/polyfill-intl-idn": {
+        "version": "v1.11.0"
     },
     "symfony/polyfill-mbstring": {
         "version": "v1.7.0"
@@ -372,15 +369,6 @@
             "branch": "master",
             "version": "3.3",
             "ref": "6bdfa1a95f6b2e677ab985cd1af2eae35d62e0f6"
-        }
-    },
-    "symfony/webpack-encore-pack": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.0",
-            "ref": "2b19a31caf3f036852e98ca1709651a4db1e73fb"
         }
     },
     "symfony/yaml": {

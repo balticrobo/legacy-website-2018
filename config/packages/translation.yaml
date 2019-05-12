@@ -11,3 +11,4 @@ framework:
     - '%kernel.project_dir%/translations'
     fallbacks:
     - '%locale%'
+    - pl

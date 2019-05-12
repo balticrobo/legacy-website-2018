@@ -1,9 +1,15 @@
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
 # Secrets and cache
 /assets/js/assets.js
-/.env
-/var/
 /public/build/
-/public/bundles/
 /public/email/
 /public/upload/
 
@@ -12,7 +18,6 @@
 !/templates/_mail/.gitkeep
 
 # Composer & Yarn
-/vendor
 /node_modules/
 npm-debug.log
 yarn-error.log
