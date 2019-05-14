@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
 # encore
-yarn install
-node assets.config.js
+yarn
 yarn build
 
 # inky
 cd _mail
-yarn install
+yarn
 yarn build
