@@ -2,16 +2,12 @@
 <html lang='{{ app.request.locale }}'>
 <head>
   {% include '_common/_head.html.twig' %}
-  {% block stylesheets %}
-    <link rel='stylesheet' href='{{ asset('build/css/app.css') }}'>
-  {% endblock %}
+  {{ encore_entry_link_tags('app') }}
+  {% block stylesheets %}{% endblock %}
 </head>
 <body>
 {% block body %}{% endblock %}
-{% block javascripts %}
-  <script src='{{ asset('build/manifest.js') }}'></script>
-  <script src='{{ asset('build/js/common.js') }}'></script>
-  <script src='{{ asset('build/js/app.js') }}'></script>
-{% endblock %}
+{{ encore_entry_script_tags('app') }}
+{% block javascripts %}{% endblock %}
 </body>
 </html>

@@ -25,32 +25,32 @@ $logo-size: $spacer * 8;
     height: 100%;
 
     &.sumo {
-      background: url('../../img/competitions/sumo.svg') no-repeat center center;
+      background: url('sumo.svg') no-repeat center center;
       background-size: contain;
     }
 
     &.line_follower {
-      background: url('../../img/competitions/linefollower.svg') no-repeat center center;
+      background: url('linefollower.svg') no-repeat center center;
       background-size: contain;
     }
 
     &.micromouse {
-      background: url('../../img/competitions/micromouse.svg') no-repeat center center;
+      background: url('micromouse.svg') no-repeat center center;
       background-size: contain;
     }
 
     &.freestyle {
-      background: url('../../img/competitions/freestyle.svg') no-repeat center center;
+      background: url('freestyle.svg') no-repeat center center;
       background-size: contain;
     }
 
     &.lego {
-      background: url('../../img/competitions/lego.svg') no-repeat center center;
+      background: url('lego.svg') no-repeat center center;
       background-size: contain;
     }
 
     &.robohackathon {
-      background: url('../../img/competitions/robohackathon.svg') no-repeat center center;
+      background: url('robohackathon.svg') no-repeat center center;
       background-size: contain;
     }
   }

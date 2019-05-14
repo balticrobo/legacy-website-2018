@@ -1,7 +1,7 @@
-{% macro social(name, link) %}
+{% macro social(name, link, is_big) %}
   <a href='{{ link }}' target='_blank'>
-    <img src='{{ asset('build/images/' ~ name|lower ~ '.svg') }}' alt='{{ name }}'
-        class='img-social img-social-big'/>
+    <img src='{{ asset('build/images/social_icons/' ~ name|lower ~ '.svg') }}' alt='{{ name }}'
+        class='img-social {% if is_big|default(false) %}img-social-big{% endif %}'/>
   </a>
 {% endmacro %}
 
@@ -46,7 +46,7 @@
         </div>
         <div class="modal-body">
           {{ ('default.home.section.competitions.' ~ title ~ '.description')|trans|raw }}
-          <img class='img-fluid' src='{{ asset('build/images/' ~ title ~ '.jpg') }}' alt=''/>
+          <img class='img-fluid' src='{{ asset('build/images/competitions_poster/' ~ title ~ '.jpg') }}' alt=''/>
         </div>
       </div>
     </div>

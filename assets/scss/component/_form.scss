@@ -17,7 +17,7 @@
     display: none;
 
     &:checked + label::before {
-      background: url("../img/checkbox.svg") no-repeat;
+      background: url("checkbox.svg") no-repeat;
       background-size: $custom-control-gutter;
     }
 

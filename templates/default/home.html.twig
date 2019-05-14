@@ -40,7 +40,7 @@
         <div class='col-12'>
           <div class="media">
             <img class="img-organiser align-self-center mr-3 d-none d-sm-block"
-                src="{{ asset('build/images/organiser-skalp.png') }}" alt=""/>
+                src="{{ asset('build/images/organisers/skalp.png') }}" alt=""/>
             <div class="media-body">
               <h5 class="mt-0">{{ ('default.home.section.organisers.content.skalp_header')|trans }}</h5>
               <p class='text-justify'>{{ ('default.home.section.organisers.content.skalp')|trans|raw }}</p>
@@ -52,12 +52,12 @@
               <p class='text-justify'>{{ ('default.home.section.organisers.content.nksa')|trans|raw }}</p>
             </div>
             <img class="img-organiser align-self-center ml-3 d-none d-sm-block"
-                src="{{ asset('build/images/organiser-nksa.png') }}" alt=""/>
+                src="{{ asset('build/images/organisers/nksa.png') }}" alt=""/>
           </div>
           {# ORGANISER 2018/2019 EDITION - GPNT #}
           <div class="media">
             <img class="img-organiser align-self-center mr-3 d-none d-sm-block"
-                src="{{ asset('build/images/organiser-gpnt-' ~ app.request.locale ~ '.png') }}" alt=""/>
+                src="{{ asset('build/images/organisers/gpnt-' ~ app.request.locale ~ '.png') }}" alt=""/>
             <div class="media-body">
               <h5 class="mt-0">{{ ('default.home.section.organisers.content.gpnt_header')|trans }}</h5>
               <p class='text-justify'>{{ ('default.home.section.organisers.content.gpnt')|trans|raw }}</p>
@@ -73,16 +73,16 @@
           {{ macro.simple_section_header('contact') }}
           <div class='contact-question'>{{ 'default.home.section.contact.any_questions'|trans }}</div>
           <div class='d-flex flex-row justify-content-center'>
-            {{ macro.social('Mail', 'mailto:weronika.narloch@srskalp.pl') }}
-            {{ macro.social('Facebook', 'https://fb.me/balticrobo') }}
-            {{ macro.social('Twitter', 'https://twitter.com/balticrobo') }}
-            {{ macro.social('Instagram', 'https://instagram.com/balticrobo') }}
+            {{ macro.social('Mail', 'mailto:weronika.narloch@srskalp.pl', true) }}
+            {{ macro.social('Facebook', 'https://fb.me/balticrobo', true) }}
+            {{ macro.social('Twitter', 'https://twitter.com/balticrobo', true) }}
+            {{ macro.social('Instagram', 'https://instagram.com/balticrobo', true) }}
           </div>
           <div class='contact-question'>{{ 'default.home.section.contact.want_update'|trans }}</div>
           <div class='contact-answer'>{{ 'default.home.section.contact.more_soon'|trans }}</div>
         </div>
         <div class='contact text-center'>
-          <img src='{{ asset('build/images/logo-circle-' ~ app.request.locale ~ '.svg') }}' alt=''
+          <img src='{{ asset('build/images/logo_circle/' ~ app.request.locale ~ '.svg') }}' alt=''
               class='img-logo-circle p-3'/>
         </div>
       </div>

@@ -17,17 +17,17 @@
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
 
-# Secrets and cache
-/assets/js/assets.js
+###> symfony/webpack-encore-bundle ###
+/node_modules/
 /public/build/
-/public/email/
+npm-debug.log
+yarn-error.log
+
+###< symfony/webpack-encore-bundle ###
+
 /public/upload/
 
 # Emails
+/public/email/
 /templates/_mail/*
 !/templates/_mail/.gitkeep
-
-# Composer & Yarn
-/node_modules/
-npm-debug.log
-yarn-error.log

@@ -6,7 +6,9 @@
 @import 'abstract/mixins';
 @import '~bootstrap/scss/root';
 @import '~bootstrap/scss/reboot';
+$audiowide-font-path: '../../font/audiowide' !default;
 @import '../font/audiowide/audiowide';
+$lato-font-path: '../../font/lato' !default;
 @import '../font/lato/lato';
 @import '~bootstrap/scss/type';
 @import '~bootstrap/scss/images';

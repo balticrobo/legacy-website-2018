@@ -30,42 +30,42 @@
   }
 
   &-pl {
-    background: url("../img/main_background/576-pl.png") no-repeat fixed center top;
+    background: url("576-pl.png") no-repeat fixed center top;
 
     @include media-breakpoint-only(sm) {
-      background: url("../img/main_background/768-pl.png") no-repeat fixed center top;
+      background: url("768-pl.png") no-repeat fixed center top;
     }
 
     @include media-breakpoint-only(md) {
-      background: url("../img/main_background/992-pl.png") no-repeat fixed center top;
+      background: url("992-pl.png") no-repeat fixed center top;
     }
 
     @include media-breakpoint-only(lg) {
-      background: url("../img/main_background/1200-pl.png") no-repeat fixed center top;
+      background: url("1200-pl.png") no-repeat fixed center top;
     }
 
     @include media-breakpoint-only(xl) {
-      background: url("../img/main_background/1920-pl.png") no-repeat fixed center top;
+      background: url("1920-pl.png") no-repeat fixed center top;
     }
   }
 
   &-en {
-    background: url("../img/main_background/576-en.png") no-repeat fixed center top;
+    background: url("576-en.png") no-repeat fixed center top;
 
     @include media-breakpoint-only(sm) {
-      background: url("../img/main_background/768-en.png") no-repeat fixed center top;
+      background: url("768-en.png") no-repeat fixed center top;
     }
 
     @include media-breakpoint-only(md) {
-      background: url("../img/main_background/992-en.png") no-repeat fixed center top;
+      background: url("992-en.png") no-repeat fixed center top;
     }
 
     @include media-breakpoint-only(lg) {
-      background: url("../img/main_background/1200-en.png") no-repeat fixed center top;
+      background: url("1200-en.png") no-repeat fixed center top;
     }
 
     @include media-breakpoint-only(xl) {
-      background: url("../img/main_background/1920-en.png") no-repeat fixed center top;
+      background: url("1920-en.png") no-repeat fixed center top;
     }
   }
 }
