@@ -9,11 +9,13 @@ use BalticRobo\Website\Entity\Registration\Competition\Construction;
 use BalticRobo\Website\Entity\Registration\Competition\Member;
 use BalticRobo\Website\Entity\Registration\Competition\Team;
 use BalticRobo\Website\Entity\User\User;
+use BalticRobo\Website\Model\Judge\RegistrationSearchDTO;
 use BalticRobo\Website\Model\Registration\Competition\AddConstructionDTO;
 use BalticRobo\Website\Model\Registration\Competition\AddMemberDTO;
 use BalticRobo\Website\Model\Registration\Competition\AddTeamDTO;
 use BalticRobo\Website\Model\Registration\Competition\EditConstructionDTO;
 use BalticRobo\Website\Repository\Registration\Competition\ConstructionRepository;
+use BalticRobo\Website\Repository\Registration\Competition\MemberRepository;
 use BalticRobo\Website\Repository\Registration\Competition\TeamRepository;
 use Doctrine\Common\Collections\Collection;
 
@@ -21,11 +23,13 @@ class CompetitionService
 {
     private $teamRepository;
     private $constructionRepository;
+    private $memberRepository;
 
-    public function __construct(TeamRepository $team, ConstructionRepository $construction)
+    public function __construct(TeamRepository $team, ConstructionRepository $construction, MemberRepository $member)
     {
         $this->teamRepository = $team;
         $this->constructionRepository = $construction;
+        $this->memberRepository = $member;
     }
 
     public function isTeamNotExistsInEvent(string $identifier, Event $event): bool
@@ -37,6 +41,12 @@ class CompetitionService
         }
 
         return true;
+    }
+
+    /** @return Collection|Team[]  */
+    public function getTeamsByEvent(Event $event): Collection
+    {
+        return $this->teamRepository->getFilteredByEvent(new RegistrationSearchDTO(), $event);
     }
 
     public function getTeamByIdentifierAndEvent(string $identifier, Event $event): Team
@@ -78,5 +88,17 @@ class CompetitionService
     {
         $construction = Construction::createFromEditDTO($construction, $constructionDTO);
         $this->constructionRepository->save($construction);
+    }
+
+    /** @return Collection|Member[] */
+    public function getMembersByEvent(Event $event): Collection
+    {
+        return $this->memberRepository->getByEvent($event);
+    }
+
+    /** @return Collection|Construction[] */
+    public function getConstructionsByEvent(Event $event): Collection
+    {
+        return $this->constructionRepository->getByEvent($event);
     }
 }
