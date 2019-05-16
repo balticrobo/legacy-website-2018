@@ -61,6 +61,8 @@ _menu:
     dashboard: Dashboard
     file: Pliki
     home: Strona główna
+    info:
+      competition: Zawody
     newsletter_participants: Lista newslettera
     partner: Partnerzy
     registration:
