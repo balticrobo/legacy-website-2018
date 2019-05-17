@@ -60,6 +60,10 @@ class Volunteer
      */
     private $shirtType;
     /**
+     * @ORM\Column(type="json")
+     */
+    private $givenShirts = [];
+    /**
      * @ORM\ManyToOne(targetEntity="BalticRobo\Website\Entity\Event\Event")
      */
     private $event;
@@ -86,6 +90,23 @@ class Volunteer
         $entity->shirtType = $dto->shirtType;
         $entity->event = $event;
         $entity->createdAt = $now;
+
+        return $entity;
+    }
+
+    public static function giveShirt(self $entity, int $day, \DateTimeImmutable $now): self
+    {
+        if (isset($entity->givenShirts[$day])) {
+            throw new \Exception('Shirt already given!'); /// TODO: Change to correct Exception
+        }
+        $entity->givenShirts[$day] = $now->getTimestamp();
+
+        return $entity;
+    }
+
+    public static function takeShirt(self $entity, int $day): self
+    {
+        unset($entity->givenShirts[$day]);
 
         return $entity;
     }
@@ -144,6 +165,11 @@ class Volunteer
     public function getShirtType(): string
     {
         return ShirtTypeEnum::getName($this->shirtType);
+    }
+
+    public function isShirtGiven(int $day): bool
+    {
+        return isset($this->givenShirts[$day]);
     }
 
     public function getCreatedAt(): \DateTimeImmutable
