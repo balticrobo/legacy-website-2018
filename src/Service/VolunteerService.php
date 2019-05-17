@@ -19,6 +19,11 @@ final class VolunteerService
         $this->repository = $repository;
     }
 
+    public function getById(int $id): Volunteer
+    {
+        return $this->repository->getById($id);
+    }
+
     public function getByEvent(Event $event): Collection
     {
         return $this->repository->getByEvent($event);
@@ -29,5 +34,21 @@ final class VolunteerService
         $entity = Volunteer::fromDTO($dto, $event, $now);
 
         $this->repository->save($entity);
+    }
+
+    public function giveShirt(int $id, int $day, \DateTimeImmutable $now): void
+    {
+        $current = $this->getById($id);
+        $new = Volunteer::giveShirt($current, $day, $now);
+
+        $this->repository->update($new);
+    }
+
+    public function takeShirt(int $id, int $day): void
+    {
+        $current = $this->getById($id);
+        $new = Volunteer::takeShirt($current, $day);
+
+        $this->repository->update($new);
     }
 }
