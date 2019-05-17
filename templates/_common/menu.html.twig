@@ -18,7 +18,7 @@
             {{ '_menu.rules'|trans }}
           </a>
         </li>
-        {% if event.schedule %}
+        {% if event.schedule or event.conferenceSchedule %}
           <li class='nav-item'>
             <a class='nav-link' href='{{ path('balticrobo_website_default_schedule') }}'>
               {{ '_menu.schedule'|trans }}
