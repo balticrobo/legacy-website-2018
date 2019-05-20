@@ -67,6 +67,12 @@ class Event
     private $schedule;
 
     /**
+     * @ORM\OneToOne(targetEntity="BalticRobo\Website\Entity\Storage\File")
+     * @ORM\JoinColumn(referencedColumnName="id")
+     */
+    private $conferenceSchedule;
+
+    /**
      * @ORM\OneToMany(targetEntity="BalticRobo\Website\Entity\Event\EventCompetition", mappedBy="event")
      */
     private $competitions;
@@ -179,5 +185,10 @@ class Event
     public function getSchedule(): ?File
     {
         return $this->schedule;
+    }
+
+    public function getConferenceSchedule(): ?File
+    {
+        return $this->conferenceSchedule;
     }
 }

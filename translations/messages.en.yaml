@@ -188,9 +188,10 @@ default:
       conference:
         _header: Conference
         content: >-
-          Closed event during which student teams from across the Poland will present their achievements. Rocket motors,
+          Event during which student teams from across the Poland will present their achievements. Rocket motors,
           Martian rovers, racing cars, satellites and solar cars are only part of the planned talks. If You are
-          interested in participating in conference, please contact with organizers.
+          interested in participating in conference, please contact with organizers. We are welcome everyone. It is open
+          and free!
       contact:
         _header: Contact
         any_questions: 'Any questions? You can find us at:'

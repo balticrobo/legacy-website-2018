@@ -1,0 +1,17 @@
+{% extends '_admin_base.html.twig' %}
+
+{% block body %}
+  <div class='row'>
+    <div class='col-12 col-sm-10 offset-sm-1 col-md-6 offset-md-3'>
+      <a href='{{ path('balticrobo_website_cms_info_competition_teams') }}' class='btn btn-primary btn-block btn-lg'>
+        Drużyny
+      </a>
+      <a href='{{ path('balticrobo_website_cms_info_competition_members') }}' class='btn btn-primary btn-block btn-lg'>
+        Zawodnicy
+      </a>
+      <a href='{{ path('balticrobo_website_cms_info_competition_constructions') }}' class='btn btn-primary btn-block btn-lg'>
+        Konstrukcje
+      </a>
+    </div>
+  </div>
+{% endblock %}

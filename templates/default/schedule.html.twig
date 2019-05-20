@@ -12,10 +12,17 @@
           {% if event.schedule %}
           <img src='{{ event.schedule.address }}' alt='' class='img-fluid'/>
           {% else %}
-          <div class='alert alert-warning'>
+          <div class='alert alert-info'>
             <i class='fa fa-fw fa-exclamation-triangle'></i>
             {{ 'default.schedule.will_be_posted_soon'|trans }}
           </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-12 col-md-8 offset-md-2'>
+          {% if event.conferenceSchedule %}
+            <img src='{{ event.conferenceSchedule.address }}' alt='' class='img-fluid'/>
           {% endif %}
         </div>
       </div>

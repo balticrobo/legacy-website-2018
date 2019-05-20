@@ -1,0 +1,41 @@
+{% extends '_judge_base.html.twig' %}
+
+{% block body %}
+  <div class='row'>
+    <div class='col-12'>
+      <table class='table table-hover'>
+        <thead>
+        <tr>
+          <th class='w-10 text-center'><i class='fa fa-fw fa-hashtag'></i></th>
+          <th class='text-center'>{{ 'volunteer.form.name'|trans }}</th>
+          <th class='text-center'>{{ 'volunteer.form.shirt_type'|trans }}</th>
+          <th class='w-25'></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for record in records %}
+          <tr>
+            <td class='align-middle text-center display-4' id='{{ record.id }}'>{{ record.id }}</td>
+            <td class='align-middle'>{{ record.name }}</td>
+            <td class='align-middle text-center'>{{ record.shirtType|trans }}</td>
+            <td class='align-middle'>
+              {% for day in 1..2 %}
+                {% set params = {'id': record.id, 'day': day} %}
+                {% if record.shirtGiven(day) %}
+                  <form action='{{ path('balticrobo_website_judge_registration_volunteer_takeshirt', params) }}' method='POST'>
+                    <button class='btn btn-block btn-success'>Koszulka na dzień {{ day }}</button>
+                  </form>
+                {% else %}
+                  <form action='{{ path('balticrobo_website_judge_registration_volunteer_giveshirt', params) }}' method='POST'>
+                    <button class='btn btn-block btn-danger'>Koszulka na dzień {{ day }}</button>
+                  </form>
+                {% endif %}
+              {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

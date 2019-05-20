@@ -61,6 +61,8 @@ _menu:
     dashboard: Dashboard
     file: Pliki
     home: Strona główna
+    info:
+      competition: Zawody
     newsletter_participants: Lista newslettera
     partner: Partnerzy
     registration:
@@ -74,6 +76,7 @@ _menu:
     registration:
       competition: Rej. na zawody
       hackathon: Rej. na hackathon
+      volunteer: Rej. wolontariuszy
   home: Główna
   partners: Partnerzy
   rules: Regulaminy
@@ -269,9 +272,10 @@ default:
       conference:
         _header: Konferencja
         content: >-
-          Zamknięte wydarzenie podczas którego zespoły studenckie z całej polski przedstawią swoje dokonania. Silniki
+          Wydarzenie podczas którego zespoły studenckie z całej polski przedstawią swoje dokonania. Silniki
           rakietowe, łaziki marsjańskie, bolidy wyścigowe, satelity i samochody solarne to tylko część z planowanych
-          referatów. Osoby zainteresowane udziałem w konferencji proszone są o kontakt z organizatorami.
+          referatów. Osoby zainteresowane udziałem w konferencji proszone są o kontakt z organizatorami. Wszystkich
+          zainteresowanych zapraszamy na konferencję, jest otwarta!
       contact:
         _header: Kontakt
         any_questions: 'Masz pytania? Znajdziesz nas na:'

@@ -18,6 +18,16 @@ final class VolunteerRepository extends ServiceEntityRepository
         parent::__construct($registry, Volunteer::class);
     }
 
+    public function getById(int $id): Volunteer
+    {
+        $record = $this->find($id);
+        if (!$record) {
+            throw new \Exception(); // TODO: Set correct Exception
+        }
+
+        return $record;
+    }
+
     public function getByEvent(Event $event): Collection
     {
         $records = $this->findBy(['event' => $event]);
@@ -28,6 +38,12 @@ final class VolunteerRepository extends ServiceEntityRepository
     public function save(Volunteer $volunteer): void
     {
         $this->getEntityManager()->persist($volunteer);
+        $this->getEntityManager()->flush();
+    }
+
+    public function update(Volunteer $volunteer): void
+    {
+        $this->getEntityManager()->merge($volunteer);
         $this->getEntityManager()->flush();
     }
 }
