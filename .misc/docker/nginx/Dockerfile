@@ -1,7 +1,5 @@
 FROM nginx:alpine
 
-COPY default.conf /etc/nginx/conf.d/default.conf
-
 RUN apk --no-cache add acf-openssl
 RUN openssl req \
     -subj '/CN=localhost' \
@@ -10,6 +8,6 @@ RUN openssl req \
     -nodes \
     -keyout /etc/nginx/conf.d/key.pem \
     -out /etc/nginx/conf.d/cert.pem \
-    -days 365
+    -days 3650
 
-WORKDIR /app/public
+COPY default.conf /etc/nginx/conf.d/default.conf

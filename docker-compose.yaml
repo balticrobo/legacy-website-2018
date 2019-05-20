@@ -2,15 +2,15 @@ version: '3.5'
 
 services:
   php:
-    build: ./.misc/docker/php
+    build: .misc/docker/php
     volumes:
     - .:/app
-  node_assets:
-    build: ./.misc/docker/node_assets
+  asset:
+    build: .misc/docker/asset
     volumes:
     - .:/app
   nginx:
-    build: ./.misc/docker/nginx
+    build: .misc/docker/nginx
     volumes:
     - ./public:/app/public
     ports:
@@ -24,8 +24,8 @@ services:
       MYSQL_DATABASE: balticrobo
     ports:
     - 3306:3306
-  node_inky:
-    build: ./.misc/docker/node_inky
+  inky:
+    build: .misc/docker/inky
     volumes:
     - ./_mail:/app/_mail
     - ./public:/app/public
