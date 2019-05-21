@@ -1,33 +1,31 @@
-language: minimal
 sudo: required
-
+services:
+- docker
 addons:
   ssh_known_hosts: balticrobo.eu
 
-before_install:
-- export DOCKER_COMPOSE_VERSION=1.24.0
-- curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-- sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-- sudo apt-get update
-- sudo apt-get -y install docker-ce
-- sudo rm /usr/local/bin/docker-compose
-- curl -L
-  https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` >
-  docker-compose
-- chmod +x docker-compose
-- sudo mv docker-compose /usr/local/bin
-- docker build -f .misc/docker-test/Dockerfile -t bbr_website_test .
-- docker-compose -f docker-compose.prod.yaml build
-
 script:
-- docker rm bbr_website_test || true
-- docker run --name=bbr_website_test bbr_website_test
+- docker build -f .misc/docker-test/Dockerfile -t bbr_test_img .
+- docker run --name=bbr_test bbr_test_img
+- docker rm bbr_test
 
 before_deploy:
-- docker-compose -f docker-compose.prod.yaml up
-- mkdir -p ${TRAVIS_BUILD_DIR}/dist/var/cache
-- cp -r bin config public src templates translations vendor composer.json composer.lock ${TRAVIS_BUILD_DIR}/dist
-- chmod -R 777 ${TRAVIS_BUILD_DIR}/dist/var
+- docker build -f .misc/docker-prod/Dockerfile -t bbr_prod_img .
+- docker create --name bbr_dist bbr_prod_img
+- mkdir -p ${TRAVIS_BUILD_DIR}/dist
+- docker cp bbr_dist:/app/bin ${TRAVIS_BUILD_DIR}/dist/bin
+- docker cp bbr_dist:/app/config ${TRAVIS_BUILD_DIR}/dist/config
+- docker cp bbr_dist:/app/public ${TRAVIS_BUILD_DIR}/dist/public
+- docker cp bbr_dist:/app/src ${TRAVIS_BUILD_DIR}/dist/src
+- docker cp bbr_dist:/app/templates ${TRAVIS_BUILD_DIR}/dist/templates
+- docker cp bbr_dist:/app/translations ${TRAVIS_BUILD_DIR}/dist/translations
+- docker cp bbr_dist:/app/vendor ${TRAVIS_BUILD_DIR}/dist/vendor
+- docker cp bbr_dist:/app/composer.json ${TRAVIS_BUILD_DIR}/dist/
+- docker cp bbr_dist:/app/composer.lock ${TRAVIS_BUILD_DIR}/dist/
+- rm -rf dist/config/packages/dev
+- rm -rf dist/config/packages/test
+- rm -rf dist/config/routes/dev
+- docker rm bbr_dist
 - tar -zcf ${TRAVIS_BUILD_DIR}/dist.tar.gz ${TRAVIS_BUILD_DIR}/dist
 - openssl aes-256-cbc -K ${encrypted_a54708e5d9c1_key} -iv ${encrypted_a54708e5d9c1_iv}
   -in ./.misc/deploy_rsa.enc -out /tmp/deploy_rsa -d
@@ -35,7 +33,6 @@ before_deploy:
 - chmod 600 /tmp/deploy_rsa
 - ssh-add /tmp/deploy_rsa
 - "echo '{\"version\": \"'\"${TRAVIS_COMMIT}\"'\"}' > ${TRAVIS_BUILD_DIR}/version.json"
-
 deploy:
 - provider: script
   skip_cleanup: true
@@ -43,11 +40,11 @@ deploy:
     rsync -a --delete --exclude ".env" --exclude "public/upload" --exclude "var" --rsh="ssh -o BatchMode=yes"
     ${TRAVIS_BUILD_DIR}/dist/ ${PROD_HOST}:${PROD_DIRECTORY} &&
     ssh ${PROD_HOST} "sed -i \"/COMMIT_SHA/c\COMMIT_SHA=${TRAVIS_COMMIT}\" ${PROD_DIRECTORY}/.env &&
-    php ${PROD_DIRECTORY}/bin/console cache:clear &&
+    php ${PROD_DIRECTORY}/bin/console cache:clear --no-warmup &&
     php ${PROD_DIRECTORY}/bin/console cache:warmup &&
     php ${PROD_DIRECTORY}/bin/console doctrine:migrations:migrate --no-interaction" &&
     curl ${DEPLOY_SENTRY_RELEASE_WEBHOOK_ADDRESS}
-    -X POST -H 'Content-Type: application/json' -d @${TRAVIS_BUILD_DIR}/version.json
+      -X POST -H 'Content-Type: application/json' -d @${TRAVIS_BUILD_DIR}/version.json
   on:
     tags: true
 - provider: releases

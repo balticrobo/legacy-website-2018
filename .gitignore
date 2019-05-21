@@ -31,3 +31,6 @@ yarn-error.log
 /public/email/
 /templates/_mail/*
 !/templates/_mail/.gitkeep
+
+# Dist
+/dist/
