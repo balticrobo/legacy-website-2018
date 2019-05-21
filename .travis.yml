@@ -1,11 +1,13 @@
+language: minimal
 sudo: required
 services:
 - docker
 addons:
   ssh_known_hosts: balticrobo.eu
 
-script:
+before_script:
 - docker build -f .misc/docker-test/Dockerfile -t bbr_test_img .
+script:
 - docker run --name=bbr_test bbr_test_img
 - docker rm bbr_test
 
