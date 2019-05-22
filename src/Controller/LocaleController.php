@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Controller;
 
@@ -23,7 +21,7 @@ class LocaleController extends AbstractController
     }
 
     /**
-     * @Route("/change/{locale}", requirements={"locale" = "[a-zA-Z]{1,8}"}, methods={"POST"})
+     * @Route("/change/{locale}", requirements={"locale": "[a-zA-Z]{1,8}"}, methods={"POST"})
      *
      * @param string  $locale
      * @param Request $request

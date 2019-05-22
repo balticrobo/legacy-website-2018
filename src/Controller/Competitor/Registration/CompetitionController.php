@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Controller\Competitor\Registration;
 
@@ -66,7 +64,7 @@ class CompetitionController extends AbstractController
     /**
      * @Route(
      *     "/{eventYear}/{identifier}",
-     *     requirements={"year" = "\d{4}", "identifier" = "\w{2,4}"},
+     *     requirements={"year": "\d{4}", "identifier": "\w{2,4}"},
      *     methods={"GET", "POST"}
      * )
      *
@@ -88,7 +86,7 @@ class CompetitionController extends AbstractController
     }
 
     /**
-     * @Route("/{identifier}/add/member", requirements={"identifier" = "\w{2,4}"}, methods={"GET", "POST"})
+     * @Route("/{identifier}/add/member", requirements={"identifier": "\w{2,4}"}, methods={"GET", "POST"})
      *
      * @param Request $request
      * @param string  $identifier
@@ -125,7 +123,7 @@ class CompetitionController extends AbstractController
     }
 
     /**
-     * @Route("/{identifier}/add/construction", requirements={"identifier" = "\w{2,4}"}, methods={"GET", "POST"})
+     * @Route("/{identifier}/add/construction", requirements={"identifier": "\w{2,4}"}, methods={"GET", "POST"})
      *
      * @param Request $request
      * @param string  $identifier
@@ -158,7 +156,7 @@ class CompetitionController extends AbstractController
     }
 
     /**
-     * @Route("/{identifier}/construction/{name}", requirements={"identifier" = "\w{2,4}"}, methods={"GET", "POST"})
+     * @Route("/{identifier}/construction/{name}", requirements={"identifier": "\w{2,4}"}, methods={"GET", "POST"})
      *
      * @param Request $request
      * @param string  $identifier

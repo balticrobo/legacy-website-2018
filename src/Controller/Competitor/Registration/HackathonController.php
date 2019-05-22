@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Controller\Competitor\Registration;
 
@@ -68,7 +66,7 @@ class HackathonController extends AbstractController
     }
 
     /**
-     * @Route("/{eventYear}/{name}", requirements={"year" = "\d{4}"}, methods={"GET", "POST"})
+     * @Route("/{eventYear}/{name}", requirements={"year": "\d{4}"}, methods={"GET", "POST"})
      *
      * @param int    $eventYear
      * @param string $name

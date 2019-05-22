@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Entity\User;
 
@@ -140,7 +138,7 @@ class User implements AdvancedUserInterface, MailRecipientInterface
     public function removeRole(string $role): void
     {
         $key = array_search($role, $this->roles, true);
-        if ($key === false) {
+        if (false === $key) {
             return;
         }
         unset($this->roles[$key]);

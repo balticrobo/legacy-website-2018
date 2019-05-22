@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Controller;
 
@@ -129,7 +127,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/activate/{token}", requirements={"token" = "[0-9a-f]{32}"}, methods={"GET"})
+     * @Route("/activate/{token}", requirements={"token": "[0-9a-f]{32}"}, methods={"GET"})
      *
      * @param string $token
      */
@@ -236,7 +234,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/forgotten-password/{token}/reset", requirements={"token" = "[0-9a-f]{32}"}, methods={"GET", "POST"})
+     * @Route("/forgotten-password/{token}/reset", requirements={"token": "[0-9a-f]{32}"}, methods={"GET", "POST"})
      *
      * @param Request $request
      * @param string  $token

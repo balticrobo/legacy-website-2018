@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Controller\Judge\Registration;
 
@@ -73,7 +71,7 @@ class HackathonController extends AbstractController
     }
 
     /**
-     * @Route("/accept/member/{id}/{action}", requirements={"id" = "\d+"}, methods={"POST"})
+     * @Route("/accept/member/{id}/{action}", requirements={"id": "\d+"}, methods={"POST"})
      *
      * @param int    $id
      * @param string $action

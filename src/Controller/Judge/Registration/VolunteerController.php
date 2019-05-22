@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Controller\Judge\Registration;
 
@@ -44,7 +42,7 @@ final class VolunteerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/shirt/{day}/give", requirements={"id" = "\d+", "day" = "1|2"}, methods={"POST"})
+     * @Route("/{id}/shirt/{day}/give", requirements={"id": "\d+", "day": "1|2"}, methods={"POST"})
      *
      * @param int $id
      * @param int $day
@@ -59,7 +57,7 @@ final class VolunteerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/shirt/{day}/take", requirements={"id" = "\d+", "day" = "1|2"}, methods={"POST"})
+     * @Route("/{id}/shirt/{day}/take", requirements={"id": "\d+", "day": "1|2"}, methods={"POST"})
      *
      * @param int $id
      * @param int $day

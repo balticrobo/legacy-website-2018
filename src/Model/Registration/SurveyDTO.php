@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Model\Registration;
 
@@ -30,7 +28,7 @@ class SurveyDTO
 
     private function validateType(int $type): void
     {
-        if (!in_array($type, RegistrationTypeEnum::getAvailableTypes())) {
+        if (!in_array($type, RegistrationTypeEnum::getAvailableTypes(), true)) {
             throw new \Exception(); // TODO: Throw correct exception
         }
     }

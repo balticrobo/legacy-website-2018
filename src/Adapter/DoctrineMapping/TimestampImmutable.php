@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Adapter\DoctrineMapping;
 
@@ -18,7 +16,7 @@ class TimestampImmutable extends Type
 
     public function convertToPHPValue($value, AbstractPlatform $platform): ?\DateTimeImmutable
     {
-        if ($value === null || $value instanceof \DateTimeImmutable) {
+        if (null === $value || $value instanceof \DateTimeImmutable) {
             return $value;
         }
 
@@ -27,7 +25,7 @@ class TimestampImmutable extends Type
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform): ?int
     {
-        if ($value === null) {
+        if (null === $value) {
             return $value;
         }
 

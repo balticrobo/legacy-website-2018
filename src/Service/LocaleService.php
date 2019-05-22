@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Service;
 
@@ -15,6 +13,6 @@ class LocaleService
 
     public function isAvailableLocale(string $locale): bool
     {
-        return in_array(strtolower($locale), $this->availableLocales);
+        return in_array(strtolower($locale), $this->availableLocales, true);
     }
 }

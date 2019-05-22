@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Controller\Cms\Registration;
 
@@ -41,7 +39,7 @@ final class HackathonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/allow-start", methods={"POST"}, requirements={"id" = "\d+"})
+     * @Route("/{id}/allow-start", methods={"POST"}, requirements={"id": "\d+"})
      *
      * @param int $id
      */
@@ -54,7 +52,7 @@ final class HackathonController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/disallow-start", methods={"POST"}, requirements={"id" = "\d+"})
+     * @Route("/{id}/disallow-start", methods={"POST"}, requirements={"id": "\d+"})
      *
      * @param int $id
      */

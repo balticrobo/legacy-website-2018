@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\EventListener;
 
@@ -28,7 +26,7 @@ class LocaleListener implements EventSubscriberInterface
 
     public function onKernelRequest(GetResponseEvent $event)
     {
-        if ($event->getRequestType() !== HttpKernel::MASTER_REQUEST) {
+        if (HttpKernel::MASTER_REQUEST !== $event->getRequestType()) {
             return null;
         }
         if (!$event->getRequest()->getSession()->has('_locale')) {

@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Controller\Judge\Registration;
 
@@ -56,7 +54,7 @@ class CompetitionController extends AbstractController
     }
 
     /**
-     * @Route("/{identifier}", requirements={"identifier" = "\w{2,4}"}, methods={"GET"})
+     * @Route("/{identifier}", requirements={"identifier": "\w{2,4}"}, methods={"GET"})
      *
      * @param Request $request
      * @param string  $identifier
@@ -75,7 +73,7 @@ class CompetitionController extends AbstractController
     }
 
     /**
-     * @Route("/accept/member/{id}/{action}", requirements={"id" = "\d+"}, methods={"POST"})
+     * @Route("/accept/member/{id}/{action}", requirements={"id": "\d+"}, methods={"POST"})
      *
      * @param int    $id
      * @param string $action
@@ -93,7 +91,7 @@ class CompetitionController extends AbstractController
     /**
      * @Route(
      *     "/accept/construction/{id}/{competitionId}/{action}",
-     *     requirements={"id" = "\d+", "competitionId" = "\d+"},
+     *     requirements={"id": "\d+", "competitionId": "\d+"},
      *     methods={"POST"}
      * )
      *

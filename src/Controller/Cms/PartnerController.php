@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\Controller\Cms;
 
@@ -29,7 +27,7 @@ class PartnerController extends AbstractController
     }
 
     /**
-     * @Route("/{page}", requirements={"page" = "\d+"}, defaults={"page" = 1}, methods={"GET"})
+     * @Route("/{page}", requirements={"page": "\d+"}, defaults={"page": 1}, methods={"GET"})
      *
      * @param Request $request
      * @param int     $page

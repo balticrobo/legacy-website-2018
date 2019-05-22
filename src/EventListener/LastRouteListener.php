@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace BalticRobo\Website\EventListener;
 
@@ -18,8 +16,8 @@ class LastRouteListener implements EventSubscriberInterface
 
     public function onKernelRequest(GetResponseEvent $event)
     {
-        if ($event->getRequestType() !== HttpKernel::MASTER_REQUEST
-            || $event->getRequest()->get('_route')[0] === '_') {
+        if (HttpKernel::MASTER_REQUEST !== $event->getRequestType()
+            || '_' === $event->getRequest()->get('_route')[0]) {
             return null;
         }
         $thisRoute = $event->getRequest()->getSession()->get('this_route', []);
