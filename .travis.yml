@@ -7,26 +7,14 @@ addons:
 
 before_script:
 - docker build -f .misc/docker-test/Dockerfile -t bbr_test_img .
+- docker build -f .misc/docker-prod/Dockerfile -t bbr_prod_img .
 script:
 - docker run --name=bbr_test bbr_test_img
 - docker rm bbr_test
 
 before_deploy:
-- docker build -f .misc/docker-prod/Dockerfile -t bbr_prod_img .
 - docker create --name bbr_dist bbr_prod_img
-- mkdir -p ${TRAVIS_BUILD_DIR}/dist
-- docker cp bbr_dist:/app/bin ${TRAVIS_BUILD_DIR}/dist/bin
-- docker cp bbr_dist:/app/config ${TRAVIS_BUILD_DIR}/dist/config
-- docker cp bbr_dist:/app/public ${TRAVIS_BUILD_DIR}/dist/public
-- docker cp bbr_dist:/app/src ${TRAVIS_BUILD_DIR}/dist/src
-- docker cp bbr_dist:/app/templates ${TRAVIS_BUILD_DIR}/dist/templates
-- docker cp bbr_dist:/app/translations ${TRAVIS_BUILD_DIR}/dist/translations
-- docker cp bbr_dist:/app/vendor ${TRAVIS_BUILD_DIR}/dist/vendor
-- docker cp bbr_dist:/app/composer.json ${TRAVIS_BUILD_DIR}/dist/
-- docker cp bbr_dist:/app/composer.lock ${TRAVIS_BUILD_DIR}/dist/
-- rm -rf dist/config/packages/dev
-- rm -rf dist/config/packages/test
-- rm -rf dist/config/routes/dev
+- docker cp bbr_dist:/app ${TRAVIS_BUILD_DIR}/dist
 - docker rm bbr_dist
 - tar -zcf ${TRAVIS_BUILD_DIR}/dist.tar.gz ${TRAVIS_BUILD_DIR}/dist
 - openssl aes-256-cbc -K ${encrypted_a54708e5d9c1_key} -iv ${encrypted_a54708e5d9c1_iv}
