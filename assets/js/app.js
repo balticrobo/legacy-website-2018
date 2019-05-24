@@ -13,4 +13,4 @@ import '../../node_modules/bootstrap/js/dist/tab';
 import '../../node_modules/bootstrap/js/dist/tooltip';
 import '../../node_modules/bootstrap/js/dist/popover';
 
-import '../scss/main.scss';
+import '../scss/app.scss';
