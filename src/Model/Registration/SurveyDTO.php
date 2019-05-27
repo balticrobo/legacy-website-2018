@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Model\Registration;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\RegistrationTypeEnum;
+use BalticRobo\Website\Adapter\Enum\RegistrationTypeEnum;
 
 class SurveyDTO
 {

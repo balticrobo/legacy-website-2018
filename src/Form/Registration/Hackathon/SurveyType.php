@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Form\Registration\Hackathon;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\RegistrationTypeEnum;
+use BalticRobo\Website\Adapter\Enum\RegistrationTypeEnum;
 use BalticRobo\Website\Model\Registration\SurveyDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;

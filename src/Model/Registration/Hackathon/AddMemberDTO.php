@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Model\Registration\Hackathon;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\ShirtTypeEnum;
+use BalticRobo\Website\Adapter\Enum\ShirtTypeEnum;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class AddMemberDTO

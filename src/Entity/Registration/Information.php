@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Entity\Registration;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\InformationTypeEnum;
+use BalticRobo\Website\Adapter\Enum\InformationTypeEnum;
 use BalticRobo\Website\Entity\Event\Event;
 use Doctrine\ORM\Mapping as ORM;
 

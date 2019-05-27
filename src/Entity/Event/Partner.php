@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Entity\Event;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\PartnerTypeEnum;
+use BalticRobo\Website\Adapter\Enum\PartnerTypeEnum;
 use BalticRobo\Website\Entity\Storage\File;
 use BalticRobo\Website\Model\Cms\AddPartnerDTO;
 use Doctrine\ORM\Mapping as ORM;

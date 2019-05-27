@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Service\Registration;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\RegistrationTypeEnum;
+use BalticRobo\Website\Adapter\Enum\RegistrationTypeEnum;
 use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\Registration\Survey;
 use BalticRobo\Website\Entity\User\User;

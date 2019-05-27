@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Entity\Competition;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\RegistrationTypeEnum;
+use BalticRobo\Website\Adapter\Enum\RegistrationTypeEnum;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

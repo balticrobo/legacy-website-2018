@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Form\Registration\Hackathon;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\ShirtTypeEnum;
+use BalticRobo\Website\Adapter\Enum\ShirtTypeEnum;
 use BalticRobo\Website\Model\Registration\Hackathon\AddMemberDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;

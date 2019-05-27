@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Form\Registration\Competition;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\RegistrationTypeEnum;
+use BalticRobo\Website\Adapter\Enum\RegistrationTypeEnum;
 use BalticRobo\Website\Entity\Competition\Competition;
 use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\Event\EventCompetition;

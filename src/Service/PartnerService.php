@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Service;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\PartnerTypeEnum;
+use BalticRobo\Website\Adapter\Enum\PartnerTypeEnum;
 use BalticRobo\Website\Entity\Event\Event;
 use BalticRobo\Website\Entity\Event\Partner;
 use BalticRobo\Website\Model\Cms\AddPartnerDTO;

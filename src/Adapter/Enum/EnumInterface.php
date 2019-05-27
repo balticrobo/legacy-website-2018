@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace BalticRobo\Website\Adapter\DoctrineEnum;
+namespace BalticRobo\Website\Adapter\Enum;
 
 interface EnumInterface
 {

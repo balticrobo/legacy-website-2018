@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Form\Cms;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\PartnerTypeEnum;
+use BalticRobo\Website\Adapter\Enum\PartnerTypeEnum;
 use BalticRobo\Website\Model\Cms\AddPartnerDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;

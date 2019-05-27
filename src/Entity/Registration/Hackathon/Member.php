@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Entity\Registration\Hackathon;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\ShirtTypeEnum;
+use BalticRobo\Website\Adapter\Enum\ShirtTypeEnum;
 use BalticRobo\Website\Model\Registration\Hackathon\AddMemberDTO;
 use Doctrine\ORM\Mapping as ORM;
 

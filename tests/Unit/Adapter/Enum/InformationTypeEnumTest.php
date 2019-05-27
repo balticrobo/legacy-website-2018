@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace BalticRobo\Website\Tests\Unit\Adapter;
+namespace BalticRobo\Website\Tests\Unit\Adapter\Enum;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\InformationTypeEnum;
-use BalticRobo\Website\Adapter\DoctrineEnum\UnknownEnumException;
+use BalticRobo\Website\Adapter\Enum\InformationTypeEnum;
+use BalticRobo\Website\Adapter\Enum\UnknownEnumException;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 

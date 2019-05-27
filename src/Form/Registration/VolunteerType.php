@@ -2,9 +2,9 @@
 
 namespace BalticRobo\Website\Form\Registration;
 
-use BalticRobo\Website\Adapter\DoctrineEnum\ShirtTypeEnum;
-use BalticRobo\Website\Adapter\DoctrineEnum\VolunteerArrangementEnum;
-use BalticRobo\Website\Adapter\DoctrineEnum\VolunteerHelpInEnum;
+use BalticRobo\Website\Adapter\Enum\ShirtTypeEnum;
+use BalticRobo\Website\Adapter\Enum\VolunteerArrangementEnum;
+use BalticRobo\Website\Adapter\Enum\VolunteerHelpInEnum;
 use BalticRobo\Website\Model\Registration\VolunteerDTO;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
