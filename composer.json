@@ -37,6 +37,8 @@
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.15",
     "jakub-onderka/php-var-dump-check": "dev-master#eef28e2d7bf71ca1530243dbba5939d9eae09aaf",
+    "phpunit/phpunit": "^8.1",
+    "roave/security-advisories": "dev-master",
     "squizlabs/php_codesniffer": "^3.4",
     "symfony/debug-bundle": "4.2.*",
     "symfony/var-dumper": "4.2.*",
