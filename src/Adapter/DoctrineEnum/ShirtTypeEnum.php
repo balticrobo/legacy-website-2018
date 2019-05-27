@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Adapter\DoctrineEnum;
 
-class ShirtTypeEnum
+final class ShirtTypeEnum implements EnumInterface
 {
     use EnumTrait;
 
@@ -26,7 +26,6 @@ class ShirtTypeEnum
     public const UNISEX_XL = 34;
     public const UNISEX_XXL = 35;
     public const UNISEX_XXXL = 36;
-
     private const NAMES = [
         self::NONE => 'enum.shirt_type.none',
         self::FEMALE_XS => 'enum.shirt_type.female_xs',
@@ -50,9 +49,6 @@ class ShirtTypeEnum
         self::UNISEX_XXXL => 'enum.shirt_type.unisex_xxxl',
     ];
 
-    /**
-     * @return int[]
-     */
     public static function getAvailableTypes(): array
     {
         return [
@@ -63,5 +59,9 @@ class ShirtTypeEnum
             self::UNISEX_XXL,
             self::UNISEX_XXXL,
         ];
+    }
+
+    private function __construct()
+    {
     }
 }

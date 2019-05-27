@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Adapter\DoctrineEnum;
 
-final class VolunteerHelpInEnum
+final class VolunteerHelpInEnum implements EnumInterface
 {
     use EnumTrait;
 
@@ -43,9 +43,6 @@ final class VolunteerHelpInEnum
         self::STAY_AT_ENTRANCE => 'enum.volunteer_help_in.stay_at_entrance',
     ];
 
-    /**
-     * @return int[]
-     */
     public static function getAvailableTypes(): array
     {
         return [
@@ -67,5 +64,9 @@ final class VolunteerHelpInEnum
             self::STREAM_STUFF,
             self::STAY_AT_ENTRANCE,
         ];
+    }
+
+    private function __construct()
+    {
     }
 }

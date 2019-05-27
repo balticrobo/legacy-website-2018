@@ -15,7 +15,7 @@ trait EnumTrait
 
     public static function getFormData(): array
     {
-        return array_reduce(self::getAvailableTypes(), function (array $carry, string $item) {
+        return array_reduce(self::getAvailableTypes(), static function (array $carry, string $item): array {
             $carry[self::NAMES[$item]] = $item;
 
             return $carry;

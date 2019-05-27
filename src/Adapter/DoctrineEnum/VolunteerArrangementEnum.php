@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Adapter\DoctrineEnum;
 
-final class VolunteerArrangementEnum
+final class VolunteerArrangementEnum implements EnumInterface
 {
     use EnumTrait;
 
@@ -25,9 +25,6 @@ final class VolunteerArrangementEnum
         self::SECOND_NIGHT => 'enum.volunteer_arrangement.second_night',
     ];
 
-    /**
-     * @return int[]
-     */
     public static function getAvailableTypes(): array
     {
         return [
@@ -40,5 +37,9 @@ final class VolunteerArrangementEnum
             self::FIRST_NIGHT,
             self::SECOND_NIGHT,
         ];
+    }
+
+    private function __construct()
+    {
     }
 }

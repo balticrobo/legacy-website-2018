@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Adapter\DoctrineEnum;
 
-class RegistrationTypeEnum
+final class RegistrationTypeEnum implements EnumInterface
 {
     use EnumTrait;
 
@@ -16,9 +16,6 @@ class RegistrationTypeEnum
         self::CONFERENCE => 'enum.registration_type.conference',
     ];
 
-    /**
-     * @return int[]
-     */
     public static function getAvailableTypes(): array
     {
         return [
@@ -26,5 +23,9 @@ class RegistrationTypeEnum
             self::HACKATHON,
             self::CONFERENCE,
         ];
+    }
+
+    private function __construct()
+    {
     }
 }

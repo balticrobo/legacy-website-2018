@@ -2,7 +2,7 @@
 
 namespace BalticRobo\Website\Adapter\DoctrineEnum;
 
-class UnknownEnumException extends \Exception
+final class UnknownEnumException extends \DomainException
 {
     public function __construct(string $enum)
     {
