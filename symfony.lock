@@ -117,6 +117,9 @@
     "guzzlehttp/psr7": {
         "version": "1.5.2"
     },
+    "http-interop/http-factory-guzzle": {
+        "version": "1.0.0"
+    },
     "jakub-onderka/php-var-dump-check": {
         "version": "dev-master"
     },
@@ -252,9 +255,6 @@
     "psr/log": {
         "version": "1.1.0"
     },
-    "psr/simple-cache": {
-        "version": "1.0.1"
-    },
     "ralouphie/getallheaders": {
         "version": "2.0.5"
     },
@@ -308,6 +308,9 @@
     },
     "sebastian/resource-operations": {
         "version": "2.0.1"
+    },
+    "sebastian/type": {
+        "version": "1.1.1"
     },
     "sebastian/version": {
         "version": "2.0.1"
@@ -364,6 +367,9 @@
     "symfony/cache": {
         "version": "v4.2.8"
     },
+    "symfony/cache-contracts": {
+        "version": "v1.1.1"
+    },
     "symfony/config": {
         "version": "v4.2.8"
     },
@@ -409,6 +415,9 @@
     },
     "symfony/event-dispatcher": {
         "version": "v4.2.8"
+    },
+    "symfony/event-dispatcher-contracts": {
+        "version": "v1.1.1"
     },
     "symfony/expression-language": {
         "version": "v4.2.8"
@@ -465,6 +474,9 @@
     "symfony/intl": {
         "version": "v4.2.8"
     },
+    "symfony/mime": {
+        "version": "v4.3.1"
+    },
     "symfony/monolog-bridge": {
         "version": "v4.2.8"
     },
@@ -495,6 +507,9 @@
         "version": "v1.11.0"
     },
     "symfony/polyfill-php72": {
+        "version": "v1.11.0"
+    },
+    "symfony/polyfill-php73": {
         "version": "v1.11.0"
     },
     "symfony/process": {
@@ -542,6 +557,9 @@
     "symfony/security-http": {
         "version": "v4.2.8"
     },
+    "symfony/service-contracts": {
+        "version": "v1.1.2"
+    },
     "symfony/stopwatch": {
         "version": "v4.2.8"
     },
@@ -571,6 +589,9 @@
             "config/packages/translation.yaml",
             "translations/.gitignore"
         ]
+    },
+    "symfony/translation-contracts": {
+        "version": "v1.1.2"
     },
     "symfony/twig-bridge": {
         "version": "v4.2.8"
