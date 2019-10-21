@@ -18,6 +18,7 @@
             {{ '_menu.rules'|trans }}
           </a>
         </li>
+{#
         {% if event.schedule or event.conferenceSchedule %}
           <li class='nav-item'>
             <a class='nav-link' href='{{ path('balticrobo_website_default_schedule') }}'>
@@ -47,6 +48,7 @@
             {{ '_menu.volunteer'|trans }}
           </a>
         </li>
+#}
         {% if is_granted('ROLE_CMS_USER') %}
           <li class='nav-item'>
             <a class='nav-link' href='{{ path('balticrobo_website_cms_dashboard') }}'>
